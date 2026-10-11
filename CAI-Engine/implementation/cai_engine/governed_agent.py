@@ -89,7 +89,7 @@ class GovernedAgent:
             cls, confidence=confidence, explainable=explainable, explanation=explanation,
             drift_score=drift, human_disclosed=bool(ai.get("human_disclosed", False)))
         block = {
-            "framework": "EU AI Act (Regulation (EU) 2024/1689)",
+            "framework": "EU AI Act (Reg. (EU) 2024/1689, amended by Digital Omnibus (EU) 2026/1744)",
             "jurisdiction": "EU",
             "label": cls.tier.value,
             "rationale": cls.rationale,

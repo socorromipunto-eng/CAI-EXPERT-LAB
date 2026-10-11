@@ -1,4 +1,11 @@
-"""EU AI Act (Regulation (EU) 2024/1689) alignment layer.
+"""EU AI Act alignment layer.
+
+Instrument: Regulation (EU) 2024/1689, as amended by the Digital Omnibus
+(Regulation (EU) 2026/1744, in force 27 July 2026). The amendment changes
+application dates and scope (high-risk Annex III deferred to 2 Dec 2027) and
+adds two Art. 5 prohibitions (non-consensual intimate imagery; CSAM); the
+article obligations this module enforces are unchanged. See REGULATORY-BASIS.md.
+
 
 This module classifies an AI-assisted decision into the Act's risk tiers and
 derives the obligations and enforcement that apply. It implements the
