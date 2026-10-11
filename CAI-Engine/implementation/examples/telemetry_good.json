@@ -1,0 +1,7 @@
+{
+  "source": "edr-sensor-07",
+  "domain": "device",
+  "confidence": 0.93,
+  "provenance": "crowdstrike-falcon/agent-07",
+  "timestamp": 1760000000.0
+}

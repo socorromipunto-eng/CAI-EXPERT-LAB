@@ -1,0 +1,21 @@
+{
+  "jurisdiction": "USA",
+  "ai": {
+    "system": "cai-triage-llm",
+    "model_version": "1.4.2",
+    "confidence": 0.92,
+    "explanation": "Ambiguous signal on a catastrophic-consequence asset.",
+    "explainable": true,
+    "provenance": "cces://energy/substation-12/rtu-logs",
+    "drift_score": 0.04
+  },
+  "context": {
+    "sector": "energy",
+    "safety_component": true
+  },
+  "action": {
+    "category": "OBSERVE",
+    "description": "Low-confidence recommendation on an energy asset",
+    "target": "substation-12-rtu"
+  }
+}

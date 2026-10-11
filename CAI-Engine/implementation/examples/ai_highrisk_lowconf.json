@@ -1,0 +1,20 @@
+{
+  "ai": {
+    "system": "cai-triage-llm",
+    "model_version": "1.4.2",
+    "confidence": 0.71,
+    "explanation": "Weak, ambiguous signal; low certainty.",
+    "explainable": true,
+    "drift_score": 0.05,
+    "human_disclosed": true
+  },
+  "context": {
+    "sector": "energy",
+    "safety_component": true
+  },
+  "action": {
+    "category": "OBSERVE",
+    "description": "Low-confidence recommendation on a critical-infrastructure asset",
+    "target": "substation-SCADA-dmz"
+  }
+}

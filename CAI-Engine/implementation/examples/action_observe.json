@@ -1,0 +1,5 @@
+{
+  "category": "OBSERVE",
+  "description": "Asset discovery and dependency mapping",
+  "target": "subnet-10.20.0.0/24"
+}

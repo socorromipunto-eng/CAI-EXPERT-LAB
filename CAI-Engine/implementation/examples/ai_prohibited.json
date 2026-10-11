@@ -1,0 +1,20 @@
+{
+  "ai": {
+    "system": "cai-triage-llm",
+    "model_version": "1.4.2",
+    "confidence": 0.99,
+    "explanation": "High certainty, but the intended use is a prohibited practice.",
+    "explainable": true,
+    "drift_score": 0.01,
+    "human_disclosed": true
+  },
+  "context": {
+    "prohibited_practice": true,
+    "prohibited_reason": "social scoring of employees from behavioural data (Art. 5)"
+  },
+  "action": {
+    "category": "OBSERVE",
+    "description": "Score employees by behaviour for access decisions",
+    "target": "workforce"
+  }
+}

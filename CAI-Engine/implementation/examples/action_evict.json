@@ -1,0 +1,10 @@
+{
+  "category": "ERADICATION",
+  "description": "Remove malicious implant from compromised host",
+  "target": "host-ws-114",
+  "destructive": true,
+  "blast_radius": 1,
+  "ai_assisted": true,
+  "ai_confidence": 0.91,
+  "ai_explainable": true
+}

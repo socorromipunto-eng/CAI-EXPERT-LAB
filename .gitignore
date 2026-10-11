@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+cai_runtime/
+report*.md
+.mcp.json

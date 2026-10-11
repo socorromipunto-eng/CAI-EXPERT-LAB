@@ -1,0 +1,6 @@
+{
+  "category": "ERADICATION",
+  "description": "Attempt to delete files while in DETECT state (should be blocked by policy)",
+  "target": "host-ws-114",
+  "destructive": true
+}

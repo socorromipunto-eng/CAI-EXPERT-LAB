@@ -1,0 +1,21 @@
+{
+  "jurisdiction": "USA",
+  "ai": {
+    "system": "cai-genai-assistant",
+    "model_version": "2.1.0",
+    "confidence": 0.93,
+    "explanation": "Generative summary of an incident timeline for the response team.",
+    "explainable": true,
+    "genai": true,
+    "provenance": "model:cai-genai-assistant/2.1.0; inputs:siem+edr",
+    "drift_score": 0.05
+  },
+  "context": {
+    "sector": "healthcare"
+  },
+  "action": {
+    "category": "OBSERVE",
+    "description": "Generate incident timeline summary for the SOC",
+    "target": "incident-4821"
+  }
+}

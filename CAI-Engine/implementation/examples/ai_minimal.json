@@ -1,0 +1,19 @@
+{
+  "ai": {
+    "system": "cai-triage-llm",
+    "model_version": "1.4.2",
+    "confidence": 0.88,
+    "explanation": "Routine enrichment of internal asset inventory; no persons, no critical-infrastructure safety component.",
+    "explainable": true,
+    "drift_score": 0.02,
+    "human_disclosed": true
+  },
+  "context": {
+    "sector": "corporate_it"
+  },
+  "action": {
+    "category": "OBSERVE",
+    "description": "Enrich internal asset inventory with observed metadata",
+    "target": "cmdb"
+  }
+}

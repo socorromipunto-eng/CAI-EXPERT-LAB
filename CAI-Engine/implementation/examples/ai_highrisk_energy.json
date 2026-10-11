@@ -1,0 +1,21 @@
+{
+  "ai": {
+    "system": "cai-triage-llm",
+    "model_version": "1.4.2",
+    "confidence": 0.95,
+    "explanation": "Correlated lateral-movement indicators across 3 OT engineering workstations in the substation DMZ; recommends prioritized review before any containment.",
+    "explainable": true,
+    "drift_score": 0.04,
+    "human_disclosed": true
+  },
+  "context": {
+    "sector": "energy",
+    "safety_component": true,
+    "affects_essential_services": true
+  },
+  "action": {
+    "category": "OBSERVE",
+    "description": "Prioritize and scope suspected intrusion in substation OT DMZ",
+    "target": "substation-SCADA-dmz"
+  }
+}

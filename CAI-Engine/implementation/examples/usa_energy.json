@@ -1,0 +1,21 @@
+{
+  "jurisdiction": "USA",
+  "ai": {
+    "system": "cai-triage-llm",
+    "model_version": "1.4.2",
+    "confidence": 0.96,
+    "explanation": "Correlated anomalous commands to a substation RTU; recommends scoped review.",
+    "explainable": true,
+    "provenance": "cces://energy/substation-12/rtu-logs",
+    "drift_score": 0.03
+  },
+  "context": {
+    "sector": "energy",
+    "safety_component": true
+  },
+  "action": {
+    "category": "OBSERVE",
+    "description": "Scope suspected intrusion on substation RTU",
+    "target": "substation-12-rtu"
+  }
+}

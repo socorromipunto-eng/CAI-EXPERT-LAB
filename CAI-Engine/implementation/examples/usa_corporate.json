@@ -1,0 +1,20 @@
+{
+  "jurisdiction": "USA",
+  "ai": {
+    "system": "cai-triage-llm",
+    "model_version": "1.4.2",
+    "confidence": 0.85,
+    "explanation": "Routine enrichment of a non-critical corporate asset inventory.",
+    "explainable": true,
+    "provenance": "cces://corp/cmdb",
+    "drift_score": 0.02
+  },
+  "context": {
+    "sector": "corporate_it"
+  },
+  "action": {
+    "category": "OBSERVE",
+    "description": "Enrich corporate asset inventory",
+    "target": "corp-cmdb"
+  }
+}
