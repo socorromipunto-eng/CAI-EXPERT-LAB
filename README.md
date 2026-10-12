@@ -82,6 +82,10 @@ LICENSE.md     Reference-Only Governance Framework License v1.0
 The engine is in `CAI-Engine/implementation/`. The core is **pure Python
 (3.9+), no dependencies**; only the optional MCP server needs `mcp`.
 
+Running the engine is permitted only for private, non-commercial evaluation
+and academic review, under Section 4A of `LICENSE.md`. Any operational,
+production, or commercial use requires prior written authorization.
+
 ```bash
 cd CAI-Engine/implementation
 python -m cai_engine init

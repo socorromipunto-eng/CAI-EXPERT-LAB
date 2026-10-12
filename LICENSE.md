@@ -6,6 +6,8 @@ Copyright © 2025
 Antonio José Socorro Marín
 All Rights Reserved
 
+Revision 1.0.1 (2026-10-11): Section 4A added.
+
 1. Ownership and Intellectual Property
 
 CAI-EXPERT-LAB, including all associated documentation, frameworks, models,
@@ -74,6 +76,38 @@ Incorporating the Framework into software, tooling, products, or platforms
 
 Selling, marketing, or offering services described as “CAI-based” without
 a separate written license agreement
+
+4A. Limited Evaluation Exception for the Reference Implementation
+
+Notwithstanding Section 4, the copyright holder grants a limited,
+non-exclusive, non-transferable, non-sublicensable, and revocable
+permission to download, install, and run the reference implementation
+located in the directory CAI-Engine/implementation/ (the “Reference
+Implementation”) solely for:
+
+Private, non-commercial evaluation of the Framework
+
+Academic study, testing, and review of the Reference Implementation’s
+behavior
+
+This permission does not extend to the following, which remain prohibited
+without prior written authorization from the copyright holder:
+
+Production, operational, or live use, including governing, protecting,
+or making decisions about real systems, assets, data, or people
+
+Modifying, adapting, or creating derivative works of the Reference
+Implementation
+
+Incorporating the Reference Implementation into other software, tooling,
+products, or platforms
+
+Any commercial, consulting, training, or professional service
+
+The Reference Implementation demonstrates the Framework. It does not make
+the Framework an executable system, operational methodology, or compliance
+tool within the meaning of Section 2. Sections 5 through 10 apply to the
+Reference Implementation in full.
 
 5. Core Integrity and Governance Constraints
 

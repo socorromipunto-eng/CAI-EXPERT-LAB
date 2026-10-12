@@ -1,7 +1,7 @@
 # CAI-EXPERT-LAB — AI Assistance, Authorship, and Repository Governance Policy
 
-**Status:** PROPOSED — NOT APPROVED / NOT AUTHORITATIVE  
-**Version:** 0.1.0-proposed  
+**Status:** APPROVED — approved by the project owner, Antonio José Socorro Marín, on 2026-10-11  
+**Version:** 1.0.0  
 **Project owner and human approval authority:** Antonio José Socorro Marín  
 **Scope:** All AI-assisted work affecting CAI-EXPERT-LAB, including ChatGPT, Claude Code, coding agents, automation, and human-operated Git tools.
 

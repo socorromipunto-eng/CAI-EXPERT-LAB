@@ -1,6 +1,6 @@
 # CAI-EXPERT-LAB — Coding Agent Instructions
 
-**Status: PROPOSED / pending human approval.**
+**Status: APPROVED by the project owner, Antonio José Socorro Marín, on 2026-10-11.**
 
 All agents, including ChatGPT-connected coding agents and other compatible assistants, must read `AI-GOVERNANCE.md` and respect existing CAI Core governance and `/legal` requirements. This file is guidance only for tools that load `AGENTS.md`; it does not automatically configure every ChatGPT conversation.
 

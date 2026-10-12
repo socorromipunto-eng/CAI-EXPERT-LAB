@@ -1,6 +1,6 @@
 # CAI-EXPERT-LAB — Claude Code Instructions
 
-**Status: PROPOSED / pending human approval.**
+**Status: APPROVED by the project owner, Antonio José Socorro Marín, on 2026-10-11.**
 
 Read `AI-GOVERNANCE.md` and the existing CAI Core contamination-prevention, dual-audit, integrity, and evolution-traceability documents before proposing changes. If any conflict exists, stop and request human review.
 
