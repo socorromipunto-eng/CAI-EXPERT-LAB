@@ -27,7 +27,7 @@ Write-Host "`n--- D) PROHIBITED practice (expect BLOCKED, Art. 5) ---" -Foregrou
 Write-Host "`n--- E) HUMAN approves the high-risk decision (authority is final) ---" -ForegroundColor Cyan
 & $py -m cai_engine approve $gid --by "Antonio Socorro"
 
-Write-Host "`n--- F) VERIFY immutable evidence chain ---" -ForegroundColor Cyan
+Write-Host "`n--- F) VERIFY hash-chained evidence log ---" -ForegroundColor Cyan
 & $py -m cai_engine verify
 
 Write-Host "`n--- G) WRITE report ---" -ForegroundColor Cyan

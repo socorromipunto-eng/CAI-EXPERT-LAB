@@ -15,7 +15,7 @@ two layers before anything happens:
 The FINAL decision is the strictest of the layers (DENY wins, then ESCALATE to
 human). AI is advisory only: it can never bypass a gate or force a transition,
 and a high-consequence / high-risk decision always requires a human. Every
-governed decision is written to the immutable evidence log with full
+governed decision is written to the hash-chained evidence log with full
 regulatory traceability.
 """
 from __future__ import annotations

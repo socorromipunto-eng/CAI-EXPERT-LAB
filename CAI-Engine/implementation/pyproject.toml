@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cai-engine"
-version = "0.4.1"
+version = "0.4.2"
 description = "Reference implementation of the CAI-EXPERT-LAB execution engine: a safety-gated, human-overseen, auditable state machine for governing AI actions in cybersecurity."
 readme = "README.md"
 requires-python = ">=3.11"

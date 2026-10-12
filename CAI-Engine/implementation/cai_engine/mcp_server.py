@@ -5,7 +5,7 @@ submit its proposed actions to the engine BEFORE acting. The AI does not act
 directly: it calls `cai_govern`, and the engine governs the proposal under the
 selected jurisdiction (EU AI Act or USA / NSM-22 + NIST), returning
 EXECUTED, BLOCKED, or PENDING_APPROVAL (human oversight). Every decision is
-written to the immutable, hash-chained evidence log.
+written to the hash-chained evidence log.
 
 Human approval is deliberately NOT exposed here. The AI client is the party
 being governed, so it must never be able to approve its own proposals.
@@ -34,7 +34,7 @@ _engine = CAIEngine(home=HOME)
 
 server = MCPServer(
     "cai-engine",
-    version="0.4.1",
+    version="0.4.2",
     instructions=(
         "Governance runtime for AI actions (CAI-EXPERT-LAB). Before acting, an "
         "AI must submit its proposal to cai_govern; the engine governs it under "
@@ -81,7 +81,7 @@ def cai_govern(proposal: dict, jurisdiction: str = "") -> dict:
 
 @server.tool()
 def cai_verify() -> dict:
-    """Verify the integrity of the immutable, hash-chained evidence log."""
+    """Verify the integrity of the hash-chained evidence log."""
     _ensure_init()
     return _engine.verify()
 

@@ -122,8 +122,8 @@ The existence or absence of extensions does not affect CAI Core completeness.
 
 ## Versioning and Evolution
 
-CAI Core v0.1 is declared complete for reference implementation, analysis, and controlled
-adoption.
+CAI Core v0.1 is published as a research preview for reference implementation, analysis,
+and controlled adoption. Its completeness is under review.
 
 Future versions of CAI Core:
 - Will be introduced only through explicit governance processes
@@ -147,7 +147,7 @@ CAI Core v0.1 is **not** a certification standard, compliance framework, or regu
 
 ## Status
 
-Declared Complete — CAI Core v0.1
+Research preview — CAI Core v0.1 (completeness under review)
 
 ---
 

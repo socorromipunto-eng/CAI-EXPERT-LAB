@@ -8,6 +8,10 @@ including IT, OT/ICS, cloud and AI-enabled environments.
 > Copyright © 2025 Antonio José Socorro Marín. All rights reserved.
 > Licensed under the **Reference-Only Governance Framework License v1.0** (see `LICENSE.md` and `/legal`).
 
+> **Status: v0.1 — research preview.** The framework and the engine are published for
+> review and evaluation; they are not yet complete. Corrections are made in public,
+> one documented change at a time, and recorded in the commit history.
+
 CAI-EXPERT-LAB turns AI governance from a document into something that **runs,
 enforces its own rules, and proves what it did** — under two jurisdictions
 (EU AI Act and USA NSM-22 / NIST), treated per critical-infrastructure sector.
@@ -62,8 +66,9 @@ safety constraints and exit criteria. No state is ever inferred.
   trigger an action, and AI can never force a state transition or bypass a gate.
 - **Human authority is final.** High-risk / critical-infrastructure decisions
   require explicit, attributed human approval.
-- **Immutable evidence.** Every decision is written to a hash-chained,
-  tamper-evident audit log.
+- **Hash-chained evidence.** Every decision is written to a hash-chained audit
+  log; editing or deleting a single record is detected. Signing and external
+  anchoring are not yet implemented.
 - **Two jurisdictions, per sector.**
   - **EU** — EU AI Act (Regulation (EU) 2024/1689): risk tiers + article gates
     (Art. 5 / 9–15 / 50).
@@ -125,7 +130,7 @@ python -m cai_engine govern examples/ai_prohibited.json             # Art. 5 -> 
 python -m cai_engine govern examples/usa_energy.json                # Energy / SRMA: DOE -> human oversight
 python -m cai_engine govern examples/usa_energy_lowconf.json        # below assurance floor -> blocked
 
-# Verify the immutable evidence chain
+# Verify the hash-chained evidence log
 python -m cai_engine verify
 ```
 
@@ -137,8 +142,9 @@ before acting. See `CAI-Engine/implementation/README.md`.
 
 ## Status
 
-Version 0.1 — the framework baseline (CORE / USA / EU, 16 NSM-22 sectors, labs)
-with a working, tested execution engine. Standards evolve under
+Version 0.1 — research preview. The framework baseline (CORE / USA / EU, USA
+sector profiles, labs) with a working, tested reference engine (cai-engine 0.4.2).
+It is published for review and evaluation and is not yet complete. Standards evolve under
 `docs/CORE/CAI-Core-Standards-Evolution-and-Governance.md`.
 
 ## Citation

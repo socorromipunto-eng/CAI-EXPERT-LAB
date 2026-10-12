@@ -1,7 +1,7 @@
 """Test suite for the CAI-Engine.
 
 Covers the state machine, telemetry validation, policy and safety gates, the
-immutable evidence chain (including tamper detection), and the governed-agent
+hash-chained evidence log (including tamper detection), and the governed-agent
 layer under both jurisdictions (EU AI Act and USA / NSM-22).
 
 Run:  pytest -q      (from CAI-Engine/implementation)

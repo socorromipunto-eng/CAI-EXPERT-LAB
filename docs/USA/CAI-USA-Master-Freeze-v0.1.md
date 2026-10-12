@@ -54,7 +54,7 @@ CAI-USA-Traceability-Matrix
 
 USA Sector Overlays
 
-The following sector overlays are declared complete and frozen under CAI USA v0.1.
+The following sector overlays are frozen under CAI USA v0.1 as a research preview.
 
 Aviation (reference sector, explicitly frozen)
 

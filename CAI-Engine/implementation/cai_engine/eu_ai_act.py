@@ -152,7 +152,7 @@ def eu_gates(cls: Classification, *, confidence: float, explainable: bool,
                                 "high-risk decision lacks an explanation (Art. 13)"))
         # Art. 12 — record-keeping is satisfied by the evidence log.
         g.append(GateResult("eu.art12_record_keeping", Decision.ALLOW,
-                            "decision recorded in immutable evidence log (Art. 12)"))
+                            "decision recorded in hash-chained evidence log (Art. 12)"))
         return g
 
     if cls.tier == RiskTier.LIMITED:

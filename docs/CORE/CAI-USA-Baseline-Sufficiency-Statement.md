@@ -124,7 +124,7 @@ CAI USA v0.1 is **not** intended to be used as a compliance checklist or certifi
 
 ## Status
 
-Declared Sufficient — CAI USA Baseline v0.1
+Research preview — CAI USA Baseline v0.1 (sufficiency under review)
 
 ---
 

@@ -7,7 +7,7 @@ Implements the execution flow (Architecture.md section 5):
 
 State is persisted to a runtime directory so the CLI is stateful across calls:
     <home>/state.json       current state, context facts, pending approvals
-    <home>/evidence.jsonl   immutable hash-chained evidence log
+    <home>/evidence.jsonl   hash-chained evidence log
 """
 from __future__ import annotations
 
@@ -233,7 +233,7 @@ class CAIEngine:
         ok, err = self.evidence.verify()
         lines.append(f"- Evidence integrity: {'OK (chain verified)' if ok else 'FAILED — ' + str(err)}")
         lines.append("")
-        lines.append("## Evidence log (immutable, hash-chained)")
+        lines.append("## Evidence log (hash-chained)")
         lines.append("")
         lines.append("| seq | event | detail |")
         lines.append("|----:|-------|--------|")

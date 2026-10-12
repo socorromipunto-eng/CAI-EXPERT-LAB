@@ -6,7 +6,7 @@ operational layer of the Cybersecurity Artificial Intelligence Framework (CAI).
 It turns the framework's documented design into a running, auditable program:
 the seven-stage lifecycle as a strict **state machine**, with **policy
 evaluation**, authoritative **safety gates**, **human oversight**, and an
-**immutable hash-chained evidence log**.
+**hash-chained evidence log** that detects edits to individual records.
 
 > Framework author: **Antonio José Socorro Marín**, Creator of CAI-EXPERT-LAB.
 > This program *implements* the documented design; it does not redefine it.
@@ -121,7 +121,7 @@ and the engine governs it through two layers before anything happens:
 The final decision is the **strictest of the two** (DENY wins, then ESCALATE to
 human). AI is advisory only: it can never bypass a gate or force a transition,
 and a high-risk decision always needs a human. Every governed decision is
-written to the immutable evidence log with full traceability to **EU AI Act
+written to the hash-chained evidence log with full traceability to **EU AI Act
 articles** and **NIST AI RMF functions** (GOVERN / MAP / MEASURE / MANAGE).
 
 > Alignment, not compliance: the engine maps to and enforces proportionate
@@ -209,7 +209,7 @@ governed before they run.
 ```
 cai_engine/
   core.py            states, transitions, entry conditions, actions, telemetry
-  evidence.py        immutable hash-chained evidence log (+ integrity verify)
+  evidence.py        hash-chained evidence log (+ integrity verify)
   gates.py           policy evaluation, safety gates, human-oversight rules
   engine.py          orchestrator (execution flow + persistence)
   eu_ai_act.py       EU AI Act (2024/1689) risk classification + article gates
@@ -224,6 +224,11 @@ examples/            sample telemetry, actions and AI proposals (EU + USA)
 
 ## Status
 
-Version 0.4.1 — reference implementation of the documented engine. The
+Version 0.4.2 — reference implementation of the documented engine. The
 thresholds in `gates.py` (blast radius, AI confidence, OT levels) are
 deliberately conservative and meant to be made configurable per deployment.
+
+Known limitation: the evidence log is hash-chained but not yet signed or
+externally anchored. It detects editing or deleting individual records, but
+someone with write access to the log file could rebuild the whole chain.
+Signing and external anchoring are planned.

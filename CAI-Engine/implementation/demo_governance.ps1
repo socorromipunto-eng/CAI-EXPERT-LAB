@@ -32,7 +32,7 @@ Write-Host "Pending action_id = $aid" -ForegroundColor Yellow
 Write-Host "`n============ 4) HUMAN APPROVES (authority is final) ============" -ForegroundColor Cyan
 & $py -m cai_engine approve $aid --by "Antonio Socorro"
 
-Write-Host "`n============ 5) VERIFY IMMUTABLE EVIDENCE CHAIN ============" -ForegroundColor Cyan
+Write-Host "`n============ 5) VERIFY HASH-CHAINED EVIDENCE LOG ============" -ForegroundColor Cyan
 & $py -m cai_engine verify
 
 Write-Host "`n==================== 6) WRITE REPORT ====================" -ForegroundColor Cyan

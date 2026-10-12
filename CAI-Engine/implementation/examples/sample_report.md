@@ -5,7 +5,7 @@
 - Pending approvals: ['gov-5b60c81073', 'gov-8088e1c275', 'gov-39f2deb680']
 - Evidence integrity: OK (chain verified)
 
-## Evidence log (immutable, hash-chained)
+## Evidence log (hash-chained)
 
 | seq | event | detail |
 |----:|-------|--------|

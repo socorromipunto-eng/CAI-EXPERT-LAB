@@ -18,5 +18,5 @@ def rmf_trace(classification: str, confidence: float, drift_score: float,
                     f"explainable={explainable}"),
         "MANAGE": (f"decision={final_decision}; "
                    f"human_oversight={'required' if needs_human else 'not required'}; "
-                   f"recorded in immutable evidence log"),
+                   f"recorded in hash-chained evidence log"),
     }
