@@ -191,7 +191,9 @@ Acknowledges the existence of European regulatory instruments
 
 Does not reinterpret regulatory text
 
-Does not claim alignment, compliance, or conformity
+Declares alignment with the European instruments identified in REGULATORY-BASIS.md, as a reference relationship
+
+Does not claim compliance or conformity
 
 Does not substitute legal analysis or obligations
 

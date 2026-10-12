@@ -79,7 +79,7 @@ CAI never performs irreversible actions without explicit authorization when requ
 
 Core CAI Operational States
 
-The CAI Core defines the following authoritative system states:
+The seven-stage operational branch of CAI defines the following authoritative system states:
 
 MODEL
 

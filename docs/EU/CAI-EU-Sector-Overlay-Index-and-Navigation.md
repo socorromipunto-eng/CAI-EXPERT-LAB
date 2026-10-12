@@ -78,7 +78,7 @@ Current EU sector overlays include:
 CAI-EU-Public-Sector-Governance-Overlay.md
 Governance expectations for public administrations and public-interest bodies.
 
-CAI-EU-Critical-Infrastructure-Governance-Overlay.md
+CAI-EU-Critical-Infrastructure-Governance-Overlay.md (planned; not yet written)
 Heightened governance for high-impact, systemic environments.
 
 CAI-EU-Research-and-Academia-Governance-Overlay.md

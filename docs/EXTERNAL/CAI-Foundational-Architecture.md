@@ -97,7 +97,7 @@ This modular design ensures:
 
 ## 4. Architectural Model
 
-CAI defines a continuous lifecycle:
+CAI's primary operational branch defines a continuous lifecycle:
 
 **Model → Harden → Detect → Isolate → Deceive → Evict → Restore**
 

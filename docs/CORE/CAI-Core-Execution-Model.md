@@ -55,7 +55,7 @@ No execution behavior may contradict CORE definitions, even if regional overlays
 
 CAI Lifecycle Execution Semantics
 
-The CAI lifecycle consists of seven operational stages.
+The seven-stage operational lifecycle is a derived branch of the CAI core (see CAI-Core-Canonical-Model-and-Branch-Relationship.md). It consists of seven operational stages.
 
 MODEL establishes authoritative knowledge of assets, dependencies, identities, data flows, and risk context.
 

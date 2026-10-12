@@ -52,7 +52,7 @@ Sector Overlays
 
 CAI-EU-Public-Sector-Governance-Overlay.md
 
-CAI-EU-Critical-Infrastructure-Governance-Overlay.md
+CAI-EU-Critical-Infrastructure-Governance-Overlay.md (planned; not yet written and not covered by this freeze)
 
 CAI-EU-Research-and-Academia-Governance-Overlay.md
 

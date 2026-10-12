@@ -24,7 +24,7 @@ CAI-EU-Interoperability-and-Sector-Neutrality v0.1
 
 CAI-EU-Public-Sector-Governance-Overlay v0.1
 
-CAI-EU-Critical-Infrastructure-Governance-Overlay v0.1
+CAI-EU-Critical-Infrastructure-Governance-Overlay (planned; not yet written)
 
 CAI-EU-Research-and-Academia-Governance-Overlay v0.1
 
@@ -135,7 +135,7 @@ It does not serve as a compliance checklist or certification artifact.
 
 This document does not:
 
-Map to EU regulations or directives
+Provide an article-level mapping to EU regulations or directives (planned; alignment is declared in CAI-EU-Foundational-Governance section 8 and REGULATORY-BASIS.md)
 
 Define compliance controls
 
