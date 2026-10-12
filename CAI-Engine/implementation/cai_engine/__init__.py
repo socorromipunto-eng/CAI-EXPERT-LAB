@@ -7,5 +7,5 @@ Author of the framework: Antonio José Socorro Marín (Creator of CAI-EXPERT-LAB
 This package implements the documented design; it does not redefine it.
 """
 
-__version__ = "0.4.0"
+__version__ = "0.4.1"
 __framework__ = "CAI-EXPERT-LAB"

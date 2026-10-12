@@ -231,3 +231,22 @@ def test_approve_requires_approver(engine):
     out = _ga(engine).govern(p)
     with pytest.raises(EngineError):
         engine.approve(out["action_id"], "")
+
+
+# --------------------------------------------------------------------------
+# MCP boundary: the governed AI must not be able to approve its own actions
+# (audit finding ENG-01). Checked statically so the test needs no MCP SDK.
+# --------------------------------------------------------------------------
+def test_mcp_server_exposes_no_approval_tool():
+    import ast
+    import pathlib
+
+    src = pathlib.Path(__file__).resolve().parent.parent / "cai_engine" / "mcp_server.py"
+    tree = ast.parse(src.read_text(encoding="utf-8"))
+    tools = [
+        node.name for node in ast.walk(tree)
+        if isinstance(node, ast.FunctionDef)
+        and any("tool" in ast.unparse(d) for d in node.decorator_list)
+    ]
+    assert tools, "no MCP tools found; the check would be meaningless"
+    assert not any("approve" in t or "deny" in t for t in tools), tools

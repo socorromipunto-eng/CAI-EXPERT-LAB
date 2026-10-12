@@ -7,6 +7,12 @@ selected jurisdiction (EU AI Act or USA / NSM-22 + NIST), returning
 EXECUTED, BLOCKED, or PENDING_APPROVAL (human oversight). Every decision is
 written to the immutable, hash-chained evidence log.
 
+Human approval is deliberately NOT exposed here. The AI client is the party
+being governed, so it must never be able to approve its own proposals.
+Approvals and denials are recorded only by a human at the local CLI:
+    python -m cai_engine approve <decision_id> --by "<human name>"
+    python -m cai_engine deny <decision_id> --by "<human name>" --reason "..."
+
 Requires the MCP SDK (separate from the dependency-free core):
     pip install "mcp>=2"
 
@@ -28,13 +34,14 @@ _engine = CAIEngine(home=HOME)
 
 server = MCPServer(
     "cai-engine",
-    version="0.4.0",
+    version="0.4.1",
     instructions=(
         "Governance runtime for AI actions (CAI-EXPERT-LAB). Before acting, an "
         "AI must submit its proposal to cai_govern; the engine governs it under "
         "EU AI Act or USA (NSM-22 / NIST AI RMF) jurisdiction and returns "
         "EXECUTED, BLOCKED, or PENDING_APPROVAL. AI output is advisory only; "
-        "high-risk / critical-infrastructure decisions require human approval."
+        "high-risk / critical-infrastructure decisions require human approval, "
+        "which only a human can record through the local CLI; this server cannot approve."
     ),
 )
 
@@ -70,13 +77,6 @@ def cai_govern(proposal: dict, jurisdiction: str = "") -> dict:
     """
     _ensure_init()
     return GovernedAgent(_engine).govern(proposal, jurisdiction=jurisdiction or None)
-
-
-@server.tool()
-def cai_approve(decision_id: str, approver: str) -> dict:
-    """Record a human approval for a PENDING_APPROVAL decision. Human authority is final and attributed."""
-    _ensure_init()
-    return _engine.approve(decision_id, approver)
 
 
 @server.tool()

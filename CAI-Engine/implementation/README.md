@@ -146,7 +146,12 @@ client — Claude Desktop, or any MCP client — must route its proposed actions
 through the governance runtime before acting. The AI calls `cai_govern`; the
 engine returns EXECUTED, BLOCKED, or PENDING_APPROVAL and logs the decision.
 
-Tools exposed: `cai_status`, `cai_govern`, `cai_approve`, `cai_verify`, `cai_report`.
+Tools exposed: `cai_status`, `cai_govern`, `cai_verify`, `cai_report`.
+
+The MCP server has **no approval tool**. The AI client is the party being
+governed, so it cannot approve its own proposals. A `PENDING_APPROVAL` decision
+is approved or denied only by a human at the local CLI
+(`python -m cai_engine approve <id> --by "<name>"`).
 
 The MCP server is the one component with a dependency (the core stays
 dependency-free):

@@ -24,7 +24,8 @@ Key application dates after the Digital Omnibus:
 
 | Obligation | Applies from |
 |---|---|
-| Prohibited practices (Art. 5), incl. new NCII and CSAM bans | 2 Dec 2026 |
+| Prohibited practices (Art. 5) | 2 Feb 2025 (already applicable) |
+| New Art. 5 prohibitions added by the Digital Omnibus (NCII, CSAM) | 2 Dec 2026 |
 | Transparency (Art. 50) | 2 Aug 2026 |
 | Art. 50(2) marking — legacy generative AI (on market before 2 Aug 2026) | 2 Dec 2026 (grace) |
 | High-risk — Annex III standalone systems | **2 Dec 2027** (deferred from 2 Aug 2026) |
@@ -39,8 +40,10 @@ enforcement powers (Arts. 75–75d).
 
 Engine mapping: `cai_engine/eu_ai_act.py` implements risk tiers and the Art. 5 /
 9–15 / 50 gates. The Digital Omnibus changes **dates and scope**, not the
-article obligations the engine enforces; the two new Art. 5 prohibitions are
-covered by the engine's prohibited-practice handling.
+article obligations the engine enforces. The engine does not detect prohibited
+practices itself: it blocks a proposal when the caller declares
+`prohibited_practice: true`, which covers the two new Art. 5 prohibitions only
+if the caller declares them.
 
 ---
 
