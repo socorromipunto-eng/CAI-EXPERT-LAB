@@ -13,7 +13,32 @@ evaluation**, authoritative **safety gates**, **human oversight**, and an
 
 ## Requirements
 
-- **Python 3.9+** only. No third-party packages, no Node.js, no network access.
+- **Python 3.11+** only. No third-party packages, no Node.js, no network access.
+- Tested on Python 3.11, 3.12 and 3.13.
+
+## Install
+
+As a package, straight from GitHub (adds the `cai-engine` command):
+
+```
+pip install "git+https://github.com/socorromipunto-eng/CAI-EXPERT-LAB.git#subdirectory=CAI-Engine/implementation"
+cai-engine --help
+```
+
+With the optional MCP server:
+
+```
+pip install "cai-engine[mcp] @ git+https://github.com/socorromipunto-eng/CAI-EXPERT-LAB.git#subdirectory=CAI-Engine/implementation"
+```
+
+From a local copy of the repository:
+
+```
+pip install ./CAI-Engine/implementation
+```
+
+Use is limited to private, non-commercial evaluation and academic review
+(Section 4A of `LICENSE.md` at the repository root).
 
 ## The lifecycle (state machine)
 
@@ -44,7 +69,7 @@ trigger any action, and AI can never force a state transition.
 ## Quick start
 
 ```
-cd cai-engine
+cd CAI-Engine/implementation
 python -m cai_engine init
 python -m cai_engine status
 python -m cai_engine ingest examples/telemetry_good.json
@@ -168,10 +193,9 @@ Wire it into Claude Desktop — edit `claude_desktop_config.json`
 {
   "mcpServers": {
     "cai-engine": {
-      "command": "C:\\Users\\socor\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "command": "python",
       "args": ["-m", "cai_engine.mcp_server"],
-      "cwd": "C:\\cai-engine",
-      "env": { "CAI_HOME": "C:\\cai-engine\\cai_runtime" }
+      "env": { "CAI_HOME": "C:\\CAI-Engine\\runtime" }
     }
   }
 }
@@ -200,6 +224,6 @@ examples/            sample telemetry, actions and AI proposals (EU + USA)
 
 ## Status
 
-Version 0.1 — faithful first implementation of the documented engine. The
+Version 0.4.1 — reference implementation of the documented engine. The
 thresholds in `gates.py` (blast radius, AI confidence, OT levels) are
 deliberately conservative and meant to be made configurable per deployment.

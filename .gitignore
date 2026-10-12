@@ -3,3 +3,7 @@ __pycache__/
 cai_runtime/
 report*.md
 .mcp.json
+build/
+dist/
+*.egg-info/
+output/

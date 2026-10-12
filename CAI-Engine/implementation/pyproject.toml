@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cai-engine"
+version = "0.4.1"
+description = "Reference implementation of the CAI-EXPERT-LAB execution engine: a safety-gated, human-overseen, auditable state machine for governing AI actions in cybersecurity."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Antonio José Socorro Marín" }]
+license = { text = "CAI-EXPERT-LAB Reference-Only Governance Framework License v1.0 (revision 1.0.1). Running this package is permitted only for private, non-commercial evaluation and academic review under Section 4A. All rights reserved. See LICENSE.md at the repository root." }
+keywords = ["cybersecurity", "ai-governance", "eu-ai-act", "nist-ai-rmf", "state-machine", "cai-expert-lab"]
+classifiers = [
+    "Private :: Do Not Upload",
+    "License :: Other/Proprietary License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+]
+dependencies = []
+
+[project.optional-dependencies]
+mcp = ["mcp>=2"]
+test = ["pytest"]
+
+[project.scripts]
+cai-engine = "cai_engine.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/socorromipunto-eng/CAI-EXPERT-LAB"
+Source = "https://github.com/socorromipunto-eng/CAI-EXPERT-LAB/tree/main/CAI-Engine/implementation"
+
+[tool.setuptools]
+packages = ["cai_engine"]

@@ -12,6 +12,23 @@ CAI-EXPERT-LAB turns AI governance from a document into something that **runs,
 enforces its own rules, and proves what it did** — under two jurisdictions
 (EU AI Act and USA NSM-22 / NIST), treated per critical-infrastructure sector.
 
+## Where to find what
+
+| What | Where |
+|---|---|
+| Framework core: definition, architecture, governance | [`docs/CORE/`](docs/CORE/) |
+| Regional baselines | [`docs/USA/`](docs/USA/) · [`docs/EU/`](docs/EU/) |
+| USA sector profiles | [`docs/USA/sectors/`](docs/USA/sectors/) |
+| Applied labs (USA sectors, Mexico) | [`labs/`](labs/) |
+| **Execution engine — Python source** | [`CAI-Engine/implementation/cai_engine/`](CAI-Engine/implementation/cai_engine/) |
+| Engine guide: install, commands, MCP server | [`CAI-Engine/implementation/README.md`](CAI-Engine/implementation/README.md) |
+| Ready-to-run examples | [`CAI-Engine/implementation/examples/`](CAI-Engine/implementation/examples/) |
+| Automated tests | [`CAI-Engine/implementation/tests/`](CAI-Engine/implementation/tests/) |
+| Engine design documents | [`CAI-Engine/`](CAI-Engine/) |
+| Methodology · regulatory basis | [`METHODOLOGY.md`](METHODOLOGY.md) · [`REGULATORY-BASIS.md`](REGULATORY-BASIS.md) |
+| License · legal notices | [`LICENSE.md`](LICENSE.md) · [`legal/`](legal/) |
+| AI assistance and authorship policy | [`AI-GOVERNANCE.md`](AI-GOVERNANCE.md) |
+
 ---
 
 ## The seven-stage operational lifecycle
@@ -80,11 +97,20 @@ LICENSE.md     Reference-Only Governance Framework License v1.0
 ## The execution engine (quickstart)
 
 The engine is in `CAI-Engine/implementation/`. The core is **pure Python
-(3.9+), no dependencies**; only the optional MCP server needs `mcp`.
+(3.11+), no dependencies**; only the optional MCP server needs `mcp`.
 
 Running the engine is permitted only for private, non-commercial evaluation
 and academic review, under Section 4A of `LICENSE.md`. Any operational,
 production, or commercial use requires prior written authorization.
+
+Install it as a package (adds the `cai-engine` command):
+
+```bash
+pip install "git+https://github.com/socorromipunto-eng/CAI-EXPERT-LAB.git#subdirectory=CAI-Engine/implementation"
+cai-engine --help
+```
+
+Or run it from a copy of this repository:
 
 ```bash
 cd CAI-Engine/implementation

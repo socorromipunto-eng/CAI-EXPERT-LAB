@@ -250,3 +250,19 @@ def test_mcp_server_exposes_no_approval_tool():
     ]
     assert tools, "no MCP tools found; the check would be meaningless"
     assert not any("approve" in t or "deny" in t for t in tools), tools
+
+
+# --------------------------------------------------------------------------
+# Packaging: the declared package version must match the code version.
+# --------------------------------------------------------------------------
+def test_pyproject_version_matches_package():
+    import pathlib
+    import re
+
+    import cai_engine
+
+    root = pathlib.Path(__file__).resolve().parent.parent
+    text = (root / "pyproject.toml").read_text(encoding="utf-8")
+    m = re.search(r'^version = "([^"]+)"', text, re.M)
+    assert m, "no version in pyproject.toml"
+    assert m.group(1) == cai_engine.__version__
