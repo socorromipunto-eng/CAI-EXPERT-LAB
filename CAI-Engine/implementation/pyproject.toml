@@ -35,3 +35,6 @@ Source = "https://github.com/socorromipunto-eng/CAI-EXPERT-LAB/tree/main/CAI-Eng
 
 [tool.setuptools]
 packages = ["cai_engine"]
+
+[tool.pytest.ini_options]
+python_files = ["test_*.py", "TEST_*.py"]
