@@ -87,8 +87,8 @@ These rules are enforced in conjunction with the following documents.
 
 CAI-Core-Integrity-and-Self-Defense-Governance.md
 CAI-Threat-Model-Framework-Integrity.md
-Dual-Audit-Pipeline.md
-Evolution-Traceability-Register.md
+CAI-Core-Dual-Audit-Pipeline.md
+CAI-Core-Evolution-Traceability-Register.md
 CAI-Core-Definition.md
 CAI-Core-Taxonomy.md
 

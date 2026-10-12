@@ -268,9 +268,9 @@ Core Integrity and Self-Defense documents:
 
 - CAI-Core-Integrity-and-Self-Defense-Governance.md  
 - CAI-Threat-Model-Framework-Integrity.md  
-- Dual-Audit-Pipeline.md  
-- Contamination-Prevention-Rules.md  
-- Evolution-Traceability-Register.md  
+- CAI-Core-Dual-Audit-Pipeline.md  
+- CAI-Core-Contamination-Prevention-Rules.md  
+- CAI-Core-Evolution-Traceability-Register.md  
 - CAI-Integrity-Self-Defense.md  
 
 Legal governance:

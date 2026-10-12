@@ -77,7 +77,9 @@ Every system interacting with CAI must submit a **decision object**.
   "risk_level": "low",
   "timestamp": "2026-04-22T10:00:00Z"
 }
-5. Telemetry Input Contract (ESA)
+```
+
+## 5. Telemetry Input Contract (ESA)
 
 Telemetry sources provide real-time environmental context.
 
@@ -92,7 +94,7 @@ Characteristics
 continuous or event-driven ingestion
 partial and asynchronous updates allowed
 time-sensitive relevance
-6. Validation Request Interface
+## 6. Validation Request Interface
 
 Systems must request validation before execution.
 
@@ -108,7 +110,7 @@ ESA from telemetry streams
 
 and evaluates admissibility conditions.
 
-7. Validation Response Contract
+## 7. Validation Response Contract
 
 CAI returns a structured response representing execution admissibility.
 
@@ -127,7 +129,7 @@ Response structure
   "confidence": 0.92,
   "timestamp": "2026-04-22T10:05:00Z"
 }
-8. Enforcement Contract
+## 8. Enforcement Contract
 
 Execution systems must enforce CAI responses deterministically.
 
@@ -140,7 +142,7 @@ No execution is permitted without a valid CAI response.
 
 This defines the enforcement boundary of CAI.
 
-9. Adapter Model
+## 9. Adapter Model
 
 Due to system heterogeneity, CAI operates through adapters.
 
@@ -158,7 +160,7 @@ Adapters must not alter:
 decision intent
 contextual meaning
 validation semantics
-10. Integration Patterns
+## 10. Integration Patterns
 
 CAI supports multiple integration patterns:
 
@@ -171,7 +173,7 @@ delayed enforcement
 10.3 Hybrid Model
 initial validation
 continuous revalidation
-11. Error Handling
+## 11. Error Handling
 
 Failure scenarios include:
 
@@ -182,28 +184,28 @@ Required behavior
 default to conservative enforcement
 return DENY or REVALIDATE
 log and trace all failures
-12. Security Requirements
+## 12. Security Requirements
 
 All interfaces must ensure:
 
 authentication of calling systems
 integrity of transmitted data
 secure communication channels
-13. Versioning and Evolution
+## 13. Versioning and Evolution
 
 Interfaces must support:
 
 backward compatibility
 versioned contracts
 incremental system integration
-14. Interoperability
+## 14. Interoperability
 
 Contracts must be:
 
 technology-agnostic
 platform-independent
 adaptable to institutional constraints
-15. Conclusion
+## 15. Conclusion
 
 These contracts define how CAI integrates at the system level.
 
