@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$Root = $PSScriptRoot
+$Root = Split-Path -Parent $PSScriptRoot
 $OutputDirectory = Join-Path $Root "output"
 $MergedMarkdown = Join-Path $OutputDirectory "CAI-EXPERT-LAB.md"
 $WordDocument = Join-Path $OutputDirectory "CAI-EXPERT-LAB-Copyright-Edition.docx"

@@ -11,7 +11,7 @@ build_document:
     - apt-get install -y pandoc
 
   script:
-    - pwsh -NoProfile -ExecutionPolicy Bypass -File ./build-publication.ps1
+    - pwsh -NoProfile -ExecutionPolicy Bypass -File ./tools/build-publication.ps1
 
   artifacts:
     when: always
