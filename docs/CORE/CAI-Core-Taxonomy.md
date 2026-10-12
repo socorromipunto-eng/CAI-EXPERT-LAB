@@ -1,5 +1,5 @@
 Cybersecurity Artificial Intelligence Framework – Core Taxonomy
-Version 0.1 (Draft)
+Version 0.2 (Draft)
 
 Author: Antonio José Socorro Marín
 Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
@@ -119,6 +119,37 @@ Risk Scores MUST be explainable.
 8.3 Decision Threshold
 
 A Decision Threshold is a defined boundary at which an operational action may be triggered.
+
+8.4 Decision State Awareness (DSA)
+
+Decision State Awareness (DSA) is the internal state under which a decision is considered valid: its assumptions, constraints, decision logic, and expected operating conditions.
+Source: CAI-Decision-Integrity-Architecture-WhitePaper, Section 4.1.
+
+8.5 Environmental State Awareness (ESA)
+
+Environmental State Awareness (ESA) represents the real-time execution conditions of a decision: system state, environmental variables, and contextual inputs.
+Source: CAI-Decision-Integrity-Architecture-WhitePaper, Section 4.2.
+
+8.6 Decision Integrity Condition
+
+A decision is valid only while its DSA remains aligned with ESA at execution time.
+Validity is not intrinsic; it is a conditional and dynamic state.
+Source: CAI-Decision-Integrity-Architecture-WhitePaper, Section 4.3.
+
+8.7 Decision Validity Function
+
+Decision validity at time t is defined as D(t) = f(B, T(t), R(t), P, τ), where B is the baseline context recorded at issuance, T(t) the current telemetry, R(t) the current risk assessment, P the active policy and thresholds, and τ the temporal validity constraints.
+The output of D(t) MUST deterministically produce a decision state and an enforcement outcome.
+Source: CAI-MX Formal Decision Rules Specification (labs/mexico/16), Section 4.
+
+8.8 Context Drift
+
+Context Drift is the deviation between the baseline context recorded at decision issuance and the current runtime telemetry.
+It is distinct from Configuration Drift (6.2) and AI Drift (12.3).
+Reference formulation (informative): drift_total = w₁·drift_identity + w₂·drift_device + w₃·drift_network + w₄·drift_behavior, where the weights sum to 1, each weight lies in [0.0, 1.0], and all compared values are normalized to [0.0, 1.0].
+The active policy defines three Decision Thresholds (8.3): θ₁ (acceptable), θ₂ (elevated), and θ₃ (critical).
+Drift is acceptable if drift_total ≤ θ₁, elevated if θ₁ < drift_total ≤ θ₂, severe if θ₂ < drift_total < θ₃, and critical if drift_total ≥ θ₃.
+Source: CAI-MX Formal Decision Rules Specification (labs/mexico/16), Sections 7.2 to 7.4.
 
 9. Firmware and Embedded Systems
 9.1 Firmware
