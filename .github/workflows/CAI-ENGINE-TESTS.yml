@@ -1,0 +1,64 @@
+# CAI-Engine test suite, run by GitHub on every push and pull request to main.
+# Owner: Antonio José Socorro Marín (CAI-EXPERT-LAB). Change: CHG-2026-10-12-13.
+#
+# Gate: the run passes only with exactly 652 passed and 13 xfailed, and no
+# failed, error or skipped test. The 13 xfailed are the known gaps marked
+# xfail(strict=True) with their finding IDs; closing a gap, or losing a test,
+# turns the run red until the expected counts are updated in a reviewed change.
+#
+# Supply chain: actions pinned by full commit SHA (resolved from the official
+# release tags on 2026-10-13); Python packages pinned by version; read-only
+# token; no secrets; checkout does not keep credentials.
+
+name: CAI-Engine tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cai-engine-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.12", "3.13"]
+    defaults:
+      run:
+        shell: bash
+        working-directory: CAI-Engine/implementation
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install test dependencies (pinned)
+        run: python -m pip install --disable-pip-version-check "pytest==8.4.2" "mcp==2.2.0"
+
+      - name: Run the test suite
+        run: |
+          set -o pipefail
+          python -m pytest -q -p no:cacheprovider tests 2>&1 | tee pytest-output.txt
+          summary="$(tail -n 1 pytest-output.txt)"
+          echo "Summary: ${summary}"
+          echo "### ${{ matrix.os }} / Python ${{ matrix.python }}: ${summary}" >> "$GITHUB_STEP_SUMMARY"
+          echo "${summary}" | grep -Eq '^652 passed, 13 xfailed in ' || { echo "Expected exactly: 652 passed, 13 xfailed"; exit 1; }

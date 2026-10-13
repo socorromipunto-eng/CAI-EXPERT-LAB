@@ -1,5 +1,7 @@
 # CAI-EXPERT-LAB
 
+[![CAI-Engine tests](https://github.com/socorromipunto-eng/CAI-EXPERT-LAB/actions/workflows/CAI-ENGINE-TESTS.yml/badge.svg?branch=main)](https://github.com/socorromipunto-eng/CAI-EXPERT-LAB/actions/workflows/CAI-ENGINE-TESTS.yml)
+
 **Cybersecurity Artificial Intelligence Framework** — a governance framework and
 an executable **execution engine** for operating AI responsibly in cybersecurity,
 including IT, OT/ICS, cloud and AI-enabled environments.
@@ -27,7 +29,7 @@ enforces its own rules, and proves what it did** — under two jurisdictions
 | **Execution engine — Python source** | [`CAI-Engine/implementation/cai_engine/`](CAI-Engine/implementation/cai_engine/) |
 | Engine guide: install, commands, MCP server | [`CAI-Engine/implementation/README.md`](CAI-Engine/implementation/README.md) |
 | Ready-to-run examples | [`CAI-Engine/implementation/examples/`](CAI-Engine/implementation/examples/) |
-| Automated tests | [`CAI-Engine/implementation/tests/`](CAI-Engine/implementation/tests/) |
+| Automated tests | [`CAI-Engine/implementation/tests/`](CAI-Engine/implementation/tests/); run by GitHub Actions on every push (Linux and Windows, Python 3.11 to 3.13): [`.github/workflows/CAI-ENGINE-TESTS.yml`](.github/workflows/CAI-ENGINE-TESTS.yml) |
 | Engine design documents | [`CAI-Engine/`](CAI-Engine/) |
 | Methodology · regulatory basis | [`METHODOLOGY.md`](METHODOLOGY.md) · [`REGULATORY-BASIS.md`](REGULATORY-BASIS.md) |
 | License · legal notices | [`LICENSE.md`](LICENSE.md) · [`legal/`](legal/) |
