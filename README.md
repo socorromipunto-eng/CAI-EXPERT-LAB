@@ -31,6 +31,7 @@ enforces its own rules, and proves what it did** — under two jurisdictions
 | Ready-to-run examples | [`CAI-Engine/implementation/examples/`](CAI-Engine/implementation/examples/) |
 | Automated tests | [`CAI-Engine/implementation/tests/`](CAI-Engine/implementation/tests/); run by GitHub Actions on every push (Linux and Windows, Python 3.11 to 3.13): [`.github/workflows/CAI-ENGINE-TESTS.yml`](.github/workflows/CAI-ENGINE-TESTS.yml) |
 | Engine design documents | [`CAI-Engine/`](CAI-Engine/) |
+| Engine security specification (proposed, pending owner approval): core and EU / USA profiles | [`CAI-Engine/specifications/`](CAI-Engine/specifications/) |
 | Methodology · regulatory basis | [`METHODOLOGY.md`](METHODOLOGY.md) · [`REGULATORY-BASIS.md`](REGULATORY-BASIS.md) |
 | License · legal notices | [`LICENSE.md`](LICENSE.md) · [`legal/`](legal/) |
 | AI assistance and authorship policy | [`AI-GOVERNANCE.md`](AI-GOVERNANCE.md) |
