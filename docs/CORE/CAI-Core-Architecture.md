@@ -35,7 +35,7 @@ The CAI core architecture, as defined in CAI-Core-Definition.md, is guided by th
 
 CAI operational capabilities may be organized through structured implementation models.
 
-One primary implementation model is the CAI seven-stage defensive lifecycle:
+One primary implementation model is a seven-stage defensive lifecycle whose states are the seven defensive tactics of MITRE D3FEND (https://d3fend.mitre.org):
 
 MODEL → HARDEN → DETECT → ISOLATE → DECEIVE → EVICT → RESTORE
 

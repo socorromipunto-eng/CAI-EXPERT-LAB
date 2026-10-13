@@ -7,6 +7,8 @@ Antonio José Socorro Marín
 All Rights Reserved
 
 Revision 1.0.1 (2026-10-11): Section 4A added.
+Revision 1.0.2 (2026-10-12): Section 6 no longer reserves the lifecycle
+stage names, which are the defensive tactics of MITRE D3FEND.
 
 1. Ownership and Intellectual Property
 
@@ -119,12 +121,14 @@ authority models, interoperability constructs, or traceability structures.
 
 6. Trademarks and Reserved Constructs
 
-All names, terminology, architectural constructs, lifecycle stages
-(including the seven-stage lifecycle:
+All names, terminology, architectural constructs and branding elements
+original to the Framework are proprietary and reserved.
 
-Model → Harden → Detect → Isolate → Deceive → Evict → Restore),
-
-and branding elements are proprietary and reserved.
+This reservation does not extend to third-party terms used by the
+Framework. In particular, the lifecycle stage names Model, Harden, Detect,
+Isolate, Deceive, Evict and Restore are the defensive tactics of MITRE
+D3FEND. MITRE D3FEND is a trademark of The MITRE Corporation. Third-party
+terms remain subject to their owners' terms.
 
 Use of such elements beyond citation and reference is prohibited.
 

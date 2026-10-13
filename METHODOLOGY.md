@@ -55,6 +55,8 @@ The method rests on:
 
 CAI is operationalized as an explicit, state-driven lifecycle. It is **one**
 operational expression of the CAI core, not the definition of CAI itself.
+The stage names and their order are the defensive tactics of MITRE D3FEND
+(https://d3fend.mitre.org); CAI adds the execution semantics described below.
 
 ```
 MODEL → HARDEN → DETECT → ISOLATE → DECEIVE → EVICT → RESTORE

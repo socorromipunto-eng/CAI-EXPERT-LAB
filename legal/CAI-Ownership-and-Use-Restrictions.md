@@ -1,10 +1,12 @@
 # CAI-EXPERT-LAB – Ownership and Use Restrictions  
-Version: 1.1  
+Version: 1.2  
 Author: Antonio José Socorro Marín  
 Date: 2025  
 
 ## 1. Ownership
-CAI-EXPERT-LAB, including its seven-stage operational lifecycle (“Model → Harden → Detect → Isolate → Deceive → Evict → Restore”), architecture, operations model, taxonomy, sector profiles, diagrams, AI integration logic, data structures, and any derivative methodology or implementation, is the exclusive intellectual property of **Antonio José Socorro Marín**.
+CAI-EXPERT-LAB, including its architecture, operations model, taxonomy, sector profiles, diagrams, AI integration logic, data structures, and any derivative methodology or implementation, is the exclusive intellectual property of **Antonio José Socorro Marín**.
+
+The seven lifecycle stage names (Model, Harden, Detect, Isolate, Deceive, Evict, Restore) are the defensive tactics of MITRE D3FEND and are not claimed as the author's property. The author's claim covers the CAI material built on them.
 
 All rights are fully reserved under domestic and international copyright law.
 
@@ -23,7 +25,7 @@ Without explicit written authorization from the author, NO individual, company, 
 Explicitly prohibited:
 
 - Creating tools, engines, AI models, products, or SOC platforms based on CAI.  
-- Reusing CAI terminology (especially the seven-stage lifecycle) in alternatives or “forked” frameworks.  
+- Reusing terminology original to CAI in alternatives or “forked” frameworks. This does not cover third-party terms, such as the MITRE D3FEND tactic names used for the lifecycle stages.  
 - Translating CAI into other languages for distribution.  
 - Modifying the structure or flow of CAI for publication or resale.
 

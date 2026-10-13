@@ -117,7 +117,7 @@ This architecture ensures that:
 
 CAI is not restricted to a single operational loop.
 
-One primary operationalization of CAI is a structured seven-stage defensive lifecycle:
+One primary operationalization of CAI is a seven-stage defensive lifecycle. Its stages and their order are the defensive tactics of MITRE D3FEND (https://d3fend.mitre.org). CAI does not define the stages; it adds the state-machine semantics described in this section and in CAI-Core-Execution-Model.md:
 
 
 MODEL → HARDEN → DETECT → ISOLATE → DECEIVE → EVICT → RESTORE

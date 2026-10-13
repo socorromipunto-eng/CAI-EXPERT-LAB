@@ -9,7 +9,7 @@ description = "Reference implementation of the CAI-EXPERT-LAB execution engine: 
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = "Antonio José Socorro Marín" }]
-license = { text = "CAI-EXPERT-LAB Reference-Only Governance Framework License v1.0 (revision 1.0.1). Running this package is permitted only for private, non-commercial evaluation and academic review under Section 4A. All rights reserved. See LICENSE.md at the repository root." }
+license = { text = "CAI-EXPERT-LAB Reference-Only Governance Framework License v1.0 (revision 1.0.2). Running this package is permitted only for private, non-commercial evaluation and academic review under Section 4A. All rights reserved. See LICENSE.md at the repository root." }
 keywords = ["cybersecurity", "ai-governance", "eu-ai-act", "nist-ai-rmf", "state-machine", "cai-expert-lab"]
 classifiers = [
     "Private :: Do Not Upload",

@@ -1,18 +1,16 @@
-# CAI-EXPERT-LAB – Patentability & Innovation Notice  
-Version: 1.1  
+# CAI-EXPERT-LAB – Patentability and Innovation Notice  
+Version: 1.2  
 Author: Antonio José Socorro Marín  
 
-The CAI seven-stage cybersecurity lifecycle, the AI-oriented operational architecture, and the integration of MODEL → HARDEN → DETECT → ISOLATE → DECEIVE → EVICT → RESTORE as a unified defense system constitute a **NOVEL, NON-OBVIOUS, and INNOVATIVE** framework suitable for:
+The author reserves the right to seek patent or other intellectual-property
+protection for technical contributions that the author considers original to
+CAI-EXPERT-LAB, in particular the decision-integrity model (Decision State
+Awareness, Environmental State Awareness, the decision validity function D(t)
+and context drift) and its enforcement in the reference engine.
 
-- National patent filings  
-- International PCT filings  
-- Defensive publication  
-- Intellectual property protection strategies  
+The seven lifecycle stages (Model, Harden, Detect, Isolate, Deceive, Evict,
+Restore) are the defensive tactics of MITRE D3FEND (https://d3fend.mitre.org)
+and are not claimed as an invention of the author.
 
-The author reserves all rights to:
-
-- File patents on structural, architectural, and operational innovations  
-- Publish technical disclosures  
-- Commercialize CAI as a proprietary platform or product line  
-
-Any attempt to replicate, patent, or commercialize derivative structures or terminology without authorization is considered infringement and subject to immediate legal action.
+This repository is a public disclosure. This notice does not state that any
+element has been filed, examined or granted as a patent.

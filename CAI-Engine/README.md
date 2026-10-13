@@ -20,7 +20,7 @@ The CAI Engine transforms the CAI framework from a conceptual and governance mod
 
 The engine is designed to:
 
-Execute the CAI seven-stage operational lifecycle
+Execute the seven-stage operational lifecycle (stages: the MITRE D3FEND defensive tactics)
 Enforce safety, governance, and assurance constraints by design
 Ingest and normalize telemetry using CAI-USA-CCES
 Integrate AI responsibly under defined governance and safety gates
@@ -74,7 +74,7 @@ The engine does not redefine CAI concepts; it implements them.
 The CAI Engine is directly bound to CAI CORE artifacts:
 
 CAI-Core-Definition
-Defines the seven-stage lifecycle and principles
+Defines CAI principles and how CAI uses the seven-stage lifecycle
 
 CAI-Core-Architecture
 Defines logical layers and system boundaries
@@ -258,7 +258,7 @@ Architectural Role Within CAI
 The CAI Engine sits between framework definition and real-world tooling. It acts as an execution orchestrator, a state-machine driven controller, a safety-aware automation layer, and an AI-governed analytics consumer. The engine does not redefine CAI concepts; it implements them.
 
 Relationship to CAI CORE
-The CAI Engine is bound to CAI CORE artifacts: CAI-Core-Definition defines the seven-stage lifecycle and principles; CAI-Core-Architecture defines logical layers and system boundaries; CAI-Core-Operations defines operational intent and flow; CAI-Core-Operational-State-Model defines valid states, transitions, and constraints; CAI-Core-Taxonomy defines normative terminology and semantics; CAI-Core-Standards-Evolution-and-Governance defines how standards updates affect engine behavior. The CAI Engine must not diverge from CORE definitions.
+The CAI Engine is bound to CAI CORE artifacts: CAI-Core-Definition defines CAI principles and how CAI uses the seven-stage lifecycle; CAI-Core-Architecture defines logical layers and system boundaries; CAI-Core-Operations defines operational intent and flow; CAI-Core-Operational-State-Model defines valid states, transitions, and constraints; CAI-Core-Taxonomy defines normative terminology and semantics; CAI-Core-Standards-Evolution-and-Governance defines how standards updates affect engine behavior. The CAI Engine must not diverge from CORE definitions.
 
 Relationship to CAI-USA Documents
 The CAI Engine operationalizes the USA baseline without redefining it. Key bindings include CAI-USA-Definition, CAI-USA-CCES, CAI-USA-Telemetry-and-Data-Model, CAI-USA-Secure-by-Design-Controls, CAI-USA-AI-Governance-and-Assurance, CAI-USA-ICS-OT-Safety-Gating, CAI-USA-Threat-Model-Integration, and CAI-USA-Traceability-Matrix.

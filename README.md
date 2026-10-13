@@ -37,6 +37,14 @@ enforces its own rules, and proves what it did** — under two jurisdictions
 
 ## The seven-stage operational lifecycle
 
+The seven stages and their order are the defensive tactics of
+[MITRE D3FEND™](https://d3fend.mitre.org): Model, Harden, Detect, Isolate,
+Deceive, Evict and Restore. CAI does not define these stages. What CAI adds
+is the execution model built on them: entry conditions for each stage,
+permitted action categories per stage, blocked transitions, and the
+decision-integrity gates (DSA, ESA, D(t) and context drift) defined in
+`docs/CORE/`.
+
 The framework and engine execute CAI as an explicit, guarded state machine.
 Only the transitions below are valid; every other transition is blocked.
 
