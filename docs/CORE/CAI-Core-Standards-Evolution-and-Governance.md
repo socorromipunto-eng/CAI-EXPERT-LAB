@@ -1,20 +1,20 @@
-CAI-Core-Standards-Evolution-and-Governance
+# CAI-Core-Standards-Evolution-and-Governance
 Cybersecurity Artificial Intelligence Framework – Core Standards Evolution and Governance
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines how the CAI framework manages the evolution of external standards at the framework level.
-This document does not assert compliance, certification, accreditation, or regulatory approval.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines how the CAI framework manages the evolution of external standards at the framework level.  
+This document does not assert compliance, certification, accreditation, or regulatory approval.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define a core, framework-level governance model for the evolution of external standards referenced by the Cybersecurity Artificial Intelligence Framework (CAI).
 
@@ -22,9 +22,9 @@ This document establishes how CAI remains technically accurate, ethically consis
 
 This governance model ensures that CAI does not become frozen, misleading, or internally inconsistent as standards are revised, replaced, or expanded.
 
-Scope
+## Scope
 
-2.1 In Scope
+### 2.1 In Scope
 
 This document applies to:
 – The CAI framework core
@@ -33,7 +33,7 @@ This document applies to:
 
 This document defines principles that apply across all current and future regional overlays, sector profiles, and implementations.
 
-2.2 Explicitly Out of Scope
+### 2.2 Explicitly Out of Scope
 
 This document does not:
 – Define jurisdiction-specific regulatory requirements
@@ -43,7 +43,7 @@ This document does not:
 
 Operational handling of specific standards is intentionally delegated to regional overlays.
 
-Foundational Principle
+## Foundational Principle
 
 CAI is a standards-aligned framework, not a static standard.
 
@@ -54,11 +54,11 @@ CAI preserves internal coherence by separating:
 – Regional and jurisdictional interpretation
 – Operational enforcement and mapping
 
-Standards Dependency Model
+## Standards Dependency Model
 
 CAI distinguishes between three categories of standards dependencies.
 
-4.1 Normative Alignment Standards
+### 4.1 Normative Alignment Standards
 
 These standards inform CAI design principles and operational expectations.
 
@@ -69,7 +69,7 @@ Examples include:
 
 These standards influence CAI structure but do not redefine its internal logic.
 
-4.2 Operational Reference Standards
+### 4.2 Operational Reference Standards
 
 These standards inform implementation guidance, assessment practices, or control baselines.
 
@@ -80,13 +80,13 @@ Examples include:
 
 These standards are consumed through regional overlays and do not directly alter CORE semantics.
 
-4.3 Informative and Contextual Standards
+### 4.3 Informative and Contextual Standards
 
 These standards provide additional context, best practices, or sector guidance.
 
 They may be referenced for clarity or completeness but do not impose constraints on CAI behavior.
 
-Version Independence and Stability
+Version Independence and Stability  
 
 CAI Core is intentionally version-independent from external standards.
 
@@ -97,7 +97,7 @@ CAI Core evolves only through explicit framework version updates, preserving:
 – Architectural consistency
 – Backward interpretability
 
-Standards Evolution Triggers
+## Standards Evolution Triggers
 
 CAI Core recognizes the following triggers for standards review:
 – Publication of new versions or revisions
@@ -107,7 +107,7 @@ CAI Core recognizes the following triggers for standards review:
 
 These triggers initiate review, not automatic adoption.
 
-Governance and Decision Authority
+## Governance and Decision Authority
 
 Decisions regarding standards evolution at the framework level are governed by:
 – Technical integrity
@@ -117,7 +117,7 @@ Decisions regarding standards evolution at the framework level are governed by:
 
 No external standard update is incorporated into CAI Core without documented analysis and justification.
 
-Separation of Core and Regional Governance
+## Separation of Core and Regional Governance
 
 CAI Core defines the framework’s universal semantics and behavior.
 
@@ -129,7 +129,7 @@ Regional overlays define:
 
 This separation ensures CAI remains globally coherent while locally applicable.
 
-Traceability and Transparency
+## Traceability and Transparency
 
 All standards-related decisions affecting CAI Core must be:
 – Explicitly documented
@@ -138,7 +138,7 @@ All standards-related decisions affecting CAI Core must be:
 
 Silent or implicit changes are not permitted.
 
-Ethical Alignment
+## Ethical Alignment
 
 CAI Core commits to:
 – Avoiding implied compliance claims
@@ -148,7 +148,7 @@ CAI Core commits to:
 
 This ethical posture is a foundational design requirement.
 
-Relationship to Other CAI Documents
+## Relationship to Other CAI Documents
 
 This document must be read together with:
 – CAI-Core-Definition
@@ -158,9 +158,9 @@ This document must be read together with:
 
 Jurisdiction-specific standards lifecycle management is defined outside CORE under regional overlays.
 
-Author and Ownership
+Author and Ownership  
 
-CAI-Core-Standards-Evolution-and-Governance is authored and owned by Antonio José Socorro Marín.
+CAI-Core-Standards-Evolution-and-Governance is authored and owned by Antonio José Socorro Marín.  
 This document is an intellectual property asset governed by the legal documents contained in the /legal directory.
 
-End of Document
+## End of Document

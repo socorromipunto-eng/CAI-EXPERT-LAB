@@ -1,17 +1,17 @@
-Cybersecurity Artificial Intelligence Framework – Core Execution Model
-Version 0.1 (Draft)
+# Cybersecurity Artificial Intelligence Framework – Core Execution Model
+Version 0.1 (Draft)  
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved. Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved. Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines the CORE execution semantics of CAI. It does not assert certification, accreditation, regulatory approval, or operational compliance.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines the CORE execution semantics of CAI. It does not assert certification, accreditation, regulatory approval, or operational compliance.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define the Core Execution Model of the Cybersecurity Artificial Intelligence Framework (CAI).
 
@@ -21,9 +21,9 @@ The Core Execution Model provides the authoritative execution semantics that bin
 
 This document ensures that CAI remains operationally coherent, auditable, and evolvable as standards, technologies, and threat landscapes change.
 
-Scope
+## Scope
 
-2.1 In Scope
+### 2.1 In Scope
 
 This document applies to the CAI framework CORE and defines execution semantics that govern all CAI implementations.
 
@@ -31,7 +31,7 @@ It applies to all environments where CAI may be applied, including IT, OT, ICS, 
 
 It governs how CAI lifecycle stages are executed, constrained, validated, and transitioned, regardless of jurisdiction or sector.
 
-2.2 Explicitly Out of Scope
+### 2.2 Explicitly Out of Scope
 
 This document does not define implementation code, automation scripts, or tooling integrations.
 
@@ -41,7 +41,7 @@ It does not replace or reinterpret external standards.
 
 It does not define sector-specific operational constraints, which are delegated to overlays and profiles.
 
-Core Execution Philosophy
+## Core Execution Philosophy
 
 CAI execution is state-driven, not checklist-driven.
 
@@ -53,7 +53,7 @@ Execution semantics are deterministic, traceable, and non-ambiguous.
 
 No execution behavior may contradict CORE definitions, even if regional overlays or implementations evolve.
 
-CAI Lifecycle Execution Semantics
+## CAI Lifecycle Execution Semantics
 
 The seven-stage operational lifecycle is a derived branch of the CAI core (see CAI-Core-Canonical-Model-and-Branch-Relationship.md). It consists of seven operational stages.
 
@@ -75,7 +75,7 @@ Each stage is executed as a valid state with defined entry conditions, allowed a
 
 Invalid or unsafe transitions are explicitly prohibited.
 
-State-Based Execution Model
+## State-Based Execution Model
 
 CAI execution is governed by a finite, authoritative state model.
 
@@ -87,7 +87,7 @@ No execution path may bypass defined states or safety constraints.
 
 This model is formally defined in CAI-Core-Operational-State-Model and enforced by all compliant engines.
 
-Governance and Safety Constraints
+## Governance and Safety Constraints
 
 Execution is subordinate to governance.
 
@@ -101,7 +101,7 @@ AI-assisted decisions are advisory unless explicitly authorized through governan
 
 No autonomous destructive action is permitted by default.
 
-Relationship to CAI Engine
+## Relationship to CAI Engine
 
 This document defines execution semantics, not execution mechanics.
 
@@ -111,7 +111,7 @@ Any CAI Engine must conform to this Core Execution Model to be considered CAI-al
 
 The engine may extend capabilities but may not alter CORE execution rules.
 
-Relationship to Standards Evolution
+## Relationship to Standards Evolution
 
 The Core Execution Model is version-independent from external standards.
 
@@ -121,7 +121,7 @@ Standards updates are reviewed and incorporated through CAI-Core-Standards-Evolu
 
 Execution semantics remain stable unless explicitly revised through a new CAI Core version.
 
-Traceability and Auditability
+## Traceability and Auditability
 
 All execution decisions must be traceable to state transitions, policies, and telemetry.
 
@@ -129,7 +129,7 @@ Execution artifacts must support audit, forensic analysis, and governance review
 
 Silent execution behavior is prohibited.
 
-Relationship to Other CAI CORE Documents
+## Relationship to Other CAI CORE Documents
 
 This document must be read together with CAI-Core-Definition.
 
@@ -143,10 +143,10 @@ It uses terminology defined in CAI-Core-Taxonomy.
 
 It is governed by CAI-Core-Standards-Evolution-and-Governance.
 
-Author and Ownership
+Author and Ownership  
 
 This document is authored and owned by Antonio José Socorro Marín.
 
 It is an intellectual property asset of CAI-EXPERT-LAB and governed by the legal documents contained in the /legal directory.
 
-End of Document
+## End of Document

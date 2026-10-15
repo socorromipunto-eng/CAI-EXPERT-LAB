@@ -1,19 +1,19 @@
 CAI-Core-Evolution-Traceability-Register.md
 
-Cybersecurity Artificial Intelligence Framework – Evolution Traceability Register
-Version 0.1 (Draft)
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+# Cybersecurity Artificial Intelligence Framework – Evolution Traceability Register
+Version 0.1 (Draft)  
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines mandatory evolution traceability requirements at the Core level and does not assert compliance, certification, accreditation, or regulatory approval.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines mandatory evolution traceability requirements at the Core level and does not assert compliance, certification, accreditation, or regulatory approval.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define the mandatory Evolution Traceability Register for the Cybersecurity Artificial Intelligence Framework (CAI).
 
@@ -21,13 +21,13 @@ This register establishes a formal, auditable, and non-bypassable mechanism to r
 
 The Evolution Traceability Register ensures that CAI evolution is explicit, controlled, reviewable, and defensible over time, preventing silent changes, undocumented reinterpretations, and untraceable drift.
 
-Scope
+## Scope
 
 This register applies to all CAI Core documents, all Core governance artifacts, the CAI Engine, regional overlays including CAI-USA, sector profiles, extensions, adapters, mappings, and any derived artifacts that claim lineage from CAI.
 
 No change to CAI is considered authoritative unless it is recorded in the Evolution Traceability Register and approved through the Dual Audit Pipeline.
 
-Traceability Requirement
+## Traceability Requirement
 
 All framework evolution must be explicitly traceable.
 
@@ -35,33 +35,33 @@ Traceability includes the identification of what changed, why the change was mad
 
 Implicit evolution, silent edits, inferred changes, or undocumented reinterpretation are prohibited.
 
-Minimum Traceability Elements
+## Minimum Traceability Elements
 
 Each registered evolution entry must include, at minimum, the following information.
 
-A unique change identifier.
-The date of the change.
-The affected document or artifact.
-The type of change, such as addition, clarification, correction, or deprecation.
-The rationale for the change.
-The governance authority approving the change.
-The technical review confirmation.
-The impact assessment on Core semantics, lifecycle, engine behavior, and sector profiles.
+A unique change identifier.  
+The date of the change.  
+The affected document or artifact.  
+The type of change, such as addition, clarification, correction, or deprecation.  
+The rationale for the change.  
+The governance authority approving the change.  
+The technical review confirmation.  
+The impact assessment on Core semantics, lifecycle, engine behavior, and sector profiles.  
 A reference to the associated Git commit.
 
-Evolution Categories
+## Evolution Categories
 
 CAI recognizes the following evolution categories.
 
-Core semantic evolution affecting lifecycle meaning, principles, or authority.
-Architectural evolution affecting layers, boundaries, or execution semantics.
-Governance evolution affecting rules, controls, or audit mechanisms.
-Standards alignment evolution reflecting updates in referenced standards without altering Core meaning.
+Core semantic evolution affecting lifecycle meaning, principles, or authority.  
+Architectural evolution affecting layers, boundaries, or execution semantics.  
+Governance evolution affecting rules, controls, or audit mechanisms.  
+Standards alignment evolution reflecting updates in referenced standards without altering Core meaning.  
 Clarification or correction that does not change authoritative semantics.
 
 Each category must be explicitly identified in the register entry.
 
-Governance Enforcement
+## Governance Enforcement
 
 No evolution entry may be added retroactively.
 
@@ -71,7 +71,7 @@ Entries that lack approval, rationale, or traceability references invalidate the
 
 The Evolution Traceability Register is authoritative and supersedes informal documentation history.
 
-AI-Assisted Change Handling
+## AI-Assisted Change Handling
 
 Any evolution involving AI-assisted drafting, analysis, or synthesis must be explicitly marked as AI-assisted.
 
@@ -81,13 +81,13 @@ All AI-assisted changes require explicit human governance approval and technical
 
 AI systems are not authorized to create, approve, or modify evolution entries autonomously.
 
-Relationship to Other Core Artifacts
+## Relationship to Other Core Artifacts
 
 This register operates in conjunction with CAI-Core-Integrity-and-Self-Defense-Governance.md, CAI-Core-Dual-Audit-Pipeline.md, CAI-Core-Contamination-Prevention-Rules.md, and CAI-Threat-Model-Framework-Integrity.md.
 
 In case of conflict, Core Integrity governance prevails.
 
-Register Entries
+## Register Entries
 
 Historical reconciliation record, recorded on 2026-10-15 (CHG-2026-10-15-01).
 
@@ -118,13 +118,14 @@ AI tools were used for analysis, verification and preparation of changes. Every 
 | CHG-2026-10-12-13 | 2026-10-13 | 3e99748 | .github/workflows, README.md | Addition | AUD-09: tests run by GitHub Actions on every push | Owner approved (commit message, signed) | 6 of 6 jobs passed on GitHub | None on Core semantics |
 | CHG-2026-10-13-01 | 2026-10-13 | fa6b110 | CAI-Engine/specifications/, README.md | Addition | Engine security specification published (proposed) | Owner approved (commit message, signed) | 652 passed, 13 xfailed | Specification only; engine unchanged |
 | CHG-2026-10-15-01 | 2026-10-15 | This commit | CAI-Core-Evolution-Traceability-Register.md | Governance | AUD-18: register reconciled with the Git history | Owner approved (commit message, signed) | Not applicable (document) | Register in use from this entry |
+| CHG-2026-10-15-02 | 2026-10-15 | This commit | 12 documents in docs/CORE (list in the commit message); tools/md-structure.py | Clarification or correction | AUD-02: Markdown structure added (headings, lists, line breaks); non-semantic formatting correction | Owner approved (commit message, signed) | Word sequence of each document verified identical before and after by tools/md-structure.py; 652 passed, 13 xfailed | None: no word added, removed or reordered |
 
 From CHG-2026-10-15-01 onward, each change adds its entry in the same commit that makes the change.
 
-Status
+Status  
 
-Status: Draft – Evolution Traceability Register Established
+Status: Draft – Evolution Traceability Register Established  
 
-This document establishes the mandatory and authoritative mechanism for governing the evolution of the CAI framework and is required for all future changes.
-Freeze CAI Core v0.1 – Integrity, Governance, and Evolution Locked
+This document establishes the mandatory and authoritative mechanism for governing the evolution of the CAI framework and is required for all future changes.  
+Freeze CAI Core v0.1 – Integrity, Governance, and Evolution Locked  
 End of Document

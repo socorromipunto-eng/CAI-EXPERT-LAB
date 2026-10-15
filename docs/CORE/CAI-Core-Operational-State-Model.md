@@ -1,19 +1,19 @@
-CAI-Core-Operational-State-Model
+# CAI-Core-Operational-State-Model
 Cybersecurity Artificial Intelligence Framework – Core Operational State Model
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines the formal operational behavior of CAI as a system-level state model intended to enable software implementation, orchestration, and controlled automation.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines the formal operational behavior of CAI as a system-level state model intended to enable software implementation, orchestration, and controlled automation.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define the formal operational behavior of the Cybersecurity Artificial Intelligence Framework (CAI) as an executable state-based system.
 
@@ -21,396 +21,396 @@ This document transforms the CAI lifecycle from a conceptual and operational fra
 
 This state model establishes:
 
-Formal operational states
+- Formal operational states
 
-Valid and invalid transitions
+- Valid and invalid transitions
 
-Event-driven behavior
+- Event-driven behavior
 
-Decision gates and safety constraints
+- Decision gates and safety constraints
 
-Feedback and learning loops
+- Feedback and learning loops
 
-Degraded and recovery modes
+- Degraded and recovery modes
 
 This document is the authoritative bridge between CAI framework documentation and the CAI Engine.
 
-Design Principles
+## Design Principles
 
-2.1 System-as-a-Network Principle
+### 2.1 System-as-a-Network Principle
 
 CAI is designed to behave as a distributed, interconnected system, analogous to a neural network of defensive subsystems.
 
 Each CAI stage functions as:
 
-A specialized processing node
+- A specialized processing node
 
-With defined inputs, outputs, and feedback
+- With defined inputs, outputs, and feedback
 
-Operating continuously, not linearly
+- Operating continuously, not linearly
 
 No CAI stage operates in isolation.
 
-2.2 Continuous Feedback and Adaptation
+### 2.2 Continuous Feedback and Adaptation
 
 All states emit telemetry and decision outcomes that feed:
 
-Other CAI states
+- Other CAI states
 
-Policy engines
+- Policy engines
 
-AI analytics
+- AI analytics
 
-Human oversight mechanisms
+- Human oversight mechanisms
 
-2.3 Safety, Explainability, and Control
+### 2.3 Safety, Explainability, and Control
 
 Automation is constrained by:
 
-Policy gates
+- Policy gates
 
-Safety gates
+- Safety gates
 
-Human-in-the-loop thresholds
+- Human-in-the-loop thresholds
 
-Sector and environment constraints
+- Sector and environment constraints
 
 CAI never performs irreversible actions without explicit authorization when required.
 
-Core CAI Operational States
+## Core CAI Operational States
 
 The seven-stage operational branch of CAI defines the following authoritative system states:
 
-MODEL
+- MODEL
 
-HARDEN
+- HARDEN
 
-DETECT
+- DETECT
 
-ISOLATE
+- ISOLATE
 
-DECEIVE
+- DECEIVE
 
-EVICT
+- EVICT
 
-RESTORE
+- RESTORE
 
 Each state represents a continuous operational mode, not a one-time action.
 
-State Definitions and Responsibilities
+## State Definitions and Responsibilities
 
-4.1 MODEL State
+### 4.1 MODEL State
 
 The MODEL state establishes system awareness.
 
 Responsibilities:
 
-Asset, identity, data, firmware, and dependency discovery
+- Asset, identity, data, firmware, and dependency discovery
 
-Topology and trust relationship modeling
+- Topology and trust relationship modeling
 
-Criticality and impact classification
+- Criticality and impact classification
 
-Baseline context generation
+- Baseline context generation
 
 Outputs:
 
-Authoritative inventories
+- Authoritative inventories
 
-Dependency graphs
+- Dependency graphs
 
-Context metadata for all other states
+- Context metadata for all other states
 
 MODEL continuously updates system understanding and feeds all downstream states.
 
-4.2 HARDEN State
+### 4.2 HARDEN State
 
 The HARDEN state reduces attack surface and enforces secure defaults.
 
 Responsibilities:
 
-Baseline enforcement
+- Baseline enforcement
 
-Configuration validation
+- Configuration validation
 
-Secure-by-design control application
+- Secure-by-design control application
 
-Drift detection
+- Drift detection
 
 Outputs:
 
-Hardened baselines
+- Hardened baselines
 
-Configuration alerts
+- Configuration alerts
 
-Enforcement signals to DETECT and ISOLATE
+- Enforcement signals to DETECT and ISOLATE
 
 HARDEN operates continuously and reacts to MODEL updates and post-incident lessons.
 
-4.3 DETECT State
+### 4.3 DETECT State
 
 The DETECT state identifies abnormal or malicious behavior.
 
 Responsibilities:
 
-Telemetry analysis
+- Telemetry analysis
 
-Anomaly detection
+- Anomaly detection
 
-Threat pattern recognition
+- Threat pattern recognition
 
-Confidence scoring
+- Confidence scoring
 
 Inputs:
 
-CCES-normalized events
+- CCES-normalized events
 
-Context from MODEL and HARDEN
+- Context from MODEL and HARDEN
 
-AI risk and anomaly scores
+- AI risk and anomaly scores
 
 Outputs:
 
-Alerts with confidence levels
+- Alerts with confidence levels
 
-Transition signals to ISOLATE, DECEIVE, or EVICT
+- Transition signals to ISOLATE, DECEIVE, or EVICT
 
-Feedback signals to MODEL and HARDEN
+- Feedback signals to MODEL and HARDEN
 
-4.4 ISOLATE State
+### 4.4 ISOLATE State
 
 The ISOLATE state limits blast radius and preserves safety.
 
 Responsibilities:
 
-Network segmentation
+- Network segmentation
 
-Access restriction
+- Access restriction
 
-Quarantine enforcement
+- Quarantine enforcement
 
-Safety-aware containment
+- Safety-aware containment
 
 Constraints:
 
-OT/ICS safety gating
+- OT/ICS safety gating
 
-Policy thresholds
+- Policy thresholds
 
-Human approval when required
+- Human approval when required
 
 Outputs:
 
-Isolation actions
+- Isolation actions
 
-Status telemetry
+Status telemetry  
 
-Signals to EVICT or DECEIVE
+- Signals to EVICT or DECEIVE
 
-4.5 DECEIVE State
+### 4.5 DECEIVE State
 
 The DECEIVE state confirms adversary presence and intent.
 
 Responsibilities:
 
-Deployment of decoy assets
+- Deployment of decoy assets
 
-Controlled attacker engagement
+- Controlled attacker engagement
 
-High-fidelity telemetry generation
+- High-fidelity telemetry generation
 
 Outputs:
 
-Confirmation signals
+- Confirmation signals
 
-Behavioral intelligence
+- Behavioral intelligence
 
-Evidence for EVICT decisions
+- Evidence for EVICT decisions
 
 DECEIVE operates without increasing operational risk.
 
-4.6 EVICT State
+### 4.6 EVICT State
 
 The EVICT state removes adversaries and malicious artifacts.
 
 Responsibilities:
 
-Session termination
+- Session termination
 
-Credential revocation
+- Credential revocation
 
-Malware and persistence removal
+- Malware and persistence removal
 
 Constraints:
 
-Evidence preservation
+- Evidence preservation
 
-Legal and operational policy
+- Legal and operational policy
 
-Safety gating
+- Safety gating
 
 Outputs:
 
-Clean-up confirmation
+- Clean-up confirmation
 
-Lessons learned
+- Lessons learned
 
-Signals to RESTORE and HARDEN
+- Signals to RESTORE and HARDEN
 
-4.7 RESTORE State
+### 4.7 RESTORE State
 
 The RESTORE state returns systems to trusted operation.
 
 Responsibilities:
 
-Reimaging and reconfiguration
+- Reimaging and reconfiguration
 
-Integrity validation
+- Integrity validation
 
-Post-incident verification
+- Post-incident verification
 
 Outputs:
 
-Restored operational status
+- Restored operational status
 
-Updated baselines
+- Updated baselines
 
-Feedback to MODEL and HARDEN
+- Feedback to MODEL and HARDEN
 
 RESTORE completes the defensive loop and strengthens future posture.
 
-Events and Transitions
+## Events and Transitions
 
-5.1 Event Model
+### 5.1 Event Model
 
 All transitions are triggered by events, normalized through the CAI Common Event Schema (CCES).
 
 Event categories include:
 
-Discovery events
+- Discovery events
 
-Configuration drift events
+- Configuration drift events
 
-Detection alerts
+- Detection alerts
 
-Safety violations
+- Safety violations
 
-Policy decisions
+- Policy decisions
 
-Human approvals
+- Human approvals
 
-5.2 Valid Transitions
+### 5.2 Valid Transitions
 
 Examples:
 
-MODEL → HARDEN
+- MODEL → HARDEN
 
-HARDEN → DETECT
+- HARDEN → DETECT
 
-DETECT → ISOLATE
+- DETECT → ISOLATE
 
-DETECT → DECEIVE
+- DETECT → DECEIVE
 
-ISOLATE → EVICT
+- ISOLATE → EVICT
 
-EVICT → RESTORE
+- EVICT → RESTORE
 
-RESTORE → MODEL
+- RESTORE → MODEL
 
 Transitions are non-linear and may occur concurrently.
 
-5.3 Invalid Transitions
+### 5.3 Invalid Transitions
 
 Examples:
 
-DETECT → EVICT without confirmation
+- DETECT → EVICT without confirmation
 
-ISOLATE → EVICT in OT without safety approval
+- ISOLATE → EVICT in OT without safety approval
 
-HARDEN → EVICT (never allowed)
+- HARDEN → EVICT (never allowed)
 
 Invalid transitions are blocked by gates.
 
-Decision Gates
+## Decision Gates
 
-6.1 Policy Gates
+### 6.1 Policy Gates
 
 Evaluate:
 
-Risk thresholds
+- Risk thresholds
 
-Compliance constraints
+- Compliance constraints
 
-Organizational rules
+- Organizational rules
 
-6.2 Safety Gates
+### 6.2 Safety Gates
 
 Enforce:
 
-OT/ICS safety rules
+- OT/ICS safety rules
 
-Physical impact prevention
+- Physical impact prevention
 
-Fail-safe defaults
+- Fail-safe defaults
 
-6.3 Human-in-the-Loop Gates
+### 6.3 Human-in-the-Loop Gates
 
 Require explicit authorization for:
 
-High-impact actions
+- High-impact actions
 
-Irreversible changes
+- Irreversible changes
 
-Cross-boundary operations
+- Cross-boundary operations
 
-Degraded and Safe Modes
+- Degraded and Safe Modes
 
 CAI supports degraded operation when:
 
-Telemetry is incomplete
+- Telemetry is incomplete
 
-AI confidence is low
+- AI confidence is low
 
-System integrity is uncertain
+- System integrity is uncertain
 
 In degraded mode:
 
-Automation is reduced
+- Automation is reduced
 
-Human oversight is increased
+- Human oversight is increased
 
-Defensive posture favors safety
+- Defensive posture favors safety
 
-Feedback and Learning Loops
+- Feedback and Learning Loops
 
 All states emit feedback to:
 
-Update MODEL context
+- Update MODEL context
 
-Refine HARDEN baselines
+- Refine HARDEN baselines
 
-Improve DETECT accuracy
+- Improve DETECT accuracy
 
-Adjust policy thresholds
+- Adjust policy thresholds
 
 AI systems consume this feedback under governance defined in CAI-USA-AI-Governance-and-Assurance.
 
-Relationship to Other CAI Documents
+## Relationship to Other CAI Documents
 
 This document must be read together with:
 
-CAI-Core-Definition
+- CAI-Core-Definition
 
-CAI-Core-Architecture
+- CAI-Core-Architecture
 
-CAI-Core-Operations
+- CAI-Core-Operations
 
-CAI-Core-Taxonomy
+- CAI-Core-Taxonomy
 
-CAI-USA-CCES
+- CAI-USA-CCES
 
-CAI-USA-AI-Governance-and-Assurance
+- CAI-USA-AI-Governance-and-Assurance
 
 This document is authoritative for CAI Engine design.
 
-End of Document
+## End of Document
