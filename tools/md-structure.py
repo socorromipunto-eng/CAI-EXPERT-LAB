@@ -14,7 +14,7 @@ META = re.compile(r'^(Version|Author|Creator|Copyright|All rights reserved|Use, 
 
 
 def _short_title(s):
-    if not s or len(s.split()) > 6 or not s[0].isupper():
+    if not s or len(s.split()) > 8 or not s[0].isupper():
         return False
     if s.endswith(('.', ',', ';', ':', '?', '!')) or META.match(s) or re.match(r'^[A-Z][\w /&()-]{0,40}: \S', s):
         return False
@@ -51,6 +51,12 @@ def _split_blocks(lines):
             out.append(blk[j]); j += 1
         i = k
     return out
+
+def _item(line):
+    t = line.strip()
+    if t[:1] in '•·▪◦–':                      # the source already shows a bullet character: keep it, break the line
+        return t + '  '
+    return '- ' + t
 
 def is_heading(line, prev, nxt):
     s = line.strip()
@@ -129,7 +135,7 @@ def convert(text):
                 period_breaks = True                 # a title introducing new text, not a list item
             if not numbered and s not in KNOWN_HEADINGS and len(s.split()) <= 14 \
                and not (s.endswith('.') and len(s.split()) > 12) and not period_breaks:
-                out.append('- ' + s); run_items += 1; last_item_period = s.endswith('.'); i += 1; continue
+                out.append(_item(s)); run_items += 1; last_item_period = s.endswith('.'); i += 1; continue
             colon_run = False
         if is_heading(l, prev, nxt):
             out.append('#' * heading_level(s) + ' ' + s); i += 1; continue
@@ -151,7 +157,7 @@ def convert(text):
                    and not lastb.endswith(('.', ':', ';', ',')):
                     tail = lastb; block = block[:-1]          # a numbered section title closes the list
                 for b in block:
-                    out.append('- ' + b.strip())
+                    out.append(_item(b))
                 run_items += len(block); last_item_period = block[-1].strip().endswith('.')
                 if tail:
                     out.append(''); out.append('#' * heading_level(tail) + ' ' + tail); colon_run = False
