@@ -1,0 +1,55 @@
+{
+  "description": "The same proposal with confidence 0.94, below the CATASTROPHIC floor of 0.95.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.94,
+      "explanation": "Synthetic example for the sector framework document.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.02
+    },
+    "context": {
+      "sector": "dams"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Isolate spillway gate SCADA link",
+      "target": "spillway-scada",
+      "ot_level": 1
+    }
+  },
+  "expected": {
+    "status": "BLOCKED",
+    "decision": "DENY",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.assurance_floor",
+        "DENY"
+      ],
+      [
+        "usa.ot_ics_safety",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.ot_ics",
+        "ESCALATE"
+      ]
+    ]
+  }
+}

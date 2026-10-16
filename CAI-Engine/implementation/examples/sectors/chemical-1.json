@@ -1,0 +1,51 @@
+{
+  "description": "A model proposes isolating a compromised process historian (Purdue level 3) during an incident; confidence 0.97.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.97,
+      "explanation": "Synthetic example for the sector framework document.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.02
+    },
+    "context": {
+      "sector": "chemical"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Isolate process historian network segment",
+      "target": "historian-01",
+      "ot_level": 3
+    }
+  },
+  "expected": {
+    "status": "PENDING_APPROVAL",
+    "decision": "ESCALATE",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.ot_ics_safety",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.none_triggered",
+        "ALLOW"
+      ]
+    ]
+  }
+}

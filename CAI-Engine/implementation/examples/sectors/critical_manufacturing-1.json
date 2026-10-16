@@ -1,0 +1,51 @@
+{
+  "description": "A model proposes isolating a PLC cell (Purdue level 1) on a production line; confidence 0.96.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.96,
+      "explanation": "Synthetic example for the sector framework document.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.02
+    },
+    "context": {
+      "sector": "critical_manufacturing"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Isolate PLC cell 4",
+      "target": "plc-cell-4",
+      "ot_level": 1
+    }
+  },
+  "expected": {
+    "status": "PENDING_APPROVAL",
+    "decision": "ESCALATE",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.ot_ics_safety",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.ot_ics",
+        "ESCALATE"
+      ]
+    ]
+  }
+}

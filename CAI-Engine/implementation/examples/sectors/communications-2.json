@@ -1,0 +1,50 @@
+{
+  "description": "A model proposes eradication while the lifecycle is still in DETECT.",
+  "lifecycle_state": "DETECT",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.99,
+      "explanation": "Synthetic example for the sector framework document.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.02
+    },
+    "context": {
+      "sector": "communications"
+    },
+    "action": {
+      "category": "ERADICATION",
+      "description": "Remove implant from core router",
+      "target": "core-rtr-03"
+    }
+  },
+  "expected": {
+    "status": "BLOCKED",
+    "decision": "DENY",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.ot_ics_safety",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "DENY"
+      ],
+      [
+        "safety.none_triggered",
+        "ALLOW"
+      ]
+    ]
+  }
+}

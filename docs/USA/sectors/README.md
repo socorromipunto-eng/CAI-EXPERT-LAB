@@ -136,6 +136,8 @@ The CAI Engine (`CAI-Engine/implementation/cai_engine/usa_sectors.py`) defines t
 
 Adding the two missing profiles or renaming the folder requires a version increment of CAI USA under CAI-USA-Master-Freeze-v0.1.
 
+The frameworks that apply to each sector, including Commercial Facilities and Dams, and the decision-time controls CAI adds to them are mapped in docs/USA/sector-frameworks.
+
 ## Extensibility and Evolution
 
 New sectors may be added over time.

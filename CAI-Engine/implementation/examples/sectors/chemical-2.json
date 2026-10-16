@@ -1,0 +1,55 @@
+{
+  "description": "The same proposal with confidence 0.93, below the CATASTROPHIC floor of 0.95.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.93,
+      "explanation": "Synthetic example for the sector framework document.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.02
+    },
+    "context": {
+      "sector": "chemical"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Isolate process historian network segment",
+      "target": "historian-01",
+      "ot_level": 3
+    }
+  },
+  "expected": {
+    "status": "BLOCKED",
+    "decision": "DENY",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.assurance_floor",
+        "DENY"
+      ],
+      [
+        "usa.ot_ics_safety",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.none_triggered",
+        "ALLOW"
+      ]
+    ]
+  }
+}

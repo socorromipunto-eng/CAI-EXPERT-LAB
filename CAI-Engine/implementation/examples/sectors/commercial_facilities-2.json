@@ -1,0 +1,50 @@
+{
+  "description": "The same proposal from a model whose declared drift is 0.20, above the maximum of 0.15.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.92,
+      "explanation": "Synthetic example for the sector framework document.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.2
+    },
+    "context": {
+      "sector": "commercial_facilities"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Isolate building automation VLAN",
+      "target": "bas-vlan-20"
+    }
+  },
+  "expected": {
+    "status": "BLOCKED",
+    "decision": "DENY",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.robustness",
+        "DENY"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.none_triggered",
+        "ALLOW"
+      ]
+    ]
+  }
+}

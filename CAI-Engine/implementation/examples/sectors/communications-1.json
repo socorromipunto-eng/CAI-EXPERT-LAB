@@ -1,0 +1,47 @@
+{
+  "description": "A model proposes a hardening change on edge routers (disable an exposed management service); confidence 0.95.",
+  "lifecycle_state": "HARDEN",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.95,
+      "explanation": "Synthetic example for the sector framework document.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.02
+    },
+    "context": {
+      "sector": "communications"
+    },
+    "action": {
+      "category": "HARDENING",
+      "description": "Disable exposed management service on edge routers",
+      "target": "edge-routers",
+      "blast_radius": 12
+    }
+  },
+  "expected": {
+    "status": "PENDING_APPROVAL",
+    "decision": "ESCALATE",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.none_triggered",
+        "ALLOW"
+      ]
+    ]
+  }
+}
