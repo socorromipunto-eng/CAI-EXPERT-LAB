@@ -108,6 +108,7 @@ Defines how CAI preserves its correctness and resists corruption:
 - CAI-Core-Contamination-Prevention-Rules.md
 - CAI-Core-Dual-Audit-Pipeline.md
 - CAI-Core-Evolution-Traceability-Register.md
+- CAI-Core-Reference-Resolution-Record.md
 
 ### 5.4 Semantic and Evolution Layer
 

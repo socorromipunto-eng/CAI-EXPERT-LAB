@@ -161,7 +161,7 @@ This laboratory builds upon:
 
 • CAI-USA-Government-Lab-CCES-Normalization  
 • CAI-USA-Government-Lab-State-Aware-Correlation  
-• CAI-USA-Government-Lab-Telemetry-Flow-and-Evidence  
+• CAI-USA-Government-Lab-Telemetry-Flow-and-Evidence (not published)  
 
 Together, these labs demonstrate CAI’s non-autonomous, human-governed intelligence pipeline
 for Government environments.

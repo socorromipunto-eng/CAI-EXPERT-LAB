@@ -72,7 +72,7 @@ The Government sector includes the following laboratory artifacts:
   institutional state, service continuity, and oversight boundaries.
 
 - **Telemetry Flow and Evidence**  
-  `CAI-USA-Government-Lab-Telemetry-Flow-and-Evidence.md`  
+  `CAI-USA-Government-Lab-Telemetry-Flow-and-Evidence.md` (not published)  
   Demonstrates governed end-to-end telemetry flow and evidence generation, ensuring chain-of-
   custody, integrity, and audit readiness.
 

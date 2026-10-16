@@ -136,7 +136,7 @@ Normalization must never infer intent, policy direction, or enforcement posture.
 This laboratory establishes the foundation for:
 
 • CAI-USA-Government-Lab-State-Aware-Correlation  
-• CAI-USA-Government-Lab-Telemetry-Flow-and-Evidence  
+• CAI-USA-Government-Lab-Telemetry-Flow-and-Evidence (not published)  
 • CAI-USA-Government-Lab-Human-Governed-Decision-Support  
 
 Status  

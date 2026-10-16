@@ -226,7 +226,7 @@ AI within CAI supports Zero Trust by:
 - Supporting decision-making without replacing human authority
 - Operating under defined assurance and governance constraints
 
-AI governance and risk management are addressed in CAI-USA-AI-Assurance.
+AI governance and risk management are addressed in CAI-USA-AI-Governance-and-Assurance.
 
 ## Relationship to Other CAI Documents
 
@@ -241,7 +241,7 @@ This document must be read together with:
 
 Related documents include:
 
-- CAI-USA-AI-Assurance
+- CAI-USA-AI-Governance-and-Assurance
 
 - USA sector profiles for ICS/OT, healthcare, finance, and other domains
 
