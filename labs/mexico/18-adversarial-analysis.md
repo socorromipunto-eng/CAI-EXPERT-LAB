@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the adversarial analysis for CAI (Continuous Adaptive Integrity).
+This document defines the adversarial analysis for CAI (Cybersecurity Artificial Intelligence).
 
 Its objective is to identify, model, and evaluate potential attack vectors, manipulation strategies, and systemic failure modes that may compromise decision integrity, based on the formal structures defined in:
 

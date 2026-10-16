@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the Traceability Model within CAI (Continuous Adaptive Integrity).
+This document defines the Traceability Model within CAI (Cybersecurity Artificial Intelligence).
 
 Its purpose is to establish how decisions can be fully reconstructed, audited, and verified across their entire lifecycle within the APF cybersecurity environment.
 

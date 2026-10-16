@@ -1,6 +1,6 @@
 ## 1. Purpose
 
-This document defines the visual architecture of CAI (Continuous Adaptive Integrity) within the APF cybersecurity environment.
+This document defines the visual architecture of CAI (Cybersecurity Artificial Intelligence) within the APF cybersecurity environment.
 
 Its objective is to provide a clear, structured, and system-level representation of how CAI components interact to enforce decision integrity across federated systems.
 

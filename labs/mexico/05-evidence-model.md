@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the Evidence Model required by CAI (Continuous Adaptive Integrity) to support decision integrity across its lifecycle within the APF cybersecurity environment.
+This document defines the Evidence Model required by CAI (Cybersecurity Artificial Intelligence) to support decision integrity across its lifecycle within the APF cybersecurity environment.
 
 The objective is to establish how decisions are supported by verifiable, traceable, and auditable evidence.
 

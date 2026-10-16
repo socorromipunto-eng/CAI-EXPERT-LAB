@@ -4,13 +4,11 @@
 
 ## 1. Purpose
 
-This lab provides an applied implementation of the CAI (Continuous Adaptive Integrity) model within the context of the Mexican Federal Cybersecurity Policy (APF).
+This lab provides an applied implementation of the CAI (Cybersecurity Artificial Intelligence) model within the context of the Mexican Federal Cybersecurity Policy (APF).
 
 Its objective is to explore how decision integrity can be introduced as an enforceable capability within an existing national cybersecurity framework.
 
-This is not a theoretical exercise.
-
-It is a structured validation of how CAI operates under real governance, operational, and regulatory conditions.
+It is a design study of how CAI would operate under the governance, operational, and regulatory conditions of the APF. It has not been executed against real systems.
 
 ---
 

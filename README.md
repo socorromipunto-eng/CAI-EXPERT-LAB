@@ -15,7 +15,8 @@ including IT, OT/ICS, cloud and AI-enabled environments.
 > one documented change at a time, and recorded in the commit history.
 
 CAI-EXPERT-LAB turns AI governance from a document into something that **runs,
-enforces its own rules, and proves what it did** — under two jurisdictions
+enforces its own rules, and records what it did in a tamper-evident evidence
+log** — under two jurisdictions
 (EU AI Act and USA NSM-22 / NIST), treated per critical-infrastructure sector.
 
 ## Where to find what
@@ -146,8 +147,9 @@ python -m cai_engine verify
 ```
 
 It also runs as a **Model Context Protocol (MCP) server**, so an AI client
-(e.g. Claude) must route its proposed actions through the governance runtime
-before acting. See `CAI-Engine/implementation/README.md`.
+(e.g. Claude) can submit its proposed actions to the governance runtime before
+acting. The server governs what is submitted to it; it cannot stop a client
+that has other ways to act. See `CAI-Engine/implementation/README.md`.
 
 ---
 

@@ -94,7 +94,7 @@ This creates a structural limitation:
 
 ## 7. CAI Interpretation
 
-CAI (Continuous Adaptive Integrity) redefines the nature of decisions:
+CAI (Cybersecurity Artificial Intelligence) redefines the nature of decisions:
 
 > A decision is not an event.  
 > A decision is a dynamic, context-bound entity.

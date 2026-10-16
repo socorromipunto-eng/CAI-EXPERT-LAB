@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the Revalidation Engine within the CAI (Continuous Adaptive Integrity) model.
+This document defines the Revalidation Engine within the CAI (Cybersecurity Artificial Intelligence) model.
 
 Its purpose is to establish how decisions are continuously evaluated, revalidated, or revoked based on evolving context, telemetry, and policy conditions within the APF cybersecurity environment.
 

@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines how CAI (Continuous Adaptive Integrity) integrates with:
+This document defines how CAI (Cybersecurity Artificial Intelligence) integrates with:
 
 - institutional cybersecurity planning (PIC)  
 - auditing processes  

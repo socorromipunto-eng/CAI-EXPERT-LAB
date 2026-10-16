@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the architectural model for CAI (Continuous Adaptive Integrity) within the context of the Mexican Federal Cybersecurity Policy (APF).
+This document defines the architectural model for CAI (Cybersecurity Artificial Intelligence) within the context of the Mexican Federal Cybersecurity Policy (APF).
 
 Its objective is to establish where CAI operates, how it integrates with existing security components, and how it enforces decision integrity across federated systems.
 

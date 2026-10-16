@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-This document establishes a structured mapping between the CAI (Continuous Adaptive Integrity) model and the Mexican Federal Cybersecurity Policy for the Federal Public Administration (APF).
+This document establishes a structured mapping between the CAI (Cybersecurity Artificial Intelligence) model and the Mexican Federal Cybersecurity Policy for the Federal Public Administration (APF).
 
 Its objective is to demonstrate not only alignment, but also the identification of structural gaps and the corresponding contribution of CAI as a decision integrity layer.
 

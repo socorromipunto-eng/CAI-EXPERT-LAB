@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the operational flow of CAI (Continuous Adaptive Integrity) within the APF cybersecurity environment.
+This document defines the operational flow of CAI (Cybersecurity Artificial Intelligence) within the APF cybersecurity environment.
 
 Its objective is to describe, step by step, how decisions are created, evaluated, propagated, revalidated, and enforced in real-time conditions.
 

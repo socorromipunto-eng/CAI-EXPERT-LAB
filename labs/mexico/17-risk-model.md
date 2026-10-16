@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the formal risk model for CAI (Continuous Adaptive Integrity).
+This document defines the formal risk model for CAI (Cybersecurity Artificial Intelligence).
 
 Its objective is to establish a deterministic, quantifiable, interoperable, and adversarially robust method for calculating, evaluating, and enforcing risk as a primary control variable for decision integrity.
 

@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the CAI (Continuous Adaptive Integrity) Decision State Model applied to the APF cybersecurity framework.
+This document defines the CAI (Cybersecurity Artificial Intelligence) Decision State Model applied to the APF cybersecurity framework.
 
 The objective is to formalize how decisions behave, evolve, and degrade over time across federated systems.
 

@@ -125,6 +125,17 @@ Sector profiles are intentionally developed starting with the most complex and s
 
 This approach maximizes credibility, resilience, and external defensibility.
 
+## Sector Coverage
+
+The CAI Engine (`CAI-Engine/implementation/cai_engine/usa_sectors.py`) defines the 16 critical infrastructure sectors of National Security Memorandum 22 (NSM-22). This directory holds sector profiles for 14 of them, plus one reference profile:
+
+- Sectors with a profile: Chemical, Communications, Critical Manufacturing, Defense Industrial Base, Emergency Services, Energy, Financial Services, Food and Agriculture, Government (Government Facilities), Healthcare (Healthcare and Public Health), Information Technology, Nuclear (Nuclear Reactors, Materials, and Waste), Transportation Systems, Water and Wastewater (Water and Wastewater Systems).
+- Sectors without a profile: Commercial Facilities and Dams. The engine applies the CAI-USA baseline and the NSM-22 sector parameters to them; no sector overlay exists.
+- Reference profile: `aviation`. Aviation is not one of the 16 sectors; it is a subsector (mode) of the Transportation Systems Sector (CISA, https://www.cisa.gov/topics/critical-infrastructure-security-and-resilience/critical-infrastructure-sectors/transportation-systems-sector). It is kept as a separate reference profile, frozen as such by CAI-USA-Master-Freeze-v0.1.
+- Folder name: the Communications sector profile is in the folder `Communication`. Its documents use the sector name Communications. The folder is not renamed because the sector profiles are frozen under CAI-USA-Master-Freeze-v0.1.
+
+Adding the two missing profiles or renaming the folder requires a version increment of CAI USA under CAI-USA-Master-Freeze-v0.1.
+
 ## Extensibility and Evolution
 
 New sectors may be added over time.

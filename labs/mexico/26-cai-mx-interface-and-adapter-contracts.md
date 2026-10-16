@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the formal interface contracts and adapter models required to integrate CAI (Continuous Adaptive Integrity) into operational systems.
+This document defines the formal interface contracts and adapter models required to integrate CAI (Cybersecurity Artificial Intelligence) into operational systems.
 
 Its objective is to establish:
 

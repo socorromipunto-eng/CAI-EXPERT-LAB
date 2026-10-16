@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the enforcement outcomes within the CAI (Continuous Adaptive Integrity) model.
+This document defines the enforcement outcomes within the CAI (Cybersecurity Artificial Intelligence) model.
 
 Its purpose is to establish how the system reacts when a decision is evaluated, revalidated, or invalidated across its lifecycle in the APF cybersecurity environment.
 

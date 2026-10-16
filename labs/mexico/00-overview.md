@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the structural overview of the CAI-MX laboratory as an applied implementation of the CAI (Continuous Adaptive Integrity) model within the cybersecurity framework of the Administración Pública Federal (APF).
+This document defines the structural overview of the CAI-MX laboratory as an applied implementation of the CAI (Cybersecurity Artificial Intelligence) model within the cybersecurity framework of the Administración Pública Federal (APF).
 
 Its objective is to establish a clear and technically rigorous foundation for how CAI operates in a real national environment, without redefining its canonical architecture.
 

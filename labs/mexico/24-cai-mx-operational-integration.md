@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines how the CAI (Continuous Adaptive Integrity) model integrates operationally within the cybersecurity structure of the Administración Pública Federal (APF).
+This document defines how the CAI (Cybersecurity Artificial Intelligence) model integrates operationally within the cybersecurity structure of the Administración Pública Federal (APF).
 
 Its objective is to translate CAI from an architectural and conceptual model into:
 

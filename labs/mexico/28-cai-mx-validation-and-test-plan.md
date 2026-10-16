@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the validation model and testing strategy for CAI (Continuous Adaptive Integrity) within APF-aligned environments.
+This document defines the validation model and testing strategy for CAI (Cybersecurity Artificial Intelligence) within APF-aligned environments.
 
 Its objective is to ensure that CAI operates as:
 

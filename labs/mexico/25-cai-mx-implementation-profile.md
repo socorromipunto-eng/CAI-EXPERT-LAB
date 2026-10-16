@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the implementation profile of CAI (Continuous Adaptive Integrity) within APF-aligned environments.
+This document defines the implementation profile of CAI (Cybersecurity Artificial Intelligence) within APF-aligned environments.
 
 Its objective is to translate CAI from:
 

@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the lifecycle of a decision under the CAI (Continuous Adaptive Integrity) model applied to the Mexican Federal Cybersecurity Policy (APF).
+This document defines the lifecycle of a decision under the CAI (Cybersecurity Artificial Intelligence) model applied to the Mexican Federal Cybersecurity Policy (APF).
 
 The objective is to formalize how a decision evolves from creation to execution, including how it must be continuously validated across system boundaries and changing conditions.
 

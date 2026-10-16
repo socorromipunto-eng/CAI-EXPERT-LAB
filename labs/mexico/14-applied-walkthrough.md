@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document provides a complete applied walkthrough of the CAI (Continuous Adaptive Integrity) model within the APF cybersecurity environment.
+This document provides a complete applied walkthrough of the CAI (Cybersecurity Artificial Intelligence) model within the APF cybersecurity environment.
 
 Its objective is to demonstrate, step by step, how a decision is created, evaluated, propagated, revalidated, and enforced using CAI principles under real-time conditions.
 

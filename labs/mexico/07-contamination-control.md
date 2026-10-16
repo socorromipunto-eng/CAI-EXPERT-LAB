@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the Contamination Control Model within CAI (Continuous Adaptive Integrity).
+This document defines the Contamination Control Model within CAI (Cybersecurity Artificial Intelligence).
 
 Its purpose is to identify, manage, and contain the propagation of invalid or compromised decisions across federated systems within the APF cybersecurity environment.
 

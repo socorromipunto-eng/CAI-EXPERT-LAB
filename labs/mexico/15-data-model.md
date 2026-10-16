@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the formal data model for CAI (Continuous Adaptive Integrity).
+This document defines the formal data model for CAI (Cybersecurity Artificial Intelligence).
 
 Its objective is to provide a precise, structured, interoperable, and implementation-ready specification of the core entities required to enforce decision integrity across federated systems aligned with the APF cybersecurity environment.
 

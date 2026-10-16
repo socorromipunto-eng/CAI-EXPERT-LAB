@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the telemetry model required for CAI (Continuous Adaptive Integrity) to enforce decision integrity across the lifecycle defined in the APF cybersecurity environment.
+This document defines the telemetry model required for CAI (Cybersecurity Artificial Intelligence) to enforce decision integrity across the lifecycle defined in the APF cybersecurity environment.
 
 The objective is to establish how real-time signals are collected, correlated, and used to determine whether a decision remains valid over time.
 

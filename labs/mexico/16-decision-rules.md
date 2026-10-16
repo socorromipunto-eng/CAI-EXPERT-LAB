@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the formal decision rules governing the CAI (Continuous Adaptive Integrity) model.
+This document defines the formal decision rules governing the CAI (Cybersecurity Artificial Intelligence) model.
 
 Its objective is to establish a deterministic, auditable, and implementable rule system that governs:
 

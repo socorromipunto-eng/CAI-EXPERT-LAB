@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document formalizes the operational limits, measurable properties, and validation conditions of the CAI (Continuous Adaptive Integrity) model.
+This document formalizes the operational limits, measurable properties, and validation conditions of the CAI (Cybersecurity Artificial Intelligence) model.
 
 Its objective is to:
 

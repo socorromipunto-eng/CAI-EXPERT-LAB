@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-This document defines the integration patterns for CAI (Continuous Adaptive Integrity) within real-world systems aligned with the APF cybersecurity environment.
+This document defines the integration patterns for CAI (Cybersecurity Artificial Intelligence) within real-world systems aligned with the APF cybersecurity environment.
 
 Its objective is to demonstrate how CAI can be implemented without replacing existing infrastructure, while enforcing decision integrity across federated architectures.
 
