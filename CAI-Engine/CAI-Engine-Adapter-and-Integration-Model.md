@@ -1,19 +1,19 @@
-Cybersecurity Artificial Intelligence Framework CAI Engine Adapter and Integration Model
-Version 0.1 Draft
+# Cybersecurity Artificial Intelligence Framework CAI Engine Adapter and Integration Model
+Version 0.1 Draft  
 
-Author Antonio José Socorro Marín
-Creator of CAI EXPERT LAB Cybersecurity Artificial Intelligence Framework
+Author Antonio José Socorro Marín  
+Creator of CAI EXPERT LAB Cybersecurity Artificial Intelligence Framework  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the legal directory of this repository.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the legal directory of this repository.  
 
-NOTE
-The normative language of CAI EXPERT LAB documentation is English.
-This document defines the adapter and integration model used by the CAI Execution Engine.
-This document does not assert certification, accreditation, or regulatory approval.
+**NOTE**  
+The normative language of CAI EXPERT LAB documentation is English.  
+This document defines the adapter and integration model used by the CAI Execution Engine.  
+This document does not assert certification, accreditation, or regulatory approval.  
 
-Purpose
+## Purpose
 
 1.1 The purpose of this document is to define how the CAI Execution Engine integrates with external systems through controlled, auditable, and policy governed adapters.
 
@@ -21,7 +21,7 @@ Purpose
 
 1.3 This document establishes strict separation between CAI semantic intent and external platform specific execution mechanisms.
 
-Normative Authority
+## Normative Authority
 
 2.1 This document is normatively bound to CAI Core Definition, CAI Core Architecture, CAI Core Operations, CAI Core Operational State Model, CAI Core Taxonomy, and CAI Core Standards Evolution and Governance.
 
@@ -29,7 +29,7 @@ Normative Authority
 
 2.3 No adapter may introduce behavior that contradicts CORE semantics or USA safety and governance constraints.
 
-Adapter Model Overview
+## Adapter Model Overview
 
 3.1 The CAI Engine interacts with external platforms exclusively through adapters.
 
@@ -39,7 +39,7 @@ Adapter Model Overview
 
 3.4 Adapters must not embed hidden automation, implicit policy bypasses, or persistent authority.
 
-Integration Domains
+## Integration Domains
 
 4.1 Identity and access integrations include identity providers, IAM systems, PAM platforms, MFA enforcement points, certificate services, and session token systems.
 
@@ -53,7 +53,7 @@ Integration Domains
 
 4.6 Governance integrations include ITSM, ticketing systems, change management platforms, and evidence retention systems.
 
-Adapter Contract
+## Adapter Contract
 
 5.1 Each adapter must declare a formal contract defining supported CAI actions, required inputs, and expected outputs.
 
@@ -63,7 +63,7 @@ Adapter Contract
 
 5.4 Adapter contracts must define evidence artifacts produced during execution.
 
-Semantic Action Translation
+## Semantic Action Translation
 
 6.1 CAI actions are expressed using CAI Core Taxonomy semantics.
 
@@ -73,7 +73,7 @@ Semantic Action Translation
 
 6.4 Partial execution without full evidence generation is prohibited.
 
-Governance and Safety Enforcement
+## Governance and Safety Enforcement
 
 7.1 Adapter invocation is always gated by CAI Engine policy evaluation and governance enforcement.
 
@@ -81,7 +81,7 @@ Governance and Safety Enforcement
 
 7.3 Adapters do not possess authority to override policy decisions, safety gates, or human approval requirements.
 
-Human Oversight
+## Human Oversight
 
 8.1 When human approval is required, adapters must not execute until approval evidence is present and valid.
 
@@ -89,7 +89,7 @@ Human Oversight
 
 8.3 Adapters must support safe cancellation and abort semantics for pending actions.
 
-Error Handling and Safe Failure
+## Error Handling and Safe Failure
 
 9.1 Adapter failures must never result in undefined or partially modified system state.
 
@@ -97,7 +97,7 @@ Error Handling and Safe Failure
 
 9.3 Adapters must provide deterministic error categories sufficient for audit and incident analysis.
 
-Evidence and Auditability
+## Evidence and Auditability
 
 10.1 Every adapter invocation must generate evidence including request context, authorization context, target scope, execution result, and timestamps.
 
@@ -105,7 +105,7 @@ Evidence and Auditability
 
 10.3 Evidence handling must comply with the CAI Engine Evidence and Audit Model.
 
-Security Requirements
+## Security Requirements
 
 11.1 Adapters must operate under least privilege credentials.
 
@@ -115,7 +115,7 @@ Security Requirements
 
 11.4 Secrets must never appear in logs, evidence records, or error outputs.
 
-Versioning and Evolution
+## Versioning and Evolution
 
 12.1 Adapter behavior must be versioned and traceable.
 
@@ -123,7 +123,7 @@ Versioning and Evolution
 
 12.3 Adapter evolution is governed by CAI Core Standards Evolution and Governance.
 
-Relationship to Other CAI Engine Components
+## Relationship to Other CAI Engine Components
 
 13.1 This document is implemented by CAI Engine orchestration and control logic.
 
@@ -131,10 +131,10 @@ Relationship to Other CAI Engine Components
 
 13.3 This document depends on CAI USA CCES and CAI USA Telemetry and Data Model for semantic consistency.
 
-Author and Ownership
+Author and Ownership  
 
 14.1 CAI Engine Adapter and Integration Model is authored and owned by Antonio José Socorro Marín.
 
 14.2 This document defines the controlled integration boundary that preserves CAI semantics, governance, safety, and auditability.
 
-End of Document
+## End of Document

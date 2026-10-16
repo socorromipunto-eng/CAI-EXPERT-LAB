@@ -1,20 +1,20 @@
-Cybersecurity Artificial Intelligence Framework – CAI Engine Component Responsibilities
+# Cybersecurity Artificial Intelligence Framework – CAI Engine Component Responsibilities
 
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines authoritative responsibilities, boundaries, inputs, and outputs of the CAI Execution Engine components.
-It does not assert certification, accreditation, regulatory approval, or compliance.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines authoritative responsibilities, boundaries, inputs, and outputs of the CAI Execution Engine components.  
+It does not assert certification, accreditation, regulatory approval, or compliance.  
 
-1. Purpose
+## 1. Purpose
 
 The purpose of this document is to define the authoritative responsibility model of the CAI Execution Engine.
 
@@ -22,245 +22,246 @@ This document establishes a clear separation of duties across engine components,
 
 This document answers who does what, who is allowed to act, and who is explicitly forbidden from acting within the CAI Engine.
 
-2. Normative References
+## 2. Normative References
 
 This document is normative with respect to:
 
-CAI-Core-Definition
-CAI-Core-Architecture
-CAI-Core-Operations
-CAI-Core-Operational-State-Model
-CAI-Core-Taxonomy
-CAI-Core-Standards-Evolution-and-Governance
+- CAI-Core-Definition
+- CAI-Core-Architecture
+- CAI-Core-Operations
+- CAI-Core-Operational-State-Model
+- CAI-Core-Taxonomy
+- CAI-Core-Standards-Evolution-and-Governance
 
 And operationally constrained by:
 
-CAI-USA-Definition
-CAI-USA-CCES
-CAI-USA-Telemetry-and-Data-Model
-CAI-USA-Secure-by-Design-Controls
-CAI-USA-AI-Governance-and-Assurance
-CAI-USA-ICS-OT-Safety-Gating
-CAI-USA-Threat-Model-Integration
+- CAI-USA-Definition
+- CAI-USA-CCES
+- CAI-USA-Telemetry-and-Data-Model
+- CAI-USA-Secure-by-Design-Controls
+- CAI-USA-AI-Governance-and-Assurance
+- CAI-USA-ICS-OT-Safety-Gating
+- CAI-USA-Threat-Model-Integration
 
 Any deviation from these documents invalidates the responsibilities defined herein.
 
-3. Responsibility Model Principles
+## 3. Responsibility Model Principles
 
 The CAI Engine responsibility model is governed by the following principles:
 
-Single authority per responsibility
-Explicit denial over implicit permission
-Safety overrides automation
-Governance constrains intelligence
-Execution follows state legality
-Evidence is mandatory
+- Single authority per responsibility
+- Explicit denial over implicit permission
+- Safety overrides automation
+- Governance constrains intelligence
+- Execution follows state legality
+- Evidence is mandatory
 
 No component may expand its authority through configuration, code, or inference.
 
-4. Component Responsibility Matrix
-4.1 State Controller
+## 4. Component Responsibility Matrix
 
-Primary Responsibility
+### 4.1 State Controller
+
+Primary Responsibility  
 Execute CAI operational stages as explicit, legal states.
 
-Authorized Responsibilities
-Validate state entry conditions
-Enforce valid state transitions
-Block illegal or unsafe transitions
+Authorized Responsibilities  
+Validate state entry conditions  
+Enforce valid state transitions  
+Block illegal or unsafe transitions  
 Trigger evaluation pipelines
 
-Explicitly Forbidden
-Executing actions directly
-Overriding safety gates
+Explicitly Forbidden  
+Executing actions directly  
+Overriding safety gates  
 Accepting unvalidated telemetry
 
-Inputs
-Normalized telemetry
-Policy constraints
+Inputs  
+Normalized telemetry  
+Policy constraints  
 Current operational state
 
-Outputs
-State transition events
-Execution context updates
+Outputs  
+State transition events  
+Execution context updates  
 Evidence of state changes
 
-4.2 Telemetry Ingestion and Normalization Layer
+### 4.2 Telemetry Ingestion and Normalization Layer
 
-Primary Responsibility
+Primary Responsibility  
 Ensure all telemetry conforms to CAI-USA-CCES before use.
 
-Authorized Responsibilities
-Validate schema compliance
-Attach provenance and confidence metadata
+Authorized Responsibilities  
+Validate schema compliance  
+Attach provenance and confidence metadata  
 Reject or quarantine malformed data
 
-Explicitly Forbidden
-Modifying telemetry semantics
-Inferring intent or risk
+Explicitly Forbidden  
+Modifying telemetry semantics  
+Inferring intent or risk  
 Triggering operational actions
 
-Inputs
+Inputs  
 Raw telemetry from external systems
 
-Outputs
+Outputs  
 Normalized, validated telemetry events
 
-4.3 Policy Evaluation Layer
+### 4.3 Policy Evaluation Layer
 
-Primary Responsibility
+Primary Responsibility  
 Determine permissible actions under defined constraints.
 
-Authorized Responsibilities
-Evaluate policy rules
-Apply least-privilege constraints
+Authorized Responsibilities  
+Evaluate policy rules  
+Apply least-privilege constraints  
 Generate allow, deny, or escalate decisions
 
-Explicitly Forbidden
-Executing actions
-Bypassing safety gates
+Explicitly Forbidden  
+Executing actions  
+Bypassing safety gates  
 Creating new policy logic at runtime
 
-Inputs
-Execution context
-Normalized telemetry
+Inputs  
+Execution context  
+Normalized telemetry  
 Governance constraints
 
-Outputs
+Outputs  
 Policy decision records
 
-4.4 Safety Gating Layer
+### 4.4 Safety Gating Layer
 
-Primary Responsibility
+Primary Responsibility  
 Prevent unsafe, destructive, or mission-impacting actions.
 
-Authorized Responsibilities
-Enforce OT/ICS safety constraints
-Apply blast-radius limitations
-Require human approval thresholds
+Authorized Responsibilities  
+Enforce OT/ICS safety constraints  
+Apply blast-radius limitations  
+Require human approval thresholds  
 Override automation and policy when safety is at risk
 
-Explicitly Forbidden
-Delegating authority to AI
+Explicitly Forbidden  
+Delegating authority to AI  
 Permitting autonomous destructive actions
 
-Inputs
-Proposed actions
-Operational context
+Inputs  
+Proposed actions  
+Operational context  
 Safety rules
 
-Outputs
-Allow, deny, or escalate safety decisions
+Outputs  
+Allow, deny, or escalate safety decisions  
 Safety evidence artifacts
 
-4.5 Orchestration and Execution Layer
+### 4.5 Orchestration and Execution Layer
 
-Primary Responsibility
+Primary Responsibility  
 Sequence and execute permitted actions across systems.
 
-Authorized Responsibilities
-Invoke external system APIs
-Apply playbooks within constraints
+Authorized Responsibilities  
+Invoke external system APIs  
+Apply playbooks within constraints  
 Respect safety and policy decisions
 
-Explicitly Forbidden
-Self-initiating actions
-Executing outside permitted states
+Explicitly Forbidden  
+Self-initiating actions  
+Executing outside permitted states  
 Persisting authority beyond execution scope
 
-Inputs
-Approved execution plans
+Inputs  
+Approved execution plans  
 Safety and policy approvals
 
-Outputs
-Action execution results
+Outputs  
+Action execution results  
 Execution logs
 
-4.6 AI Inference Interface
+### 4.6 AI Inference Interface
 
-Primary Responsibility
+Primary Responsibility  
 Provide analytical and advisory intelligence.
 
-Authorized Responsibilities
-Generate anomaly scores
-Correlate signals
-Provide confidence assessments
+Authorized Responsibilities  
+Generate anomaly scores  
+Correlate signals  
+Provide confidence assessments  
 Support prioritization
 
-Explicitly Forbidden
-Making final decisions
-Triggering actions
-Altering state transitions
+Explicitly Forbidden  
+Making final decisions  
+Triggering actions  
+Altering state transitions  
 Overriding safety or policy
 
-Inputs
-Normalized telemetry
+Inputs  
+Normalized telemetry  
 Historical context
 
-Outputs
-Inference results
+Outputs  
+Inference results  
 Explainability metadata
 
-4.7 Evidence and Audit Layer
+### 4.7 Evidence and Audit Layer
 
-Primary Responsibility
+Primary Responsibility  
 Generate immutable execution evidence.
 
-Authorized Responsibilities
-Record state transitions
-Log decisions and rationales
-Capture AI inference metadata
+Authorized Responsibilities  
+Record state transitions  
+Log decisions and rationales  
+Capture AI inference metadata  
 Preserve safety gate outcomes
 
-Explicitly Forbidden
-Suppressing logs
+Explicitly Forbidden  
+Suppressing logs  
 Modifying historical evidence
 
-Inputs
-Execution events
+Inputs  
+Execution events  
 Decision records
 
-Outputs
+Outputs  
 Audit-ready evidence artifacts
 
-5. Responsibility Conflict Resolution
+## 5. Responsibility Conflict Resolution
 
 When conflicts arise:
 
-Safety Gating Layer overrides all other components
-Policy Evaluation overrides orchestration
-State Controller blocks illegal execution paths
-AI outputs are advisory only
+- Safety Gating Layer overrides all other components
+- Policy Evaluation overrides orchestration
+- State Controller blocks illegal execution paths
+- AI outputs are advisory only
 
 This hierarchy is non-configurable.
 
-6. Relationship to CAI CORE and USA
+## 6. Relationship to CAI CORE and USA
 
 This responsibility model:
 
-Implements CAI CORE semantics
-Operationalizes CAI-USA constraints
-Prevents compliance overreach
-Maintains legal and ethical defensibility
+- Implements CAI CORE semantics
+- Operationalizes CAI-USA constraints
+- Prevents compliance overreach
+- Maintains legal and ethical defensibility
 
 Responsibilities defined here must remain consistent across versions.
 
-7. Versioning and Change Control
+## 7. Versioning and Change Control
 
 Any change to component responsibilities must:
 
-Be documented
-Be backward-aware
-Preserve safety guarantees
-Be reviewed under CAI-Core-Standards-Evolution-and-Governance
+- Be documented
+- Be backward-aware
+- Preserve safety guarantees
+- Be reviewed under CAI-Core-Standards-Evolution-and-Governance
 
-8. Author and Ownership
+## 8. Author and Ownership
 
 CAI Engine Component Responsibilities is authored and owned by:
 
-Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB
+- Antonio José Socorro Marín
+- Creator of CAI-EXPERT-LAB
 
 This document establishes the authoritative responsibility boundaries required to operate CAI safely, ethically, and at scale.
 
-End of Document
+## End of Document
