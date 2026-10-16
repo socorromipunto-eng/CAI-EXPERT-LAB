@@ -127,7 +127,7 @@ def convert(text):
                 k += 1
             block = lines[i:k]
             if not any(b.strip().startswith(('-', '*', '|', '#', '```', '>')) for b in block) and \
-               all(b.rstrip().endswith(('.', ':', ';', '!', '?', ')')) or (nb.strip()[:1].isupper() or nb.strip()[:1].isdigit())
+               all(b.rstrip().endswith(('.', ':', ';', '!', '?', ')')) or ((nb.strip()[:1].isupper() or nb.strip()[:1].isdigit()) and len(b.strip()) < 66)
                    for b, nb in zip(block, block[1:])):
                 for b in block[:-1]:
                     out.append(b.rstrip() + '  ')

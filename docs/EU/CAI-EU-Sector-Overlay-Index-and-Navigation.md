@@ -1,8 +1,8 @@
-CAI-EU-Sector-Overlay-Index-and-Navigation.md
+# CAI-EU-Sector-Overlay-Index-and-Navigation.md
 
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Status
+Status  
 
 Framework: CAI-EXPERT-LAB
 
@@ -10,19 +10,19 @@ Region: European Union (EU)
 
 Document Type: Sector Overlay Index and Navigation (Non-Normative)
 
-Version: 0.1 Draft
+Version: 0.1 Draft  
 
 Dependencies:
 
-CAI Core v0.1
+- CAI Core v0.1
 
-CAI EU Foundational Documents (v0.1)
+- CAI EU Foundational Documents (v0.1)
 
-CAI EU Sector Overlays (v0.1)
+- CAI EU Sector Overlays (v0.1)
 
-Freeze: Not declared
+- Freeze: Not declared
 
-1. Purpose of This Document
+## 1. Purpose of This Document
 
 This document provides a structured index and navigation guide for the
 European Union (EU) regional baseline of the Cybersecurity Artificial
@@ -30,120 +30,120 @@ Intelligence Framework (CAI).
 
 Its purpose is to:
 
-Present a clear, auditable overview of CAI EU artifacts
+- Present a clear, auditable overview of CAI EU artifacts
 
-Explain the relationship between foundational documents and sector overlays
+- Explain the relationship between foundational documents and sector overlays
 
-Support consistent interpretation across sectors
+- Support consistent interpretation across sectors
 
-Facilitate review, audit, and academic analysis
+- Facilitate review, audit, and academic analysis
 
 This document is non-normative and introduces no new governance
 requirements.
 
-2. CAI EU Structural Overview
+## 2. CAI EU Structural Overview
 
 CAI EU is organized into three layers:
 
-Foundational Governance Layer
+- Foundational Governance Layer
 
-Sector Overlay Layer
+- Sector Overlay Layer
 
-Transversal Assurance Layer
+- Transversal Assurance Layer
 
 Each layer has a distinct role and authority boundary.
 
-3. Foundational Governance Layer
+## 3. Foundational Governance Layer
 
 These documents define governance constraints applicable to all sectors:
 
-CAI-EU-Foundational-Governance.md
-Establishes governance-first principles, human authority, and non-autonomy.
+- CAI-EU-Foundational-Governance.md
+- Establishes governance-first principles, human authority, and non-autonomy.
 
-CAI-EU-Risk-and-Proportionality-Model.md
+CAI-EU-Risk-and-Proportionality-Model.md  
 Defines how AI involvement is constrained by risk and impact.
 
-CAI-EU-Interoperability-and-Sector-Neutrality.md
+CAI-EU-Interoperability-and-Sector-Neutrality.md  
 Ensures cross-sector coherence and prevents governance silos.
 
-These documents are prerequisites for all sector overlays.
+- These documents are prerequisites for all sector overlays.
 
-4. Sector Overlay Layer
+## 4. Sector Overlay Layer
 
 Sector overlays introduce additional governance constraints applicable to
 specific contexts, without modifying foundational principles.
 
 Current EU sector overlays include:
 
-CAI-EU-Public-Sector-Governance-Overlay.md
-Governance expectations for public administrations and public-interest bodies.
+- CAI-EU-Public-Sector-Governance-Overlay.md
+- Governance expectations for public administrations and public-interest bodies.
 
-CAI-EU-Critical-Infrastructure-Governance-Overlay.md (planned; not yet written)
+CAI-EU-Critical-Infrastructure-Governance-Overlay.md (planned; not yet written)  
 Heightened governance for high-impact, systemic environments.
 
-CAI-EU-Research-and-Academia-Governance-Overlay.md
+CAI-EU-Research-and-Academia-Governance-Overlay.md  
 Governance constraints for exploratory and academic contexts.
 
 Sector overlays:
 
-Inherit CAI Core and CAI EU foundational governance
+- Inherit CAI Core and CAI EU foundational governance
 
-Do not introduce autonomous AI authority
+- Do not introduce autonomous AI authority
 
-Preserve interoperability with other sectors
+- Preserve interoperability with other sectors
 
-5. Transversal Assurance Layer
+## 5. Transversal Assurance Layer
 
 Transversal artifacts support coherence, traceability, and review across
 the entire EU baseline.
 
-CAI-EU-Governance-Traceability-Matrix.md
+CAI-EU-Governance-Traceability-Matrix.md  
 Provides structured visibility into governance inheritance and consistency.
 
 This layer ensures that governance drift is detectable and auditable.
 
-6. Navigation and Reading Order
+## 6. Navigation and Reading Order
 
 Recommended reading order:
 
-CAI Core (authoritative baseline)
+- CAI Core (authoritative baseline)
 
-CAI-EU-Foundational-Governance
+- CAI-EU-Foundational-Governance
 
-CAI-EU-Risk-and-Proportionality-Model
+- CAI-EU-Risk-and-Proportionality-Model
 
-CAI-EU-Interoperability-and-Sector-Neutrality
+- CAI-EU-Interoperability-and-Sector-Neutrality
 
-Relevant Sector Overlay(s)
+- Relevant Sector Overlay(s)
 
-CAI-EU-Governance-Traceability-Matrix
+- CAI-EU-Governance-Traceability-Matrix
 
 This order preserves semantic clarity and avoids misinterpretation.
 
-7. Forward Evolution
+## 7. Forward Evolution
 
 Future CAI EU extensions must:
 
-Declare their layer (foundational, sector overlay, transversal)
+- Declare their layer (foundational, sector overlay, transversal)
 
-Reference this index for placement and inheritance
+- Reference this index for placement and inheritance
 
-Preserve navigational clarity and auditability
+- Preserve navigational clarity and auditability
 
 Unindexed artifacts indicate structural deviation.
 
-8. Non-Scope Clarifications
+## 8. Non-Scope Clarifications
 
 This document does not:
 
-Introduce new governance principles
+- Introduce new governance principles
 
-Modify existing documents
+- Modify existing documents
 
-Define compliance or certification paths
+- Define compliance or certification paths
 
-Mandate publication or versioning policies
+- Mandate publication or versioning policies
 
 Its role is structural clarity, not governance expansion.
 
-End of Document
+## End of Document

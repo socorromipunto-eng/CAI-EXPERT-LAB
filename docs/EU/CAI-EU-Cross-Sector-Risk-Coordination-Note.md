@@ -1,8 +1,8 @@
-CAI-EU-Cross-Sector-Risk-Coordination-Note.md
+# CAI-EU-Cross-Sector-Risk-Coordination-Note.md
 
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Status
+Status  
 
 Framework: CAI-EXPERT-LAB
 
@@ -10,25 +10,25 @@ Region: European Union (EU)
 
 Document Type: Cross-Sector Risk Coordination Note (Non-Normative)
 
-Version: 0.1 Draft
+Version: 0.1 Draft  
 
 Dependencies:
 
-CAI Core v0.1
+- CAI Core v0.1
 
-CAI-EU-Foundational-Governance v0.1
+- CAI-EU-Foundational-Governance v0.1
 
-CAI-EU-Risk-and-Proportionality-Model v0.1
+- CAI-EU-Risk-and-Proportionality-Model v0.1
 
-CAI-EU-Interoperability-and-Sector-Neutrality v0.1
+- CAI-EU-Interoperability-and-Sector-Neutrality v0.1
 
-CAI-EU Sector Overlays (v0.1)
+- CAI-EU Sector Overlays (v0.1)
 
-CAI-EU-Governance-Traceability-Matrix v0.1
+- CAI-EU-Governance-Traceability-Matrix v0.1
 
-Freeze: Not declared
+- Freeze: Not declared
 
-1. Purpose of This Note
+## 1. Purpose of This Note
 
 This document establishes a cross-sector risk coordination reference
 for the CAI EU regional baseline.
@@ -40,141 +40,141 @@ cybersecurity activities may have systemic or cascading effects.
 This note is non-normative and does not introduce operational
 coordination mechanisms, regulatory mandates, or enforcement authority.
 
-2. Rationale for Cross-Sector Coordination
+## 2. Rationale for Cross-Sector Coordination
 
 European cybersecurity risk increasingly exhibits:
 
-Cross-sector dependencies
+- Cross-sector dependencies
 
-Cascading impact pathways
+- Cascading impact pathways
 
-Shared digital and physical infrastructures
+- Shared digital and physical infrastructures
 
-Transnational and cross-jurisdictional effects
+- Transnational and cross-jurisdictional effects
 
 Accordingly, sector-isolated risk reasoning is insufficient.
 
 CAI EU addresses this challenge by defining coordination expectations at
 the governance level, not at the operational or regulatory level.
 
-3. Governance-Based Coordination Model
+## 3. Governance-Based Coordination Model
 
 Within CAI EU, cross-sector coordination is governed by:
 
-Shared governance principles
+- Shared governance principles
 
-Consistent human accountability
+- Consistent human accountability
 
-Risk- and proportionality-based reasoning
+- Risk- and proportionality-based reasoning
 
-Interoperable evidence and traceability
+- Interoperable evidence and traceability
 
 Coordination does not imply centralization and does not override
 sector autonomy or legal obligations.
 
-4. Role of AI in Cross-Sector Risk Awareness
+## 4. Role of AI in Cross-Sector Risk Awareness
 
 AI systems may support cross-sector coordination by:
 
-Identifying potential systemic dependencies
+- Identifying potential systemic dependencies
 
-Highlighting correlated risk indicators across domains
+- Highlighting correlated risk indicators across domains
 
-Supporting situational awareness and analysis
+- Supporting situational awareness and analysis
 
 However:
 
-AI systems do not coordinate actions
+- AI systems do not coordinate actions
 
-AI systems do not authorize cross-sector responses
+- AI systems do not authorize cross-sector responses
 
-AI systems do not replace inter-organizational decision processes
+- AI systems do not replace inter-organizational decision processes
 
 Human judgment and institutional authority remain decisive.
 
-5. Human Authority and Institutional Responsibility
+## 5. Human Authority and Institutional Responsibility
 
 Cross-sector risk coordination requires:
 
-Clearly identified human roles and institutional responsibilities
+- Clearly identified human roles and institutional responsibilities
 
-Explicit decision ownership within each sector
+- Explicit decision ownership within each sector
 
-Transparent communication of assumptions and limitations
+- Transparent communication of assumptions and limitations
 
 No AI-assisted output may substitute for inter-sector governance
 decisions.
 
-6. Evidence Sharing and Traceability Considerations
+## 6. Evidence Sharing and Traceability Considerations
 
 Effective coordination depends on:
 
-Evidence that is interpretable across sectors
+- Evidence that is interpretable across sectors
 
-Preservation of context and limitations
+- Preservation of context and limitations
 
-Traceable linkage between analysis and decisions
+- Traceable linkage between analysis and decisions
 
 Evidence sharing is constrained by legal, ethical, and organizational
 boundaries, which CAI EU does not reinterpret.
 
-7. Interaction with Sector Overlays
+## 7. Interaction with Sector Overlays
 
 Sector overlays remain authoritative within their domains.
 
 This note:
 
-Does not override sector-specific governance constraints
+- Does not override sector-specific governance constraints
 
-Does not impose uniform response models
+- Does not impose uniform response models
 
-Supports awareness and coordination without homogenization
+- Supports awareness and coordination without homogenization
 
 Cross-sector coordination occurs through alignment of governance
 principles, not through operational convergence.
 
-8. Relationship to European Regulatory and Coordination Mechanisms
+## 8. Relationship to European Regulatory and Coordination Mechanisms
 
 This note acknowledges the existence of European coordination mechanisms
 and regulatory frameworks addressing systemic risk.
 
 However:
 
-No mapping to regulatory bodies or processes is provided
+- No mapping to regulatory bodies or processes is provided
 
-No coordination authority is claimed
+- No coordination authority is claimed
 
-No legal interpretation is offered
+- No legal interpretation is offered
 
 The note operates as a conceptual governance reference, not as a policy
 instrument.
 
-9. Non-Scope Clarifications
+## 9. Non-Scope Clarifications
 
 This note does not:
 
-Define incident response coordination procedures
+- Define incident response coordination procedures
 
-Establish information-sharing protocols
+- Establish information-sharing protocols
 
-Mandate cross-sector escalation paths
+- Mandate cross-sector escalation paths
 
-Introduce centralized decision structures
+- Introduce centralized decision structures
 
 Such matters remain outside the scope of CAI EU.
 
-10. Forward Constraint
+## 10. Forward Constraint
 
 Future CAI EU extensions involving systemic or cross-sector risk must:
 
-Reference this coordination note
+- Reference this coordination note
 
-Preserve human authority and accountability
+- Preserve human authority and accountability
 
-Maintain sector neutrality and interoperability
+- Maintain sector neutrality and interoperability
 
-Avoid introducing implicit coordination mandates
+- Avoid introducing implicit coordination mandates
 
 Deviation from these constraints undermines EU baseline coherence.
 
-End of Document
+## End of Document
