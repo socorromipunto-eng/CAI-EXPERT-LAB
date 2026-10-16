@@ -1,56 +1,59 @@
-Cybersecurity Artificial Intelligence Framework – USA Government Traceability Matrix
+# Cybersecurity Artificial Intelligence Framework – USA Government Traceability Matrix
 
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
 
 This document establishes auditable traceability between CAI CORE constructs, the CAI USA baseline, and the Government sector overlay. It does not assert compliance, certification, accreditation, or regulatory approval.
 
-Purpose
+## Purpose
 
 The purpose of this document is to provide explicit, verifiable, and auditable traceability between:
 
-CAI CORE authoritative constructs
+- CAI CORE authoritative constructs
 
-CAI USA baseline artifacts
+- CAI USA baseline artifacts
 
-CAI USA Government sector–specific documents
+## CAI USA Government sector–specific documents
 
 This traceability matrix demonstrates inheritance, refinement, and constraint relationships while preserving CAI CORE semantics, USA baseline governance, interoperability principles, and non-claim posture.
 
 This document exists to support architectural integrity, audit defensibility, and sector validation for government environments.
 
-Scope
+## Scope
 
 This traceability matrix applies exclusively to the CAI USA Government sector.
 
 It covers conceptual governance, lifecycle execution, secure-by-design controls, AI governance and assurance, telemetry and evidence modeling, operational playbooks, and federal priority technical layers.
 
-This document does not introduce new requirements, controls, interpretations, or compliance claims.
+This document does not introduce new requirements, controls, interpretations, or compliance claims.  
 It records relationships only.
 
-Traceability Model
+## Traceability Model
 
 The following relationship types are used:
 
-Inherit
+- Inherit
+
 The Government sector directly adopts the referenced element without modification.
 
-Refine
+## Refine
+
 The Government sector adds contextual specificity while preserving original intent and authority.
 
-Constrain
+## Constrain
+
 The Government sector introduces stricter boundaries due to legal, operational, or public accountability constraints without redefining the underlying concept.
 
-Core → USA → Government Traceability Matrix
+## Core → USA → Government Traceability Matrix
 
 CAI-Core-Definition
 → CAI-USA-Definition
@@ -124,7 +127,7 @@ CAI-Core-Audit-and-Assurance-Principles
 Relationship: Inherit
 Notes: Government adopts CAI auditability, evidence integrity, and traceability principles without modification.
 
-Federal Priority Alignment Traceability
+## Federal Priority Alignment Traceability
 
 CCES – Common CAI Event Schema
 → CAI-USA-CCES
@@ -144,7 +147,7 @@ Threat Modeling Integration (MITRE ATT&CK, STRIDE, DFD)
 Relationship: Refine
 Notes: Government modeling emphasizes public trust, governance continuity, and cross-sector cascade risk.
 
-Non-Claims and Boundary Confirmation
+## Non-Claims and Boundary Confirmation
 
 This traceability matrix does not assert compliance with federal, state, or local government regulations, including but not limited to NIST, CISA, DOJ, DoD, OMB, FedRAMP, FISMA, or CMMC.
 
@@ -152,10 +155,10 @@ It does not certify systems, authorize operational actions, or replace statutory
 
 It records architectural, operational, and evidentiary relationships only.
 
-Status
+Status  
 
 Draft – USA Government traceability matrix complete.
 
 This document is authoritative for validating inheritance, refinement, and constraint relationships for the CAI USA Government sector.
 
-End of Document
+## End of Document

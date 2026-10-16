@@ -1,20 +1,20 @@
-Cybersecurity Artificial Intelligence Framework – USA Food and Agriculture AI Governance and Assurance
+# Cybersecurity Artificial Intelligence Framework – USA Food and Agriculture AI Governance and Assurance
 
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
 
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines Food and Agriculture sector–specific AI governance and assurance constraints under the CAI USA baseline. It does not assert compliance, certification, accreditation, or regulatory approval.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines Food and Agriculture sector–specific AI governance and assurance constraints under the CAI USA baseline. It does not assert compliance, certification, accreditation, or regulatory approval.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define the governance, assurance, and limitation model for the use of Artificial Intelligence within Food and Agriculture environments under the CAI USA framework.
 
@@ -22,13 +22,13 @@ Food and Agriculture systems directly impact food safety, public health, economi
 
 This document establishes how AI is permitted, constrained, monitored, reviewed, and audited in Food and Agriculture contexts while preserving human authority, traceability, and accountability.
 
-Scope
+## Scope
 
 This document applies to all AI-assisted or AI-informed capabilities executed through CAI within Food and Agriculture environments, including anomaly detection, telemetry correlation, behavior analysis, prioritization support, risk scoring, and decision-support workflows.
 
 This document explicitly excludes autonomous operational control, AI-driven food safety decisions, autonomous modification of production or storage parameters, and any claim of regulatory approval or validation.
 
-Food and Agriculture AI Governance Principles
+## Food and Agriculture AI Governance Principles
 
 AI governance in Food and Agriculture under CAI is governed by the following principles.
 
@@ -44,7 +44,7 @@ Automation must be conservative, bounded, and reversible.
 
 Evidence generation is mandatory for all AI-assisted outputs.
 
-Permitted AI Usage
+## Permitted AI Usage
 
 Under CAI USA Food and Agriculture, AI may be used for the following purposes.
 
@@ -60,7 +60,7 @@ Risk classification and triage assistance that does not trigger autonomous respo
 
 AI outputs are advisory signals only and must be treated as such.
 
-Explicitly Prohibited AI Usage
+## Explicitly Prohibited AI Usage
 
 The following uses of AI are explicitly prohibited within Food and Agriculture environments.
 
@@ -76,7 +76,7 @@ AI acting as final authority for containment, eviction, or restoration actions a
 
 These prohibitions are absolute and non-negotiable.
 
-Model Risk Management
+## Model Risk Management
 
 All AI models used within Food and Agriculture environments must undergo explicit risk classification.
 
@@ -86,7 +86,7 @@ Higher-risk models require stricter oversight, narrower deployment scope, enhanc
 
 Model risk classification must be documented and retained.
 
-Training Data Governance
+## Training Data Governance
 
 Training and validation data used for Food and Agriculture AI models must meet the following requirements.
 
@@ -102,7 +102,7 @@ Cross-sector data reuse requires explicit context validation to prevent unsafe i
 
 Unverifiable or opaque datasets are not acceptable.
 
-Drift Detection and Model Change Control
+## Drift Detection and Model Change Control
 
 AI models must be continuously monitored for concept drift, data distribution shift, and behavioral deviation.
 
@@ -110,7 +110,7 @@ Model updates must follow controlled change management procedures, including tes
 
 Uncontrolled or silent model updates are prohibited.
 
-Explainability and Transparency Requirements
+## Explainability and Transparency Requirements
 
 AI outputs must be explainable to security analysts, operational leadership, auditors, and investigators.
 
@@ -118,7 +118,7 @@ Minimum explainability requirements include feature relevance summaries, confide
 
 Explainability artifacts are treated as evidentiary records.
 
-Accountability and Auditability
+## Accountability and Auditability
 
 Accountability for AI-assisted decisions remains with human operators and organizational leadership.
 
@@ -126,25 +126,25 @@ AI systems must produce immutable records of inputs, outputs, model versions, ti
 
 AI must never obscure responsibility attribution or investigative reconstruction.
 
-Relationship to CAI CORE
+## Relationship to CAI CORE
 
 This document inherits all AI governance and integrity semantics defined in CAI CORE.
 
 CAI CORE remains authoritative for AI integrity, contamination prevention, evolution governance, and lifecycle semantics.
 
-Relationship to CAI ENGINE
+## Relationship to CAI ENGINE
 
 The CAI Engine enforces Food and Agriculture AI governance through safety gating, policy evaluation, evidence capture, and controlled state transitions.
 
 The Engine must not bypass human authority or sector constraints.
 
-Relationship to CAI USA Baseline
+## Relationship to CAI USA Baseline
 
 This document extends CAI-USA-AI-Governance-and-Assurance for Food and Agriculture contexts.
 
 It operates consistently with CAI-USA-Definition, CAI-USA-CCES, CAI-USA-Telemetry-and-Data-Model, CAI-USA-Secure-by-Design-Controls, and CAI-USA-Threat-Model-Integration.
 
-Explicit Non-Claims
+## Explicit Non-Claims
 
 This document does not assert compliance with USDA, FDA, DHS, CISA, NIST, or any other authority.
 
@@ -152,10 +152,10 @@ It does not certify AI systems, authorize operational deployment, or replace foo
 
 It defines cybersecurity AI governance constraints only.
 
-Status
+Status  
 
 Draft – USA Food and Agriculture AI governance and assurance model defined.
 
 This document is authoritative for AI usage within the Food and Agriculture sector under CAI USA.
 
-End of Document
+## End of Document

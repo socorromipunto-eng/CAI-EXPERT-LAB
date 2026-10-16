@@ -1,46 +1,46 @@
-Cybersecurity Artificial Intelligence Framework – USA Food and Agriculture Secure-by-Design Controls
+# Cybersecurity Artificial Intelligence Framework – USA Food and Agriculture Secure-by-Design Controls
 
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
 
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines Food and Agriculture sector–specific secure-by-design engineering controls under the CAI USA baseline. It does not assert compliance, certification, accreditation, or regulatory approval.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines Food and Agriculture sector–specific secure-by-design engineering controls under the CAI USA baseline. It does not assert compliance, certification, accreditation, or regulatory approval.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define the secure-by-design engineering principles and controls required to apply the Cybersecurity Artificial Intelligence Framework (CAI) within Food and Agriculture environments.
 
 These controls are designed to reduce systemic cyber risk, preserve food safety and supply continuity, protect integrity across production and distribution systems, and ensure that cybersecurity mechanisms do not introduce unsafe operational states or unintended disruptions.
 
-Scope
+## Scope
 
 This document applies to IT, OT, ICS, and cyber-physical systems supporting Food and Agriculture operations, including production, processing, storage, cold-chain, logistics, and supporting digital platforms.
 
 It refines the CAI USA secure-by-design baseline without redefining CAI CORE semantics.
 
-Secure-by-Design Principles (Food and Agriculture Context)
+## Secure-by-Design Principles (Food and Agriculture Context)
 
 Security engineering in Food and Agriculture environments is governed by the following principles:
 
-Operational continuity and food safety dominate over aggressive security enforcement.
+- Operational continuity and food safety dominate over aggressive security enforcement.
 
-Design decisions must prioritize deterministic behavior, reversibility, and predictability.
+- Design decisions must prioritize deterministic behavior, reversibility, and predictability.
 
-Security controls must respect heterogeneous environments, legacy systems, and seasonal operations.
+- Security controls must respect heterogeneous environments, legacy systems, and seasonal operations.
 
-Human authority is mandatory for changes affecting production, processing, or distribution.
+- Human authority is mandatory for changes affecting production, processing, or distribution.
 
-Evidence generation is a design requirement, not an afterthought.
+- Evidence generation is a design requirement, not an afterthought.
 
-Architecture and Segmentation Controls
+- Architecture and Segmentation Controls
 
 Production, processing, storage, and logistics environments must be logically and, where feasible, physically segmented.
 
@@ -52,7 +52,7 @@ Third-party connectivity must be explicitly authorized, time-bound, and monitore
 
 Lateral movement between zones must be constrained and observable.
 
-Configuration and Change Governance
+## Configuration and Change Governance
 
 Baseline configurations for production and processing systems must be defined, documented, and protected.
 
@@ -62,7 +62,7 @@ Unauthorized or untracked configuration drift is considered a security event.
 
 Emergency changes must be logged, reviewed, and reconciled post-incident.
 
-Identity, Access, and Privilege Controls
+## Identity, Access, and Privilege Controls
 
 Access to production and processing systems must follow least-privilege principles.
 
@@ -72,7 +72,7 @@ Privileged access must be time-bound, monitored, and logged.
 
 Seasonal or temporary workforce access must be explicitly scoped, reviewed, and revoked when no longer required.
 
-Integrity and Data Protection Controls
+## Integrity and Data Protection Controls
 
 Integrity of production parameters, quality data, sensor readings, and operational telemetry must be protected.
 
@@ -82,7 +82,7 @@ Data flows between OT, IT, and analytics platforms must preserve provenance and 
 
 Loss of integrity is treated as a safety-relevant event.
 
-Supply-Chain and Vendor Controls
+## Supply-Chain and Vendor Controls
 
 Hardware, firmware, software, and service providers must be inventoried and tracked.
 
@@ -92,7 +92,7 @@ Updates from vendors must be validated prior to deployment.
 
 Unverified components or opaque update mechanisms are not acceptable in production environments.
 
-AI and Automation Constraints
+## AI and Automation Constraints
 
 AI-assisted controls must not autonomously modify production, processing, or distribution parameters.
 
@@ -102,7 +102,7 @@ Automation must be bounded by explicit policies and safety constraints.
 
 Self-modifying or self-learning behavior in production environments is prohibited.
 
-Monitoring and Evidence by Design
+## Monitoring and Evidence by Design
 
 Security monitoring must be designed to minimize operational disruption.
 
@@ -112,25 +112,25 @@ Evidence artifacts must be protected against tampering and loss.
 
 Monitoring gaps must be explicitly acknowledged and managed.
 
-Relationship to CAI CORE
+## Relationship to CAI CORE
 
 These controls inherit secure-by-design principles defined in CAI CORE and refine them for Food and Agriculture use.
 
 CAI CORE remains authoritative for lifecycle semantics, integrity governance, and evolution control.
 
-Relationship to CAI ENGINE
+## Relationship to CAI ENGINE
 
 The CAI Engine enforces secure-by-design controls through policy evaluation, execution gating, evidence capture, and controlled orchestration.
 
 The Engine does not override operational authority or safety constraints.
 
-Relationship to CAI USA Baseline
+## Relationship to CAI USA Baseline
 
 This document extends CAI-USA-Secure-by-Design-Controls with Food and Agriculture–specific constraints.
 
 It remains consistent with CAI-USA-Definition, CAI-USA-CCES, CAI-USA-Telemetry-and-Data-Model, CAI-USA-AI-Governance-and-Assurance, and CAI-USA-Threat-Model-Integration.
 
-Explicit Non-Claims
+## Explicit Non-Claims
 
 This document does not assert compliance with USDA, FDA, DHS, CISA, NIST, or any other authority.
 
@@ -138,10 +138,10 @@ It does not certify systems, approve designs, or replace regulatory, inspection,
 
 It defines cybersecurity engineering controls only.
 
-Status
+Status  
 
 Draft – USA Food and Agriculture secure-by-design controls established.
 
 This document is authoritative for secure engineering decisions within the Food and Agriculture sector under CAI USA.
 
-End of Document
+## End of Document

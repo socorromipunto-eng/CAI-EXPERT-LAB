@@ -1,32 +1,32 @@
-Cybersecurity Artificial Intelligence Framework – USA Food and Agriculture Threat and Assumption Model
+# Cybersecurity Artificial Intelligence Framework – USA Food and Agriculture Threat and Assumption Model
 
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
 
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines the authoritative threat boundaries and operational assumptions for the Food and Agriculture sector under the CAI USA framework. It does not assert compliance, certification, accreditation, or regulatory approval.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines the authoritative threat boundaries and operational assumptions for the Food and Agriculture sector under the CAI USA framework. It does not assert compliance, certification, accreditation, or regulatory approval.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define the authoritative threat context, assumptions, and operational boundaries governing the application of the Cybersecurity Artificial Intelligence Framework (CAI) within the Food and Agriculture sector.
 
 This model establishes how threats are interpreted, prioritized, and handled under CAI, ensuring that cybersecurity actions preserve food safety, operational continuity, public health, economic stability, and systemic resilience across food supply chains.
 
-Scope
+## Scope
 
 This document applies exclusively to the Food and Agriculture sector as defined in CAI-USA-Food-and-Agriculture-Sector-Definition.
 
 It governs threat interpretation and operational assumptions across all CAI lifecycle stages without redefining CAI CORE semantics or CAI USA baseline requirements.
 
-Foundational Assumptions
+## Foundational Assumptions
 
 Food and Agriculture environments prioritize continuity of food production, processing, storage, and distribution as essential public-interest functions.
 
@@ -40,7 +40,7 @@ Incident response actions must preserve evidence, accountability, and operationa
 
 Supply-chain integrity is a critical dependency and must be assumed vulnerable.
 
-Threat Modeling Philosophy
+## Threat Modeling Philosophy
 
 Threat modeling in the Food and Agriculture sector is consequence-driven rather than frequency-driven.
 
@@ -48,13 +48,13 @@ Threat evaluation prioritizes potential impact on food safety, availability, pub
 
 Assumed breach is handled conservatively, emphasizing containment, monitoring, continuity preservation, and evidence generation rather than aggressive or disruptive actions.
 
-Threat Categories
+## Threat Categories
 
 Threats considered within scope include disruption of food availability or distribution, manipulation of production or quality-control data, compromise of processing, storage, or cold-chain controls, ransomware targeting operational continuity, degradation of situational awareness, insider misuse, and exploitation of trusted third-party or supply-chain access.
 
 Threats are evaluated based on cascading effects across logistics, healthcare, emergency services, and economic systems.
 
-Threat Boundaries
+## Threat Boundaries
 
 CAI does not assume authority over food safety certification, inspection processes, or regulatory enforcement mechanisms.
 
@@ -64,7 +64,7 @@ Interactions with physical production or processing systems are mediated through
 
 These boundaries are non-negotiable.
 
-Relationship to CAI Lifecycle Stages
+## Relationship to CAI Lifecycle Stages
 
 MODEL identifies assets, dependencies, data flows, production stages, and supply-chain trust relationships.
 
@@ -80,7 +80,7 @@ EVICT is gated by human approval and continuity readiness.
 
 RESTORE prioritizes validated baselines, quality assurance verification, and predictable recovery paths.
 
-Adversary Assumptions
+## Adversary Assumptions
 
 Adversaries may target availability, trust, or systemic disruption rather than direct data theft.
 
@@ -90,7 +90,7 @@ Insider threat is realistic due to distributed operations and seasonal labor.
 
 Attribution is not required for defensive action, but evidence preservation is mandatory.
 
-Non-Assumptions
+## Non-Assumptions
 
 CAI does not assume perfect visibility.
 
@@ -100,14 +100,14 @@ CAI does not assume automation is superior to human judgment.
 
 CAI does not assume regulatory authority.
 
-Relationship to Other CAI Documents
+## Relationship to Other CAI Documents
 
 This document must be read in conjunction with CAI-USA-Food-and-Agriculture-Sector-Definition, CAI-USA-Threat-Model-Integration, CAI-USA-ICS-OT-Safety-Gating, CAI-USA-AI-Governance-and-Assurance, CAI-Core-Operational-State-Model, and CAI Engine execution and safety governance documents.
 
-Status
+Status  
 
 Draft – USA Food and Agriculture threat and assumption model established.
 
 This document defines the authoritative threat boundaries for Food and Agriculture sector operations under CAI USA.
 
-End of Document
+## End of Document

@@ -1,16 +1,16 @@
-Cybersecurity Artificial Intelligence Framework – USA Aviation AI Governance and Assurance
-Version 0.1 (Draft)
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+# Cybersecurity Artificial Intelligence Framework – USA Aviation AI Governance and Assurance
+Version 0.1 (Draft)  
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines Aviation-specific AI governance and assurance constraints under the CAI USA baseline and does not assert compliance, certification, accreditation, or regulatory approval.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines Aviation-specific AI governance and assurance constraints under the CAI USA baseline and does not assert compliance, certification, accreditation, or regulatory approval.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define the Aviation sector–specific governance, assurance, and limitation model for the use of Artificial Intelligence within the CAI USA framework.
 
@@ -18,13 +18,13 @@ Aviation environments are safety-critical, highly regulated, and subject to stri
 
 This document establishes how AI is governed, constrained, reviewed, and audited in Aviation contexts under CAI USA, ensuring that AI enhances cybersecurity posture without introducing unacceptable operational, safety, or accountability risks.
 
-Scope
+## Scope
 
 This document applies to all AI-assisted or AI-informed capabilities executed through CAI within Aviation sector environments, including but not limited to event correlation, anomaly identification, behavioral analysis, risk scoring, prioritization support, and decision support for containment, isolation, and recovery planning.
 
 This document explicitly excludes autonomous safety-critical decision making, replacement of certified human operational authority, AI-driven control of flight systems or safety-certified components, and any claim of regulatory approval, validation, or certification of AI systems.
 
-Aviation AI Governance Principles
+## Aviation AI Governance Principles
 
 AI governance in Aviation under CAI is governed by the following principles.
 
@@ -40,7 +40,7 @@ Evidence and traceability. Every AI-supported output must generate evidence suit
 
 Conservative automation. Automation is permitted only where outcomes are bounded, reversible, and demonstrably safe within the aviation operational context.
 
-Permitted AI Usage in Aviation Contexts
+## Permitted AI Usage in Aviation Contexts
 
 Under CAI USA Aviation, AI is permitted only in the following roles.
 
@@ -56,7 +56,7 @@ Risk classification and triage assistance that does not directly trigger enforce
 
 AI outputs must be treated as advisory signals, not authoritative commands.
 
-Explicitly Prohibited AI Usage
+## Explicitly Prohibited AI Usage
 
 The following uses of AI are explicitly prohibited under CAI USA Aviation.
 
@@ -72,7 +72,7 @@ AI acting as final decision authority in incident response, access control, or o
 
 These prohibitions are absolute and non-negotiable.
 
-Model Risk Management (Aviation Context)
+## Model Risk Management (Aviation Context)
 
 All AI models used under CAI Aviation must be subject to explicit risk classification and documented governance.
 
@@ -80,7 +80,7 @@ Model risk classification is determined by potential safety impact, operational 
 
 High-risk model classes require stricter human oversight, narrower deployment scope, higher evidence requirements, and explicit authorization boundaries.
 
-Training Data Governance
+## Training Data Governance
 
 Training and validation data used for Aviation AI models must adhere to the following constraints.
 
@@ -96,7 +96,7 @@ Cross-sector data reuse must undergo context mismatch review to prevent invalid 
 
 Unverifiable or opaque datasets are not acceptable for Aviation AI usage.
 
-Drift Detection and Model Change Control
+## Drift Detection and Model Change Control
 
 AI models deployed in Aviation contexts must be monitored for concept drift, data distribution shift, behavioral deviation, and performance degradation against defined baselines.
 
@@ -104,7 +104,7 @@ Model updates must follow controlled change management processes, including pre-
 
 Uncontrolled, silent, or automatic model updates in production aviation environments are prohibited.
 
-Explainability and Transparency Requirements
+## Explainability and Transparency Requirements
 
 All AI-assisted outputs must be explainable at a level suitable for security analysts, operational leadership, incident investigators, and external auditors.
 
@@ -112,31 +112,31 @@ Minimum explainability requirements include input feature relevance summaries, e
 
 Explainability artifacts must be retained with the same rigor as other operational evidence.
 
-Accountability and Auditability
+## Accountability and Auditability
 
 Accountability for AI-assisted decisions remains with human operators and organizational leadership. AI systems must support accountability by producing immutable logs of inputs and outputs, time-stamped decision support records, model version identifiers, and traceability linking AI output to human action and final outcome.
 
 AI systems must never obscure responsibility attribution or create ambiguity in investigative reconstruction.
 
-Relationship to CAI CORE
+## Relationship to CAI CORE
 
 This document inherits all AI governance semantics defined in CAI CORE. It refines and constrains them for Aviation use without redefining core concepts.
 
 CAI-Core-Definition, CAI-Core-Architecture, CAI-Core-Operations, CAI-Core-Operational-State-Model, and CAI-Core-Standards-Evolution-and-Governance remain authoritative.
 
-Relationship to CAI ENGINE
+## Relationship to CAI ENGINE
 
 The CAI Engine enforces Aviation AI governance constraints through safety gating, policy evaluation, evidence capture, and state transition control.
 
 The Engine may execute AI-informed workflows but must not bypass human authority, aviation safety constraints, or change control requirements.
 
-Relationship to CAI USA Baseline
+## Relationship to CAI USA Baseline
 
 This document extends CAI-USA-AI-Governance-and-Assurance with Aviation-specific constraints.
 
 It remains consistent with CAI-USA-Definition, CAI-USA-CCES, CAI-USA-Telemetry-and-Data-Model, CAI-USA-Secure-by-Design-Controls, CAI-USA-ICS-OT-Safety-Gating, CAI-USA-Threat-Model-Integration, and CAI-USA-Traceability-Matrix.
 
-Explicit Non-Claims
+## Explicit Non-Claims
 
 This document does not assert compliance with FAA, TSA, DHS, DoD, CISA, NIST, or any other authority.
 
@@ -144,9 +144,9 @@ It does not certify AI systems, approve operational deployment, authorize operat
 
 It defines cybersecurity AI governance constraints only.
 
-Status
+Status  
 
-Draft – Aviation AI governance and assurance model defined.
+Draft – Aviation AI governance and assurance model defined.  
 This document is authoritative for all AI usage within the CAI USA Aviation sector.
 
-End of Document
+## End of Document

@@ -1,20 +1,20 @@
-Cybersecurity Artificial Intelligence Framework – USA Food and Agriculture Sector Definition
+# Cybersecurity Artificial Intelligence Framework – USA Food and Agriculture Sector Definition
 
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
 
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines the Food and Agriculture sector profile under the CAI USA baseline and does not assert compliance, certification, accreditation, or regulatory approval.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines the Food and Agriculture sector profile under the CAI USA baseline and does not assert compliance, certification, accreditation, or regulatory approval.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define the Food and Agriculture sector as a formal, independent sector within the CAI USA framework.
 
@@ -22,7 +22,7 @@ The Food and Agriculture sector is critical national infrastructure responsible 
 
 This document establishes the authoritative scope, assumptions, constraints, and operational posture required to apply the Cybersecurity Artificial Intelligence Framework coherently within Food and Agriculture environments while preserving safety, continuity, accountability, and regulatory neutrality.
 
-Sector Scope
+## Sector Scope
 
 The Food and Agriculture sector under CAI USA encompasses systems, environments, and operational domains involved in agricultural production, food processing, packaging, storage, logistics, distribution, and supporting services.
 
@@ -30,7 +30,7 @@ This includes farms and agricultural operations, food processing plants, cold-ch
 
 This sector definition intentionally avoids defining regulatory compliance, certification, inspection, or authorization processes, which remain external to CAI.
 
-Sector Assumptions
+## Sector Assumptions
 
 Food and Agriculture environments operate under strong availability, integrity, and continuity constraints, with safety and public trust as primary considerations.
 
@@ -46,7 +46,7 @@ Cybersecurity actions must not introduce unsafe conditions, uncontrolled product
 
 Evidence preservation and traceability are mandatory due to legal, economic, public health, and accountability requirements.
 
-Operational Characteristics
+## Operational Characteristics
 
 Food and Agriculture systems typically exhibit long asset lifecycles, fragmented ownership models, and diverse technology maturity levels across operations.
 
@@ -60,7 +60,7 @@ Incident response must balance containment and recovery with preservation of pro
 
 Supply-chain trust relationships involving equipment vendors, agricultural inputs, processing technology, logistics providers, and digital platforms are complex and long-lived.
 
-Threat and Risk Context
+## Threat and Risk Context
 
 Threats relevant to the Food and Agriculture sector include disruption of food availability, manipulation of production or processing data, integrity compromise of quality or safety monitoring systems, ransomware targeting operational continuity, supply-chain compromise, insider misuse, and coordinated attacks intended to destabilize markets or public confidence.
 
@@ -68,7 +68,7 @@ Threat modeling in this sector prioritizes consequence, systemic impact, and cas
 
 Assumed breach is handled conservatively, emphasizing containment, monitoring, safety preservation, continuity protection, and evidence generation.
 
-Relationship to CAI CORE
+## Relationship to CAI CORE
 
 This sector definition inherits all lifecycle stages, principles, execution semantics, integrity governance, contamination prevention rules, and evolution controls defined in CAI CORE.
 
@@ -78,7 +78,7 @@ CAI CORE taxonomy, operational state model, standards governance, and integrity 
 
 This document does not redefine CAI concepts.
 
-Relationship to CAI ENGINE
+## Relationship to CAI ENGINE
 
 The Food and Agriculture sector is executed through the CAI Engine under strict governance and operational constraints.
 
@@ -86,7 +86,7 @@ Automation, orchestration, and response actions are bounded by sector-specific s
 
 The CAI Engine enforces execution constraints but does not override operational authority over production, processing, or distribution activities.
 
-Relationship to CAI USA Baseline
+## Relationship to CAI USA Baseline
 
 This sector definition extends the CAI USA baseline without redefining it.
 
@@ -94,7 +94,7 @@ It operates consistently with CAI-USA-Definition, CAI-USA-CCES, CAI-USA-Telemetr
 
 Sector-specific documents refine assumptions and constraints while preserving baseline semantics.
 
-Explicit Non-Claims
+## Explicit Non-Claims
 
 This document does not assert compliance with USDA, FDA, DHS, CISA, NIST, or any other authority.
 
@@ -102,10 +102,10 @@ It does not certify systems, authorize operational changes, or replace regulator
 
 It defines a cybersecurity operational framework only.
 
-Status
+Status  
 
 Draft – USA Food and Agriculture sector definition established.
 
 This document serves as the authoritative foundation for all subsequent Food and Agriculture sector artifacts under CAI USA.
 
-End of Document
+## End of Document

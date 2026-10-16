@@ -1,32 +1,32 @@
-Cybersecurity Artificial Intelligence Framework – USA Critical Manufacturing Threat and Assumption Model
+# Cybersecurity Artificial Intelligence Framework – USA Critical Manufacturing Threat and Assumption Model
 
-Version 0.1 (Draft)
+Version 0.1 (Draft)  
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
 
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines the threat boundaries and operational assumptions for the Critical Manufacturing sector under the CAI USA framework. It does not assert compliance, certification, accreditation, or regulatory approval.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines the threat boundaries and operational assumptions for the Critical Manufacturing sector under the CAI USA framework. It does not assert compliance, certification, accreditation, or regulatory approval.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define the authoritative threat context and operational assumptions governing the application of the Cybersecurity Artificial Intelligence Framework (CAI) within Critical Manufacturing environments.
 
 This model establishes the boundaries within which CAI operates, the types of threats considered relevant, and the assumptions required to preserve safety, production continuity, supply-chain integrity, contractual accountability, and national resilience.
 
-Scope
+## Scope
 
 This document applies exclusively to the Critical Manufacturing sector as defined in CAI-USA-Critical-Manufacturing-Sector-Definition.
 
 It governs how threats are interpreted, prioritized, and operationalized across the CAI lifecycle stages without redefining CAI CORE semantics or USA baseline requirements.
 
-Foundational Assumptions
+## Foundational Assumptions
 
 Critical Manufacturing environments prioritize safety, availability, and integrity over speed of change.
 
@@ -40,7 +40,7 @@ Cybersecurity actions must not introduce unsafe operating conditions, production
 
 Evidence generation and traceability are mandatory due to contractual, legal, and national accountability requirements.
 
-Threat Modeling Philosophy
+## Threat Modeling Philosophy
 
 Threat modeling in the Critical Manufacturing sector is consequence-driven rather than frequency-driven.
 
@@ -50,13 +50,13 @@ Assumed breach is handled conservatively, emphasizing containment, observation, 
 
 Threat modeling explicitly considers cascading effects across dependent sectors, including defense, energy, transportation, healthcare, and critical services.
 
-Threat Categories
+## Threat Categories
 
 Threats considered within scope include disruption of manufacturing availability, manipulation of production parameters, compromise of industrial controllers, degradation of quality assurance systems, unauthorized modification of engineering configurations, supply-chain infiltration, insider threats, and long-dwell advanced persistent intrusions targeting manufacturing environments.
 
 Threats are evaluated based on potential safety impact, production loss magnitude, downstream supply-chain disruption, and recovery complexity rather than solely on technical sophistication.
 
-Threat Boundaries
+## Threat Boundaries
 
 CAI does not assume direct control over safety-certified industrial control logic without human authorization.
 
@@ -66,7 +66,7 @@ Any interaction with safety-critical control domains is mediated through non-byp
 
 These boundaries are non-negotiable.
 
-Relationship to CAI Lifecycle Stages
+## Relationship to CAI Lifecycle Stages
 
 MODEL focuses on identifying production assets, machinery dependencies, control flows, data paths, and supply-chain relationships.
 
@@ -82,7 +82,7 @@ EVICT is gated by safety approval, engineering validation, and operational readi
 
 RESTORE prioritizes validated production baselines, staged recovery, and post-restoration verification.
 
-Assumptions About Adversaries
+## Assumptions About Adversaries
 
 Adversaries targeting Critical Manufacturing may be well-resourced, patient, and capable of multi-stage operations.
 
@@ -92,7 +92,7 @@ Adversaries may target integrity, availability, and trust relationships rather t
 
 Attribution is not required for defensive action, but evidence preservation is mandatory.
 
-Non-Assumptions
+## Non-Assumptions
 
 CAI does not assume perfect visibility across manufacturing environments.
 
@@ -102,14 +102,14 @@ CAI does not assume automation is superior to human engineering judgment.
 
 CAI does not assume regulatory authority or certification power.
 
-Relationship to Other CAI Documents
+## Relationship to Other CAI Documents
 
 This document must be read together with CAI-USA-Critical-Manufacturing-Sector-Definition, CAI-USA-Threat-Model-Integration, CAI-USA-ICS-OT-Safety-Gating, CAI-USA-AI-Governance-and-Assurance, CAI-Core-Operational-State-Model, and CAI Engine safety and orchestration documents.
 
-Status
+Status  
 
 Draft – USA Critical Manufacturing threat and assumption model defined.
 
 This document establishes the authoritative threat boundaries for Critical Manufacturing sector operations under CAI USA.
 
-End of Document
+## End of Document
