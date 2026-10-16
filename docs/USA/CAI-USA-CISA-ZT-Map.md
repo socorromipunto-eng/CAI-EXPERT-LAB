@@ -1,251 +1,253 @@
-CAI-USA-CISA-ZT-Map
-Cybersecurity Artificial Intelligence Framework – CISA Zero Trust Alignment Map (USA)
+# CAI-USA-CISA-ZT-Map
+
+Cybersecurity Artificial Intelligence Framework – CISA Zero Trust Alignment Map (USA)  
 Version 0.1 (Draft)
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document provides an operational alignment map between CAI and CISA Zero Trust guidance applicable to United States environments.
-It does not assert compliance, certification, accreditation, or regulatory approval.
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document provides an operational alignment map between CAI and CISA Zero Trust guidance applicable to United States environments.  
+It does not assert compliance, certification, accreditation, or regulatory approval.  
 
-Purpose
+## Purpose
 
 The purpose of this document is to define the operational alignment between the Cybersecurity Artificial Intelligence Framework (CAI) and the CISA Zero Trust Maturity Model (ZTMM), including Secure-by-Design and Secure-by-Default principles, as applied in United States contexts.
 
 This document establishes how CAI operational stages support Zero Trust objectives across identity, device, network, application, data, visibility, automation, and governance domains, without redefining or replacing CISA guidance.
 
-Scope and Non-Scope
+## Scope and Non-Scope
 
-2.1 In Scope
+### 2.1 In Scope
 
 This document provides:
 
-Operational alignment between CAI and the CISA Zero Trust Maturity Model
-Coverage of identity, device, network, application, data, and infrastructure layers
-Consideration of IT, OT/ICS, cloud, firmware, middleware, and AI-enabled systems
-Integration of Secure-by-Design and Secure-by-Default engineering principles
+- Operational alignment between CAI and the CISA Zero Trust Maturity Model
+- Coverage of identity, device, network, application, data, and infrastructure layers
+- Consideration of IT, OT/ICS, cloud, firmware, middleware, and AI-enabled systems
+- Integration of Secure-by-Design and Secure-by-Default engineering principles
 
-2.2 Explicitly Out of Scope
+### 2.2 Explicitly Out of Scope
 
 This document does not:
 
-Claim Zero Trust maturity levels or scores
-Replace CISA Zero Trust assessments or reporting
-Define procurement, certification, or authorization requirements
-Override organizational risk acceptance or mission constraints
+- Claim Zero Trust maturity levels or scores
+- Replace CISA Zero Trust assessments or reporting
+- Define procurement, certification, or authorization requirements
+- Override organizational risk acceptance or mission constraints
 
-Reference Guidance
+## Reference Guidance
 
 This document is informed by the following CISA guidance:
 
-CISA Zero Trust Maturity Model (current published version)
-CISA Cross-Sector Cybersecurity Performance Goals (CPGs)
-CISA Secure-by-Design and Secure-by-Default principles
-CISA guidance on identity, cloud security, and resilience
+- CISA Zero Trust Maturity Model (current published version)
+- CISA Cross-Sector Cybersecurity Performance Goals (CPGs)
+- CISA Secure-by-Design and Secure-by-Default principles
+- CISA guidance on identity, cloud security, and resilience
 
 These references inform alignment but do not impose requirements within CAI.
 
-Mapping Principles
+## Mapping Principles
 
-CAI operational stages are authoritative and defined in CAI-Core-Taxonomy.
-CISA Zero Trust pillars are mapped conceptually and operationally, not prescriptively.
-Mappings emphasize continuous verification, least privilege, and assumed breach.
-Operational behavior and telemetry are prioritized over static controls.
+CAI operational stages are authoritative and defined in CAI-Core-Taxonomy.  
+CISA Zero Trust pillars are mapped conceptually and operationally, not prescriptively.  
+Mappings emphasize continuous verification, least privilege, and assumed breach.  
+Operational behavior and telemetry are prioritized over static controls.  
 Automation is constrained by safety, explainability, and human oversight.
 
-CISA Zero Trust Pillars and CAI Alignment
+## CISA Zero Trust Pillars and CAI Alignment
 
-5.1 Identity Pillar
+### 5.1 Identity Pillar
 
 CAI supports Zero Trust identity principles through:
 
-MODEL
-Discovery and classification of identities, roles, credentials, trust relationships, and service accounts.
+- MODEL
+- Discovery and classification of identities, roles, credentials, trust relationships, and service accounts.
 
-HARDEN
+HARDEN  
 Enforcement of strong authentication, credential hygiene, least privilege, and identity lifecycle controls.
 
-DETECT
+DETECT  
 Continuous monitoring of authentication behavior, privilege escalation, and anomalous identity usage.
 
-ISOLATE
+ISOLATE  
 Restriction or suspension of identity access based on risk and confidence thresholds.
 
-EVICT
+EVICT  
 Revocation of credentials, sessions, tokens, and trust relationships associated with confirmed compromise.
 
-RESTORE
+RESTORE  
 Re-establishment of trusted identities and validation of credential integrity.
 
-5.2 Device Pillar
+### 5.2 Device Pillar
 
 CAI operationalizes device trust through:
 
-MODEL
-Inventory and classification of endpoints, servers, OT devices, embedded systems, and firmware.
+- MODEL
+- Inventory and classification of endpoints, servers, OT devices, embedded systems, and firmware.
 
-HARDEN
+HARDEN  
 Baseline enforcement for configuration, firmware integrity, patching, and secure boot mechanisms.
 
-DETECT
+DETECT  
 Telemetry-driven detection of anomalous device behavior and integrity violations.
 
-ISOLATE
+ISOLATE  
 Quarantine or segmentation of devices exhibiting high-risk signals.
 
-EVICT
+EVICT  
 Removal of malicious processes, unauthorized firmware, or persistent artifacts.
 
-RESTORE
+RESTORE  
 Restoration of devices to validated trusted states using approved images and configurations.
 
-5.3 Network and Environment Pillar
+### 5.3 Network and Environment Pillar
 
 CAI aligns with Zero Trust networking through:
 
-MODEL
-Mapping of network topology, trust zones, dependencies, and data flows.
+- MODEL
+- Mapping of network topology, trust zones, dependencies, and data flows.
 
-HARDEN
+HARDEN  
 Segmentation, policy enforcement, and reduction of implicit trust paths.
 
-DETECT
+DETECT  
 Continuous monitoring of network traffic, east-west movement, and protocol anomalies.
 
-ISOLATE
+ISOLATE  
 Dynamic containment to limit blast radius while preserving operational safety.
 
-DECEIVE
+DECEIVE  
 Deployment of decoy services and network artifacts to validate adversary presence.
 
-EVICT
+EVICT  
 Termination of unauthorized connections and network-based persistence.
 
-RESTORE
+RESTORE  
 Validation and re-establishment of trusted network paths.
 
-5.4 Application and Workload Pillar
+### 5.4 Application and Workload Pillar
 
 CAI supports Zero Trust application principles through:
 
-MODEL
-Inventory of applications, services, APIs, middleware, and dependencies.
+- MODEL
+- Inventory of applications, services, APIs, middleware, and dependencies.
 
-HARDEN
+HARDEN  
 Secure configuration, privilege separation, and runtime protection.
 
-DETECT
+DETECT  
 Monitoring of application behavior, execution anomalies, and misuse patterns.
 
-ISOLATE
+ISOLATE  
 Containment of compromised workloads or services.
 
-EVICT
+EVICT  
 Removal of malicious code, unauthorized changes, or exploited components.
 
-RESTORE
+RESTORE  
 Deployment of validated application baselines and integrity verification.
 
-5.5 Data Pillar
+### 5.5 Data Pillar
 
 CAI addresses Zero Trust data protection through:
 
-MODEL
-Classification of data assets, sensitivity, ownership, and flow.
+- MODEL
+- Classification of data assets, sensitivity, ownership, and flow.
 
-HARDEN
+HARDEN  
 Access enforcement, encryption, and policy-driven data handling.
 
-DETECT
+DETECT  
 Monitoring of data access, exfiltration attempts, and misuse.
 
-ISOLATE
+ISOLATE  
 Restriction of data access paths during incidents.
 
-EVICT
+EVICT  
 Removal of unauthorized access mechanisms.
 
-RESTORE
+RESTORE  
 Revalidation of data integrity and access policies.
 
-5.6 Visibility and Analytics Pillar
+### 5.6 Visibility and Analytics Pillar
 
 CAI directly supports Zero Trust visibility requirements through:
 
-Centralized telemetry ingestion across all CAI stages
-Correlation of identity, device, network, application, and data signals
-AI-assisted prioritization and anomaly detection
-Metrics supporting continuous trust evaluation
+- Centralized telemetry ingestion across all CAI stages
+- Correlation of identity, device, network, application, and data signals
+- AI-assisted prioritization and anomaly detection
+- Metrics supporting continuous trust evaluation
 
-5.7 Automation and Orchestration Pillar
+### 5.7 Automation and Orchestration Pillar
 
 CAI enables controlled automation through:
 
-Policy-driven orchestration across CAI stages
-Playbook-based response with safety constraints
-Human-in-the-loop enforcement for high-impact actions
-Post-incident feedback loops to improve models and controls
+- Policy-driven orchestration across CAI stages
+- Playbook-based response with safety constraints
+- Human-in-the-loop enforcement for high-impact actions
+- Post-incident feedback loops to improve models and controls
 
-Secure-by-Design and Secure-by-Default Alignment
+## Secure-by-Design and Secure-by-Default Alignment
 
 CAI embeds Secure-by-Design principles by:
 
-Treating security as an architectural property, not an add-on
-Reducing attack surface during MODEL and HARDEN
-Designing for observability and evidence generation
-Ensuring secure defaults in configurations and workflows
+- Treating security as an architectural property, not an add-on
+- Reducing attack surface during MODEL and HARDEN
+- Designing for observability and evidence generation
+- Ensuring secure defaults in configurations and workflows
 
 Secure-by-Default is reinforced through:
 
-Predefined baselines
-Least-privilege access
-Default telemetry enablement
-Safe failure modes and recovery paths
+- Predefined baselines
+- Least-privilege access
+- Default telemetry enablement
+- Safe failure modes and recovery paths
 
-Firmware, Middleware, and OT Considerations
+## Firmware, Middleware, and OT Considerations
 
 CAI extends Zero Trust concepts to non-traditional environments:
 
-Firmware and embedded systems are treated as trust anchors
-OT and ICS environments incorporate safety-aware isolation and eviction
-Middleware and control-plane components are continuously monitored
-Restoration prioritizes operational safety and integrity validation
+- Firmware and embedded systems are treated as trust anchors
+- OT and ICS environments incorporate safety-aware isolation and eviction
+- Middleware and control-plane components are continuously monitored
+- Restoration prioritizes operational safety and integrity validation
 
-Artificial Intelligence Considerations
+## Artificial Intelligence Considerations
 
 AI within CAI supports Zero Trust by:
 
-Enhancing continuous verification and anomaly detection
-Supporting decision-making without replacing human authority
-Operating under defined assurance and governance constraints
+- Enhancing continuous verification and anomaly detection
+- Supporting decision-making without replacing human authority
+- Operating under defined assurance and governance constraints
 
 AI governance and risk management are addressed in CAI-USA-AI-Assurance.
 
-Relationship to Other CAI Documents
+## Relationship to Other CAI Documents
 
 This document must be read together with:
 
-CAI-Core-Definition
-CAI-Core-Architecture
-CAI-Core-Operations
-CAI-Core-Taxonomy
-CAI-USA-Definition
-CAI-USA-NIST-Map
+- CAI-Core-Definition
+- CAI-Core-Architecture
+- CAI-Core-Operations
+- CAI-Core-Taxonomy
+- CAI-USA-Definition
+- CAI-USA-NIST-Map
 
 Related documents include:
 
-CAI-USA-AI-Assurance
-USA sector profiles for ICS/OT, healthcare, finance, and other domains
+- CAI-USA-AI-Assurance
 
-Author and Ownership
+- USA sector profiles for ICS/OT, healthcare, finance, and other domains
 
-CAI-USA-CISA-ZT-Map is authored and owned by Antonio José Socorro Marín.
+Author and Ownership  
+
+CAI-USA-CISA-ZT-Map is authored and owned by Antonio José Socorro Marín.  
 This document is an intellectual property asset governed by the legal documents contained in the /legal directory.
 
-End of Document
+## End of Document

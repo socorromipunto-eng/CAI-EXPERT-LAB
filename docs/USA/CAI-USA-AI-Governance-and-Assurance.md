@@ -1,299 +1,300 @@
-CAI-USA-AI-Governance-and-Assurance
-Cybersecurity Artificial Intelligence Framework – AI Governance and Assurance (USA)
+# CAI-USA-AI-Governance-and-Assurance
 
-Version 0.1 (Draft)
+## Cybersecurity Artificial Intelligence Framework – AI Governance and Assurance (USA)
 
-Author: Antonio José Socorro Marín
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
+Version 0.1 (Draft)  
 
-Copyright © 2025 Antonio José Socorro Marín.
-All rights reserved.
+Author: Antonio José Socorro Marín  
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
+Copyright © 2025 Antonio José Socorro Marín.  
+All rights reserved.  
 
-NOTE
-The normative language of CAI-EXPERT-LAB documentation is English.
-This document defines the operational governance and assurance model for AI components within CAI-USA.
-It does not assert regulatory compliance, certification, accreditation, or legal approval.
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
 
-Purpose
+**NOTE**  
+The normative language of CAI-EXPERT-LAB documentation is English.  
+This document defines the operational governance and assurance model for AI components within CAI-USA.  
+It does not assert regulatory compliance, certification, accreditation, or legal approval.  
+
+## Purpose
 
 The purpose of this document is to define how Artificial Intelligence components used within the Cybersecurity Artificial Intelligence Framework (CAI) are governed, assured, monitored, constrained, and audited in United States environments.
 
 This document operationalizes AI governance beyond mapping frameworks by defining concrete lifecycle controls, assurance gates, accountability rules, and human oversight mechanisms applicable to AI systems that influence or execute cybersecurity decisions.
 
-Scope and Non-Scope
+## Scope and Non-Scope
 
-In Scope
+## In Scope
 
 This document defines:
 
-Governance lifecycle for AI models used by CAI
+- Governance lifecycle for AI models used by CAI
 
-Assurance requirements for AI-assisted decisions
+- Assurance requirements for AI-assisted decisions
 
-Human oversight thresholds and escalation rules
+- Human oversight thresholds and escalation rules
 
-Model drift detection and response
+- Model drift detection and response
 
-Inference logging and traceability requirements
+- Inference logging and traceability requirements
 
-Accountability and override mechanisms
+- Accountability and override mechanisms
 
-Integration with CAI telemetry and CCES
+- Integration with CAI telemetry and CCES
 
-Explicitly Out of Scope
+## Explicitly Out of Scope
 
 This document does not:
 
-Define AI development methodologies
+- Define AI development methodologies
 
-Replace organizational ethics boards or legal reviews
+- Replace organizational ethics boards or legal reviews
 
-Mandate specific ML frameworks or tooling
+- Mandate specific ML frameworks or tooling
 
-Assert AI system safety outside cybersecurity contexts
+- Assert AI system safety outside cybersecurity contexts
 
-Normative Status
+- Normative Status
 
 This document is normative for CAI-USA.
 
 Any AI component that:
 
-influences detection, prioritization, decision-making, or response
+- influences detection, prioritization, decision-making, or response
 
-provides scoring, classification, or recommendations
+- provides scoring, classification, or recommendations
 
-executes or triggers automated actions
+- executes or triggers automated actions
 
 MUST operate under the governance and assurance controls defined herein.
 
-AI Governance Principles
+## AI Governance Principles
 
 AI governance within CAI-USA is based on the following principles:
 
-Human authority is final
+- Human authority is final
 
-AI outputs are advisory unless explicitly authorized
+- AI outputs are advisory unless explicitly authorized
 
-All AI actions are observable and auditable
+- All AI actions are observable and auditable
 
-Risk increases governance strictness
+- Risk increases governance strictness
 
-Automation is constrained by safety and accountability
+- Automation is constrained by safety and accountability
 
-Drift and degradation are treated as security risks
+- Drift and degradation are treated as security risks
 
-AI Lifecycle Governance Model
+## AI Lifecycle Governance Model
 
 CAI governs AI systems across the following lifecycle stages:
 
-Registration
+- Registration
 
-Validation
+- Validation
 
-Deployment
+- Deployment
 
-Operation
+- Operation
 
-Monitoring
+- Monitoring
 
-Revalidation
+- Revalidation
 
-Decommissioning
+- Decommissioning
 
 Each stage introduces mandatory governance and assurance controls.
 
-AI Registration
+## AI Registration
 
 Before any AI model is used operationally, it SHALL be registered with:
 
-Unique model identifier
+- Unique model identifier
 
-Version identifier
+Version identifier  
 
-Intended function
+- Intended function
 
-Approved CAI operational stages
+- Approved CAI operational stages
 
-Risk classification (low, medium, high)
+- Risk classification (low, medium, high)
 
-Authorized automation level
+- Authorized automation level
 
 Unregistered AI models are prohibited within CAI.
 
-AI Validation and Authorization
+## AI Validation and Authorization
 
 Prior to deployment, AI models SHALL undergo:
 
-Functional validation
+- Functional validation
 
-Bias and error analysis (contextual)
+- Bias and error analysis (contextual)
 
-Performance baseline establishment
+- Performance baseline establishment
 
-Explainability capability verification
+- Explainability capability verification
 
-Safety and misuse risk assessment
+## Safety and misuse risk assessment
 
 Authorization outcomes:
 
-Approved for advisory use only
+- Approved for advisory use only
 
-Approved for constrained automation
+- Approved for constrained automation
 
-Rejected or restricted
+- Rejected or restricted
 
-AI Deployment Controls
+## AI Deployment Controls
 
 Deployment SHALL enforce:
 
-Immutable model versioning
+- Immutable model versioning
 
-Configuration baselines
+- Configuration baselines
 
-Environment separation (test vs production)
+- Environment separation (test vs production)
 
-Explicit rollback capability
+- Explicit rollback capability
 
 Hot-swapping models without authorization is prohibited.
 
-Operational Assurance Gates
+## Operational Assurance Gates
 
 AI-assisted operations SHALL pass through assurance gates:
 
-Pre-inference gate: context and data validity
+- Pre-inference gate: context and data validity
 
-Inference gate: confidence and explainability check
+- Inference gate: confidence and explainability check
 
-Action gate: automation authorization verification
+- Action gate: automation authorization verification
 
-Post-action gate: outcome verification and logging
+- Post-action gate: outcome verification and logging
 
 Failure at any gate SHALL block automation and trigger human review.
 
-Human Oversight Thresholds
+## Human Oversight Thresholds
 
 Human-in-the-loop SHALL be mandatory when:
 
-Confidence score falls below defined thresholds
+- Confidence score falls below defined thresholds
 
-Impact affects critical assets or OT/ICS environments
+- Impact affects critical assets or OT/ICS environments
 
-Actions include ISOLATE, DECEIVE, or EVICT
+- Actions include ISOLATE, DECEIVE, or EVICT
 
-AI behavior deviates from baseline patterns
+- AI behavior deviates from baseline patterns
 
-Safety or production impact is possible
+- Safety or production impact is possible
 
 Human override capability SHALL always be available.
 
-Inference Logging and Traceability
+## Inference Logging and Traceability
 
 All AI inferences SHALL be logged using CAI-USA-CCES, including:
 
-Model identifier and version
+- Model identifier and version
 
-Input reference (hashed or abstracted)
+- Input reference (hashed or abstracted)
 
-Output and confidence score
+- Output and confidence score
 
-Explanation reference
+- Explanation reference
 
-Decision outcome
+- Decision outcome
 
-Human involvement status
+- Human involvement status
 
 Inference logs are authoritative for audit and forensics.
 
-Model Drift Detection and Response
+## Model Drift Detection and Response
 
 CAI SHALL monitor AI models for:
 
-Data drift
+- Data drift
 
-Concept drift
+- Concept drift
 
-Performance degradation
+- Performance degradation
 
-Behavioral anomalies
+## Behavioral anomalies
 
 Upon drift detection:
 
-Automation SHALL be reduced or suspended
+- Automation SHALL be reduced or suspended
 
-Alerts SHALL be generated
+- Alerts SHALL be generated
 
-Revalidation SHALL be required before restoration
+- Revalidation SHALL be required before restoration
 
-Accountability and Responsibility
+## Accountability and Responsibility
 
 For each AI model, accountability SHALL be defined:
 
-Model owner
+- Model owner
 
-Operational approver
+- Operational approver
 
-Governance authority
+- Governance authority
 
-Escalation contact
+- Escalation contact
 
-AI does not hold responsibility.
+AI does not hold responsibility.  
 Responsibility remains with designated human roles.
 
-Automation Boundaries
+## Automation Boundaries
 
 Automation levels are explicitly constrained:
 
-Advisory only
+- Advisory only
 
-Conditional automation with approval
+- Conditional automation with approval
 
-Limited autonomous execution
+- Limited autonomous execution
 
 Full autonomous execution without human oversight is prohibited.
 
-Integration with CAI Operations
+## Integration with CAI Operations
 
 This governance model integrates with:
 
-CAI-USA-Operations-Playbooks
+- CAI-USA-Operations-Playbooks
 
-CAI-USA-Telemetry-and-Data-Model
+- CAI-USA-Telemetry-and-Data-Model
 
-CAI-USA-CCES
+- CAI-USA-CCES
 
-CAI-USA-Threat-and-Assumption-Model
+- CAI-USA-Threat-and-Assumption-Model
 
 All playbooks invoking AI SHALL reference applicable governance constraints.
 
-Relationship to External Guidance
+## Relationship to External Guidance
 
 This document is informed by:
 
-NIST AI Risk Management Framework
+- NIST AI Risk Management Framework
 
-CISA Secure-by-Design principles
+- CISA Secure-by-Design principles
 
-CISA guidance on safe automation
+- CISA guidance on safe automation
 
 These references inform governance but do not impose compliance claims.
 
-Versioning and Change Control
+## Versioning and Change Control
 
 Changes to AI governance SHALL:
 
-Be versioned explicitly
+- Be versioned explicitly
 
-Preserve auditability
+- Preserve auditability
 
-Require governance approval
+- Require governance approval
 
-Be documented before operational use
+- Be documented before operational use
 
-Author and Ownership
+Author and Ownership  
 
-CAI-USA-AI-Governance-and-Assurance is authored and owned by Antonio José Socorro Marín.
+CAI-USA-AI-Governance-and-Assurance is authored and owned by Antonio José Socorro Marín.  
 This document is an intellectual property asset governed by the legal documents contained in the /legal directory of this repository.
 
-End of Document
+## End of Document

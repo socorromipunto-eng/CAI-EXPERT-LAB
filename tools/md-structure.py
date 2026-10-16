@@ -12,6 +12,46 @@ KNOWN_HEADINGS = {'Purpose', 'Scope', 'End of Document', 'Status', 'Explicit Non
 
 META = re.compile(r'^(Version|Author|Creator|Copyright|All rights reserved|Use, distribution|Date|Status|Classification|Owner)\b', re.I)
 
+
+def _short_title(s):
+    if not s or len(s.split()) > 6 or not s[0].isupper():
+        return False
+    if s.endswith(('.', ',', ';', ':', '?', '!')) or META.match(s) or re.match(r'^[A-Z][\w /&()-]{0,40}: \S', s):
+        return False
+    if s.startswith(('-', '*', '#', '|', '>', '```')) or re.fullmatch(r'[A-Z0-9_ →\-–]+', s):
+        return False
+    return True
+
+def _split_blocks(lines):
+    """Insert blank lines (only) so that a title line glued to its text, and a
+    list glued to its 'intro:' line, become separate blocks. Words unchanged."""
+    out, n, i, fence = [], len(lines), 0, False
+    while i < n:
+        s = lines[i].strip()
+        if s.startswith('```'):
+            fence = not fence
+        if fence or not s:
+            out.append(lines[i]); i += 1; continue
+        k = i
+        while k < n and lines[k].strip() and not lines[k].strip().startswith('```'):
+            k += 1
+        blk = lines[i:k]
+        prev_blank = (i == 0) or not lines[i-1].strip()
+        if prev_blank and len(blk) >= 2 and _short_title(blk[0].strip()) and \
+           (len(blk[1].split()) > 6 or blk[1].strip().endswith(':')):
+            out.append(blk[0]); out.append(''); blk = blk[1:]
+        j = 0
+        while j < len(blk):
+            b = blk[j].strip()
+            items = blk[j+1:]
+            if b.endswith(':') and items and all(len(x.split()) <= 16 and not x.strip().startswith(('-', '*', '|', '#')) for x in items):
+                out.append(blk[j]); out.append('')
+                out.extend(items); out.append('') if k < n and lines[k].strip() else None
+                j = len(blk); break
+            out.append(blk[j]); j += 1
+        i = k
+    return out
+
 def is_heading(line, prev, nxt):
     s = line.strip()
     if not s or prev.strip() or nxt.strip():          # must stand alone between blank lines
@@ -39,6 +79,7 @@ def convert(text):
     lines = text.split('\n')
     if any(re.match(r'^#{1,6} ', l) for l in lines):
         return text                                  # already structured: untouched
+    lines = _split_blocks(lines)
     out, n = [], len(lines)
     # title: first non-blank line that is not a file name
     first = next((i for i, l in enumerate(lines) if l.strip() and not l.strip().endswith('.md')), None)
@@ -80,6 +121,12 @@ def convert(text):
         if s and not prev.strip() and not nxt.strip() and colon_run:
             numbered = re.match(r'^\d+(\.\d+)*\.?\s', s)
             period_breaks = s.endswith('.') and run_items > 0 and not last_item_period
+            q = i + 1
+            while q < n and not lines[q].strip():
+                q += 1
+            nxt_nb = lines[q].strip() if q < n else ''
+            if nxt_nb.endswith(':') or len(nxt_nb.split()) > 16:
+                period_breaks = True                 # a title introducing new text, not a list item
             if not numbered and s not in KNOWN_HEADINGS and len(s.split()) <= 14 \
                and not (s.endswith('.') and len(s.split()) > 12) and not period_breaks:
                 out.append('- ' + s); run_items += 1; last_item_period = s.endswith('.'); i += 1; continue
