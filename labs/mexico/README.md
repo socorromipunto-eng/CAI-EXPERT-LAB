@@ -126,6 +126,8 @@ The documents in this lab are organized as follows:
 - decision rules  
 - risk model  
 
+The documents are numbered 00 to 29. Number 21 was not published. The documents after it keep their numbers so that existing references to them remain valid.
+
 ---
 
 ## 8. Operational Status
