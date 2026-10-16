@@ -30,6 +30,7 @@ def _split_blocks(lines):
         s = lines[i].strip()
         if s.startswith('```'):
             fence = not fence
+            out.append(lines[i]); i += 1; continue
         if fence or not s:
             out.append(lines[i]); i += 1; continue
         k = i
@@ -37,6 +38,15 @@ def _split_blocks(lines):
             k += 1
         blk = lines[i:k]
         prev_blank = (i == 0) or not lines[i-1].strip()
+        numh = lambda x: re.match(r'^\d+(\.\d+)*\.?\s+[A-Z]', x) and len(x.split()) <= 12 and not x.endswith(('.', ':', ';', ','))
+        if sum(1 for b in blk if numh(b.strip())) >= 2 and all(numh(b.strip()) or len(b.split()) <= 8 for b in blk):
+            for b in blk:                         # outline block: numbered titles with short entries under them
+                if numh(b.strip()):
+                    out.extend(['', b, ''])
+                else:
+                    out.append('- ' + b.strip())
+            out.append('')
+            i = k; continue
         if prev_blank and len(blk) >= 2 and _short_title(blk[0].strip()) and \
            (len(blk[1].split()) > 6 or blk[1].strip().endswith(':')):
             out.append(blk[0]); out.append(''); blk = blk[1:]
@@ -90,6 +100,8 @@ def convert(text):
     # title: first non-blank line that is not a file name
     first = next((i for i, l in enumerate(lines) if l.strip() and not l.strip().endswith('.md')), None)
     fname = next((i for i, l in enumerate(lines) if l.strip()), None)
+    if first is not None and re.match(r'^\d+(\.\d+)*\.?\s+[A-Z]', lines[first].strip()):
+        first = None                                  # document starts with a numbered section: no title line
     if first is not None and fname is not None and fname < first and META.match(lines[first].strip()):
         first = fname                                 # no title line: the file-name line is the title
     in_fence = False
@@ -193,6 +205,7 @@ def words(text):
     t = re.sub(r'^\s*#{1,6} ', '', text, flags=re.M)
     t = re.sub(r'^\s*- ', '', t, flags=re.M)
     t = t.replace('**NOTE**', 'NOTE')
+    t = re.sub(r'^```[a-z]*\s*$', '', t, flags=re.M)
     return t.split()
 
 def verify(src, dst):
