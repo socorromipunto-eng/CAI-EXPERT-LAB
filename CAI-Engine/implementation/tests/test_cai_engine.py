@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import pytest
 
-from cai_engine.core import Action, ActionCategory, State, TelemetryEvent
+from cai_engine.core import State, TelemetryEvent
 from cai_engine.engine import CAIEngine, EngineError
 from cai_engine.governed_agent import GovernedAgent
 
@@ -115,11 +115,13 @@ def test_evidence_tamper_detected(engine):
     engine.propose({"category": "OBSERVE", "description": "x"})
     import json
     path = engine.evidence.path
-    lines = open(path, encoding="utf-8").read().splitlines()
+    with open(path, encoding="utf-8") as fh:
+        lines = fh.read().splitlines()
     rec = json.loads(lines[-1])
     rec["payload"]["tampered"] = True
     lines[-1] = json.dumps(rec, ensure_ascii=False)
-    open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write("\n".join(lines) + "\n")
     assert engine.verify()["integrity_ok"] is False
 
 
@@ -263,6 +265,6 @@ def test_pyproject_version_matches_package():
 
     root = pathlib.Path(__file__).resolve().parent.parent
     text = (root / "pyproject.toml").read_text(encoding="utf-8")
-    m = re.search(r'^version = "([^"]+)"', text, re.M)
+    m = re.search(r'^version = "([^"]+)"', text, re.MULTILINE)
     assert m, "no version in pyproject.toml"
     assert m.group(1) == cai_engine.__version__

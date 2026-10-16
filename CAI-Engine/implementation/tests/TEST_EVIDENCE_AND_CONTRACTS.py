@@ -333,7 +333,7 @@ def test_status_contract(engine):
     assert st["allowed_transitions"] == ["ISOLATE", "DECEIVE"]
     assert st["entry_conditions_next"] == {"ISOLATE": ["detection_confirmed"],
                                            "DECEIVE": ["detection_confirmed", "deception_scope_approved"]}
-    assert st["facts"] == {f: True for f in ALL_FACTS}
+    assert st["facts"] == dict.fromkeys(ALL_FACTS, True)
 
 
 def test_uninitialized_engine_refuses_to_work(tmp_path):
@@ -441,7 +441,7 @@ def test_safety_gate_names_and_reasons():
 
 
 def _eu(ctx, **kw):
-    args = dict(confidence=0.95, explainable=True, explanation="e", drift_score=0.0, human_disclosed=True)
+    args = {"confidence": 0.95, "explainable": True, "explanation": "e", "drift_score": 0.0, "human_disclosed": True}
     args.update(kw)
     return {g.gate: g for g in eu_ai_act.eu_gates(eu_ai_act.classify(eu_ai_act.AIContext(**ctx)), **args)}
 
@@ -496,16 +496,16 @@ def test_eu_classification_texts():
 
 
 def _us(sector, **kw):
-    args = dict(confidence=0.99, explainable=True, explanation="e", drift_score=0.0, genai=False,
-                provenance="p", action_is_ot=False, action_destructive=False, prohibited=False,
-                prohibited_reason="")
+    args = {"confidence": 0.99, "explainable": True, "explanation": "e", "drift_score": 0.0, "genai": False,
+            "provenance": "p", "action_is_ot": False, "action_destructive": False, "prohibited": False,
+            "prohibited_reason": ""}
     args.update(kw)
     cls = usa.classify(eu_ai_act.AIContext(sector=sector))
     return cls, {g.gate: g for g in usa.usa_gates(cls, **args)}
 
 
 def test_usa_gate_names_and_reasons():
-    cls, g = _us("energy", confidence=0.9, drift_score=0.3, action_is_ot=True)
+    _, g = _us("energy", confidence=0.9, drift_score=0.3, action_is_ot=True)
     assert set(g) == {"usa.nist_ai_rmf", "usa.srma_oversight", "usa.assurance_floor", "usa.robustness",
                       "usa.ot_ics_safety"}
     assert g["usa.nist_ai_rmf"].reason == "governed under NIST AI RMF (Govern/Map/Measure/Manage)"

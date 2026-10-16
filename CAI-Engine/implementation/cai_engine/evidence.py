@@ -14,7 +14,7 @@ import hashlib
 import json
 import os
 import time
-from typing import Iterator, Optional
+from collections.abc import Iterator
 
 GENESIS_HASH = "0" * 64
 
@@ -38,7 +38,7 @@ class EvidenceLog:
     def records(self) -> Iterator[dict]:
         if not os.path.exists(self.path):
             return
-        with open(self.path, "r", encoding="utf-8") as fh:
+        with open(self.path, encoding="utf-8") as fh:
             for line in fh:
                 line = line.strip()
                 if line:
@@ -70,7 +70,7 @@ class EvidenceLog:
         return body
 
     # -- integrity ---------------------------------------------------------
-    def verify(self) -> tuple[bool, Optional[str]]:
+    def verify(self) -> tuple[bool, str | None]:
         """Re-walk the chain. Returns (ok, error_message)."""
         prev = GENESIS_HASH
         for rec in self.records():

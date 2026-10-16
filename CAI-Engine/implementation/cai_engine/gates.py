@@ -11,7 +11,7 @@ from __future__ import annotations
 import enum
 from dataclasses import dataclass
 
-from .core import Action, ActionCategory, ALLOWED_ACTIONS, State
+from .core import ALLOWED_ACTIONS, Action, ActionCategory, State
 
 
 class Decision(str, enum.Enum):
@@ -105,9 +105,7 @@ def requires_human_approval(action: Action, state: State, gate_results: list[Gat
     if action.affects_privileged_accounts:         # privileged credential impact
         return True
     cat = action.normalized_category()
-    if cat in (ActionCategory.CONTAINMENT, ActionCategory.RECOVERY):
-        return True
-    return False
+    return cat in (ActionCategory.CONTAINMENT, ActionCategory.RECOVERY)
 
 
 def summarize(gate_results: list[GateResult]) -> Decision:

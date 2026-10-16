@@ -13,7 +13,6 @@ import enum
 import time
 import uuid
 from dataclasses import dataclass, field
-from typing import Optional
 
 
 # --------------------------------------------------------------------------
@@ -100,7 +99,7 @@ class TelemetryEvent:
     domain: str
     confidence: float
     provenance: str
-    timestamp: Optional[float] = None
+    timestamp: float | None = None
     id: str = field(default_factory=lambda: "tel-" + uuid.uuid4().hex[:10])
 
     def validate(self) -> list[str]:
@@ -128,7 +127,7 @@ class Action:
     description: str
     target: str = ""
     # Purdue level of the affected asset (0-5) for OT/ICS gating; None = IT.
-    ot_level: Optional[int] = None
+    ot_level: int | None = None
     # Number of assets in scope — used by the blast-radius gate.
     blast_radius: int = 0
     destructive: bool = False

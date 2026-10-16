@@ -19,8 +19,7 @@ from dataclasses import dataclass, field
 
 from .eu_ai_act import AIContext
 from .gates import Decision, GateResult
-from .usa_sectors import resolve, Sector
-
+from .usa_sectors import Sector, resolve
 
 # Minimum AI confidence by sector consequence (NIST AI RMF MEASURE / robustness).
 CONFIDENCE_FLOOR = {

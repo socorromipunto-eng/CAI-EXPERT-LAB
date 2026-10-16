@@ -28,6 +28,7 @@ Run (from CAI-Engine/implementation):  python -m pytest -q tests/TEST_SPECIFICAT
 """
 from __future__ import annotations
 
+import contextlib
 import itertools
 import json
 import math
@@ -42,8 +43,14 @@ from cai_engine import eu_ai_act, usa, usa_sectors
 from cai_engine.core import Action, ActionCategory, State, TelemetryEvent
 from cai_engine.engine import CAIEngine, EngineError
 from cai_engine.evidence import EvidenceLog
-from cai_engine.gates import (Decision, GateResult, policy_evaluate, requires_human_approval,
-                              safety_gates, summarize)
+from cai_engine.gates import (
+    Decision,
+    GateResult,
+    policy_evaluate,
+    requires_human_approval,
+    safety_gates,
+    summarize,
+)
 from cai_engine.governed_agent import GovernedAgent
 
 HERE = Path(__file__).resolve().parent
@@ -551,7 +558,7 @@ def test_rewriting_the_whole_chain_is_detected(tmp_path):
 # ==========================================================================
 # 14. Telemetry validation  (Architecture 4.2)                     ~14 cases
 # ==========================================================================
-GOOD_TEL = dict(source="edr", domain="device", confidence=0.9, provenance="p", timestamp=1.0)
+GOOD_TEL = {"source": "edr", "domain": "device", "confidence": 0.9, "provenance": "p", "timestamp": 1.0}
 
 
 @pytest.mark.parametrize("field,value", [
@@ -584,7 +591,7 @@ def test_governed_examples_are_deterministic(tmp_path, name):
 
 def _cli(home, *args):
     return subprocess.run([sys.executable, "-m", "cai_engine", "--home", str(home), *args],
-                          cwd=str(IMPL), capture_output=True, text=True, timeout=60)
+                          cwd=str(IMPL), capture_output=True, text=True, timeout=60, check=False)
 
 
 @pytest.mark.parametrize("args", [("status",), ("verify",), ("report",),
@@ -660,10 +667,8 @@ def test_boolean_confidence_is_rejected(engine):
 def test_init_preserves_existing_evidence(engine):
     engine.set_fact("assets_discovered", True)
     before = engine.evidence.count()
-    try:
+    with contextlib.suppress(EngineError):
         engine.init()
-    except EngineError:
-        pass
     assert engine.evidence.count() >= before
 
 

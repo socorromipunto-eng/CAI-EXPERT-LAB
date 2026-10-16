@@ -14,16 +14,23 @@ from __future__ import annotations
 import json
 import os
 from dataclasses import asdict
-from typing import Optional
 
 from .core import (
-    Action, ActionCategory, ENTRY_CONDITIONS, INITIAL_STATE,
-    State, TelemetryEvent, VALID_TRANSITIONS,
+    ENTRY_CONDITIONS,
+    INITIAL_STATE,
+    VALID_TRANSITIONS,
+    Action,
+    ActionCategory,
+    State,
+    TelemetryEvent,
 )
 from .evidence import EvidenceLog
 from .gates import (
-    Decision, GateResult, policy_evaluate, requires_human_approval,
-    safety_gates, summarize,
+    Decision,
+    policy_evaluate,
+    requires_human_approval,
+    safety_gates,
+    summarize,
 )
 
 
@@ -42,7 +49,7 @@ class CAIEngine:
     def _load(self) -> dict:
         if not os.path.exists(self.state_path):
             raise EngineError("engine not initialized — run `init` first")
-        with open(self.state_path, "r", encoding="utf-8") as fh:
+        with open(self.state_path, encoding="utf-8") as fh:
             self._state = json.load(fh)
         return self._state
 
@@ -185,7 +192,7 @@ class CAIEngine:
         pending = self._state.get("pending", {})
         if action_id not in pending:
             raise EngineError(f"no pending action with id {action_id}")
-        record = pending.pop(action_id)
+        pending.pop(action_id)
         self._save()
         self.evidence.append("HUMAN_DENIAL",
                              {"action_id": action_id, "denied_by": approver, "reason": reason})
