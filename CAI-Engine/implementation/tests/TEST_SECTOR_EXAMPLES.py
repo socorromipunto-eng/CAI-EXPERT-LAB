@@ -57,7 +57,7 @@ def test_sector_example_outcome(path, tmp_path):
 
 
 def test_documents_quote_the_example_outcomes():
-    """Every example is cited by exactly one sector document, with its outcome."""
+    """Every example is cited by exactly one sector document, with its state, outcome and gates."""
     rows = {}
     for doc in sorted(DOCS.glob("CAI-USA-*-Framework-Application.md")):
         for line in doc.read_text(encoding="utf-8").splitlines():
@@ -71,3 +71,5 @@ def test_documents_quote_the_example_outcomes():
         _, cells = found[0]
         assert cells[4] == f"{ex['expected']['status']} ({ex['expected']['decision']})", (path.name, cells[4])
         assert cells[2] == ex["lifecycle_state"], path.name
+        not_allowed = "; ".join(f"{g} = {d}" for g, d in ex["expected"]["gates"] if d != "ALLOW")
+        assert cells[5] == not_allowed, (path.name, cells[5])

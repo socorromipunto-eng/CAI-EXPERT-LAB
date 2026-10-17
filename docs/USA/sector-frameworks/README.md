@@ -29,7 +29,7 @@ The documents do not modify the frozen profiles. They are the sector deltas requ
 
 ## 2. What CAI adds to sector frameworks
 
-Binding sector frameworks say what an entity must protect, plan, monitor and report, and some control changes before they are made (for example management of change under OSHA PSM, 29 CFR 1910.119(l)). None of the binding frameworks mapped in this directory sets requirements for operational actions proposed by AI systems. Voluntary guidance has started to: the joint guidance Principles for the Secure Integration of Artificial Intelligence in Operational Technology (December 2025, co-authored by CISA) asks, among other things, to keep operators in decisions on critical OT actions. CAI proposes a decision-time control layer that enforces this kind of principle for each proposed action:
+Binding sector frameworks say what an entity must protect, plan, monitor and report, and some control changes before they are made (for example management of change under OSHA PSM, 29 CFR 1910.119(l)). In the binding frameworks reviewed in this directory, none sets requirements for operational actions proposed by AI systems. Voluntary guidance has started to: the joint guidance Principles for the Secure Integration of Artificial Intelligence in Operational Technology (December 2025, co-authored by CISA) asks, among other things, to keep operators in decisions on critical OT actions. CAI proposes a decision-time control layer that enforces this kind of principle for each proposed action:
 
 Table 1 — Decision-time controls CAI applies in every sector.
 
@@ -37,7 +37,7 @@ Table 1 — Decision-time controls CAI applies in every sector.
 |---|---|---|
 | Sector-aware assurance for AI proposals: confidence floor by consequence level (CATASTROPHIC 0.95, HIGH 0.90, MODERATE 0.80), declared drift at most 0.15, provenance and explanation for generative AI | `usa.py` gates `usa.assurance_floor`, `usa.robustness`, `usa.nist_ai_600_1` | Implemented |
 | Human authority for critical infrastructure: every governed proposal in an NSM-22 sector waits for a named human | `usa.srma_oversight`; MCP server has no approval tool | Implemented (approver not authenticated) |
-| Cyber-physical safety: OT-level, destructive, containment and eradication actions in OT-intensive sectors need safety approval; containment, eradication and destructive actions on assets at Purdue level 0 to 2 need human approval in every sector | `usa.ot_ics_safety`, `safety.ot_ics` | Implemented |
+| Cyber-physical safety: in OT-intensive sectors, any action on an asset with a Purdue level and any destructive, containment or eradication action needs safety approval; in every sector, containment, eradication and destructive actions on assets at Purdue level 0 to 2 need human approval | `usa.ot_ics_safety`, `safety.ot_ics` | Implemented |
 | Lifecycle discipline: each action category is permitted only in its lifecycle state (for example, eradication only in EVICT) | `policy.state_constraint` | Implemented |
 | Decision record: gate results, reasons, sector, SRMA and approver in a hash-chained log | `evidence.py` | Partial (tamper-evident, not signed) |
 | Decision integrity over time: revalidation at approval and before dispatch; environmental state from signed sources | CAI-ENG-SEC-001 Core SR-06 to SR-11, SR-13 | Specified |
@@ -48,7 +48,7 @@ Status values are those of CAI-USA-NIST-Map section 3.
 
 - Sources are official (agency, Federal Register, eCFR, U.S. Code, NIST, CISA, FCC, FERC) and were checked on 2026-10-16. A source that is not official is named as such. Statements marked "CAI reading" are this project's interpretation.
 - Engine parameters in each document are read from `CAI-Engine/implementation/cai_engine/usa_sectors.py` and `usa.py`.
-- Worked examples are JSON files in `CAI-Engine/implementation/examples/sectors/`. Each holds a synthetic proposal, the lifecycle state in which it is evaluated and the expected engine outcome. `tests/TEST_SECTOR_EXAMPLES.py` evaluates every example on each test run and fails if an outcome changes; it also checks that the outcome written in each sector document equals the outcome in the example file. To run them: `python -m pytest -q tests/TEST_SECTOR_EXAMPLES.py` from `CAI-Engine/implementation`.
+- Worked examples are JSON files in `CAI-Engine/implementation/examples/sectors/`. Each holds a synthetic proposal, the lifecycle state in which it is evaluated and the expected engine outcome. `tests/TEST_SECTOR_EXAMPLES.py` evaluates every example on each test run and fails if an outcome changes; it also checks that the lifecycle state, outcome and gates written in each sector document equal those in the example file. To run them: `python -m pytest -q tests/TEST_SECTOR_EXAMPLES.py` from `CAI-Engine/implementation`.
 - Regulations change. Each document states its verification date; a status change is recorded by updating the document in a registered change.
 
 ## 4. Cross-sector baseline (status on 2026-10-16)
@@ -75,7 +75,12 @@ Table 3 — Sector documents in this directory.
 | Communications | CAI-USA-Communications-Framework-Application.md | Batch 1 |
 | Critical Manufacturing | CAI-USA-Critical-Manufacturing-Framework-Application.md | Batch 1 |
 | Dams | CAI-USA-Dams-Framework-Application.md | Batch 1 |
-| Defense Industrial Base, Emergency Services, Energy, Financial Services, Food and Agriculture, Government Facilities, Healthcare and Public Health, Information Technology, Nuclear Reactors, Materials, and Waste, Transportation Systems (with the aviation reference profile), Water and Wastewater Systems | — | Later batches, in alphabetical order |
+| Defense Industrial Base | CAI-USA-Defense-Industrial-Base-Framework-Application.md | Batch 2 |
+| Emergency Services | CAI-USA-Emergency-Services-Framework-Application.md | Batch 2 |
+| Energy | CAI-USA-Energy-Framework-Application.md | Batch 2 |
+| Financial Services | CAI-USA-Financial-Services-Framework-Application.md | Batch 2 |
+| Food and Agriculture | CAI-USA-Food-and-Agriculture-Framework-Application.md | Batch 2 |
+| Government Facilities, Healthcare and Public Health, Information Technology, Nuclear Reactors, Materials, and Waste, Transportation Systems (with the aviation reference profile), Water and Wastewater Systems | — | Later batches, in alphabetical order |
 
 ## 6. Relationship to Other CAI Documents
 
@@ -86,5 +91,5 @@ Table 3 — Sector documents in this directory.
 
 ## Status
 
-Status: Draft – batch 1 of the sector framework application  
+Status: Draft – batches 1 and 2 of the sector framework application  
 End of Document

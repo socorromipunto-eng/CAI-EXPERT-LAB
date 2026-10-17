@@ -1,0 +1,51 @@
+{
+  "description": "A model proposes isolating an energy management system link to substation RTUs (Purdue level 2); confidence 0.97.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.97,
+      "explanation": "Synthetic example for the sector framework document.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.02
+    },
+    "context": {
+      "sector": "energy"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Isolate EMS link to substation RTUs",
+      "target": "ems-rtu-link",
+      "ot_level": 2
+    }
+  },
+  "expected": {
+    "status": "PENDING_APPROVAL",
+    "decision": "ESCALATE",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.ot_ics_safety",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.ot_ics",
+        "ESCALATE"
+      ]
+    ]
+  }
+}

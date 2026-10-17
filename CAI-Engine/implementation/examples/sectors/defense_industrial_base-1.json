@@ -1,0 +1,51 @@
+{
+  "description": "A model proposes isolating a compromised production-line controller (Purdue level 2) at a defense supplier; confidence 0.93.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.93,
+      "explanation": "Synthetic example for the sector framework document.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.02
+    },
+    "context": {
+      "sector": "defense_industrial_base"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Isolate production-line controller",
+      "target": "line-3-plc",
+      "ot_level": 2
+    }
+  },
+  "expected": {
+    "status": "PENDING_APPROVAL",
+    "decision": "ESCALATE",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.ot_ics_safety",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.ot_ics",
+        "ESCALATE"
+      ]
+    ]
+  }
+}

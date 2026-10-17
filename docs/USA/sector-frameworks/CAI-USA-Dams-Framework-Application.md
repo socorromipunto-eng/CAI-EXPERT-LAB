@@ -35,7 +35,7 @@ Table 1 — Engine parameters for this sector (CAI-Engine 0.4.2, `usa_sectors.py
 | AI confidence floor (usa.assurance_floor) | 0.95 |
 | Maximum declared drift (usa.robustness) | 0.15 |
 | Human oversight (usa.srma_oversight) | Every governed proposal escalates to a human |
-| OT safety approval (usa.ot_ics_safety) | Applies to OT-level, destructive, containment and eradication actions |
+| OT safety approval (usa.ot_ics_safety) | Applies to any action on an asset with a Purdue level and to any destructive, containment or eradication action |
 
 ## 3. Applicable frameworks
 
@@ -55,13 +55,13 @@ Table 2 — Frameworks that apply to the sector or to parts of it.
 
 ## 4. What CAI adds
 
-The binding frameworks in Table 2 set what entities must protect, plan, monitor and report; some also control changes before they are made. None of them sets requirements for operational actions proposed by AI systems. Voluntary guidance has started to address them (README.md section 4). CAI proposes a decision-time control layer for each proposed action. Status: Implemented (engine 0.4.2, with tests), Partial, Specified (CAI-ENG-SEC-001), Described.
+The binding frameworks in Table 2 set what entities must protect, plan, monitor and report; some also control changes before they are made. In the frameworks reviewed here, none sets requirements for operational actions proposed by AI systems. Voluntary guidance has started to address them (README.md section 4). CAI proposes a decision-time control layer for each proposed action. Status: Implemented (engine 0.4.2, with tests), Partial, Specified (CAI-ENG-SEC-001), Described.
 
 Table 3 — Framework obligation areas and the decision-time control CAI adds.
 
 | Obligation area (framework) | What CAI adds at decision time | Status |
 |---|---|---|
-| Control of gates, valves and generating units (SP 800-82, Dams C2M2) | An AI-proposed action on spillway SCADA at Purdue level 0 to 2 is escalated by the sector OT gate and by safety.ot_ics; it cannot execute without a human. | Implemented |
+| Control of gates, valves and generating units (SP 800-82, Dams C2M2) | An AI-proposed containment, eradication or destructive action on spillway SCADA at Purdue level 0 to 2 is escalated by the sector OT gate and by safety.ot_ics; it cannot execute without a human. | Implemented |
 | Assurance for a CATASTROPHIC-consequence sector | AI proposals below confidence 0.95 or with drift above 0.15 are denied. | Implemented |
 | Incident reporting (NERC CIP-008; CIRCIA when final) | Every governed decision is recorded with gate results, reasons, sector, SRMA and approver in a hash-chained log, which gives the decision part of the history an incident report needs. The log is tamper-evident for single records and not signed. | Partial |
 | Internal network security monitoring (NERC CIP-015) | Not addressed: telemetry is ingested and validated but does not enter decisions (xfail AUD-07). | Not addressed |
@@ -78,7 +78,7 @@ Table 4 — Worked examples and engine outcomes.
 | `dams-1.json` | A model proposes isolating the SCADA link to spillway gate controllers (Purdue level 1); confidence 0.98. | ISOLATE | CONTAINMENT, Purdue level 1 | PENDING_APPROVAL (ESCALATE) | usa.srma_oversight = ESCALATE; usa.ot_ics_safety = ESCALATE; safety.ot_ics = ESCALATE |
 | `dams-2.json` | The same proposal with confidence 0.94, below the CATASTROPHIC floor of 0.95. | ISOLATE | CONTAINMENT, Purdue level 1 | BLOCKED (DENY) | usa.srma_oversight = ESCALATE; usa.assurance_floor = DENY; usa.ot_ics_safety = ESCALATE; safety.ot_ics = ESCALATE |
 
-Gate meanings: `usa.nist_ai_rmf`: NIST AI RMF governance recorded (informational); `usa.srma_oversight`: human oversight required for a critical infrastructure sector; `usa.ot_ics_safety`: OT-intensive sector: OT-level, destructive, containment or eradication action needs cyber-physical safety approval; `usa.assurance_floor`: AI confidence below the floor for the sector consequence level; `usa.robustness`: declared model drift above 0.15; `usa.nist_ai_600_1`: generative AI without provenance or explanation (NIST AI 600-1); `policy.state_constraint`: action category checked against the current lifecycle state; `safety.none_triggered`: no CAI safety gate triggered; `safety.ot_ics`: containment, eradication or destructive action on an asset at Purdue level 0 to 2: human approval required.
+Gate meanings: `usa.nist_ai_rmf`: NIST AI RMF governance recorded (informational); `usa.srma_oversight`: human oversight required for a critical infrastructure sector; `usa.ot_ics_safety`: OT-intensive sector: an action on an asset with a Purdue level, or a destructive, containment or eradication action, needs cyber-physical safety approval; `usa.assurance_floor`: AI confidence below the floor for the sector consequence level; `usa.robustness`: declared model drift above 0.15; `usa.nist_ai_600_1`: generative AI without provenance or explanation (NIST AI 600-1); `policy.state_constraint`: action category checked against the current lifecycle state; `safety.none_triggered`: no CAI safety gate triggered; `safety.ai_explainability`: AI output not explainable: cannot trigger an action; `safety.ot_ics`: containment, eradication or destructive action on an asset at Purdue level 0 to 2: human approval required.
 
 ## 6. Gaps and limits
 

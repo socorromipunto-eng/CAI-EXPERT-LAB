@@ -1,0 +1,51 @@
+{
+  "description": "The same proposal from a model whose declared drift is 0.25.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.95,
+      "explanation": "Synthetic example for the sector framework document.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.25
+    },
+    "context": {
+      "sector": "financial_services"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Disable compromised privileged service account",
+      "target": "svc-payments",
+      "affects_privileged_accounts": true
+    }
+  },
+  "expected": {
+    "status": "BLOCKED",
+    "decision": "DENY",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.robustness",
+        "DENY"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.none_triggered",
+        "ALLOW"
+      ]
+    ]
+  }
+}

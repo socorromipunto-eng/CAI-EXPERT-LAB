@@ -55,7 +55,7 @@ Table 2 — Frameworks that apply to the sector or to parts of it.
 
 ## 4. What CAI adds
 
-The binding frameworks in Table 2 set what entities must protect, plan, monitor and report; some also control changes before they are made. None of them sets requirements for operational actions proposed by AI systems. Voluntary guidance has started to address them (README.md section 4). CAI proposes a decision-time control layer for each proposed action. Status: Implemented (engine 0.4.2, with tests), Partial, Specified (CAI-ENG-SEC-001), Described.
+The binding frameworks in Table 2 set what entities must protect, plan, monitor and report; some also control changes before they are made. In the frameworks reviewed here, none sets requirements for operational actions proposed by AI systems. Voluntary guidance has started to address them (README.md section 4). CAI proposes a decision-time control layer for each proposed action. Status: Implemented (engine 0.4.2, with tests), Partial, Specified (CAI-ENG-SEC-001), Described.
 
 Table 3 — Framework obligation areas and the decision-time control CAI adds.
 
@@ -78,7 +78,7 @@ Table 4 — Worked examples and engine outcomes.
 | `commercial_facilities-1.json` | A model proposes isolating the building automation VLAN of a stadium after anomalous BACnet traffic; confidence 0.92. | ISOLATE | CONTAINMENT | PENDING_APPROVAL (ESCALATE) | usa.srma_oversight = ESCALATE |
 | `commercial_facilities-2.json` | The same proposal from a model whose declared drift is 0.20, above the maximum of 0.15. | ISOLATE | CONTAINMENT | BLOCKED (DENY) | usa.srma_oversight = ESCALATE; usa.robustness = DENY |
 
-Gate meanings: `usa.nist_ai_rmf`: NIST AI RMF governance recorded (informational); `usa.srma_oversight`: human oversight required for a critical infrastructure sector; `usa.ot_ics_safety`: OT-intensive sector: OT-level, destructive, containment or eradication action needs cyber-physical safety approval; `usa.assurance_floor`: AI confidence below the floor for the sector consequence level; `usa.robustness`: declared model drift above 0.15; `usa.nist_ai_600_1`: generative AI without provenance or explanation (NIST AI 600-1); `policy.state_constraint`: action category checked against the current lifecycle state; `safety.none_triggered`: no CAI safety gate triggered; `safety.ot_ics`: containment, eradication or destructive action on an asset at Purdue level 0 to 2: human approval required.
+Gate meanings: `usa.nist_ai_rmf`: NIST AI RMF governance recorded (informational); `usa.srma_oversight`: human oversight required for a critical infrastructure sector; `usa.ot_ics_safety`: OT-intensive sector: an action on an asset with a Purdue level, or a destructive, containment or eradication action, needs cyber-physical safety approval; `usa.assurance_floor`: AI confidence below the floor for the sector consequence level; `usa.robustness`: declared model drift above 0.15; `usa.nist_ai_600_1`: generative AI without provenance or explanation (NIST AI 600-1); `policy.state_constraint`: action category checked against the current lifecycle state; `safety.none_triggered`: no CAI safety gate triggered; `safety.ai_explainability`: AI output not explainable: cannot trigger an action; `safety.ot_ics`: containment, eradication or destructive action on an asset at Purdue level 0 to 2: human approval required.
 
 ## 6. Gaps and limits
 

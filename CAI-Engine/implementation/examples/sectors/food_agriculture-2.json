@@ -1,0 +1,60 @@
+{
+  "description": "A generative AI assistant proposes the same action without an explanation and declares its output not explainable.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.94,
+      "explanation": "",
+      "explainable": false,
+      "provenance": "synthetic",
+      "drift_score": 0.02,
+      "genai": true
+    },
+    "context": {
+      "sector": "food_agriculture"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Isolate processing-line HMI",
+      "target": "hmi-line-2",
+      "ot_level": 2
+    }
+  },
+  "expected": {
+    "status": "BLOCKED",
+    "decision": "DENY",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.nist_ai_600_1",
+        "DENY"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.ot_ics_safety",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.ai_explainability",
+        "DENY"
+      ],
+      [
+        "safety.ot_ics",
+        "ESCALATE"
+      ]
+    ]
+  }
+}
