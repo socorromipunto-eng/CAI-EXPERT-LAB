@@ -19,6 +19,8 @@ enforces its own rules, and records what it did in a tamper-evident evidence
 log** — under two jurisdictions
 (EU AI Act and USA NSM-22 / NIST), treated per critical-infrastructure sector.
 
+> **Implementation boundary (research preview).** CAI-EXPERT-LAB is the governance reference framework. `CAI-Engine/implementation/` is a separate reference implementation (cai-engine 0.4.2), subject to `LICENSE.md` Section 4A. The proposed MCP security architecture in `CAI-Engine/specifications/` must not be represented as an implemented security boundary. Design intent and implemented behavior require independent verification.
+
 ## Where to find what
 
 | What | Where |

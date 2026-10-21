@@ -12,6 +12,8 @@ Use, distribution, modification, and commercial exploitation are governed by the
 The normative language of CAI-EXPERT-LAB documentation is English.  
 This document defines the execution engine of CAI and does not assert certification, accreditation, or regulatory approval.  
 
+> **Design versus implementation.** This document describes the intended CAI Engine architecture; it does not establish that every described capability is implemented or validated. The reference implementation is documented separately in `implementation/README.md` (cai-engine 0.4.2). MCP security proposals remain subject to independent validation and governance approval.
+
 ## 1. Purpose
 
 The purpose of the CAI Engine is to provide the operational execution layer of the Cybersecurity Artificial Intelligence Framework (CAI).
