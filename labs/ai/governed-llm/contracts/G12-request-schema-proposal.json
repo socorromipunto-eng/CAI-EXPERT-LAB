@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CAI G12 local fixture write (not MCP/CORE contract)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "domain",
+    "tenant_id",
+    "requester_id",
+    "request_id",
+    "nonce",
+    "audience",
+    "context_digest",
+    "policy_digest",
+    "operation",
+    "key",
+    "value"
+  ],
+  "properties": {
+    "domain": {
+      "const": "CAI-G12-LOCAL-EFFECT/V1"
+    },
+    "tenant_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{0,31}$"
+    },
+    "requester_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{0,31}$"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$"
+    },
+    "nonce": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{16,128}$"
+    },
+    "audience": {
+      "const": "cai.lab.execution"
+    },
+    "context_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "policy_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "operation": {
+      "const": "PUT_ONCE"
+    },
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{0,31}$"
+    },
+    "value": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    }
+  }
+}

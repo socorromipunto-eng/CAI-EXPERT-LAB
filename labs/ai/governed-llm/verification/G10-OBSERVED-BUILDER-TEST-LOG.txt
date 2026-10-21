@@ -1,0 +1,10 @@
+[PASS] REAL ML-DSA-87 PROVIDER - OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)
+[PASS] TEST INVENTORY - 169/169; 112 G08+G09 and 57 G10
+.........................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 169 tests in 9.008s
+
+OK
+G10_ACTUAL_RUNTIME_RESULT={"actual_runtime_environment": "Linux-6.18.55-x86_64-with-glibc2.41", "canonical_cai_core_adapter_tested": false, "distributed_replay_store_tested": false, "errors": 0, "expected": 169, "failures": 0, "gate": "G10", "gate08_and_gate09_regression": 112, "gate10_real_crypto_tests": 57, "hsm_kms_tested": false, "independent_ivv_completed": false, "keys_ephemeral_local_unencrypted": true, "mcp_isolation_tested": false, "mfa_tested": false, "mode": "OFFLINE_LAB", "openssl_provider": "OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)", "production_authorized": false, "real_idp_tested": false, "real_mldsa87_sign_verify": true, "result": "PASS", "skipped": 0, "total_run": 169}
+[PASS] GATE10 OFFLINE PQC LAB
+[HOLD] KMS/HSM, real IdP/MFA, persistent distributed replay, canonical CORE, independent human IV&V, release

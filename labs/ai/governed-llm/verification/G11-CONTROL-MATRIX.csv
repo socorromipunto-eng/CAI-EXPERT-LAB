@@ -1,0 +1,9 @@
+control_id,proposed_requirement,implementation,new_test_count,builder_status,enterprise_status
+MCP-001,"Explicit immutable tool allowlist; deny unknown operations, methods and descriptors",src/cai_g11/gateway.py,14,PASS_IN_LOCAL_LAB_ONLY,HOLD
+MCP-002,Bounded strict JSON-RPC subset and reject ambiguous parameters/encoding,src/cai_g11/gateway.py,26,PASS_IN_LOCAL_LAB_ONLY,HOLD
+MCP-003,Untrusted content remains inert data; no LLM/prompt-resilience claim,src/cai_g11/gateway.py,3,PASS_IN_LOCAL_LAB_ONLY,HOLD
+MCP-004,Canonical logical resource namespace; tenant-scoped in-memory access; no OS paths,src/cai_g11/gateway.py,19,PASS_IN_LOCAL_LAB_ONLY,HOLD
+MCP-005,Classification-based output release and public error/audit redaction,src/cai_g11/gateway.py,7,PASS_IN_LOCAL_LAB_ONLY,HOLD
+MCP-006,Real ML-DSA-87 signed operation binding and local one-time nonce,src/cai_g11/gateway.py,13,PASS_IN_LOCAL_LAB_ONLY,HOLD
+MCP-007,Context/resource/policy/actor revalidation at release linearization point,src/cai_g11/gateway.py,7,PASS_IN_LOCAL_LAB_ONLY,HOLD
+MCP-008,Deny on missing signer/dependency/authority or unknown input,src/cai_g11/gateway.py,3,PASS_IN_LOCAL_LAB_ONLY,HOLD

@@ -1,0 +1,10 @@
+[PASS] ML-DSA-87 PROVIDER - OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)
+[PASS] TRACEABILITY - 261 inherited + 63 G12 = 324 total, 0 orphans
+....................................................................................................................................................................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 324 tests in 20.217s
+
+OK
+G12_ACTUAL_RUNTIME_RESULT={"canonical_core_tested": false, "distributed_transaction_tested": false, "environment": "Linux-6.18.55-x86_64-with-glibc2.41", "errors": 0, "expected": 324, "external_mcp_tested": false, "failures": 0, "gate": "G12", "independent_ivv_done": false, "inherited_g08_to_g11": 261, "local_filesystem_fixture_effects_tested": true, "ml_dsa_87_real_signature_tested": true, "mode": "OFFLINE_TEMPORARY_FILESYSTEM_LAB", "new_g12_tests": 63, "process_or_container_isolation_tested": false, "production_authorized": false, "provider": "OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)", "remote_or_external_system_effects_tested": false, "result": "PASS", "separate_observer_code_path_tested": true, "skipped": 0, "sqlite_local_journal_tested": true, "tests_run": 324, "trusted_timestamp_hsm_kms_tested": false}
+[PASS] GATE12 LOCAL EFFECT/EVIDENCE LAB
+[HOLD] Real OS isolation/remote execution, durable trusted audit, persistent distributed fencing, HSM/KMS, CORE adapter and independent IV&V

@@ -1,0 +1,10 @@
+{
+  "jsonrpc": "2.0",
+  "id": "req-alpha",
+  "method": "tools/call",
+  "params": {
+    "name": "cai.fixture.read",
+    "arguments": {"resource_id": "docs/alpha"},
+    "_meta": {"cai_nonce": "ABCDEF1234567890abcd"}
+  }
+}

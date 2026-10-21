@@ -1,0 +1,14 @@
+{
+  "G11_new_cases": 92,
+  "errors": 0,
+  "failures": 0,
+  "g05_findings_closed_by_G11": 0,
+  "gate": "G11",
+  "original_G10_regression_cases": 169,
+  "original_G10_source_and_test_files": 14,
+  "production_status": "HOLD",
+  "skipped": 0,
+  "status": "PASS_BUILDER_LAB",
+  "total_observed_cases": 261,
+  "windows_G11_execution": "NOT_OBSERVED"
+}

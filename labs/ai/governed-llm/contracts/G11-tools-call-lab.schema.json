@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/cai-g11/tools-call-lab.schema.json",
+  "title": "CAI-G11 closed-world tools/call request fixture",
+  "description": "LAB-ONLY wire subset; NOT complete MCP or OS sandbox conformance",
+  "type": "object",
+  "required": ["jsonrpc", "id", "method", "params"],
+  "additionalProperties": false,
+  "properties": {
+    "jsonrpc": {"const": "2.0"},
+    "id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.:/-]{0,100}$"},
+    "method": {"const": "tools/call"},
+    "params": {
+      "type": "object",
+      "required": ["name", "arguments", "_meta"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"const": "cai.fixture.read"},
+        "arguments": {
+          "type": "object",
+          "required": ["resource_id"],
+          "additionalProperties": false,
+          "properties": {
+            "resource_id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,31}(/[a-z][a-z0-9_-]{0,31}){0,3}$"}
+          }
+        },
+        "_meta": {
+          "type": "object",
+          "required": ["cai_nonce"],
+          "additionalProperties": false,
+          "properties": {
+            "cai_nonce": {"type": "string", "pattern": "^[A-Za-z0-9_-]{16,128}$"}
+          }
+        }
+      }
+    }
+  }
+}

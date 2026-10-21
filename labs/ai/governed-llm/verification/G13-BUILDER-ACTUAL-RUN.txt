@@ -1,0 +1,11 @@
+[PASS] REAL ML-DSA-87 PROVIDER - OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)
+[PASS] G12 SOURCE/TEST LINEAGE - 22/22 exact SHA256
+[PASS] TRACEABILITY - 324 inherited + 89 new = 413 tests; 0 orphan
+.............................................................................................................................................................................................................................................................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 413 tests in 20.992s
+
+OK
+G13_ACTUAL_RUNTIME_RESULT={"actual_network_firewall_tested": false, "canonical_cai_core_adapter_tested": false, "distributed_fencing_tested": false, "dual_domain_approval_lab_tested": true, "enterprise_idp_kms_hsm_tested": false, "environment": "Linux-6.18.55-x86_64-with-glibc2.41", "errors": 0, "expected": 413, "external_mcp_transport_tested": false, "failures": 0, "gate": "G13", "independent_human_ivv": false, "inherited_g08_to_g12": 324, "mock_socket_network_attempts_blocked_during_one_test": true, "mode": "OFFLINE_CLOSED_WORLD_ADVERSARIAL_INTEGRATION_LAB", "new_g13_tests": 89, "os_process_container_isolation_tested": false, "production_authorized": false, "provider": "OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)", "real_llm_prompt_injection_resilience_tested": false, "real_mldsa87_signature_verification": true, "receipt_and_journal_local_cross_checks_tested": true, "repository_mutated": false, "result": "PASS", "skipped": 0, "tests_run": 413, "untrusted_fixture_data_does_not_become_a_tool_command_tested": true, "version": "v0.3.5"}
+[PASS] GATE13 OFFLINE ADVERSARIAL INTEGRATION LAB
+[HOLD] Real LLM injection defense, external MCP, process/OS isolation, firewall, real IdP/KMS, CORE adapter, IV&V, release

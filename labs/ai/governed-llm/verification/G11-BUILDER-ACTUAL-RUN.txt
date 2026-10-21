@@ -1,0 +1,10 @@
+[PASS] REAL ML-DSA-87 PROVIDER - OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)
+[PASS] TEST INVENTORY - 169 inherited + 92 new = 261; traceability exact
+.....................................................................................................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 261 tests in 14.292s
+
+OK
+G11_ACTUAL_RUNTIME_RESULT={"actual_mldsa87_signature_verification": true, "canonical_cai_core_tested": false, "environment": "Linux-6.18.55-x86_64-with-glibc2.41", "errors": 0, "expected": 261, "external_execution_tested": false, "external_mcp_server_tested": false, "failures": 0, "fixture_only_tools_call_emulation": true, "gate": "G11", "independent_human_ivv": false, "inherited_g08_g09_g10_tests": 169, "llm_prompt_injection_resilience_tested": false, "mode": "OFFLINE_LAB", "network_egress_firewall_tested": false, "new_g11_tests": 92, "os_container_isolation_tested": false, "production_authorized": false, "production_idp_kms_hsm_tested": false, "provider": "OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)", "result": "PASS", "skipped": 0, "tests_run": 261}
+[PASS] GATE11 OFFLINE MCP LAB
+[HOLD] OS isolation, external MCP, real IdP/KMS, canonical CORE, human IV&V, release
