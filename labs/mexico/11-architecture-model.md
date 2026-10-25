@@ -1,5 +1,9 @@
 # CAI-MX – Architecture Model
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose

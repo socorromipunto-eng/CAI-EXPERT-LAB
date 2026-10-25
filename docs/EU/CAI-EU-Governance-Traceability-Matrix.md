@@ -1,5 +1,7 @@
 # CAI-EU-Governance-Traceability-Matrix.md
 
+> Candidate amendment CHG-CAI-RECON-2026-10-22-001; versioning and human adoption pending.
+
 Version 0.1 (Draft)  
 
 Status  
@@ -28,7 +30,7 @@ Dependencies:
 
 - CAI-EU-Research-and-Academia-Governance-Overlay v0.1
 
-- Freeze: Not declared
+- Freeze: Frozen within the scope of CAI-EU-Master-Freeze-v0.1.md; candidate amendments require controlled adoption
 
 ## 1. Purpose of This Document
 
@@ -77,29 +79,35 @@ The matrix traces governance across the following dimensions:
 Each dimension is examined across documents, not across regulations.
 
 ## 4. Core-to-EU Traceability
-Governance Principle	CAI Core	CAI EU Foundational Docs	EU Sector Overlays
-Human authority	Defined	Reinforced	Preserved
-AI non-autonomy	Explicit	Explicit	Explicit
-Accountability	Core requirement	Contextualized	Sector-applied
-Evidence integrity	Required	Scaled by risk	Sector-aware
-Governance precedence	Absolute	Enforced	Inherited
+
+| Governance Principle | CAI Core | CAI EU Foundational Docs | EU Sector Overlays |
+| --- | --- | --- | --- |
+| Human authority | Defined | Reinforced | Preserved |
+| AI non-autonomy | Explicit | Explicit | Explicit |
+| Accountability | Core requirement | Contextualized | Sector-applied |
+| Evidence integrity | Required | Scaled by risk | Sector-aware |
+| Governance precedence | Absolute | Enforced | Inherited |
 
 This table illustrates inheritance without reinterpretation.
 
 ## 5. EU Foundational Traceability
-Principle	Governance	Risk & Proportionality	Interoperability
-Risk-governed AI use	Defined	Operationalized	Preserved
-Proportional oversight	Declared	Structured	Maintained
-Sector neutrality	Required	Respected	Enforced
-Human decision primacy	Absolute	Scaled	Uniform
+
+| Principle | Governance | Risk & Proportionality | Interoperability |
+| --- | --- | --- | --- |
+| Risk-governed AI use | Defined | Operationalized | Preserved |
+| Proportional oversight | Declared | Structured | Maintained |
+| Sector neutrality | Required | Respected | Enforced |
+| Human decision primacy | Absolute | Scaled | Uniform |
 
 Foundational documents are mutually reinforcing, not overlapping.
 
 ## 6. Sector Overlay Traceability
-Overlay	Additional Constraints	Preserved Principles
-Public Sector	Democratic accountability, transparency	Human authority, non-autonomy
-Critical Infrastructure	Systemic risk, cascading impact awareness	Proportionality, evidence integrity
-Research & Academia	Experimental accountability, reproducibility	Traceability, human oversight
+
+| Overlay | Additional Constraints | Preserved Principles |
+| --- | --- | --- |
+| Public Sector | Democratic accountability, transparency | Human authority, non-autonomy |
+| Critical Infrastructure | Systemic risk, cascading impact awareness | Proportionality, evidence integrity |
+| Research & Academia | Experimental accountability, reproducibility | Traceability, human oversight |
 
 No overlay introduces new authority, only additional constraints.
 

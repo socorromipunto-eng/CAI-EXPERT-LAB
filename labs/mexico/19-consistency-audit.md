@@ -1,5 +1,33 @@
 # CAI-MX – Consistency and Integrity Audit
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
+
+## Current-baseline reconciliation
+
+The original audit body below is retained as historical analysis. Its original
+audited commit and execution evidence are not identified; do not invent them.
+This table contrasts it with d61966bc3058e8ad7ab40b0a16c83529232b8309 and the proposed candidate amendments.
+A documentary correction does not establish implementation or verified closure.
+
+| Historical section | Disposition | Current reference / remaining work |
+|---|---|---|
+| 4.1 | PARTIAL | 15 section 2 supplies the definition; earlier texts must reference it |
+| 4.2 | PARTIAL | 15 sections 7,9,10 separate baseline and telemetry; adapters need verification |
+| 4.3 | PARTIAL | 16 sections 7.2-7.3 define distance and weights; equivalence tests pending |
+| 4.4 | PARTIAL | 16 section 8.1 references 17; candidate removes competing dominance wording |
+| 4.5 | PARTIAL | 16 section 12 defines propagation; candidate 26 preserves its contract |
+| 4.6 | REQUIREMENT PRESENT | 16 section 14 requires pre-execution evaluation; runtime evidence pending |
+| 4.7 | OPEN | Source identity, integrity and authority require an approved trust profile |
+| 4.8 | RULE PRESENT | 17 section 8.3 defines critical-component dominance; runtime tests pending |
+| 4.9 | STEPS PRESENT | 16 section 15 enumerates revalidation; implementation pending |
+| 4.10 | PARTIAL / PROPOSED | 15 sections 12-14 link evidence; unavailable-risk schema adoption pending |
+| 4.11 | PARTIAL / PROPOSED | 15 section 16;16 section 6.2;17 freshness; future-time bounds proposed |
+| 4.12 | OPEN | 18 is threat analysis, not evidence of successful exploitation or defense |
+
+
 ---
 
 ## 1. Purpose

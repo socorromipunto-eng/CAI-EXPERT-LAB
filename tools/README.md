@@ -23,6 +23,15 @@ Merges the Markdown in `CAI-Engine`, `docs`, `labs` and `legal`, followed by
 - The GitLab pipeline (`.gitlab-ci.yml`) runs this same script and publishes
   `output/` as a build artifact.
 
+## md-structure.py
+
+Run `python tools/md-structure.py <document.md>` to inspect a conversion
+candidate without writing the document. `OK` means only the implemented
+word-sequence comparison passed; it is not semantic, rendering or governance
+approval. Review the diff, code fences, lists, tables and rendered output.
+Use the applicable document-family and freeze/adoption rules before any write.
+Do not bulk-convert historical evidence or assume one layout fits every family.
+
 ---
 
 Copyright (c) 2025 Antonio José Socorro Marín. CAI-EXPERT-LAB. All Rights Reserved.

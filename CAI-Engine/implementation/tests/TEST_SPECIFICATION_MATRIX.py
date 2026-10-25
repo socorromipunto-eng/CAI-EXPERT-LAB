@@ -28,7 +28,6 @@ Run (from CAI-Engine/implementation):  python -m pytest -q tests/TEST_SPECIFICAT
 """
 from __future__ import annotations
 
-import contextlib
 import itertools
 import json
 import math
@@ -624,22 +623,31 @@ def test_mcp_exposes_no_approval_tool(monkeypatch, tmp_path):
 # ==========================================================================
 # 16. Known gaps against the specifications (xfail, strict)
 # ==========================================================================
-@pytest.mark.xfail(strict=True, reason="T-09 / NEW-05: approve() executes a pending action without "
-                                       "re-evaluating it in the current state (TAX 8.6)")
 def test_approval_revalidates_after_state_change(engine):
     drive(engine, S.ISOLATE)
     out = engine.propose({"category": "CONTAINMENT", "description": "isolate host", "target": "h"})
     assert out["status"] == "PENDING_APPROVAL"
     assert engine.transition("EVICT")["status"] == "OK"
-    res = engine.approve(out["action_id"], "operator")
-    assert res["status"] != "EXECUTED"
+    before_state = Path(engine.state_path).read_bytes()
+    with pytest.raises(EngineError, match="approval revalidation failed"):
+        engine.approve(out["action_id"], "fixture-operator")
+    assert Path(engine.state_path).read_bytes() == before_state
+    assert out["action_id"] in engine.status()["pending_approvals"]
+    records = list(engine.evidence.records())
+    assert records[-1]["event_type"] == "HUMAN_APPROVAL_REJECTED"
+    assert not any(r["event_type"] == "ACTION_EXECUTED" for r in records)
 
 
-@pytest.mark.xfail(strict=True, reason="F-02: a NaN confidence passes every '<' threshold comparison")
 @pytest.mark.parametrize("juris", ["EU", "USA"])
 def test_nan_confidence_is_never_authorized(engine, juris):
-    out = GovernedAgent(engine).govern(proposal(juris=juris, conf=math.nan))
-    assert out["status"] != "EXECUTED"
+    before_state = Path(engine.state_path).read_bytes()
+    with pytest.raises(EngineError):
+        GovernedAgent(engine).govern(proposal(juris=juris, conf=math.nan))
+    assert Path(engine.state_path).read_bytes() == before_state
+    assert engine.status()["pending_approvals"] == []
+    records = list(engine.evidence.records())
+    assert records[-1]["event_type"] == "GOVERNED_INPUT_REJECTED"
+    assert not any(r["event_type"] == "ACTION_EXECUTED" for r in records)
 
 
 @pytest.mark.xfail(strict=True, reason="F-01: risk context is supplied by the AI; omitting the sector "
@@ -650,26 +658,24 @@ def test_omitting_sector_does_not_remove_oversight(engine):
     assert GovernedAgent(engine).govern(p)["status"] != "EXECUTED"
 
 
-@pytest.mark.xfail(strict=True, reason="JUR: an unknown jurisdiction is silently evaluated as EU "
-                                       "instead of being rejected")
 def test_unknown_jurisdiction_is_rejected(engine):
     with pytest.raises((EngineError, ValueError)):
         GovernedAgent(engine).govern(proposal(juris="MX"))
 
 
-@pytest.mark.xfail(strict=True, reason="F-02b: a boolean is accepted as a confidence (True -> 1.0)")
 def test_boolean_confidence_is_rejected(engine):
     with pytest.raises((EngineError, ValueError, TypeError)):
         GovernedAgent(engine).govern(proposal(juris="EU", conf=True))
 
 
-@pytest.mark.xfail(strict=True, reason="F-03: init() truncates an existing evidence log")
 def test_init_preserves_existing_evidence(engine):
     engine.set_fact("assets_discovered", True)
-    before = engine.evidence.count()
-    with contextlib.suppress(EngineError):
+    before_state = Path(engine.state_path).read_bytes()
+    before_evidence = Path(engine.evidence.path).read_bytes()
+    with pytest.raises(EngineError):
         engine.init()
-    assert engine.evidence.count() >= before
+    assert Path(engine.state_path).read_bytes() == before_state
+    assert Path(engine.evidence.path).read_bytes() == before_evidence
 
 
 @pytest.mark.xfail(strict=True, reason="SGH 5.2: approval timeout is specified but not implemented")

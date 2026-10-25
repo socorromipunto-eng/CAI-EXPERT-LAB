@@ -1,4 +1,6 @@
 # CAI-EXPERT-LAB  
+
+> Candidate amendment CHG-CAI-RECON-2026-10-22-001; versioning and human adoption pending.
 ## Decision-Centric Governance Architecture for Continuous Integrity Enforcement
 
 ---
@@ -187,7 +189,10 @@ Through:
 
 This ensures that:
 
-> the framework cannot be semantically corrupted without detection
+> the framework defines governance and review mechanisms intended to detect
+specified classes of semantic change within a declared scope. Universal
+detection has not been demonstrated; effectiveness depends on baseline
+integrity, implemented checks, evidence coverage and review quality
 
 ---
 

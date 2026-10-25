@@ -205,7 +205,7 @@ def test_init_event(engine):
 
 
 def test_fact_event(engine):
-    engine.set_fact("assets_discovered", 1)
+    engine.set_fact("assets_discovered", True)
     assert last(engine)["event_type"] == "FACT_SET"
     assert last(engine)["payload"] == {"fact": "assets_discovered", "value": True}
 
@@ -222,7 +222,9 @@ def test_telemetry_events(engine):
     assert out["accepted"] is False and out["errors"] == rec["payload"]["errors"]
     assert rec["event_type"] == "TELEMETRY_REJECTED"
     assert "missing source" in out["errors"] and "missing provenance metadata" in out["errors"]
-    assert rec["payload"]["event"]["source"] == "" and rec["payload"]["event"]["provenance"] == ""
+    assert rec["payload"]["event_id"] == out["id"]
+    assert "event" not in rec["payload"]  # Invalid raw fields are not persisted.
+
 
 
 def test_telemetry_without_confidence_is_rejected(engine):
@@ -368,8 +370,8 @@ def test_state_survives_a_new_engine_instance(engine):
 def test_every_action_field_is_carried_into_the_record(engine):
     to_state(engine, "HARDEN")
     out = engine.propose({"category": "HARDENING", "description": "patch", "target": "plc-3", "ot_level": 3,
-                          "blast_radius": "7", "destructive": 0, "ai_assisted": 1, "ai_confidence": "0.91",
-                          "ai_explainable": 1, "affects_privileged_accounts": 0})
+                          "blast_radius": 7, "destructive": False, "ai_assisted": True, "ai_confidence": 0.91,
+                          "ai_explainable": True, "affects_privileged_accounts": False})
     a = out["action"]
     assert (a["category"], a["description"], a["target"], a["ot_level"]) == ("HARDENING", "patch", "plc-3", 3)
     assert a["blast_radius"] == 7 and isinstance(a["blast_radius"], int)
@@ -657,3 +659,40 @@ def test_rmf_trace_function():
                  "MAP": "deployment context classified (classification = MINIMAL)",
                  "MEASURE": "confidence=0.50, drift=0.10, explainable=False",
                  "MANAGE": "decision=ALLOW; human_oversight=not required; recorded in hash-chained evidence log"}
+
+
+@pytest.mark.parametrize("value", [1, 0, "false", None, []])
+def test_fact_rejects_coercion_and_preserves_state(engine, value):
+    before = engine.status()["facts"]
+    with pytest.raises(EngineError):
+        engine.set_fact("safety_approved", value)
+    assert engine.status()["facts"] == before
+    assert last(engine)["event_type"] == "FACT_INPUT_REJECTED"
+
+
+def test_telemetry_invalid_shape_is_audited_without_raw_input(engine):
+    out = engine.ingest(["invalid-input-marker"])
+    assert out["accepted"] is False
+    assert last(engine)["event_type"] == "TELEMETRY_REJECTED"
+    assert "invalid-input-marker" not in json.dumps(last(engine))
+
+
+@pytest.mark.parametrize("field,value", [
+    ("blast_radius", "7"), ("blast_radius", True), ("blast_radius", -1),
+    ("destructive", 0), ("ai_assisted", 1), ("ai_explainable", 1),
+    ("affects_privileged_accounts", 0), ("ai_confidence", "0.91"),
+    ("ai_confidence", True), ("ai_confidence", float("nan")),
+    ("ai_confidence", float("inf")), ("unknown_action_field", True),
+])
+def test_action_rejects_coercion_without_state_effect(engine, field, value):
+    before = Path(engine.state_path).read_bytes()
+    evidence_count = engine.evidence.count()
+    with pytest.raises(EngineError):
+        engine.propose({"category": "OBSERVE", "description": "input boundary fixture", field: value})
+    assert Path(engine.state_path).read_bytes() == before
+    assert engine.status()["pending_approvals"] == []
+    recs = records(engine)
+    assert len(recs) == evidence_count + 1
+    assert recs[-1]["event_type"] == "ACTION_INPUT_REJECTED"
+    assert recs[-1]["payload"]["reason_code"] == "INVALID_ACTION"
+    assert "action" not in recs[-1]["payload"]

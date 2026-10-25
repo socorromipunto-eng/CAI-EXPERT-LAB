@@ -2,6 +2,10 @@ CAI-Core-Evolution-Traceability-Register.md
 
 # Cybersecurity Artificial Intelligence Framework – Evolution Traceability Register
 Version 0.1 (Draft)  
+
+Document revision: 0.1.1. Framework baseline: CAI Core v0.1 (research preview).
+Change ID: CHG-CAI-GOV-RECON-2026-10-23.
+
 Author: Antonio José Socorro Marín  
 Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
@@ -134,6 +138,38 @@ AI tools were used for analysis, verification and preparation of changes. Every 
 | CHG-2026-10-16-12 | 2026-10-16 | This commit | docs/USA/sector-frameworks/ (five new sector documents; README; the five batch 1 documents corrected), CAI-Engine/implementation/examples/sectors/ (10 new examples), tests/TEST_SECTOR_EXAMPLES.py, .github/workflows/CAI-ENGINE-TESTS.yml | Addition | AUD-05 batch 2: Defense Industrial Base, Emergency Services, Energy, Financial Services, Food and Agriculture; correction of the OT gate wording in batch 1 | Owner approved (commit message, signed) | Regulatory facts checked against official sources on 2026-10-16; independent review before commit; documents checked against the examples (state, outcome, gates); 674 passed, 13 xfailed; CI gate raised from 664 to 674 | No frozen document modified; engine unchanged; batch 1 documents: description of when the OT gates apply corrected to match the code |
 
 From CHG-2026-10-15-01 onward, each change adds its entry in the same commit that makes the change.
+
+
+## Owner-adjudicated reconciliation — CHG-CAI-GOV-RECON-2026-10-23
+
+This is a contemporaneous local change record, not a retroactive approval of
+earlier changes. The historical entries and freeze statement below are retained.
+
+| Element | Recorded value |
+| --- | --- |
+| Change ID | CHG-CAI-GOV-RECON-2026-10-23 |
+| Recorded project date | 2026-10-23, client project date (Etc/GMT+5) |
+| Human adjudication source | The project owner's message “Aprbado” approving the three reconciliation criteria after the Cleanup 1.1.1 applied checkpoint in the project conversation |
+| Scope approved | Conflict handling between integrity and contamination; research-preview completeness wording; citation guidance aligned with existing LICENSE.md permissions/restrictions |
+| Affected documents | CAI-Core-Integrity-and-Self-Defense-Governance.md; CAI-Core-Contamination-Prevention-Rules.md; CAI-Core-Completeness-and-Scope.md; legal/CAI-Attribution-and-Citation-Guidelines.md; this register |
+| Category | Bounded governance reconciliation and correction of completeness/attribution wording |
+| Source baseline | Cleanup 1.1.1 locally applied, as reported by the owner; branch review/chg-cai-gllm-gov-001 and HEAD 4b13e165182f106563d686c2d4e2a67cdec4f4c7 are the installer locks |
+| Document revisions | Core documents/register: revision 0.1.1 under framework baseline v0.1; citation guide: version 1.2; no framework or engine release increment |
+| Technical review | Separate technical criteria and document/installer fixture evidence in CAI-Governance-Reconciliation-1.0.0; actual installation outcome is established by the run's result.json and postimage hashes |
+| Governance review | Owner adjudicated the criteria; assistant reviewed source alignment and bounded scope. These checks are not independent IV&V or a claim of completed publication review |
+| AI assistance | ChatGPT prepared wording, traceability, tests and controlled installer; no AI author/coauthor or approval authority is created |
+| Evidence package | CAI-Governance-Reconciliation-1.0.0: manifest.json, REVIEW.patch, review records, fixture results and run receipts; no historical result is rewritten |
+| CORE impact | A direct integrity/contamination conflict places the affected change on HOLD for the designated human authority; no inferred precedence. Completeness remains under review |
+| Implementation / legal impact | Lifecycle, engine, thresholds, jurisdiction profiles and LICENSE.md unchanged; no new permission, certification or implementation guarantee |
+| Commit reference | PENDING — no commit is created by this installation; the owner-authorized publication process must supply its commit reference before authoritative publication |
+| Acceptance boundary | Approval of these criteria authorizes this bounded local reconciliation, not publication, promotion to 1.0 or completion of independent assurance. Final promotion remains HOLD |
+
+The historical freeze is not a blanket authorization to revise other CORE
+artifacts. This entry records only the specific owner-adjudicated reconciliation
+above, preserves the v0.1 research-preview baseline, and does not unlock unrelated
+semantics, regional overlays or future changes. The seven known engine expected
+failures remain open. The full local GOV-001 content has not been independently
+captured in this preparation; this remains a promotion-review limitation.
 
 Status  
 

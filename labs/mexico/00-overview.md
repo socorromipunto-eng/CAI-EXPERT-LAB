@@ -1,5 +1,9 @@
 # CAI-MX – Laboratory Overview and Decision Integrity Model
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -32,7 +36,9 @@ The APF cybersecurity policy establishes a comprehensive and structured national
 - supply chain security  
 - continuous improvement and measurement  
 
-This framework ensures institutional alignment, resilience, and measurable control effectiveness across federal entities :contentReference[oaicite:0]{index=0}.
+The description of APF institutional alignment requires an identified official
+source and exact provisions. The original citation source is NOT VERIFIED;
+the published internal marker did not identify a recoverable reference.
 
 However, its operational model is primarily oriented toward:
 
@@ -189,7 +195,7 @@ This aligns with APF principles of:
 
 - measurable controls  
 - continuous evaluation  
-- evidence-based improvement :contentReference[oaicite:1]{index=1}  
+- evidence-based improvement (external source and provision NOT VERIFIED)
 
 ---
 

@@ -10,6 +10,7 @@ conditions are satisfied and all guards approve the transition.
 from __future__ import annotations
 
 import enum
+import math
 import time
 import uuid
 from dataclasses import dataclass, field
@@ -90,6 +91,15 @@ ALLOWED_ACTIONS: dict[State, set[ActionCategory]] = {
 #    Non-conforming telemetry is rejected or quarantined; the engine never
 #    operates on unnormalized or unverifiable data.
 # --------------------------------------------------------------------------
+def is_finite_number(value: object) -> bool:
+    if type(value) not in (int, float):
+        return False
+    try:
+        return math.isfinite(value)
+    except (OverflowError, ValueError):
+        return False
+
+
 VALID_DOMAINS = {"identity", "device", "network", "application", "data", "ai"}
 
 
@@ -105,16 +115,22 @@ class TelemetryEvent:
     def validate(self) -> list[str]:
         """Return a list of validation errors. Empty list == conformant."""
         errors: list[str] = []
-        if not self.source:
+        if isinstance(self.source, str) and not self.source.strip():
             errors.append("missing source")
-        if self.domain not in VALID_DOMAINS:
-            errors.append(f"invalid domain '{self.domain}' (allowed: {sorted(VALID_DOMAINS)})")
-        if not isinstance(self.confidence, (int, float)) or not (0.0 <= self.confidence <= 1.0):
+        elif not isinstance(self.source, str):
+            errors.append("source must be a non-empty string")
+        if not isinstance(self.domain, str) or self.domain not in VALID_DOMAINS:
+            errors.append("domain must be a supported string")
+        if not is_finite_number(self.confidence) or not (0.0 <= self.confidence <= 1.0):
             errors.append("confidence must be a number in [0.0, 1.0]")
-        if not self.provenance:
+        if isinstance(self.provenance, str) and not self.provenance.strip():
             errors.append("missing provenance metadata")
+        elif not isinstance(self.provenance, str):
+            errors.append("provenance must be a non-empty string")
         if self.timestamp is None:
             errors.append("missing timestamp")
+        elif not is_finite_number(self.timestamp) or self.timestamp < 0:
+            errors.append("timestamp must be a finite non-negative number")
         return errors
 
 
@@ -138,6 +154,25 @@ class Action:
     # Privileged-identity impact (triggers mandatory human approval).
     affects_privileged_accounts: bool = False
     id: str = field(default_factory=lambda: "act-" + uuid.uuid4().hex[:10])
+
+    def validate(self) -> list[str]:
+        errors: list[str] = []
+        try:
+            self.normalized_category()
+        except (ValueError, TypeError):
+            errors.append("invalid action category")
+        if not isinstance(self.description, str) or not isinstance(self.target, str):
+            errors.append("description and target must be strings")
+        if self.ot_level is not None and (type(self.ot_level) is not int or not 0 <= self.ot_level <= 5):
+            errors.append("ot_level must be an integer in [0, 5] or null")
+        if type(self.blast_radius) is not int or self.blast_radius < 0:
+            errors.append("blast_radius must be a non-negative integer")
+        for name in ("destructive", "ai_assisted", "ai_explainable", "affects_privileged_accounts"):
+            if type(getattr(self, name)) is not bool:
+                errors.append(name + " must be a boolean")
+        if not is_finite_number(self.ai_confidence) or not 0 <= self.ai_confidence <= 1:
+            errors.append("ai_confidence must be a finite number in [0, 1]")
+        return errors
 
     def normalized_category(self) -> ActionCategory:
         return self.category if isinstance(self.category, ActionCategory) else ActionCategory(self.category)

@@ -1,4 +1,6 @@
 # Cybersecurity Artificial Intelligence Framework – United States Definition
+
+> Candidate amendment CHG-CAI-RECON-2026-10-22-001; versioning and human adoption pending.
 Version 0.1 (Draft)  
 
 Author: Antonio José Socorro Marín  
@@ -84,9 +86,6 @@ CISA Secure-by-Design and Secure-by-Default principles
 ### 4.3 Industrial Control Systems and OT
 
 NIST SP 800-82 (ICS Security)  
-NIST SP 800-192 (Resilient ICS Design)  
-NIST IR 8360 (Manufacturing Profile)  
-NIST IR 8539 (OT Security Considerations)  
 CISA / NCCIC Defense-in-Depth for ICS  
 ICS Monitoring and Detection Technology Guidance
 
@@ -103,6 +102,26 @@ NIST AI RMF Playbook
 Responsible AI lifecycle governance and assurance guidance
 
 CAI integrates these standards operationally, not as checklists.
+
+### 4.6 Access-Control Policy Verification References
+
+These publications address access-control policies and models. They are
+cross-cutting verification references, not ICS-specific design standards:
+
+- NIST SP 800-192, *Verification and Test Methods for Access Control Policies/Models* (June 2017).
+- NIST IR 8360, *Machine Learning for Access Control Policy Verification* (September 2021).
+- NIST IR 8539, *Security Property Verification by Transition Model* (January 2025).
+
+Official identification sources:
+
+- https://csrc.nist.gov/pubs/sp/800/192/final
+- https://csrc.nist.gov/pubs/ir/8360/final
+- https://nvlpubs.nist.gov/nistpubs/ir/2025/NIST.IR.8539.pdf
+
+Inclusion does not establish binding applicability, implementation or
+conformance. Record exact sections, applicable requirements and evidence
+separately. The identifiers are preserved; this amendment does not guess which
+different ICS publication a previous description might have intended.
 
 ## 5. USA Operational Philosophy
 

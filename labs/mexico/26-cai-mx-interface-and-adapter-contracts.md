@@ -1,5 +1,9 @@
 # CAI-MX – Interface and Adapter Contracts
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -49,98 +53,72 @@ These flows define the boundary between:
 
 ## 4. Decision Submission Contract (DSA)
 
-Every system interacting with CAI must submit a **decision object**.
-
-### Required fields
-
-- `decision_id` → unique identifier  
-- `subject` → entity initiating the decision  
-- `action` → intended operation  
-- `resource` → target system or asset  
-- `context` → baseline decision conditions (DSA)  
-- `risk_level` → associated risk classification  
-- `timestamp` → decision issuance time  
-
-### Example
-
-```json
-{
-  "decision_id": "D-12345",
-  "subject": "user_001",
-  "action": "access_sensitive_data",
-  "resource": "system_B",
-  "context": {
-    "device": "compliant",
-    "network": "trusted",
-    "behavior": "normal"
-  },
-  "risk_level": "low",
-  "timestamp": "2026-04-22T10:00:00Z"
-}
-```
+The wire representation preserves the canonical Decision in `15-data-model.md`
+section 8: decision_id, subject_id, action, resource, origin_system,
+policy_version, schema_version, timestamp_issued, validity_window.start/end,
+baseline_context_id, context_hash, initial_risk_score and state are required.
+Identifiers satisfy the canonical UUID type. The immutable BaselineContext in
+section 9 exists and is verified before issuance; the Decision references it.
+Mutable telemetry must not replace baseline truth. Use the canonical schema,
+not a second shortened JSON example. Serialization/hash profile and the actual
+transport schema version require adoption before interoperability is claimed.
 
 ## 5. Telemetry Input Contract (ESA)
 
-Telemetry sources provide real-time environmental context.
+Telemetry used for a Decision satisfies TelemetryRecord in document 15 section
+10, including telemetry_id, required decision_id, timestamp_observed,
+source_system, canonical identity/device/network/behavior fields and
+telemetry_confidence. decision_id references an existing Decision.
+A source-native event without correlation is not yet a canonical record eligible
+for that decision. A named adapter must evidence correlation, source authority,
+ordering, completeness and freshness. Partial updates cannot silently replace
+an authoritative record. RiskAssessment remains distinct from telemetry.
 
-Required inputs
-decision_id (optional correlation)
-device_state
-network_state
-behavioral_state
-risk_score
-timestamp
-Characteristics
-continuous or event-driven ingestion
-partial and asynchronous updates allowed
-time-sensitive relevance
 ## 6. Validation Request Interface
 
-Systems must request validation before execution.
-
-Input
-decision_id
-optional override parameters (policy-bound)
-Process
-
-CAI retrieves:
-
-DSA from the decision registry
-ESA from telemetry streams
-
-and evaluates admissibility conditions.
+The consumer identifies the canonical Decision UUID before an effect. The
+evaluator retrieves the immutable context, versioned policy, source-validated
+telemetry, compatible RiskAssessment and recorded evaluation time, then applies
+`16-decision-rules.md` in its defined precedence order. Client overrides cannot
+change authority, baseline or scope outside an explicitly authorized workflow.
 
 ## 7. Validation Response Contract
 
-CAI returns a structured response representing execution admissibility.
+DecisionState and EnforcementOutcome are distinct types. Preserve all canonical
+outcomes rather than compressing them to ALLOW/DENY/REVALIDATE.
 
-Valid states
-ALLOW → execution permitted
-DENY → execution blocked
-REVALIDATE → context requires re-evaluation
+| DecisionState | Primary EnforcementOutcome | Boundary behavior |
+|---|---|---|
+| ISSUED | No permission yet | Evaluate before any effect |
+| VALIDATED | ALLOW | Only the evaluated, still-valid scope may proceed |
+| DEGRADED | CONDITIONAL_ALLOW | All explicit restrictions must be supported and enforced |
+| REVALIDATION_REQUIRED | REQUIRE_REVALIDATION | Suspend effects pending revalidation |
+| REVOKED | REVOKE | Invalidate authorization; reconcile dependent effects |
+| DENIED | DENY | Block the effect |
 
-These states represent enforcement decisions, not advisory signals.
+ESCALATE is an additional canonical outcome/notification under document 16
+section 13. It never independently authorizes execution or suppresses a blocking
+outcome. A response preserves the Decision UUID, state, outcome, cause and
+canonical event/evidence references. The adopted transport schema must bind
+scope, evaluation snapshot, policy/schema versions, validity and integrity.
+This design contract is not an implemented authorization token.
 
-Response structure
-{
-  "decision_id": "D-12345",
-  "status": "DENY",
-  "reason": "DSA-ESA mismatch",
-  "confidence": 0.92,
-  "timestamp": "2026-04-22T10:05:00Z"
-}
 ## 8. Enforcement Contract
 
-Execution systems must enforce CAI responses deterministically.
+Only an admissible ALLOW or a supported, enforceable CONDITIONAL_ALLOW can
+permit the evaluated effect. Unsupported conditions, unknown outcomes, missing
+bindings, integrity failures, errors and expired responses never permit effects.
+REQUIRE_REVALIDATION, DENY, REVOKE and ESCALATE do not independently authorize
+execution. Asynchronous preparation cannot authorize execution before the gate
+required by document 16 section 14. Revalidation occurs at system boundaries
+and immediately before dispatch under the adopted validity/authority contract.
+A new denial is not evidence that an earlier partial effect was rolled back.
 
-Rules
-ALLOW → proceed with execution
-DENY → block execution
-REVALIDATE → suspend execution pending validation
+A legacy adapter may translate REVALIDATE to REQUIRE_REVALIDATION only through
+a named, versioned, non-permitting mapping. Reject or HOLD lossy mappings and
+missing fields; never guess UUIDs, versions, baselines or risk assessments.
 
-No execution is permitted without a valid CAI response.
-
-This defines the enforcement boundary of CAI.
+---
 
 ## 9. Adapter Model
 
@@ -169,7 +147,7 @@ request-response before execution
 deterministic control
 10.2 Asynchronous Validation
 event-driven validation
-delayed enforcement
+asynchronous preparation with effects blocked until the pre-execution gate passes
 10.3 Hybrid Model
 initial validation
 continuous revalidation
@@ -182,7 +160,7 @@ delayed ESA updates
 inconsistent decision context
 Required behavior
 default to conservative enforcement
-return DENY or REVALIDATE
+return the canonical blocking/revalidation outcome with its cause recorded
 log and trace all failures
 ## 12. Security Requirements
 

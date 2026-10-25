@@ -1,6 +1,10 @@
 # Cybersecurity Artificial Intelligence Framework – Core Integrity and Self-Defense Governance
 
 Version: 0.1 (Draft)  
+
+Document revision: 0.1.1. Framework baseline: CAI Core v0.1 (research preview).
+Change ID: CHG-CAI-GOV-RECON-2026-10-23.
+
 Author: Antonio José Socorro Marín  
 Creator: CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
@@ -94,7 +98,7 @@ This document is binding upon and must be read in conjunction with:
 - CAI-Core-Taxonomy
 - CAI-Core-Standards-Evolution-and-Governance
 
-No contradictions are permitted. In case of conflict, Core Integrity governance prevails.
+No contradictions are permitted. If the Core integrity and contamination-prevention artifacts conflict, place the affected change on HOLD and refer the conflict to the designated human governance authority. No component may infer precedence or promote the affected artifact while the conflict is unresolved.
 
 ## 8. Inheritance Rules
 

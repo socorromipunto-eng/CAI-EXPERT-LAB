@@ -1,5 +1,9 @@
 # CAI-MX – Applied Walkthrough
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -267,7 +271,8 @@ CAI ensures:
 
 ## 21. Conclusion
 
-This walkthrough demonstrates that CAI is not theoretical.
+This walkthrough illustrates a proposed design scenario; it is not an executed
+system test and does not demonstrate operational reliability.
 
 It operates as:
 

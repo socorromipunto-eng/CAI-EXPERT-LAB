@@ -65,16 +65,40 @@ function traceability, and the NIST AI 600-1 generative-AI gate.
 ## Review procedure
 
 1. On the review date, check the official sources below for changes.
-2. For each change: update the affected `docs/` and `legal/` text, update the
-   engine (`cai_engine/eu_ai_act.py`, `usa.py`, thresholds), bump the version,
-   and record the change in
-   `docs/CORE/CAI-Core-Evolution-Traceability-Register.md`.
-3. Update the **Last reviewed** date above.
+2. For each verified source change, assess jurisdiction, actor, use case,
+   applicability and impact before proposing a repository change. A changed
+   date or document title does not automatically justify changing a threshold.
+3. Trace affected requirements to documents, implementation and tests. Change
+   only the affected components after the required authorization and review;
+   version those components and record the change in
+   `docs/CORE/CAI-Core-Evolution-Traceability-Register.md` before or concurrently
+   with publication. Preserve historical evidence and source editions.
+4. Update **Last reviewed** only after the actual normative review is complete.
+   An editorial correction is not a fresh verification of every legal date.
 
 ## Official sources to watch
 
-- EU AI Act (consolidated) and Digital Omnibus — EUR-Lex, and
-  https://artificialintelligenceact.eu
+- EU AI Act and amendments — official text and consolidation on
+  https://eur-lex.europa.eu/
 - NIST AI RMF and profiles — https://www.nist.gov/itl/ai-risk-management-framework
 - U.S. critical infrastructure / NSM-22 — CISA (https://www.cisa.gov) and the
   relevant Sector Risk Management Agencies
+
+
+## Applicability and source status
+
+For adoption, identify each source by issuer, identifier, edition, status,
+exact provision, applicability and verification date. Distinguish legislation,
+contract requirements, voluntary guidance and internal proposed requirements.
+Keep public drafts separate from final publications. Secondary explainers may
+help discovery but do not replace official normative text.
+
+NIST AI 600-1 is the generative-AI profile; do not automatically apply every
+generative-AI provision to a predictive graph model. Applicability of CMMC and
+CUI requirements must be established for the actual contract, data and system.
+No repository mapping alone constitutes certification or comprehensive United
+States compliance. Identify an ambiguous source name before claiming alignment.
+
+This section is an editorial reconciliation candidate dated 2026-10-23. It does
+not change the historical review date or claim that all legal dates above have
+been reverified. Adoption and normative review remain separate decisions.

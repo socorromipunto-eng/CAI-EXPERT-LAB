@@ -1,5 +1,7 @@
 # Cybersecurity Artificial Intelligence Framework
 
+> Candidate amendment CHG-CAI-RECON-2026-10-22-001; versioning and human adoption pending.
+
 USA Water and Wastewater — Lab: CCES Normalization  
 Version 0.1 (Non-Normative Lab)  
 Author: Antonio José Socorro Marín  
@@ -47,7 +49,10 @@ The lab focuses exclusively on telemetry normalization and evidence integrity.
 
 ## Preconditions and Assumptions
 
-• CAI Core and CAI USA baseline documents are authoritative and frozen.  
+• CAI CORE remains authoritative under its own evolution controls. The USA
+artifacts within CAI-USA-Master-Freeze-v0.1.md are frozen within that scope;
+it explicitly does not freeze CORE. Identify the CORE snapshot used for each
+lab evaluation; pinning a snapshot is not a declaration that CORE is frozen.\
 • The Water and Wastewater sector overlay and traceability matrix are authoritative.  
 • All telemetry sources are simulated or sanitized.  
 • No live public water systems are impacted.  

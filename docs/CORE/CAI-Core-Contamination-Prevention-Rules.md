@@ -2,6 +2,10 @@ Contamination-Prevention-Rules.md
 
 # Cybersecurity Artificial Intelligence Framework – Contamination Prevention Rules
 Version 0.1 (Draft)  
+
+Document revision: 0.1.1. Framework baseline: CAI Core v0.1 (research preview).
+Change ID: CHG-CAI-GOV-RECON-2026-10-23.
+
 Author: Antonio José Socorro Marín  
 Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
@@ -92,7 +96,7 @@ CAI-Core-Evolution-Traceability-Register.md
 CAI-Core-Definition.md  
 CAI-Core-Taxonomy.md
 
-In the event of conflict, contamination-prevention rules take precedence.
+If these rules conflict with Core integrity governance, place the affected change on HOLD and refer the conflict to the designated human governance authority. No component may infer precedence or promote the affected artifact while the conflict is unresolved.
 
 ## Inheritance Requirements
 

@@ -1,5 +1,9 @@
 # CAI-MX – Formal Decision Rules Specification
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -125,7 +129,9 @@ Then:
 
 A `TelemetryRecord` MUST satisfy:
 
-current_time - timestamp_observed <= telemetry_freshness_threshold
+-allowed_clock_skew <= evaluation_time - timestamp_observed
+AND
+evaluation_time - timestamp_observed <= telemetry_freshness_threshold
 
 If telemetry is stale:
 
@@ -233,17 +239,11 @@ Rule outcomes:
 
 ### 8.3 Worst-Case Dominance Rule
 
-If any single component risk exceeds the critical component threshold, the rule engine MAY override weighted aggregation and apply worst-case dominance.
-
-In such case:
-
-effective_risk = max(component_risk)
-
-If effective_risk exceeds critical policy threshold:
-
-→ state MUST transition to `REVOKED`
-
-Worst-case dominance MUST take precedence over benign aggregate appearance.
+The aggregation and critical-component rule is defined in `17-risk-model.md`
+section 8.3. Consume that canonical result; do not substitute a competing
+aggregation formula. When its critical-component dominance condition applies,
+a benign weighted average must not mask the critical component. Apply the
+revocation and precedence rules in sections 11 and 19 to that result.
 
 ---
 
@@ -580,3 +580,23 @@ It ensures that decisions are:
 - not propagated without semantic control
 
 Instead, decisions are continuously governed through deterministic, auditable, and interoperable rules that preserve integrity across time, context, and federated system boundaries.
+
+## Proposed time evaluation contract
+
+Record one evaluation_time from the configured time source per evaluation,
+allowed_clock_skew, freshness thresholds, duration units and policy_version.
+Durations must be finite and non-negative; missing clock configuration must
+produce a non-permitting result with a recorded cause, not an implicit default.
+
+Telemetry is time-admissible only when:
+
+`-allowed_clock_skew <= evaluation_time - timestamp_observed <= telemetry_freshness_threshold`.
+
+Risk-assessment freshness requires the analogous bound for timestamp_assessed
+and risk_freshness_threshold. Its Decision, telemetry and policy bindings must
+also remain applicable. Freshness alone does not prove trusted source integrity.
+A timestamp outside allowed future skew must not support permission. Existing
+issuance-ordering constraints remain applicable. Revalidation at dispatch uses
+a new recorded snapshot. Determinism includes evaluation time and ageing inputs;
+changing those inputs is not an identical-input comparison. This proposed
+contract requires schema/policy adoption before implementation claims.

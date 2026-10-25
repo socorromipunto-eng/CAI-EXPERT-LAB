@@ -1,5 +1,9 @@
 # CAI-MX – Formal Data Model Specification
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -550,3 +554,39 @@ It ensures that decisions are:
 - auditable under adversarial scrutiny
 
 This data model is the canonical structural basis for all subsequent decision rules, risk computation, revalidation logic, and enforcement mechanisms.
+
+## Proposed time evaluation contract
+
+Record one evaluation_time from the configured time source per evaluation,
+allowed_clock_skew, freshness thresholds, duration units and policy_version.
+Durations must be finite and non-negative; missing clock configuration must
+produce a non-permitting result with a recorded cause, not an implicit default.
+
+Telemetry is time-admissible only when:
+
+`-allowed_clock_skew <= evaluation_time - timestamp_observed <= telemetry_freshness_threshold`.
+
+Risk-assessment freshness requires the analogous bound for timestamp_assessed
+and risk_freshness_threshold. Its Decision, telemetry and policy bindings must
+also remain applicable. Freshness alone does not prove trusted source integrity.
+A timestamp outside allowed future skew must not support permission. Existing
+issuance-ordering constraints remain applicable. Revalidation at dispatch uses
+a new recorded snapshot. Determinism includes evaluation time and ageing inputs;
+changing those inputs is not an identical-input comparison. This proposed
+contract requires schema/policy adoption before implementation claims.
+
+## Proposed unavailable-risk event extension (schema adoption required)
+
+DecisionEvent must represent failed evaluation without fabricating risk evidence.
+The proposed schema amendment adds required risk_assessment_status with values
+COMPUTED or UNAVAILABLE, makes risk_id conditionally nullable and adds a
+conditionally nullable risk_unavailable_reason. For COMPUTED, risk_id references
+the actual compatible RiskAssessment and the reason is null. For UNAVAILABLE,
+risk_id is null and the reason is non-empty. UNAVAILABLE cannot support ALLOW
+or CONDITIONAL_ALLOW. Supporting EvidenceReference records preserve the cause.
+
+This is a proposed versioned extension, not an assertion that the existing
+section 12 schema already supports null. Until the schema and consumers are
+adopted together, this error path remains HOLD for implementation. Never insert
+a dummy UUID, fake RiskAssessment, implicit zero risk or silent event omission.
+Historical events must not be rewritten to appear to have used the new schema.

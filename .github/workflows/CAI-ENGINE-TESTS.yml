@@ -1,12 +1,15 @@
 # CAI-Engine test suite, run by GitHub on every push and pull request to main.
 # Owner: Antonio José Socorro Marín (CAI-EXPERT-LAB). Change: CHG-2026-10-12-13.
 #
-# Gate: the run passes only with exactly 674 passed and 13 xfailed, and no
-# failed, error or skipped test. The 13 xfailed are the known gaps marked
+# Gate: the run passes only with exactly 698 passed and 7 xfailed, and no
+# failed, error or skipped test. The 7 xfailed are the known gaps marked
 # xfail(strict=True) with their finding IDs; closing a gap, or losing a test,
 # turns the run red until the expected counts are updated in a reviewed change.
 #
 # Count raised from 652 to 664 by CHG-2026-10-16-11 and to 674 by CHG-2026-10-16-12 (sector examples).
+# Six closed xfail cases become passes; E2-A adds six contract cases.
+# Cleanup 1.1.0 adds 12 action-boundary rejection cases; no open xfail is removed.
+# Total collected cases remains 705 after E2-A. Seven open gaps remain strict.
 #
 # Lint job (CHG-2026-10-16-06): ruff 0.16.8 with the rule set pinned in
 # CAI-Engine/implementation/pyproject.toml; no finding is allowed.
@@ -91,4 +94,4 @@ jobs:
           summary="$(tail -n 1 pytest-output.txt)"
           echo "Summary: ${summary}"
           echo "### ${{ matrix.os }} / Python ${{ matrix.python }}: ${summary}" >> "$GITHUB_STEP_SUMMARY"
-          echo "${summary}" | grep -Eq '^674 passed, 13 xfailed in ' || { echo "Expected exactly: 674 passed, 13 xfailed"; exit 1; }
+          echo "${summary}" | grep -Eq '^698 passed, 7 xfailed in ' || { echo "Expected exactly: 698 passed, 7 xfailed"; exit 1; }

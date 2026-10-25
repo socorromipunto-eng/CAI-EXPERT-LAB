@@ -21,6 +21,22 @@ log** — under two jurisdictions
 
 > **Implementation boundary (research preview).** CAI-EXPERT-LAB is the governance reference framework. `CAI-Engine/implementation/` is a separate reference implementation (cai-engine 0.4.2), subject to `LICENSE.md` Section 4A. The proposed MCP security architecture in `CAI-Engine/specifications/` must not be represented as an implemented security boundary. Design intent and implemented behavior require independent verification.
 
+## Current reference-implementation limits
+
+The framework version, engine package version and security-specification
+version are separate. A correction kit version is not a framework release.
+The reference engine records local decisions; an `EXECUTED` result does not
+prove an external actuator ran. A `--by` label does not authenticate the
+approver. Approval expiry, fact freshness across incidents and externally
+anchored evidence remain unresolved. The local hash chain cannot detect every
+tail truncation or whole-chain rewrite by a writer with sufficient access.
+The seven strict expected-failure cases remain visible in the engine tests.
+Their presence is not operational security approval.
+
+The proposed security architecture must be reconciled and approved before
+implementation. Neither local test results nor this clarification promotes a
+new release or establishes certification or legal compliance.
+
 ## Where to find what
 
 | What | Where |

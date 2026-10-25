@@ -1,5 +1,9 @@
 # CAI-MX – Mapping to APF Cybersecurity Policy
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ## 1. Purpose
 
 This document establishes a structured mapping between the CAI (Cybersecurity Artificial Intelligence) model and the Mexican Federal Cybersecurity Policy for the Federal Public Administration (APF).
