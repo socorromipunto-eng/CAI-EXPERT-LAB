@@ -2,6 +2,10 @@ CAI-Core-Evolution-Traceability-Register.md
 
 # Cybersecurity Artificial Intelligence Framework – Evolution Traceability Register
 Version 0.1 (Draft)  
+
+Document revision: 0.1.2. Framework baseline: CAI Core v0.1 (research preview).
+Change ID: CHG-CAI-CLAIMS-2026-10-27.
+
 Author: Antonio José Socorro Marín  
 Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
 
@@ -134,6 +138,62 @@ AI tools were used for analysis, verification and preparation of changes. Every 
 | CHG-2026-10-16-12 | 2026-10-16 | This commit | docs/USA/sector-frameworks/ (five new sector documents; README; the five batch 1 documents corrected), CAI-Engine/implementation/examples/sectors/ (10 new examples), tests/TEST_SECTOR_EXAMPLES.py, .github/workflows/CAI-ENGINE-TESTS.yml | Addition | AUD-05 batch 2: Defense Industrial Base, Emergency Services, Energy, Financial Services, Food and Agriculture; correction of the OT gate wording in batch 1 | Owner approved (commit message, signed) | Regulatory facts checked against official sources on 2026-10-16; independent review before commit; documents checked against the examples (state, outcome, gates); 674 passed, 13 xfailed; CI gate raised from 664 to 674 | No frozen document modified; engine unchanged; batch 1 documents: description of when the OT gates apply corrected to match the code |
 
 From CHG-2026-10-15-01 onward, each change adds its entry in the same commit that makes the change.
+
+
+## Owner-adjudicated reconciliation — CHG-CAI-GOV-RECON-2026-10-23
+
+This is a contemporaneous local change record, not a retroactive approval of
+earlier changes. The historical entries and freeze statement below are retained.
+
+| Element | Recorded value |
+| --- | --- |
+| Change ID | CHG-CAI-GOV-RECON-2026-10-23 |
+| Recorded project date | 2026-10-23, client project date (Etc/GMT+5) |
+| Human adjudication source | The project owner's message “Aprbado” approving the three reconciliation criteria after the Cleanup 1.1.1 applied checkpoint in the project conversation |
+| Scope approved | Conflict handling between integrity and contamination; research-preview completeness wording; citation guidance aligned with existing LICENSE.md permissions/restrictions |
+| Affected documents | CAI-Core-Integrity-and-Self-Defense-Governance.md; CAI-Core-Contamination-Prevention-Rules.md; CAI-Core-Completeness-and-Scope.md; legal/CAI-Attribution-and-Citation-Guidelines.md; this register |
+| Category | Bounded governance reconciliation and correction of completeness/attribution wording |
+| Source baseline | Cleanup 1.1.1 locally applied, as reported by the owner; branch review/chg-cai-gllm-gov-001 and HEAD 4b13e165182f106563d686c2d4e2a67cdec4f4c7 are the installer locks |
+| Document revisions | Core documents/register: revision 0.1.1 under framework baseline v0.1; citation guide: version 1.2; no framework or engine release increment |
+| Technical review | Separate technical criteria and document/installer fixture evidence in CAI-Governance-Reconciliation-1.0.0; actual installation outcome is established by the run's result.json and postimage hashes |
+| Governance review | Owner adjudicated the criteria; assistant reviewed source alignment and bounded scope. These checks are not independent IV&V or a claim of completed publication review |
+| AI assistance | ChatGPT prepared wording, traceability, tests and controlled installer; no AI author/coauthor or approval authority is created |
+| Evidence package | CAI-Governance-Reconciliation-1.0.0: manifest.json, REVIEW.patch, review records, fixture results and run receipts; no historical result is rewritten |
+| CORE impact | A direct integrity/contamination conflict places the affected change on HOLD for the designated human authority; no inferred precedence. Completeness remains under review |
+| Implementation / legal impact | Lifecycle, engine, thresholds, jurisdiction profiles and LICENSE.md unchanged; no new permission, certification or implementation guarantee |
+| Commit reference | PENDING — no commit is created by this installation; the owner-authorized publication process must supply its commit reference before authoritative publication |
+| Acceptance boundary | Approval of these criteria authorizes this bounded local reconciliation, not publication, promotion to 1.0 or completion of independent assurance. Final promotion remains HOLD |
+
+The historical freeze is not a blanket authorization to revise other CORE
+artifacts. This entry records only the specific owner-adjudicated reconciliation
+above, preserves the v0.1 research-preview baseline, and does not unlock unrelated
+semantics, regional overlays or future changes. The seven known engine expected
+failures remain open. The full local GOV-001 content has not been independently
+captured in this preparation; this remains a promotion-review limitation.
+
+
+## Claims clarification — CHG-CAI-CLAIMS-2026-10-27
+
+| Element | Recorded value |
+| --- | --- |
+| Change ID / record date | CHG-CAI-CLAIMS-2026-10-27 / 2026-10-27, project date |
+| Source baseline | review/chg-cai-gllm-gov-001 at signed commit 16bba3d26bd75d45d48ef723ae1d3b9583ab73c3; remote tree of 501 files checked in preparation |
+| Owner authorization | Owner requested the next step after the README/source discrepancy review; bounded local clarification candidate, without a new commit or push in this installer |
+| Affected paths | README.md; CAI-Engine/implementation/cai_engine/evidence.py (module docstring only); this register |
+| Reason | Match public claims to implemented local verification and approval limits; clarify CI event scope and badge branch; pin the engine installation example to the reviewed source snapshot |
+| Runtime and normative impact | No executable Python behavior, lifecycle, thresholds, law mapping, jurisdiction overlay or LICENSE.md change. No framework release increment |
+| Evidence and review | CAI-Claims-Reconciliation-1.0.0: pinned pre/postimages, REVIEW.patch, source-tree integrity, Python behavior-AST equivalence and isolated installer tests. Actual Windows installation is established by its own result.json and hashes |
+| Review independence | Assistant technical/governance preparation and HR/DA/TD records are self-review, not independent IV&V or final canonical acceptance |
+| AI assistance | ChatGPT prepared wording, docstring, traceability and controlled installer/tests; human author and signing identity remain unchanged |
+| Prior reconciliation receipt | The earlier local governance candidate is included in published review-branch commit 16bba3d26bd75d45d48ef723ae1d3b9583ab73c3. This receipt does not retroactively promote its contents to canonical status |
+| Provenance proposal | audits/CHG-CAI-GLLM-GOV-001.md was acquired at this baseline for source integrity; it remains PROPOSED / HOLD, not closed by acquisition |
+| New commit reference | PENDING: no commit is created by this installer; record the resulting reference through the owner-authorized change/publication process |
+| Acceptance boundary | Local candidate only; PR, CI acceptance, merge and canonical promotion remain separate. Seven known expected-failure cases remain open |
+
+Historical entries and the freeze statement are retained. These clarifications
+do not repair missing runtime controls or assert that local tests establish
+regulatory compliance, authenticated approval, complete evidence or operational
+readiness. The framework remains Core v0.1 research preview.
 
 Status  
 

@@ -1,6 +1,10 @@
 Cybersecurity Artificial Intelligence Framework
 CAI Core — Completeness and Scope Declaration
 Version 0.1 (Normative)
+
+Document revision: 0.1.1. Framework baseline: CAI Core v0.1 (research preview).
+Change ID: CHG-CAI-GOV-RECON-2026-10-23.
+
 Author: Antonio José Socorro Marín
 Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
 Copyright © 2025 Antonio José Socorro Marín.
@@ -18,9 +22,11 @@ limits of the CAI Core as defined in version 0.1 of the framework.
 
 ## Purpose
 
-The purpose of this document is to formally declare that **CAI Core v0.1** is architecturally,
-semantically, and operationally complete for its intended role as the foundational layer of
-the Cybersecurity Artificial Intelligence Framework (CAI).
+The purpose of this document is to define the intended architectural, semantic, and
+operational scope and completeness criteria of **CAI Core v0.1**, the foundational layer
+of the Cybersecurity Artificial Intelligence Framework (CAI). Its completeness remains
+under review as a research preview; this document does not establish that all intended
+capabilities have been implemented or validated.
 
 This declaration exists to eliminate ambiguity for reviewers, auditors, implementers, and
 governing bodies regarding what CAI Core **does**, **does not**, and **is not intended to**

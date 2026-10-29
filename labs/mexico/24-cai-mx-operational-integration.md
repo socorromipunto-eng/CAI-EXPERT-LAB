@@ -1,5 +1,9 @@
 # CAI-MX – Operational Integration within the APF Cybersecurity Model
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -36,7 +40,8 @@ without modifying institutional responsibilities.
 
 ### 3.1 Plan Institucional de Ciberseguridad (PIC)
 
-Each institution must incorporate CAI into its PIC as:
+For an institution that explicitly adopts this proposed CAI-MX profile,
+the approved institutional integration plan must specify CAI's role in its PIC as:
 
 - a decision validation mechanism  
 - a runtime integrity control layer  
@@ -292,3 +297,9 @@ It completes them by introducing:
 This enables:
 
 > a measurable, auditable, and enforceable cybersecurity model at the national level
+
+## Applicability limitation
+
+This design proposal does not impose CAI on all APF institutions. External
+obligations require verified official source, version, provision and applicability.
+Adoption alone does not establish regulatory compliance.

@@ -1,5 +1,9 @@
 # CAI-MX – Formal Risk Model Specification
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -174,9 +178,11 @@ Weighting functions MUST remain deterministic.
 
 ## 10. Temporal Risk Evolution
 
-Risk MUST be time-dependent:
-
-R(t + Δt) ≠ R(t)
+Risk MUST be reevaluated when relevant inputs change or policy-defined ageing
+or freshness conditions are reached. Time dependence does not require a score
+to change at every evaluation. R(t + delta_t) MAY equal R(t) when all relevant
+inputs, including time-derived policy inputs, are equivalent. A changed score
+must be explained by a changed input or versioned rule.
 
 Changes are driven by:
 
@@ -219,7 +225,9 @@ Then:
 
 A risk value MUST be considered valid only if:
 
-current_time - timestamp_assessed ≤ risk_freshness_threshold
+-allowed_clock_skew <= evaluation_time - timestamp_assessed
+AND
+evaluation_time - timestamp_assessed <= risk_freshness_threshold
 
 If risk is stale:
 
@@ -370,6 +378,7 @@ Given identical:
 - telemetry inputs
 - baseline context
 - policy configuration
+- evaluation time and all time-derived policy inputs
 
 The risk model MUST produce identical:
 
@@ -401,3 +410,23 @@ This risk model establishes:
 - an adversarially resilient evaluation process
 
 This ensures that risk is not merely observed, but actively enforced as a governing factor in decision integrity.
+
+## Proposed time evaluation contract
+
+Record one evaluation_time from the configured time source per evaluation,
+allowed_clock_skew, freshness thresholds, duration units and policy_version.
+Durations must be finite and non-negative; missing clock configuration must
+produce a non-permitting result with a recorded cause, not an implicit default.
+
+Telemetry is time-admissible only when:
+
+`-allowed_clock_skew <= evaluation_time - timestamp_observed <= telemetry_freshness_threshold`.
+
+Risk-assessment freshness requires the analogous bound for timestamp_assessed
+and risk_freshness_threshold. Its Decision, telemetry and policy bindings must
+also remain applicable. Freshness alone does not prove trusted source integrity.
+A timestamp outside allowed future skew must not support permission. Existing
+issuance-ordering constraints remain applicable. Revalidation at dispatch uses
+a new recorded snapshot. Determinism includes evaluation time and ageing inputs;
+changing those inputs is not an identical-input comparison. This proposed
+contract requires schema/policy adoption before implementation claims.

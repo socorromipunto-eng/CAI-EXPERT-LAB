@@ -1,8 +1,10 @@
 """Add Markdown structure to CAI documents written as plain text.
 
-Content-preserving: every word of the source is kept in the same order.
-The script only adds Markdown markup (#, -, **) and line-break spaces.
-verify() proves it by comparing the word sequence after removing that markup.
+The converter proposes Markdown markup and line-break changes.
+verify() checks word-sequence equivalence after removing selected markup.
+That check does not establish semantic equivalence, correct rendering or
+authorization to adopt a conversion. The CLI reports candidates read-only;
+review the diff and rendered output under the document family's change rules.
 """
 import re, sys, pathlib
 

@@ -1,5 +1,9 @@
 # CAI Mexico Lab – Decision Integrity Integration for APF
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -176,3 +180,11 @@ control-based security
 to:
 
 > context-aware, continuously validated execution
+
+## Design consistency boundary
+
+15 defines entities/states, 16 behavior, 17 risk; 26 preserves these in transport.
+All remain subordinate to approved CAI CORE/governance. Conceptual walkthroughs,
+APF comparisons and test plans are not executed evidence or external mandates.
+Propagation is a control point, not an added DecisionState. Schema, source and
+authority questions must be resolved before implementation or promotion.

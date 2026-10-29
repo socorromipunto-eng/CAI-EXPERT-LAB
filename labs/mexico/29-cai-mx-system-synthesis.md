@@ -1,5 +1,9 @@
 # CAI-MX – System Synthesis and Operational Closure
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -114,14 +118,16 @@ to:
 
 ## 8. Validation and Testing Integration
 
-CAI-MX validation confirms that:
+The CAI-MX design proposes the following validation objectives:
 
 - decisions are evaluated before execution  
 - DSA and ESA remain aligned  
 - drift is detected and controlled  
 - enforcement is applied deterministically  
 
-This ensures operational reliability under real-world conditions.
+Operational reliability under real-world conditions remains unverified. It
+requires an implementation, declared environment, executed tests and traceable
+observations against approved acceptance criteria.
 
 ---
 
@@ -190,16 +196,16 @@ CAI-MX resolves this by ensuring that:
 
 ## 14. Conclusion
 
-This laboratory demonstrates that CAI:
+This design study proposes that a future implementation could:
 
-- is not a theoretical construct  
+- realize the specified behavior, subject to implementation and validation
 - is not a replacement framework  
 
 It is:
 
 > **a practical, enforceable architecture for decision integrity in real-world cybersecurity environments**
 
-CAI-MX validates that decision integrity can be:
+CAI-MX specifies objectives for decision integrity to be:
 
 - implemented  
 - measured  

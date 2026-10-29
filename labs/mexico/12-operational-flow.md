@@ -1,5 +1,9 @@
 # CAI-MX – Operational Flow
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -82,7 +86,10 @@ Outcome:
 
 If validation succeeds:
 
-- System A generates a decision  
+- System A captures and verifies the immutable BaselineContext before issuance
+- Capture time is no later than issuance time
+- System A generates the Decision UUID and binds the existing context reference
+  and verified hash under a versioned policy before issuing the Decision
 
 The decision includes:
 
@@ -98,7 +105,7 @@ The decision includes:
 
 The decision is registered in the CAI Integrity Layer:
 
-- assigned a unique identifier  
+- retains the unique identifier assigned at issuance
 - linked to initial telemetry  
 - stored for lifecycle tracking  
 
@@ -113,7 +120,8 @@ CAI binds the decision to real-time telemetry:
 - network conditions  
 - behavioral patterns  
 
-This creates a **baseline context snapshot**.
+This associates runtime observations with the already captured immutable
+BaselineContext. It does not create a baseline retroactively or overwrite it.
 
 ---
 

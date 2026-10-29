@@ -39,7 +39,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--home", default="cai_runtime", help="runtime directory (default: cai_runtime)")
     sub = p.add_subparsers(dest="command", required=True)
 
-    sub.add_parser("init", help="initialize/reset the engine (state=MODEL, fresh evidence)")
+    sub.add_parser("init", help="initialize a new runtime; refuses existing state or evidence")
     sub.add_parser("status", help="show current state, allowed transitions and facts")
 
     sp = sub.add_parser("set", help="set a context fact (entry condition) true/false")

@@ -1,5 +1,9 @@
 # CAI-MX – Decision State Model
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -71,15 +75,12 @@ This state confirms that the decision is still aligned with the environment.
 
 ---
 
-### 4.3 PROPAGATED
+### 4.3 Propagation Control Point (Not a DecisionState)
 
-The decision is transmitted to another system.
-
-Characteristics:
-
-- Cross-system boundary
-- Trust is assumed but not enforced
-- Context consistency is not guaranteed
+Propagation transmits a Decision to another system; it is not a canonical
+DecisionState under document 15 section 5.1. Preserve the UUID and baseline
+reference. The receiver performs document 16 section 12 checks before reliance.
+Transmission alone does not establish authority or current validity.
 
 ---
 
@@ -98,7 +99,7 @@ At this stage:
 
 ---
 
-### 4.5 REVALIDATION REQUIRED
+### 4.5 REVALIDATION_REQUIRED
 
 Triggered when:
 
@@ -128,7 +129,11 @@ State transitions are dynamic and telemetry-driven.
 
 Example flow:
 
-ISSUED → VALIDATED → PROPAGATED → DEGRADED → REVALIDATION REQUIRED → REVOKED
+ISSUED → VALIDATED → DEGRADED → REVALIDATION_REQUIRED → REVOKED
+
+This is illustrative, not exhaustive. DENIED is also a canonical state for
+explicit prohibition. Document 16 defines transitions and precedence.
+Propagation is a separate control point, not an added DecisionState.
 
 Transitions depend on:
 

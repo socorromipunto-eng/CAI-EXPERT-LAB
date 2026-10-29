@@ -20,11 +20,13 @@ regulatory traceability.
 """
 from __future__ import annotations
 
+import copy
 import uuid
+from dataclasses import asdict
 
 from . import eu_ai_act, usa
-from .core import ActionCategory
-from .engine import CAIEngine
+from .core import ActionCategory, is_finite_number
+from .engine import CAIEngine, EngineError
 from .eu_ai_act import AIContext
 from .gates import Decision, GateResult
 from .nist_ai_rmf import rmf_trace
@@ -100,10 +102,42 @@ class GovernedAgent:
         force_human = cls.tier == eu_ai_act.RiskTier.HIGH
         return block, results, force_human
 
-    def govern(self, proposal: dict, jurisdiction: str | None = None) -> dict:
+    def evaluate_proposal(self, proposal: dict, jurisdiction: str | None = None) -> dict:
+        if not isinstance(proposal, dict):
+            raise EngineError("proposal must be an object")
         ai = proposal.get("ai", {})
-        juris = (jurisdiction or proposal.get("jurisdiction") or self.default_jurisdiction).upper()
-        ctx = AIContext(**proposal.get("context", {}))
+        if not isinstance(ai, dict):
+            raise EngineError("ai must be an object")
+        selected = jurisdiction if jurisdiction is not None else proposal.get("jurisdiction", self.default_jurisdiction)
+        if not isinstance(selected, str) or selected.upper() not in ("EU", "USA"):
+            raise EngineError("jurisdiction must be EU or USA")
+        juris = selected.upper()
+        confidence = ai.get("confidence", 0.0)
+        drift = ai.get("drift_score", 0.0)
+        if not is_finite_number(confidence) or not 0 <= confidence <= 1:
+            raise EngineError("AI confidence must be a finite number in [0, 1]")
+        if not is_finite_number(drift) or not 0 <= drift <= 1:
+            raise EngineError("AI drift_score must be a finite number in [0, 1]")
+        for name in ("explainable", "genai", "human_disclosed"):
+            if name in ai and type(ai[name]) is not bool:
+                raise EngineError("AI " + name + " must be a boolean")
+        for name in ("explanation", "provenance", "system", "model_version"):
+            if name in ai and not isinstance(ai[name], str):
+                raise EngineError("AI " + name + " must be a string")
+        if not isinstance(proposal.get("context", {}), dict):
+            raise EngineError("context must be an object")
+        if not isinstance(proposal.get("action", {}), dict):
+            raise EngineError("action must be an object")
+        try:
+            ctx = AIContext(**proposal.get("context", {}))
+        except (TypeError, ValueError) as exc:
+            raise EngineError("invalid AI context: " + str(exc)) from exc
+        for name, value in asdict(ctx).items():
+            if name in ("sector", "prohibited_reason"):
+                if not isinstance(value, str):
+                    raise EngineError("context " + name + " must be a string")
+            elif type(value) is not bool:
+                raise EngineError("context " + name + " must be a boolean")
 
         action_data = dict(proposal.get("action", {}))
         action_data.update({
@@ -122,6 +156,16 @@ class GovernedAgent:
 
         decision_id = "gov-" + uuid.uuid4().hex[:10]
         record = {
+            "approval_context": {
+                "proposal": {
+                    "ai": {name: copy.deepcopy(ai[name]) for name in (
+                        "confidence", "explanation", "explainable", "drift_score", "genai",
+                        "provenance", "human_disclosed", "system", "model_version") if name in ai},
+                    "context": asdict(ctx),
+                    "action": copy.deepcopy(cai["action"]),
+                },
+                "jurisdiction": juris,
+            },
             "decision_id": decision_id,
             "jurisdiction": juris,
             "ai_system": ai.get("system", "unknown"),
@@ -141,8 +185,17 @@ class GovernedAgent:
             "requires_human_approval": needs_human,
         }
 
+        return record
+
+    def govern(self, proposal: dict, jurisdiction: str | None = None) -> dict:
+        try:
+            record = self.evaluate_proposal(proposal, jurisdiction)
+        except (EngineError, TypeError, ValueError, OverflowError) as exc:
+            self.engine.evidence.append("GOVERNED_INPUT_REJECTED", {
+                "reason_code": "INVALID_PROPOSAL", "error_type": type(exc).__name__})
+            raise EngineError("governed proposal rejected: " + str(exc)) from exc
         return self.engine.commit(
-            decision_id, record,
+            record["decision_id"], record,
             blocked_event="GOVERNED_DECISION_BLOCKED",
             pending_event="GOVERNED_DECISION_PENDING_APPROVAL",
             executed_event="GOVERNED_DECISION_EXECUTED")

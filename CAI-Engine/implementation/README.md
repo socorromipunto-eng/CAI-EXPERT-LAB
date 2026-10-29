@@ -68,6 +68,53 @@ trigger any action, and AI can never force a state transition.
 
 ## Quick start
 
+These commands continue one private evaluation runtime in `./cai_runtime`.
+`init` accepts a new runtime only: it refuses existing state or evidence and
+does not reset or truncate them. To run another independent evaluation, select
+a new directory using `--home <new-directory>` before the subcommand on every
+call. Do not remove existing evidence to make initialization succeed.
+
+For repeatable PowerShell examples, run `./demo_governance.ps1`,
+`./demo_ai_governance.ps1` or `./demo_usa_sectors.ps1` from this directory.
+Each demo creates a unique temporary runtime and report outside the checkout,
+checks every native exit and expected decision, and stops on failure.
+Demo subprocesses explicitly select UTF-8, including when Python `-E` ignores
+environment settings. Validation preserves raw stdout/stderr before decoding;
+invalid encoding is a failure with retained evidence, never silently replaced.
+Console information is green, notices/pending states orange (DarkYellow on
+classic consoles without true-color support), and errors red. Colors do not
+change exit codes, approval requirements or acceptance criteria.
+
+An existing Python 3.11+ interpreter is required; `-PythonExecutable` selects it
+explicitly. No interpreter or dependency is installed by these scripts.
+
+### E1 / E2-A reconciliation candidate
+
+These changes have not promoted a new release version. Action and telemetry
+confidence must be finite numeric values in [0, 1]; booleans are not confidence
+values. Facts and documented context flags require actual booleans. Unknown
+action fields, malformed telemetry/context and explicit unknown jurisdictions
+are rejected rather than coerced. Rejected input is audited without retaining
+the full invalid raw object. `TELEMETRY_REJECTED` for an invalid event object
+records `event_id` and errors; non-object input has no fabricated event ID.
+
+Approval reloads the current state and re-evaluates the original decision;
+failure preserves the pending action. Legacy governed pending records without
+the original approval context must be resubmitted. This does not authenticate
+the `--by` name or implement approval expiry, epochs or anchored persistence.
+The demo's `fixture-operator` label is synthetic. `EXECUTED` in this reference
+implementation records a governed decision; it does not demonstrate a live
+external actuator. Spec CAI-ENG-SEC-001 remains PROPOSED.
+
+The integrated test expectation is 705 collected cases: 698 passed and seven
+strict expected failures, with the full canonical suite observed passing on Linux / Python 3.12
+for this correction candidate. Windows and the remaining CI environments
+require their own runs. Remaining gaps cover
+three tail-truncation cases, whole-chain rewriting, omitted-sector oversight,
+approval expiry and telemetry freshness. A passing suite does not close these
+gaps or establish operational readiness.
+
+
 ```
 cd CAI-Engine/implementation
 python -m cai_engine init
@@ -129,7 +176,7 @@ articles** and **NIST AI RMF functions** (GOVERN / MAP / MEASURE / MANAGE).
 > marking — those are determined outside the engine.
 
 ```
-python -m cai_engine init
+# Continue the runtime initialized in Quick start; do not initialize it again.
 python -m cai_engine govern examples/ai_minimal.json          # MINIMAL  -> executed
 python -m cai_engine govern examples/ai_highrisk_energy.json  # HIGH     -> pending (Art. 14)
 python -m cai_engine govern examples/ai_highrisk_lowconf.json # HIGH     -> blocked (Art. 15)

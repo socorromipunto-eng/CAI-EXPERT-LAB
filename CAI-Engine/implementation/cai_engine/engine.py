@@ -60,9 +60,12 @@ class CAIEngine:
 
     # -- lifecycle ---------------------------------------------------------
     def init(self) -> dict:
+        # Refuse reinitialization and incomplete runtimes; preserve evidence.
+        if os.path.lexists(self.state_path) or os.path.lexists(self.evidence.path):
+            raise EngineError("runtime artifacts already exist; preserve them and perform explicit recovery")
         os.makedirs(self.home, exist_ok=True)
-        # fresh evidence log
-        open(self.evidence.path, "w", encoding="utf-8").close()
+        with open(self.evidence.path, "x", encoding="utf-8"):
+            pass
         self._state = {"current_state": INITIAL_STATE.value, "facts": {}, "pending": {}}
         self._save()
         self.evidence.append("ENGINE_INIT", {"initial_state": INITIAL_STATE.value})
@@ -85,7 +88,10 @@ class CAIEngine:
     # -- context facts -----------------------------------------------------
     def set_fact(self, key: str, value: bool) -> dict:
         self._load()
-        self._state.setdefault("facts", {})[key] = bool(value)
+        if not isinstance(key, str) or not key.strip() or type(value) is not bool:
+            self.evidence.append("FACT_INPUT_REJECTED", {"reason_code": "INVALID_FACT_TYPE"})
+            raise EngineError("fact key must be a non-empty string and value must be a boolean")
+        self._state.setdefault("facts", {})[key] = value
         self._save()
         self.evidence.append("FACT_SET", {"fact": key, "value": bool(value)})
         return {"fact": key, "value": bool(value)}
@@ -93,6 +99,10 @@ class CAIEngine:
     # -- telemetry ingestion ----------------------------------------------
     def ingest(self, data: dict) -> dict:
         self._load()
+        if not isinstance(data, dict):
+            errors = ["telemetry must be an object"]
+            self.evidence.append("TELEMETRY_REJECTED", {"errors": errors, "reason_code": "INVALID_INPUT_SHAPE"})
+            return {"accepted": False, "errors": errors}
         ev = TelemetryEvent(
             source=data.get("source", ""),
             domain=data.get("domain", ""),
@@ -102,30 +112,40 @@ class CAIEngine:
         )
         errors = ev.validate()
         if errors:
-            self.evidence.append("TELEMETRY_REJECTED", {"event": asdict(ev), "errors": errors})
+            self.evidence.append("TELEMETRY_REJECTED", {"event_id": ev.id, "errors": errors})
             return {"accepted": False, "id": ev.id, "errors": errors}
         self.evidence.append("TELEMETRY_ACCEPTED", {"event": asdict(ev)})
         return {"accepted": True, "id": ev.id}
 
     # -- action proposal (policy -> safety -> oversight) -------------------
     def _build_action(self, data: dict) -> Action:
+        if not isinstance(data, dict):
+            raise EngineError("action must be an object")
+        allowed = {"category", "description", "target", "ot_level", "blast_radius", "destructive",
+                   "ai_assisted", "ai_confidence", "ai_explainable", "affects_privileged_accounts", "id"}
+        if any(key not in allowed for key in data):
+            raise EngineError("action contains an unknown field")
         try:
             cat = ActionCategory(data["category"])
         except (KeyError, ValueError):
             raise EngineError(
                 f"invalid or missing 'category' (allowed: {[c.value for c in ActionCategory]})")
-        return Action(
+        action = Action(
             category=cat,
             description=data.get("description", ""),
             target=data.get("target", ""),
             ot_level=data.get("ot_level"),
-            blast_radius=int(data.get("blast_radius", 0)),
-            destructive=bool(data.get("destructive", False)),
-            ai_assisted=bool(data.get("ai_assisted", False)),
-            ai_confidence=float(data.get("ai_confidence", 1.0)),
-            ai_explainable=bool(data.get("ai_explainable", True)),
-            affects_privileged_accounts=bool(data.get("affects_privileged_accounts", False)),
+            blast_radius=data.get("blast_radius", 0),
+            destructive=data.get("destructive", False),
+            ai_assisted=data.get("ai_assisted", False),
+            ai_confidence=data.get("ai_confidence", 1.0),
+            ai_explainable=data.get("ai_explainable", True),
+            affects_privileged_accounts=data.get("affects_privileged_accounts", False),
         )
+        errors = action.validate()
+        if errors:
+            raise EngineError("invalid action: " + "; ".join(errors))
+        return action
 
     def evaluate(self, action: Action) -> dict:
         """Run policy + safety + oversight for an action WITHOUT side effects.
@@ -136,6 +156,9 @@ class CAIEngine:
         recorded or executed.
         """
         self._load()
+        errors = action.validate()
+        if errors:
+            raise EngineError("invalid action: " + "; ".join(errors))
         cur = State(self._state["current_state"])
         pol = policy_evaluate(action, cur)
         gates = safety_gates(action)
@@ -170,8 +193,13 @@ class CAIEngine:
         return {"status": "EXECUTED", "action_id": action_id, **record}
 
     def propose(self, data: dict) -> dict:
-        action = self._build_action(data)
-        record = self.evaluate(action)
+        try:
+            action = self._build_action(data)
+            record = self.evaluate(action)
+        except (EngineError, TypeError, ValueError, OverflowError) as exc:
+            self.evidence.append("ACTION_INPUT_REJECTED", {
+                "reason_code": "INVALID_ACTION", "error_type": type(exc).__name__})
+            raise EngineError("action rejected: " + str(exc)) from exc
         return self.commit(action.id, record)
 
     def approve(self, action_id: str, approver: str) -> dict:
@@ -179,9 +207,37 @@ class CAIEngine:
         pending = self._state.get("pending", {})
         if action_id not in pending:
             raise EngineError(f"no pending action with id {action_id}")
-        if not approver:
+        if not isinstance(approver, str) or not approver.strip():
             raise EngineError("an approver name is required (human authority is attributed)")
-        record = pending.pop(action_id)
+        record = pending[action_id]
+        expected_state = record.get("state", record.get("cai_engine", {}).get("state"))
+        try:
+            if expected_state != self._state["current_state"]:
+                raise EngineError("state changed since proposal; submit a new proposal")
+            if record.get("decision") not in (Decision.ALLOW.value, Decision.ESCALATE.value):
+                raise EngineError("pending record has no admissible original decision")
+            if "jurisdiction" in record:
+                context = record.get("approval_context")
+                if not isinstance(context, dict):
+                    raise EngineError("legacy governed proposal lacks revalidation context; resubmit")
+                from .governed_agent import GovernedAgent
+                refreshed = GovernedAgent(self).evaluate_proposal(
+                    context["proposal"], jurisdiction=context["jurisdiction"])
+            else:
+                refreshed = self.evaluate(Action(**record["action"]))
+            if refreshed["decision"] == Decision.DENY.value:
+                raise EngineError("current policy or safety gate denies this approval")
+            latest = self._load()
+            if latest["current_state"] != expected_state or latest.get("pending", {}).get(action_id) != record:
+                raise EngineError("proposal or state changed during revalidation; resubmit")
+        except (EngineError, KeyError, TypeError, ValueError) as exc:
+            self.evidence.append("HUMAN_APPROVAL_REJECTED", {
+                "action_id": action_id, "reason": str(exc),
+                "current_state": self._state["current_state"], "approved_by": approver})
+            raise EngineError("approval revalidation failed: " + str(exc)) from exc
+        # Only consume the pending proposal after successful revalidation.
+        record = {**record, "approval_revalidation": refreshed}
+        self._state["pending"].pop(action_id)
         self._save()
         self.evidence.append("HUMAN_APPROVAL", {"action_id": action_id, "approved_by": approver})
         self.evidence.append("ACTION_EXECUTED", {**record, "approved_by": approver})

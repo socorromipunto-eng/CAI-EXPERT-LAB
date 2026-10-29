@@ -1,5 +1,7 @@
 # CAI-EXPERT-LAB
 
+> Candidate amendment CHG-CAI-RECON-2026-10-22-001; versioning and human adoption pending.
+
 ## Foundational Architecture  
 ### Full External Version
 
@@ -171,7 +173,9 @@ In addition, CAI protects itself through:
 
 This ensures that:
 
-> the framework cannot be partially implemented, misinterpreted, or semantically corrupted without detection.
+> the framework defines checks and review obligations intended to identify
+implementation gaps, interpretation conflicts and semantic changes in a
+declared scope. Complete detection of every such change has not been proven.
 
 ---
 

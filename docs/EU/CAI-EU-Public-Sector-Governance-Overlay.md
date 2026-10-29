@@ -1,5 +1,7 @@
 # CAI-EU-Public-Sector-Governance-Overlay.md
 
+> Candidate amendment CHG-CAI-RECON-2026-10-22-001; versioning and human adoption pending.
+
 Version 0.1 (Draft)  
 
 Status  
@@ -22,7 +24,7 @@ Dependencies:
 
 - CAI-EU-Interoperability-and-Sector-Neutrality v0.1
 
-- Freeze: Not declared
+- Freeze: Frozen within the scope of CAI-EU-Master-Freeze-v0.1.md; candidate amendments require controlled adoption
 
 ## 1. Purpose of This Overlay
 

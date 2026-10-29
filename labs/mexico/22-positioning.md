@@ -1,5 +1,9 @@
 # CAI-MX Positioning: Decision Integrity Layer within the APF Cybersecurity Model
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ## 1. Positioning Objective
 
 This document defines the formal positioning of CAI-MX within the cybersecurity model established by the **Política General de Ciberseguridad para la Administración Pública Federal (APF)**.

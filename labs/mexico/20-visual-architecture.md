@@ -1,5 +1,9 @@
 ## 1. Purpose
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 This document defines the visual architecture of CAI (Cybersecurity Artificial Intelligence) within the APF cybersecurity environment.
 
 Its objective is to provide a clear, structured, and system-level representation of how CAI components interact to enforce decision integrity across federated systems.
@@ -44,9 +48,9 @@ TRACE["Traceability & Evidence"]
 
 IAM --> SYS_A
 
-SYS_A --> DECISION
-DECISION --> CONTEXT
-CONTEXT --> CAI_CORE
+SYS_A --> CONTEXT
+CONTEXT --> DECISION
+DECISION --> CAI_CORE
 
 CSOC --> TELEMETRY
 TELEMETRY --> CAI_CORE
@@ -83,9 +87,9 @@ EXECUTE["Execution"]
 TRACE["Trace Recording"]
 
 REQUEST --> AUTH
-AUTH --> DECISION_GEN
-DECISION_GEN --> BASELINE
-BASELINE --> REGISTER
+AUTH --> BASELINE
+BASELINE --> DECISION_GEN
+DECISION_GEN --> REGISTER
 REGISTER --> TELEMETRY
 TELEMETRY --> RISK
 RISK --> DRIFT
@@ -140,8 +144,8 @@ RISK --> RULES
 RULES --> GATE
 
 GATE -->|ALLOW| EXECUTE["Execute"]
-GATE -->|CONDITIONAL| CONTROL["Controlled Execution"]
-GATE -->|REVALIDATE| RECHECK["Revalidation"]
+GATE -->|CONDITIONAL_ALLOW| CONTROL["Controlled Execution"]
+GATE -->|REQUIRE_REVALIDATION| RECHECK["Revalidation"]
 GATE -->|DENY| BLOCK["Block Execution"]
 ```
 

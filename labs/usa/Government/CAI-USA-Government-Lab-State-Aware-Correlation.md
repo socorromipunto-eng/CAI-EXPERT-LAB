@@ -1,4 +1,6 @@
 # Cybersecurity Artificial Intelligence Framework
+
+> Candidate amendment CHG-CAI-RECON-2026-10-22-001; versioning and human adoption pending.
 USA Government — Lab: State-Aware Correlation
 Version 0.1 (Non-Normative Lab)  
 Author: Antonio José Socorro Marín  
@@ -38,7 +40,10 @@ The lab focuses exclusively on governed analytical correlation.
 
 ## Preconditions and Assumptions
 
-• CAI Core and CAI USA baseline documents are authoritative and frozen.  
+• CAI CORE remains authoritative under its own evolution controls. The USA
+artifacts within CAI-USA-Master-Freeze-v0.1.md are frozen within that scope;
+it explicitly does not freeze CORE. Identify the CORE snapshot used for each
+lab evaluation; pinning a snapshot is not a declaration that CORE is frozen.\
 • All telemetry inputs are CCES-normalized and evidentiary-grade.  
 • Telemetry sources are simulated or sanitized.  
 • No classified, export-controlled, or privacy-sensitive data is processed.  

@@ -1,5 +1,9 @@
 # CAI-MX – Audit and PIC Integration Profile
 
+> Proposed design reconciliation CHG-CAI-RECON-2026-10-22-001. Not an approved revision
+> or executed validation. Canonical MX references: 15 (entities), 16 (rules),
+> 17 (risk). Preserve original authorship and source baseline.
+
 ---
 
 ## 1. Purpose
@@ -38,7 +42,8 @@ without altering institutional responsibilities.
 
 ## 3. Integration with PIC (Plan Institucional de Ciberseguridad)
 
-Each institution must incorporate CAI into its PIC as part of:
+For an institution that explicitly adopts this proposed CAI-MX profile,
+the approved institutional integration plan must specify CAI's role in its PIC as part of:
 
 - control definition  
 - risk management  
@@ -314,3 +319,9 @@ This ensures that cybersecurity is not only:
 but:
 
 > **continuously validated, context-aware, and enforceable at runtime**
+
+## Applicability limitation
+
+This design proposal does not impose CAI on all APF institutions. External
+obligations require verified official source, version, provision and applicability.
+Adoption alone does not establish regulatory compliance.

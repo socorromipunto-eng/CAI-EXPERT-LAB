@@ -54,6 +54,9 @@ def policy_evaluate(action: Action, state: State) -> GateResult:
 # --------------------------------------------------------------------------
 def safety_gates(action: Action) -> list[GateResult]:
     results: list[GateResult] = []
+    errors = action.validate()
+    if errors:
+        return [GateResult("safety.input_validation", Decision.DENY, "; ".join(errors))]
 
     # 4.4 AI Confidence and Explainability — checked first: low-confidence or
     # non-explainable AI output cannot trigger any action.
