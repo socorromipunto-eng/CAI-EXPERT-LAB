@@ -3,8 +3,8 @@ CAI-Core-Evolution-Traceability-Register.md
 # Cybersecurity Artificial Intelligence Framework – Evolution Traceability Register
 Version 0.1 (Draft)  
 
-Document revision: 0.1.1. Framework baseline: CAI Core v0.1 (research preview).
-Change ID: CHG-CAI-GOV-RECON-2026-10-23.
+Document revision: 0.1.2. Framework baseline: CAI Core v0.1 (research preview).
+Change ID: CHG-CAI-CLAIMS-2026-10-27.
 
 Author: Antonio José Socorro Marín  
 Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
@@ -170,6 +170,30 @@ above, preserves the v0.1 research-preview baseline, and does not unlock unrelat
 semantics, regional overlays or future changes. The seven known engine expected
 failures remain open. The full local GOV-001 content has not been independently
 captured in this preparation; this remains a promotion-review limitation.
+
+
+## Claims clarification — CHG-CAI-CLAIMS-2026-10-27
+
+| Element | Recorded value |
+| --- | --- |
+| Change ID / record date | CHG-CAI-CLAIMS-2026-10-27 / 2026-10-27, project date |
+| Source baseline | review/chg-cai-gllm-gov-001 at signed commit 16bba3d26bd75d45d48ef723ae1d3b9583ab73c3; remote tree of 501 files checked in preparation |
+| Owner authorization | Owner requested the next step after the README/source discrepancy review; bounded local clarification candidate, without a new commit or push in this installer |
+| Affected paths | README.md; CAI-Engine/implementation/cai_engine/evidence.py (module docstring only); this register |
+| Reason | Match public claims to implemented local verification and approval limits; clarify CI event scope and badge branch; pin the engine installation example to the reviewed source snapshot |
+| Runtime and normative impact | No executable Python behavior, lifecycle, thresholds, law mapping, jurisdiction overlay or LICENSE.md change. No framework release increment |
+| Evidence and review | CAI-Claims-Reconciliation-1.0.0: pinned pre/postimages, REVIEW.patch, source-tree integrity, Python behavior-AST equivalence and isolated installer tests. Actual Windows installation is established by its own result.json and hashes |
+| Review independence | Assistant technical/governance preparation and HR/DA/TD records are self-review, not independent IV&V or final canonical acceptance |
+| AI assistance | ChatGPT prepared wording, docstring, traceability and controlled installer/tests; human author and signing identity remain unchanged |
+| Prior reconciliation receipt | The earlier local governance candidate is included in published review-branch commit 16bba3d26bd75d45d48ef723ae1d3b9583ab73c3. This receipt does not retroactively promote its contents to canonical status |
+| Provenance proposal | audits/CHG-CAI-GLLM-GOV-001.md was acquired at this baseline for source integrity; it remains PROPOSED / HOLD, not closed by acquisition |
+| New commit reference | PENDING: no commit is created by this installer; record the resulting reference through the owner-authorized change/publication process |
+| Acceptance boundary | Local candidate only; PR, CI acceptance, merge and canonical promotion remain separate. Seven known expected-failure cases remain open |
+
+Historical entries and the freeze statement are retained. These clarifications
+do not repair missing runtime controls or assert that local tests establish
+regulatory compliance, authenticated approval, complete evidence or operational
+readiness. The framework remains Core v0.1 research preview.
 
 Status  
 

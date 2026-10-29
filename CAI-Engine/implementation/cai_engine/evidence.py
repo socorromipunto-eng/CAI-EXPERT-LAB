@@ -1,12 +1,13 @@
-"""Evidence and audit layer  (Architecture.md 4.7, Safety-Gates.md section 8).
+"""Evidence and audit layer (Architecture.md 4.7, Safety-Gates.md section 8).
 
-Evidence generation is non-optional. Every record is appended to a
-hash-chained log (JSON Lines): each record carries the SHA-256 of the previous
-record, so editing or deleting an individual record breaks the chain and is
-detected by `verify()`. The chain is not yet signed or externally anchored:
-someone with write access to the file could rebuild the whole chain. The
-framework's requirement (immutable, auditable state history) is therefore only
-partly met; signing and anchoring are planned.
+The reference runtime appends records to a hash-chained JSON Lines log. Each
+record carries the SHA-256 of its predecessor. verify() checks the hashes and
+links of records present; it does not establish completeness or authenticity.
+Removing a valid suffix, removing the log, or rebuilding a consistent chain
+with sufficient write access may pass local verification. Runtime evidence
+signing and external anchoring are not implemented. A signed Git commit does
+not supply either control for this evidence log. The framework's immutable,
+auditable-history requirement therefore remains only partly implemented.
 """
 from __future__ import annotations
 
