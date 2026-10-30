@@ -1,0 +1,11 @@
+{
+  "original_dossier": {
+    "name": "CAI-G0-Reconciliation-1.0.0.zip",
+    "sha256": "57b63fbd5d240e76e9c50cb4004c9ae782a7c336f24de6568e1ed6da56b6984a"
+  },
+  "approval_supplement": {
+    "name": "CAI-G0-Acreditacion-Propietario-1.0.0.zip",
+    "sha256": "97be754539ce8b3cee3303819793739707ac900009c8b987251454873f24d210"
+  },
+  "original_archives": "Preserved separately; not rewritten or embedded in this repository payload."
+}
