@@ -99,7 +99,9 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "transition":
             _print(eng.transition(args.state))
         elif args.command == "verify":
-            _print(eng.verify())
+            result = eng.verify()
+            _print(result)
+            return 0 if result["integrity_ok"] else 1
         elif args.command == "report":
             text = eng.report()
             if args.out:

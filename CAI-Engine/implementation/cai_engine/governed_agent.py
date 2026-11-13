@@ -191,7 +191,7 @@ class GovernedAgent:
         try:
             record = self.evaluate_proposal(proposal, jurisdiction)
         except (EngineError, TypeError, ValueError, OverflowError) as exc:
-            self.engine.evidence.append("GOVERNED_INPUT_REJECTED", {
+            self.engine._append("GOVERNED_INPUT_REJECTED", {
                 "reason_code": "INVALID_PROPOSAL", "error_type": type(exc).__name__})
             raise EngineError("governed proposal rejected: " + str(exc)) from exc
         return self.engine.commit(

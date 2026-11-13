@@ -1,11 +1,12 @@
-"""CAI-Engine MCP server — exposes the governance runtime as MCP tools.
+"""CAI-Engine MCP server — exposes a local reference evaluator as MCP tools.
 
-This lets an AI client (Claude Desktop, or any Model Context Protocol client)
-submit its proposed actions to the engine BEFORE acting. The AI does not act
-directly: it calls `cai_govern`, and the engine governs the proposal under the
-selected jurisdiction (EU AI Act or USA / NSM-22 + NIST), returning
-EXECUTED, BLOCKED, or PENDING_APPROVAL (human oversight). Every decision is
-written to the hash-chained evidence log.
+The server evaluates proposals submitted by an MCP client and records its
+local decision. It does not execute actions, authenticate an approver, enforce
+policy on other client interfaces, or prevent the client from using another
+route. Do not connect this reference server to real systems or treat its tools
+as an implemented security boundary. `EXECUTED` is the established name for a
+completed local governance-decision path; it does not indicate that an external
+actuator ran or that any external effect occurred.
 
 Human approval is deliberately NOT exposed here. The AI client is the party
 being governed, so it must never be able to approve its own proposals.
@@ -36,12 +37,12 @@ server = MCPServer(
     "cai-engine",
     version="0.4.2",
     instructions=(
-        "Governance runtime for AI actions (CAI-EXPERT-LAB). Before acting, an "
-        "AI must submit its proposal to cai_govern; the engine governs it under "
-        "EU AI Act or USA (NSM-22 / NIST AI RMF) jurisdiction and returns "
-        "EXECUTED, BLOCKED, or PENDING_APPROVAL. AI output is advisory only; "
-        "high-risk / critical-infrastructure decisions require human approval, "
-        "which only a human can record through the local CLI; this server cannot approve."
+        "Research reference evaluator for CAI-EXPERT-LAB. It evaluates and records "
+        "only proposals submitted to these MCP tools. It cannot execute or enforce "
+        "actions outside this process, authenticate an approving person, or stop "
+        "the client from using other tools or routes. EXECUTED means only that "
+        "the local governance-decision path completed; no external effect occurred. "
+        "Not an implemented security boundary and not for real systems."
     ),
 )
 
@@ -72,8 +73,9 @@ def cai_govern(proposal: dict, jurisdiction: str = "") -> dict:
       "action": {"category","description","target","ot_level","destructive",...},
       "jurisdiction": "EU" | "USA"   (optional; can be overridden by the argument)
     }
-    Returns the governed decision (EXECUTED / BLOCKED / PENDING_APPROVAL) with
-    full EU/USA regulatory traceability and NIST AI RMF mapping.
+    Returns the local decision (EXECUTED / BLOCKED / PENDING_APPROVAL) and
+    trace data. EXECUTED records no external action or effect. Regulatory
+    mappings are reference mappings, not validated compliance conclusions.
     """
     _ensure_init()
     return GovernedAgent(_engine).govern(proposal, jurisdiction=jurisdiction or None)
