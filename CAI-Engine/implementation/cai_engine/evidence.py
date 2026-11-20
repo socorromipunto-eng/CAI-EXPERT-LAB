@@ -152,6 +152,7 @@ class EvidenceLog:
             if created_log:
                 flags |= os.O_EXCL
             fd = os.open(self.path, flags, 0o600)
+            original_size = os.fstat(fd).st_size
             try:
                 data = (json.dumps(body, ensure_ascii=False, allow_nan=False) + "\n").encode("utf-8")
                 view = memoryview(data)
@@ -161,8 +162,26 @@ class EvidenceLog:
                         raise EvidenceError("short evidence write")
                     view = view[written:]
                 os.fsync(fd)
+            except (OSError, EvidenceError) as exc:
+                try:
+                    os.ftruncate(fd, original_size)
+                    os.fsync(fd)
+                except OSError as rollback_error:
+                    raise EvidenceError(
+                        "evidence append failed and rollback failed; preserve runtime files and SAFE_HALT"
+                    ) from rollback_error
+                if created_log and original_size == 0:
+                    os.close(fd)
+                    fd = -1
+                    try:
+                        os.unlink(self.path)
+                        _fsync_directory(parent)
+                    except FileNotFoundError:
+                        pass
+                raise exc
             finally:
-                os.close(fd)
+                if fd >= 0:
+                    os.close(fd)
             if created_log:
                 _fsync_directory(parent)
             return body

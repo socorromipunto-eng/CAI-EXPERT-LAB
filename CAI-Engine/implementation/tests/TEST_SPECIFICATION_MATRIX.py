@@ -650,12 +650,13 @@ def test_nan_confidence_is_never_authorized(engine, juris):
     assert not any(r["event_type"] == "ACTION_EXECUTED" for r in records)
 
 
-@pytest.mark.xfail(strict=True, reason="F-01: risk context is supplied by the AI; omitting the sector "
-                                       "of an OT target removes the human-oversight requirement")
 def test_omitting_sector_does_not_remove_oversight(engine):
     p = proposal(juris="USA", sector="", conf=0.99)
     p["action"].update(target="substation-relay-7", ot_level=0)
-    assert GovernedAgent(engine).govern(p)["status"] != "EXECUTED"
+    out = GovernedAgent(engine).govern(p)
+    assert out["status"] == "PENDING_APPROVAL"
+    assert any(g["gate"] == "usa.unknown_sector_context" and g["decision"] == "ESCALATE"
+               for g in out["regulatory"]["gate_results"])
 
 
 def test_unknown_jurisdiction_is_rejected(engine):
@@ -678,16 +679,27 @@ def test_init_preserves_existing_evidence(engine):
     assert Path(engine.evidence.path).read_bytes() == before_evidence
 
 
-@pytest.mark.xfail(strict=True, reason="SGH 5.2: approval timeout is specified but not implemented")
-def test_pending_approval_expires(engine):
+def test_pending_approval_expires(engine, monkeypatch):
+    from cai_engine import engine as engine_module
+    now = 1_800_000_000.0
+    monkeypatch.setattr(engine_module.time, "time", lambda: now)
     drive(engine, S.ISOLATE)
     out = engine.propose({"category": "CONTAINMENT", "description": "x", "target": "h"})
     st = json.loads(Path(engine.state_path).read_text(encoding="utf-8"))
-    assert any(k in json.dumps(st["pending"][out["action_id"]]) for k in ("expires", "deadline", "ttl"))
+    pending = st["state"]["pending"][out["action_id"]]
+    assert pending["created_at"] == now
+    assert pending["expires_at"] == now + engine.approval_ttl_seconds
+    monkeypatch.setattr(engine_module.time, "time", lambda: now + engine.approval_ttl_seconds + 1)
+    with pytest.raises(EngineError, match="expired"):
+        engine.approve(out["action_id"], "fixture-operator")
+    assert engine.status()["pending_approvals"] == []
+    assert list(engine.evidence.records())[-1]["event_type"] == "HUMAN_APPROVAL_EXPIRED"
+    assert not any(r["event_type"] == "ACTION_EXECUTED" for r in engine.evidence.records())
 
 
-@pytest.mark.xfail(strict=True, reason="AUD-07 / TAX 8.5: accepted telemetry does not enter any decision "
-                                       "(ESA is not consumed); stale telemetry is accepted")
-def test_stale_telemetry_is_rejected(engine):
+def test_stale_telemetry_is_rejected(engine, monkeypatch):
+    from cai_engine import engine as engine_module
+    monkeypatch.setattr(engine_module.time, "time", lambda: 1_800_000_000.0)
     out = engine.ingest({**GOOD_TEL, "timestamp": 0.0})      # 1 January 1970
     assert out["accepted"] is False
+    assert "telemetry timestamp is stale" in out["errors"]

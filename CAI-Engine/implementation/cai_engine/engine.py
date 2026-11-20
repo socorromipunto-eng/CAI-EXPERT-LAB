@@ -15,6 +15,7 @@ import hashlib
 import json
 import os
 import tempfile
+import time
 from contextlib import suppress
 from dataclasses import asdict
 
@@ -26,6 +27,7 @@ from .core import (
     ActionCategory,
     State,
     TelemetryEvent,
+    is_finite_number,
 )
 from .evidence import EvidenceBusyError, EvidenceError, EvidenceLog
 from .gates import (
@@ -69,8 +71,22 @@ def _sha384(value: dict) -> str:
 
 
 class CAIEngine:
-    def __init__(self, home: str = "cai_runtime"):
+    DEFAULT_APPROVAL_TTL_SECONDS = 300.0
+    DEFAULT_TELEMETRY_MAX_AGE_SECONDS = 300.0
+    DEFAULT_TELEMETRY_FUTURE_SKEW_SECONDS = 60.0
+
+    def __init__(self, home: str = "cai_runtime", *, approval_ttl_seconds: float = DEFAULT_APPROVAL_TTL_SECONDS,
+                 telemetry_max_age_seconds: float = DEFAULT_TELEMETRY_MAX_AGE_SECONDS,
+                 telemetry_future_skew_seconds: float = DEFAULT_TELEMETRY_FUTURE_SKEW_SECONDS):
+        for name, value in (("approval_ttl_seconds", approval_ttl_seconds),
+                            ("telemetry_max_age_seconds", telemetry_max_age_seconds),
+                            ("telemetry_future_skew_seconds", telemetry_future_skew_seconds)):
+            if not is_finite_number(value) or value <= 0:
+                raise ValueError(f"{name} must be a finite positive number")
         self.home = home
+        self.approval_ttl_seconds = float(approval_ttl_seconds)
+        self.telemetry_max_age_seconds = float(telemetry_max_age_seconds)
+        self.telemetry_future_skew_seconds = float(telemetry_future_skew_seconds)
         self.state_path = os.path.join(home, "state.json")
         self.evidence = EvidenceLog(os.path.join(home, "evidence.jsonl"))
         self._state: dict = {}
@@ -96,7 +112,7 @@ class CAIEngine:
                              payload.get("action", {}).get("id"))
                 if action_id:
                     state.setdefault("pending", {})[action_id] = payload
-            elif event in ("HUMAN_APPROVAL", "HUMAN_DENIAL"):
+            elif event in ("HUMAN_APPROVAL", "HUMAN_DENIAL") or event == "HUMAN_APPROVAL_EXPIRED":
                 action_id = payload.get("action_id")
                 if action_id:
                     state.setdefault("pending", {}).pop(action_id, None)
@@ -176,7 +192,7 @@ class CAIEngine:
             "ENGINE_INIT", "FACT_SET", "STATE_TRANSITION", "ACTION_PENDING_APPROVAL",
             "GOVERNED_DECISION_PENDING_APPROVAL", "HUMAN_APPROVAL", "HUMAN_DENIAL",
             "ACTION_EXECUTED", "GOVERNED_DECISION_EXECUTED", "DECISION_AUTHORIZED",
-            "GOVERNED_DECISION_AUTHORIZED",
+            "GOVERNED_DECISION_AUTHORIZED", "HUMAN_APPROVAL_EXPIRED",
         }:
             self._write_snapshot(records)
         return record
@@ -272,6 +288,12 @@ class CAIEngine:
             timestamp=data.get("timestamp"),
         )
         errors = ev.validate()
+        now = time.time()
+        if not errors and ev.timestamp is not None:
+            if ev.timestamp < now - self.telemetry_max_age_seconds:
+                errors.append("telemetry timestamp is stale")
+            elif ev.timestamp > now + self.telemetry_future_skew_seconds:
+                errors.append("telemetry timestamp is too far in the future")
         if errors:
             self._append("TELEMETRY_REJECTED", {"event_id": ev.id, "errors": errors})
             return {"accepted": False, "id": ev.id, "errors": errors}
@@ -347,7 +369,10 @@ class CAIEngine:
             self._append(blocked_event, record)
             return {"status": "BLOCKED", **record}
         if needs_human:
-            pending_record = {**record, "action_id": action_id}
+            created_at = time.time()
+            pending_record = {**record, "action_id": action_id, "created_at": created_at,
+                              "expires_at": created_at + self.approval_ttl_seconds,
+                              "approval_ttl_seconds": self.approval_ttl_seconds}
             self._append(pending_event, pending_record)
             return {"status": "PENDING_APPROVAL", "action_id": action_id, **record}
         self._append(executed_event, {**record, "action_id": action_id, "approved_by": None,
@@ -374,6 +399,12 @@ class CAIEngine:
         if not isinstance(approver, str) or not approver.strip():
             raise EngineError("an approver name is required (human authority is attributed)")
         record = pending[action_id]
+        expires_at = record.get("expires_at")
+        if not is_finite_number(expires_at) or time.time() >= expires_at:
+            self._append("HUMAN_APPROVAL_EXPIRED", {"action_id": action_id,
+                                                     "expired_at": time.time(),
+                                                     "expires_at": expires_at})
+            raise EngineError("pending approval is expired or lacks a valid expiry; resubmit the proposal")
         expected_state = record.get("state", record.get("cai_engine", {}).get("state"))
         try:
             if expected_state != self._state["current_state"]:
@@ -394,7 +425,16 @@ class CAIEngine:
             latest = self._load()
             if latest["current_state"] != expected_state or latest.get("pending", {}).get(action_id) != record:
                 raise EngineError("proposal or state changed during revalidation; resubmit")
+            if time.time() >= expires_at:
+                raise EngineError("pending approval expired during revalidation; resubmit the proposal")
         except (EngineError, KeyError, TypeError, ValueError) as exc:
+            if time.time() >= expires_at:
+                self._append("HUMAN_APPROVAL_EXPIRED", {
+                    "action_id": action_id,
+                    "expired_at": time.time(),
+                    "expires_at": expires_at,
+                })
+                raise EngineError("pending approval expired during revalidation; resubmit the proposal") from exc
             self._append("HUMAN_APPROVAL_REJECTED", {
                 "action_id": action_id, "reason": str(exc),
                 "current_state": self._state["current_state"], "approved_by": approver})
