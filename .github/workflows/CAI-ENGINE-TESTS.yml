@@ -1,22 +1,19 @@
 # CAI-Engine test suite, run by GitHub on every push and pull request to main.
-# Owner: Antonio José Socorro Marín (CAI-EXPERT-LAB). Change: CHG-2026-10-12-13.
+# Owner: Antonio José Socorro Marín (CAI-EXPERT-LAB).
 #
-# Gate: the run passes only with exactly 698 passed and 7 xfailed, and no
-# failed, error or skipped test. The 7 xfailed are the known gaps marked
-# xfail(strict=True) with their finding IDs; closing a gap, or losing a test,
-# turns the run red until the expected counts are updated in a reviewed change.
+# Gate: exact expected result is 702 passed and 4 xfailed, with no failed,
+# error, or skipped test. The four strict xfails cover tail truncation and
+# whole-chain rewrite; they remain open pending a trusted external anchor.
+# Updating these counts requires a reviewed change that reconciles the tests.
 #
-# Count raised from 652 to 664 by CHG-2026-10-16-11 and to 674 by CHG-2026-10-16-12 (sector examples).
-# Six closed xfail cases become passes; E2-A adds six contract cases.
-# Cleanup 1.1.0 adds 12 action-boundary rejection cases; no open xfail is removed.
-# Total collected cases remains 705 after E2-A. Seven open gaps remain strict.
+# The historical collection was 705 cases (698 passed, 7 xfailed). This
+# candidate closes three software gaps and adds one partial-write regression
+# case: 706 cases (702 passed, 4 xfailed).
 #
-# Lint job (CHG-2026-10-16-06): ruff 0.16.8 with the rule set pinned in
-# CAI-Engine/implementation/pyproject.toml; no finding is allowed.
-#
-# Supply chain: actions pinned by full commit SHA (resolved from the official
-# release tags on 2026-10-13); Python packages pinned by version; read-only
-# token; no secrets; checkout does not keep credentials.
+# Ruff uses the rule set pinned in CAI-Engine/implementation/pyproject.toml.
+# Supply chain: actions pinned by full commit SHA; Python packages pinned by
+# version; contents permission is read-only; no secrets; checkout does not
+# persist credentials.
 
 name: CAI-Engine tests
 
@@ -94,4 +91,4 @@ jobs:
           summary="$(tail -n 1 pytest-output.txt)"
           echo "Summary: ${summary}"
           echo "### ${{ matrix.os }} / Python ${{ matrix.python }}: ${summary}" >> "$GITHUB_STEP_SUMMARY"
-          echo "${summary}" | grep -Eq '^698 passed, 7 xfailed in ' || { echo "Expected exactly: 698 passed, 7 xfailed"; exit 1; }
+          echo "${summary}" | grep -Eq '^702 passed, 4 xfailed in ' || { echo "Expected exactly: 702 passed, 4 xfailed"; exit 1; }

@@ -8,6 +8,8 @@ Run:  pytest -q      (from CAI-Engine/implementation)
 """
 from __future__ import annotations
 
+import time
+
 import pytest
 
 from cai_engine.core import State, TelemetryEvent
@@ -67,7 +69,7 @@ def test_full_lifecycle_to_evict(engine):
 # --------------------------------------------------------------------------
 def test_good_telemetry_accepted(engine):
     out = engine.ingest({"source": "edr", "domain": "device", "confidence": 0.9,
-                         "provenance": "p", "timestamp": 1.0})
+                         "provenance": "p", "timestamp": time.time()})
     assert out["accepted"] is True
 
 
