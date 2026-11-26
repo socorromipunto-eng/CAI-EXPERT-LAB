@@ -81,6 +81,15 @@ The following uploaded sources support the **assessment method and evidence ques
 
 Sector-specific statutes, regulations, directives, contracts, and agency guidance are **not asserted here**. Add them only after verifying the current primary text, effective date, scope, covered entity/asset, and competent reviewer disposition.
 
+## 7.1 Sector-specific authoritative sources (checked 2026-11-26)
+
+| Source and status | Use in this profile | Applicability limit |
+|---|---|---|
+| Safe Drinking Water Act §1433, as amended by AWIA §2013; EPA risk and resilience assessment / emergency response plan page — [EPA](https://www.epa.gov/waterresilience/awia-section-2013) | EPA states the statutory RRA/ERP requirements for community drinking-water systems serving more than 3,300 people. | This specific statutory threshold does not cover every wastewater utility, water system, contractor, or service provider. Determine CWS status, population served, system boundaries, and current certification cycle. |
+| EPA, Cybersecurity Assessments for water systems — [EPA](https://www.epa.gov/cyberwater/cybersecurity-assessments) | Connects cybersecurity assessment questions to water-system risk and resilience assessment work. | Guidance and assessment resources do not demonstrate compliance, adequacy, or safe process operation. They do not authorize live testing or process changes. |
+
+This profile distinguishes drinking-water statutory scope from wastewater and other water-sector assets. A sector label alone is insufficient to determine AWIA applicability or the safe state of a treatment process.
+
 ## 8. Evidence required before a deployment claim
 
 - Owner-approved inventory tying asset identity, site, function, consequence, OT zone, safety owner, and authority to a versioned trusted source.

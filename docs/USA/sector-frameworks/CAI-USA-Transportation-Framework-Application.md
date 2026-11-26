@@ -2,7 +2,7 @@
 
 **Status:** Draft, research and simulation profile; not an implementation or compliance claim.
 **Sector key:** `transportation`
-**NSM-22 profile/SRMA recorded in the current engine:** TSA and U.S. Coast Guard (DHS); exact authority depends on transportation mode and asset
+**NSM-22 profile/SRMA recorded in the current engine:** Department of Transportation
 **Review date:** 2026-11-26 (source snapshot date; sector-specific legal applicability not independently determined)
 
 ## 1. Scope and decision boundary
@@ -80,6 +80,15 @@ The following uploaded sources support the **assessment method and evidence ques
 | NSM-22 (sector directory in repository) | Identifies the 16-sector taxonomy and the SRMA value currently represented by the project. | Verify the controlling primary text and current agency assignment before publication; a project mapping is not legal authority. |
 
 Sector-specific statutes, regulations, directives, contracts, and agency guidance are **not asserted here**. Add them only after verifying the current primary text, effective date, scope, covered entity/asset, and competent reviewer disposition.
+
+## 7.1 Sector-specific authoritative sources (checked 2026-11-26)
+
+| Source and status | Use in this profile | Applicability limit |
+|---|---|---|
+| CISA, Infrastructure Resilience Planning Framework v1.2 (February 2024), sector/SRMA table, p. 54 — [PDF](https://www.cisa.gov/sites/default/files/2024-02/Infrastructure%20Resilience%20Planning%20Framework%20v1.2_JAN2024_508c.pdf) | Records the Department of Transportation as the Transportation Systems SRMA in that framework. | It is an agency-role mapping, not a control requirement or proof of authority over every mode, operator, or asset. Verify current assignment and modal jurisdiction for the target. |
+| Transportation Security Administration, Security Directives and Emergency Amendments index — [TSA index](https://www.tsa.gov/sd-and-ea) | Official entry point for checking TSA-issued directives and emergency amendments that may apply to particular regulated transportation entities. | Directives are scope- and operator-specific and may be amended, renewed, or superseded. This profile makes no claim that a particular directive is currently in force or applies to a target; verify the directive text, dates, operator, mode, and current TSA status before relying on it. |
+
+Do not equate Transportation Systems SRMA assignment with TSA or Coast Guard ownership of every transportation cybersecurity requirement. Identify the mode (aviation, rail, highway, maritime, transit, pipeline, or other), regulator, asset owner, and current controlling instrument.
 
 ## 8. Evidence required before a deployment claim
 

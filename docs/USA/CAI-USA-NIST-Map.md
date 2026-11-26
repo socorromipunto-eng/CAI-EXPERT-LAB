@@ -1,5 +1,12 @@
 # CAI-USA-NIST-Map
 
+> **Historical mapping snapshot — not a current implementation assessment.** The
+> mapping records an earlier source snapshot (retrieved 2026-10-16) and an
+> earlier engine/configuration baseline. Its counts and row dispositions must
+> not be read as the post-merge state at main commit
+> 95db83a6f155b68dc0c1ff783731c0086a9fbfde. Reconcile each claim against the
+> current source and tests before using it for a decision.
+
 Cybersecurity Artificial Intelligence Framework – NIST Control and Outcome Map (USA)  
 Version 0.1 (Draft)
 

@@ -34,11 +34,11 @@ SECTORS: dict[str, Sector] = {
     "energy":                Sector("energy", "Energy", "Department of Energy", "CATASTROPHIC", True),
     "financial_services":    Sector("financial_services", "Financial Services", "Department of the Treasury", "HIGH", False),
     "food_agriculture":      Sector("food_agriculture", "Food and Agriculture", "USDA and HHS (FDA)", "HIGH", True),
-    "government_facilities":  Sector("government_facilities", "Government Facilities", "CISA (DHS) and GSA", "HIGH", False),
+    "government_facilities":  Sector("government_facilities", "Government Facilities", "General Services Administration", "HIGH", False),
     "healthcare":            Sector("healthcare", "Healthcare and Public Health", "Department of Health and Human Services", "HIGH", False),
     "information_technology":Sector("information_technology", "Information Technology", "CISA (DHS)", "HIGH", False),
     "nuclear":               Sector("nuclear", "Nuclear Reactors, Materials, and Waste", "CISA (DHS)", "CATASTROPHIC", True),
-    "transportation":        Sector("transportation", "Transportation Systems", "TSA and U.S. Coast Guard (DHS)", "CATASTROPHIC", True),
+    "transportation":        Sector("transportation", "Transportation Systems", "Department of Transportation", "CATASTROPHIC", True),
     "water":                 Sector("water", "Water and Wastewater Systems", "Environmental Protection Agency", "CATASTROPHIC", True),
 }
 

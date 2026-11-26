@@ -369,11 +369,11 @@ NSM22 = {  # sector key -> (Sector Risk Management Agency, consequence, OT-inten
     "energy": ("Department of Energy", "CATASTROPHIC", True),
     "financial_services": ("Department of the Treasury", "HIGH", False),
     "food_agriculture": ("USDA and HHS (FDA)", "HIGH", True),
-    "government_facilities": ("CISA (DHS) and GSA", "HIGH", False),
+    "government_facilities": ("General Services Administration", "HIGH", False),
     "healthcare": ("Department of Health and Human Services", "HIGH", False),
     "information_technology": ("CISA (DHS)", "HIGH", False),
     "nuclear": ("CISA (DHS)", "CATASTROPHIC", True),
-    "transportation": ("TSA and U.S. Coast Guard (DHS)", "CATASTROPHIC", True),
+    "transportation": ("Department of Transportation", "CATASTROPHIC", True),
     "water": ("Environmental Protection Agency", "CATASTROPHIC", True),
 }
 FLOOR = {"CATASTROPHIC": 0.95, "HIGH": 0.90, "MODERATE": 0.80, "NON_CRITICAL": 0.70}
