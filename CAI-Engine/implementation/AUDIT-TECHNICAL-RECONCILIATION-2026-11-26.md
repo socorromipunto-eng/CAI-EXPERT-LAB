@@ -68,3 +68,15 @@ The guarded runner must use a new worktree from the expected origin/main SHA; ve
 - EU AI Act, Regulation (EU) 2024/1689, Article 14: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
 
 This is a reviewable local correction candidate, not an applied or signed repository change.
+
+## Addendum â€” computational robustness model (2026-11-26)
+
+The companion record `CAI-COMPUTATIONAL-ROBUSTNESS-MODEL-INTEGRATION.md` documents a design-only Calculation Assurance Contract for material numeric gates and future approximate or randomized calculations. It distinguishes deterministic policy comparisons from calibrated model probabilities, average-case assumptions from adversarial inputs, and algorithmic error guarantees from AI confidence or drift. The uploaded complexity text is treated as educational context, not a CAI requirement, validation standard, or source for the existing threshold values.
+
+This record adds traceability only. No risk formula, confidence calibration, uncertainty interval, resource limit, cryptographic profile, or product-code behavior is implemented by the document. The calculation debt IDs CALC-01 through CALC-05 remain open or design-only; the four evidence-chain xfails, approver authentication, MCP/actuator boundary, alternate-route control, telemetry linkage, repository settings, license authorization, independent review, and deployment qualification remain open as listed above. Release and operational use remain `HOLD`.
+
+Evidence update: the GitHub API reports commit `c8619ce300880e394e206d4e11c3e91c7753288f` as signed and valid. The same API returned zero check runs for that commit at review time. PR #3's successful 714-passed/4-xfailed CI is evidence for its merged source head `f63e4d55a5175cabd47050d138e159284615b5e6`, not for this later branch. The owner reported local Ruff, compilation, and full-suite checks for the candidate; a numeric result was not present in the supplied execution transcript. The candidate's 716-passed/4-xfailed value in the reconciliation is therefore an expected gate until a run for the exact commit records that result.
+
+## Validation update — local Windows candidate results (2026-11-26)
+
+The owner reported that the staged documentation candidate, based on `c8619ce300880e394e206d4e11c3e91c7753288f`, passed Ruff and Python compilation. The complete local test suite reported **716 passed, 4 xfailed in 21.14 seconds**. This updates the earlier evidence snapshot that lacked a numeric result. It is owner-reported Windows evidence for the candidate worktree; it is not a GitHub Actions run for the eventual commit and is not an independent assessment.
