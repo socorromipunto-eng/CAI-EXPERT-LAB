@@ -1,0 +1,10 @@
+{
+  "original_package_hash_matches_delivered_checksum": true,
+  "decisions_count": 12,
+  "decision_ids_exact": true,
+  "recommendations_preserved": true,
+  "all_owner_decisions_approved": true,
+  "runtime_tests": "NOT_RUN",
+  "G0": "HOLD",
+  "original_dossier_modified": false
+}

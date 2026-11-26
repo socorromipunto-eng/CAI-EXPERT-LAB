@@ -1,0 +1,49 @@
+{
+  "change_id": "CHG-CAI-ARCH-G0-2026-10-29",
+  "adr": "ADR-CAI-G0-001",
+  "baseline_commit": "80cd71e1620c5c580f6697742f520d329fa13709",
+  "historical_reference": "b52935e93237eccdcab3e58aa23d48ddf4958c43",
+  "owner": "Antonio José Socorro Marín",
+  "requested_boundary": "PREPARE_EXTERNAL_RECONCILIATION_DOCUMENTS",
+  "preparation": "COMPLETE_WITH_EXPLICIT_EVIDENCE_LIMITS",
+  "G0": "HOLD",
+  "G0_reason": [
+    "Original T01–T10 scripts/raw baseline report not recovered",
+    "Current baseline scenario run not executed",
+    "Independent technical/governance review pending",
+    "D01–D12 owner selections pending"
+  ],
+  "requirement_counts": {
+    "core_SR": 27,
+    "core_AT": 87,
+    "EU_SR": 14,
+    "USA_SR": 15,
+    "EU_AT": 16,
+    "USA_AT": 18
+  },
+  "implementation_authorized": false,
+  "commit_authorized": false,
+  "push_authorized": false,
+  "owner_approval": null,
+  "approved_at": null,
+  "independent_reviewers": [],
+  "runtime_tests_here": "NOT_RUN",
+  "assessment_id": "CHG-CAI-ARCH-G0-2026-10-29",
+  "scope": "READ_ONLY_REPOSITORY; EXTERNAL_DOCUMENT_CANDIDATES",
+  "technical_review": "HOLD_INDEPENDENT_REVIEW_AND_BASELINE",
+  "governance_review": "HOLD_OWNER_ADJUDICATION",
+  "verdict": "HOLD",
+  "evidence_ids": [
+    "BASELINE-PATH-HASH-LOCK",
+    "historical-to-current-complete-tree-delta",
+    "prior-main-commit-and-CI-jobs"
+  ],
+  "open_conditions": [
+    "Original T01–T10 scripts/raw baseline report not recovered",
+    "Current baseline scenario run not executed",
+    "Independent technical/governance review pending",
+    "D01–D12 owner selections pending"
+  ],
+  "human_approver": "NOT_GRANTED",
+  "next_action": "Review D01–D12 and original-G0 evidence disposition; no code implementation yet"
+}
