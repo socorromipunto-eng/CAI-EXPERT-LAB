@@ -27,12 +27,14 @@ these mappings do not establish regulatory compliance.
 The framework version, engine package version and security-specification
 version are separate. A correction kit version is not a framework release.
 The reference engine records local decisions; an `EXECUTED` result does not
-prove an external actuator ran. A `--by` label does not authenticate the
-approver. Approval expiry, fact freshness across incidents and externally
-anchored evidence remain unresolved. The local hash chain cannot detect every
+prove an external actuator ran. A `--by` value is an attribution claim, not
+authenticated identity. The engine now records expiry for pending approvals
+and revalidates state and policy when approval is submitted; this does not
+authenticate the approver or make facts fresh across incidents. Externally
+anchored evidence remains unresolved. The local hash chain cannot detect every
 tail truncation or whole-chain rewrite by a writer with sufficient access.
-The seven strict expected-failure cases remain visible in the engine tests.
-Their presence is not operational security approval.
+Four strict expected-failure cases remain: three tail-truncation cases and one
+whole-chain rewrite case. Their presence is not operational security approval.
 
 The proposed security architecture must be reconciled and approved before
 implementation. Neither local test results nor this clarification promotes a
@@ -101,9 +103,12 @@ safety constraints and exit criteria. No state is ever inferred.
   can reject submitted proposals. The runtime governs calls made through its
   interfaces; it cannot constrain a client acting through another path.
 - **Human oversight requirement.** The framework requires human oversight.
-  The reference engine can require an approval label for implemented escalation
-  cases, but does not authenticate that person or establish approval expiry.
-  The known missing-sector oversight case remains open.
+  The reference engine can require a local approval label for implemented
+  escalation cases, records pending-approval expiry, and revalidates policy
+  state when approval is submitted. It does not authenticate the approver.
+  A missing-sector escalation is covered by a regression test for the tested
+  USA/OT scenario; sector context remains caller supplied and is not a trusted
+  asset or jurisdiction classification.
 - **Local hash-chain verification.** Verification checks hashes and links
   of the records present. It detects hash/link inconsistencies but does not
   establish completeness: tail removal, an absent log, or whole-chain rewriting

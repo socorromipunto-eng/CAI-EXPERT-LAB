@@ -81,6 +81,15 @@ The following uploaded sources support the **assessment method and evidence ques
 
 Sector-specific statutes, regulations, directives, contracts, and agency guidance are **not asserted here**. Add them only after verifying the current primary text, effective date, scope, covered entity/asset, and competent reviewer disposition.
 
+## 7.1 Sector-specific authoritative sources (checked 2026-11-26)
+
+| Source and status | Use in this profile | Applicability limit |
+|---|---|---|
+| 10 CFR 73.54, Protection of Digital Computer and Communication Systems and Networks — [eCFR](https://www.ecfr.gov/current/title-10/chapter-I/part-73/section-73.54) | Identifies NRC cybersecurity requirements for the covered digital systems and licensees described in the regulation. | Do not apply this section to every organization, nuclear-material facility, waste site, DOE asset, or contractor based on the sector label. Determine the facility/licensee, covered system, and regulatory authority. |
+| NRC Regulatory Guide 5.71, Revision 1, Cyber Security Programs for Nuclear Power Reactors — [NRC source](https://adamswebsearch2.nrc.gov/webSearch2/main.jsp?AccessionNumber=ML090340159) | Describes an NRC staff-accepted approach for the regulatory scope stated in the guide. | Guidance scope is operating reactors licensed under 10 CFR Part 50/52 and related applicants as described by NRC. The guide is not a universal nuclear-sector rule and alternative methods may be available under the governing regulation. |
+
+Safety/security significance, authorization, and testing conditions must be established by the facility owner and competent nuclear authorities. This profile is not a nuclear safety analysis or a licensee determination.
+
 ## 8. Evidence required before a deployment claim
 
 - Owner-approved inventory tying asset identity, site, function, consequence, OT zone, safety owner, and authority to a versioned trusted source.

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import pathlib
+import re
 
 import pytest
 
@@ -66,6 +67,29 @@ def test_examples_exist():
     assert counts == dict.fromkeys(SECTORS, 2)
     assert set(SECTOR_DOCS) == set(SECTORS)
     assert {p.name for p in DOCS.glob("CAI-USA-*-Framework-Application.md")} == set(SECTOR_DOCS.values())
+
+
+def test_sector_profiles_have_applicability_and_authority_traceability():
+    """Require a source trail in every profile; structural checks are not legal validation."""
+    for sector, filename in SECTOR_DOCS.items():
+        text = (DOCS / filename).read_text(encoding="utf-8")
+        lower = text.lower()
+        domains = re.findall(r"https?://([^/\s)]+)", text)
+        assert any(domain.lower().endswith(".gov") for domain in domains), (
+            sector, "profile must link at least one government primary source"
+        )
+        assert "applicability" in lower or "scope in this sector" in lower, (
+            sector, "missing applicability/scope limits"
+        )
+        assert "does not" in lower or "not a" in lower, (
+            sector, "profile must state at least one non-claim or boundary"
+        )
+
+
+def test_current_sector_risk_management_agency_mappings():
+    """Pin two corrections against the CISA IRPF 1.2 sector/SRMA table."""
+    assert SECTORS["government_facilities"].srma == "General Services Administration"
+    assert SECTORS["transportation"].srma == "Department of Transportation"
 
 
 @pytest.mark.parametrize("path", EXAMPLES, ids=[p.stem for p in EXAMPLES])

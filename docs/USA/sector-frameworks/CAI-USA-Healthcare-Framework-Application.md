@@ -81,6 +81,15 @@ The following uploaded sources support the **assessment method and evidence ques
 
 Sector-specific statutes, regulations, directives, contracts, and agency guidance are **not asserted here**. Add them only after verifying the current primary text, effective date, scope, covered entity/asset, and competent reviewer disposition.
 
+## 7.1 Sector-specific authoritative sources (checked 2026-11-26)
+
+| Source and status | Use in this profile | Applicability limit |
+|---|---|---|
+| HHS, Healthcare and Public Health Cybersecurity Performance Goals — [HHS Cyber Gateway](https://hhscyber.hhs.gov/cybersecurity-performance-goals.html) | Supplies voluntary, healthcare-specific prioritized cybersecurity practices for organizations, including healthcare delivery organizations. | HHS explicitly describes these CPGs as voluntary. They are not a substitute for determining the entity's binding statutes, regulations, contracts, or accreditation obligations, and do not prove implementation. |
+| HHS, Health Industry Cybersecurity Practices — [HHS Cyber Gateway](https://hhscyber.hhs.gov/cornerstone-hicp.html) | Sector-specific practice material that can inform risk assessment and test planning. | Guidance is not evidence that a clinical device, care workflow, or facility control is safe. Determine applicability to the provider, device, data, contract, and jurisdiction separately. |
+
+Do not treat the sector label as proof that HIPAA applies to a particular organization or system. Covered-entity/business-associate status, data scope, and the current Security Rule obligations require separate legal and system-context review.
+
 ## 8. Evidence required before a deployment claim
 
 - Owner-approved inventory tying asset identity, site, function, consequence, OT zone, safety owner, and authority to a versioned trusted source.

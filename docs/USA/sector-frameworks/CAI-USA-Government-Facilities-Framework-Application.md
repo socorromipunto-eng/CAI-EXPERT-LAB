@@ -2,7 +2,7 @@
 
 **Status:** Draft, research and simulation profile; not an implementation or compliance claim.
 **Sector key:** `government_facilities`
-**NSM-22 profile/SRMA recorded in the current engine:** CISA (DHS) and GSA
+**NSM-22 profile/SRMA recorded in the current engine:** General Services Administration
 **Review date:** 2026-11-26 (source snapshot date; sector-specific legal applicability not independently determined)
 
 ## 1. Scope and decision boundary
@@ -80,6 +80,16 @@ The following uploaded sources support the **assessment method and evidence ques
 | NSM-22 (sector directory in repository) | Identifies the 16-sector taxonomy and the SRMA value currently represented by the project. | Verify the controlling primary text and current agency assignment before publication; a project mapping is not legal authority. |
 
 Sector-specific statutes, regulations, directives, contracts, and agency guidance are **not asserted here**. Add them only after verifying the current primary text, effective date, scope, covered entity/asset, and competent reviewer disposition.
+
+## 7.1 Sector-specific authoritative sources (checked 2026-11-26)
+
+| Source and status | Use in this profile | Applicability limit |
+|---|---|---|
+| CISA, Infrastructure Resilience Planning Framework v1.2 (February 2024), sector/SRMA table, p. 54 — [PDF](https://www.cisa.gov/sites/default/files/2024-02/Infrastructure%20Resilience%20Planning%20Framework%20v1.2_JAN2024_508c.pdf) | Records the General Services Administration (GSA) as the Government Facilities SRMA in that framework. | This establishes the agency mapping in the cited 2024 framework, not authority over every federal, state, local, tribal, territorial, or privately operated facility. Confirm current agency assignment and asset ownership for the target. |
+| GSA Acquisition Letter MV-2022-06, Cyber-Supply Chain Risk Management Requirements for Leasing — [GSA source](https://www.gsa.gov/policy-regulations/policy/acquisition-policy/acquisition-policy-library-and-resources/mv202206) | Gives a concrete federal-leasing context for building automation and facility-related control systems. | Limited to the stated GSA acquisition/leasing context and applicable lease instruments; it is not a general cybersecurity regulation for all government facilities. Verify current directive, contract and facility scope before use. |
+| GSA Smart Buildings directive — [GSA source](https://www.gsa.gov/directives-library/gsa-smart-buildings) | Provides agency-specific context for GSA smart-building systems and cybersecurity practices. | Applies within GSA's stated program scope. It does not establish a government-wide control baseline or prove a target has implemented those controls. |
+
+The registry SRMA value is directory metadata only. The GSA source set above is sector-specific scoping evidence, not a control-effectiveness assessment.
 
 ## 8. Evidence required before a deployment claim
 

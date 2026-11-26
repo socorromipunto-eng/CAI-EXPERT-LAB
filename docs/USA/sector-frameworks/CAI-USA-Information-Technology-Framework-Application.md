@@ -81,6 +81,16 @@ The following uploaded sources support the **assessment method and evidence ques
 
 Sector-specific statutes, regulations, directives, contracts, and agency guidance are **not asserted here**. Add them only after verifying the current primary text, effective date, scope, covered entity/asset, and competent reviewer disposition.
 
+## 7.1 Sector-specific authoritative sources (checked 2026-11-26)
+
+| Source and status | Use in this profile | Applicability limit |
+|---|---|---|
+| NIST SP 800-218, Secure Software Development Framework (SSDF) v1.1 — **Final**, 2022-02-03; [NIST publication page](https://csrc.nist.gov/pubs/sp/800/218/final) | Provides voluntary secure-development practices and tasks for software producers/acquirers that can be mapped to an IT product lifecycle. | A framework recommendation is not a product certification or proof of a supplier's implementation. Contractual or regulatory adoption must be established for the actual system. |
+| NIST SP 800-218 Rev. 1, SSDF v1.2 — **Initial Public Draft**, published 2025-12-17; [NIST status page](https://csrc.nist.gov/pubs/sp/800/218/r1/ipd) | May be monitored as proposed guidance for future profile revisions. | Draft status is not a final baseline. This profile does not treat draft text as a current mandatory requirement. |
+| NIST SP 800-161 Rev. 1 Update 1, Cybersecurity Supply Chain Risk Management Practices — [NIST publication page](https://csrc.nist.gov/pubs/sp/800/161/r1/upd1/final) | Supports supplier, acquisition, and product-lifecycle risk questions. | Applicability depends on organization, acquisition, policy, and contract. It does not provide a product-level assurance result by itself. |
+
+The IT sector label does not establish that a particular product is a federal information system, a software producer, or subject to a specific acquisition clause. Determine the system and supplier roles before applying a control.
+
 ## 8. Evidence required before a deployment claim
 
 - Owner-approved inventory tying asset identity, site, function, consequence, OT zone, safety owner, and authority to a versioned trusted source.
