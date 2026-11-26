@@ -11,8 +11,12 @@ State is persisted to a runtime directory so the CLI is stateful across calls:
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import os
+import tempfile
+import time
+from contextlib import suppress
 from dataclasses import asdict
 
 from .core import (
@@ -23,8 +27,9 @@ from .core import (
     ActionCategory,
     State,
     TelemetryEvent,
+    is_finite_number,
 )
-from .evidence import EvidenceLog
+from .evidence import EvidenceBusyError, EvidenceError, EvidenceLog
 from .gates import (
     Decision,
     policy_evaluate,
@@ -38,39 +43,211 @@ class EngineError(Exception):
     pass
 
 
+def _runtime_locked(method):
+    def wrapped(self, *args, **kwargs):
+        try:
+            with self.evidence.writer_lock():
+                return method(self, *args, **kwargs)
+        except EvidenceBusyError as exc:
+            raise EngineError("BUSY: evidence writer lock timeout") from exc
+        except EvidenceError as exc:
+            raise EngineError(str(exc)) from exc
+        except OSError as exc:
+            raise EngineError(
+                "SAFE_HALT: durable operation or snapshot I/O failed; preserve runtime files and recover by replay"
+            ) from exc
+    wrapped.__name__ = method.__name__
+    wrapped.__doc__ = method.__doc__
+    return wrapped
+
+
+def _canonical_json(value: dict) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False,
+                      allow_nan=False).encode("utf-8")
+
+
+def _sha384(value: dict) -> str:
+    return hashlib.sha384(_canonical_json(value)).hexdigest()
+
+
 class CAIEngine:
-    def __init__(self, home: str = "cai_runtime"):
+    DEFAULT_APPROVAL_TTL_SECONDS = 300.0
+    DEFAULT_TELEMETRY_MAX_AGE_SECONDS = 300.0
+    DEFAULT_TELEMETRY_FUTURE_SKEW_SECONDS = 60.0
+
+    def __init__(self, home: str = "cai_runtime", *, approval_ttl_seconds: float = DEFAULT_APPROVAL_TTL_SECONDS,
+                 telemetry_max_age_seconds: float = DEFAULT_TELEMETRY_MAX_AGE_SECONDS,
+                 telemetry_future_skew_seconds: float = DEFAULT_TELEMETRY_FUTURE_SKEW_SECONDS):
+        for name, value in (("approval_ttl_seconds", approval_ttl_seconds),
+                            ("telemetry_max_age_seconds", telemetry_max_age_seconds),
+                            ("telemetry_future_skew_seconds", telemetry_future_skew_seconds)):
+            if not is_finite_number(value) or value <= 0:
+                raise ValueError(f"{name} must be a finite positive number")
         self.home = home
+        self.approval_ttl_seconds = float(approval_ttl_seconds)
+        self.telemetry_max_age_seconds = float(telemetry_max_age_seconds)
+        self.telemetry_future_skew_seconds = float(telemetry_future_skew_seconds)
         self.state_path = os.path.join(home, "state.json")
         self.evidence = EvidenceLog(os.path.join(home, "evidence.jsonl"))
         self._state: dict = {}
 
     # -- persistence -------------------------------------------------------
+    def _replay(self, records: list[dict]) -> dict:
+        state = None
+        for record in records:
+            event = record["event_type"]
+            payload = record["payload"]
+            if event == "ENGINE_INIT":
+                if state is not None:
+                    raise EngineError("multiple ENGINE_INIT records; SAFE_HALT")
+                state = {"current_state": payload["initial_state"], "facts": {}, "pending": {}}
+            elif state is None:
+                raise EngineError("evidence has no ENGINE_INIT record; SAFE_HALT")
+            elif event == "FACT_SET":
+                state.setdefault("facts", {})[payload["fact"]] = payload["value"]
+            elif event == "STATE_TRANSITION":
+                state["current_state"] = payload["to"]
+            elif event.endswith("PENDING_APPROVAL"):
+                action_id = (payload.get("action_id") or
+                             payload.get("action", {}).get("id"))
+                if action_id:
+                    state.setdefault("pending", {})[action_id] = payload
+            elif event in ("HUMAN_APPROVAL", "HUMAN_DENIAL") or event == "HUMAN_APPROVAL_EXPIRED":
+                action_id = payload.get("action_id")
+                if action_id:
+                    state.setdefault("pending", {}).pop(action_id, None)
+            elif event in ("ACTION_EXECUTED", "GOVERNED_DECISION_EXECUTED",
+                           "DECISION_AUTHORIZED", "GOVERNED_DECISION_AUTHORIZED"):
+                action_id = payload.get("action_id") or payload.get("action", {}).get("id")
+                if action_id:
+                    state.setdefault("pending", {}).pop(action_id, None)
+        if state is None:
+            raise EngineError("evidence has no initialization record; SAFE_HALT")
+        return state
+
+    def _snapshot_body(self, state: dict, records: list[dict]) -> dict:
+        return {
+            "format": "CAI-SNAPSHOT-1",
+            "state": state,
+            "seq": len(records),
+            "head_hash": records[-1]["record_hash"],
+        }
+
+    def _snapshot_is_valid(self, snapshot: object, records: list[dict]) -> tuple[bool, bool]:
+        """Return (valid, behind); a behind snapshot must match an exact log prefix."""
+        if not isinstance(snapshot, dict):
+            return False, False
+        digest = snapshot.get("snapshot_sha384")
+        body = {k: v for k, v in snapshot.items() if k != "snapshot_sha384"}
+        try:
+            if not isinstance(digest, str) or _sha384(body) != digest:
+                return False, False
+            if body.get("format") != "CAI-SNAPSHOT-1":
+                return False, False
+            seq = body.get("seq")
+            if type(seq) is not int or seq < 1 or seq > len(records):
+                return False, False
+            prefix = records[:seq]
+            expected = self._snapshot_body(self._replay(prefix), prefix)
+            if body != expected:
+                return False, False
+            return True, seq < len(records)
+        except (KeyError, TypeError, ValueError, EngineError):
+            return False, False
+
+    def _write_snapshot(self, records: list[dict]) -> None:
+        os.makedirs(self.home, exist_ok=True)
+        body = self._snapshot_body(self._state, records)
+        snapshot = {**body, "snapshot_sha384": _sha384(body)}
+        encoded = (json.dumps(snapshot, indent=2, ensure_ascii=False, allow_nan=False) + "\n").encode("utf-8")
+        fd, temporary = tempfile.mkstemp(prefix=".state.", suffix=".tmp", dir=self.home)
+        try:
+            # POSIX mode bits are enforced on Unix. Windows uses the account's
+            # inherited filesystem ACL; os.fchmod is not available there.
+            if hasattr(os, "fchmod"):
+                os.fchmod(fd, 0o600)
+            with os.fdopen(fd, "wb", closefd=True) as fh:
+                fh.write(encoded)
+                fh.flush()
+                os.fsync(fh.fileno())
+            os.replace(temporary, self.state_path)
+            if os.name != "nt":
+                dir_fd = os.open(self.home, os.O_RDONLY)
+                try:
+                    os.fsync(dir_fd)
+                finally:
+                    os.close(dir_fd)
+        except Exception:
+            with suppress(OSError):
+                os.close(fd)
+            with suppress(FileNotFoundError):
+                os.unlink(temporary)
+            raise
+
+    def _append(self, event_type: str, payload: dict) -> dict:
+        record = self.evidence.append(event_type, payload)
+        records = list(self.evidence.records())
+        self._state = self._replay(records)
+        if event_type in {
+            "ENGINE_INIT", "FACT_SET", "STATE_TRANSITION", "ACTION_PENDING_APPROVAL",
+            "GOVERNED_DECISION_PENDING_APPROVAL", "HUMAN_APPROVAL", "HUMAN_DENIAL",
+            "ACTION_EXECUTED", "GOVERNED_DECISION_EXECUTED", "DECISION_AUTHORIZED",
+            "GOVERNED_DECISION_AUTHORIZED", "HUMAN_APPROVAL_EXPIRED",
+        }:
+            self._write_snapshot(records)
+        return record
+
+    @_runtime_locked
     def _load(self) -> dict:
-        if not os.path.exists(self.state_path):
+        if not os.path.exists(self.evidence.path):
             raise EngineError("engine not initialized — run `init` first")
-        with open(self.state_path, encoding="utf-8") as fh:
-            self._state = json.load(fh)
+        valid, error = self.evidence.verify()
+        if not valid:
+            raise EngineError(f"SAFE_HALT: evidence verification failed: {error}")
+        records = list(self.evidence.records())
+        try:
+            replayed = self._replay(records)
+        except (KeyError, TypeError, ValueError) as exc:
+            raise EngineError("SAFE_HALT: evidence event payload cannot be replayed; preserve runtime files") from exc
+        if not os.path.exists(self.state_path):
+            self._state = replayed
+            self._write_snapshot(records)
+            return self._state
+        try:
+            with open(self.state_path, encoding="utf-8") as fh:
+                snapshot = json.load(fh)
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            raise EngineError("SAFE_HALT: snapshot is unreadable; preserve files for recovery") from exc
+        snapshot_valid, behind = self._snapshot_is_valid(snapshot, records)
+        if not snapshot_valid:
+            raise EngineError("SAFE_HALT: snapshot digest or evidence reference mismatch; preserve files")
+        if behind:
+            # A valid snapshot may lag after a crash or a rejected input event.
+            # Replay is the source of truth; do not append a synthetic event or
+            # rewrite the snapshot during a read-only status/evaluation call.
+            self._state = replayed
+            return self._state
+        self._state = replayed
         return self._state
 
     def _save(self) -> None:
-        os.makedirs(self.home, exist_ok=True)
-        with open(self.state_path, "w", encoding="utf-8") as fh:
-            json.dump(self._state, fh, indent=2, ensure_ascii=False)
+        records = list(self.evidence.records())
+        if not records:
+            raise EngineError("cannot write a snapshot without durable evidence")
+        self._write_snapshot(records)
 
     # -- lifecycle ---------------------------------------------------------
+    @_runtime_locked
     def init(self) -> dict:
         # Refuse reinitialization and incomplete runtimes; preserve evidence.
         if os.path.lexists(self.state_path) or os.path.lexists(self.evidence.path):
             raise EngineError("runtime artifacts already exist; preserve them and perform explicit recovery")
         os.makedirs(self.home, exist_ok=True)
-        with open(self.evidence.path, "x", encoding="utf-8"):
-            pass
         self._state = {"current_state": INITIAL_STATE.value, "facts": {}, "pending": {}}
-        self._save()
-        self.evidence.append("ENGINE_INIT", {"initial_state": INITIAL_STATE.value})
+        self._append("ENGINE_INIT", {"initial_state": INITIAL_STATE.value})
         return self._state
 
+    @_runtime_locked
     def status(self) -> dict:
         self._load()
         cur = State(self._state["current_state"])
@@ -86,22 +263,22 @@ class CAIEngine:
         }
 
     # -- context facts -----------------------------------------------------
+    @_runtime_locked
     def set_fact(self, key: str, value: bool) -> dict:
         self._load()
         if not isinstance(key, str) or not key.strip() or type(value) is not bool:
-            self.evidence.append("FACT_INPUT_REJECTED", {"reason_code": "INVALID_FACT_TYPE"})
+            self._append("FACT_INPUT_REJECTED", {"reason_code": "INVALID_FACT_TYPE"})
             raise EngineError("fact key must be a non-empty string and value must be a boolean")
-        self._state.setdefault("facts", {})[key] = value
-        self._save()
-        self.evidence.append("FACT_SET", {"fact": key, "value": bool(value)})
+        self._append("FACT_SET", {"fact": key, "value": bool(value)})
         return {"fact": key, "value": bool(value)}
 
     # -- telemetry ingestion ----------------------------------------------
+    @_runtime_locked
     def ingest(self, data: dict) -> dict:
         self._load()
         if not isinstance(data, dict):
             errors = ["telemetry must be an object"]
-            self.evidence.append("TELEMETRY_REJECTED", {"errors": errors, "reason_code": "INVALID_INPUT_SHAPE"})
+            self._append("TELEMETRY_REJECTED", {"errors": errors, "reason_code": "INVALID_INPUT_SHAPE"})
             return {"accepted": False, "errors": errors}
         ev = TelemetryEvent(
             source=data.get("source", ""),
@@ -111,10 +288,16 @@ class CAIEngine:
             timestamp=data.get("timestamp"),
         )
         errors = ev.validate()
+        now = time.time()
+        if not errors and ev.timestamp is not None:
+            if ev.timestamp < now - self.telemetry_max_age_seconds:
+                errors.append("telemetry timestamp is stale")
+            elif ev.timestamp > now + self.telemetry_future_skew_seconds:
+                errors.append("telemetry timestamp is too far in the future")
         if errors:
-            self.evidence.append("TELEMETRY_REJECTED", {"event_id": ev.id, "errors": errors})
+            self._append("TELEMETRY_REJECTED", {"event_id": ev.id, "errors": errors})
             return {"accepted": False, "id": ev.id, "errors": errors}
-        self.evidence.append("TELEMETRY_ACCEPTED", {"event": asdict(ev)})
+        self._append("TELEMETRY_ACCEPTED", {"event": asdict(ev)})
         return {"accepted": True, "id": ev.id}
 
     # -- action proposal (policy -> safety -> oversight) -------------------
@@ -147,6 +330,7 @@ class CAIEngine:
             raise EngineError("invalid action: " + "; ".join(errors))
         return action
 
+    @_runtime_locked
     def evaluate(self, action: Action) -> dict:
         """Run policy + safety + oversight for an action WITHOUT side effects.
 
@@ -173,35 +357,40 @@ class CAIEngine:
             "requires_human_approval": needs_human,
         }
 
+    @_runtime_locked
     def commit(self, action_id: str, record: dict,
                blocked_event: str = "ACTION_BLOCKED",
                pending_event: str = "ACTION_PENDING_APPROVAL",
                executed_event: str = "ACTION_EXECUTED") -> dict:
-        """Record and act on a decided `record` (from evaluate / governed layer)."""
+        """Record an executed governance decision; no external action is dispatched."""
         decision = record["decision"]
         needs_human = record["requires_human_approval"]
         if decision == Decision.DENY.value:
-            self.evidence.append(blocked_event, record)
+            self._append(blocked_event, record)
             return {"status": "BLOCKED", **record}
         if needs_human:
-            self._load()
-            self._state.setdefault("pending", {})[action_id] = record
-            self._save()
-            self.evidence.append(pending_event, record)
+            created_at = time.time()
+            pending_record = {**record, "action_id": action_id, "created_at": created_at,
+                              "expires_at": created_at + self.approval_ttl_seconds,
+                              "approval_ttl_seconds": self.approval_ttl_seconds}
+            self._append(pending_event, pending_record)
             return {"status": "PENDING_APPROVAL", "action_id": action_id, **record}
-        self.evidence.append(executed_event, {**record, "approved_by": None})
+        self._append(executed_event, {**record, "action_id": action_id, "approved_by": None,
+                                      "effect": "none_by_reference_engine"})
         return {"status": "EXECUTED", "action_id": action_id, **record}
 
+    @_runtime_locked
     def propose(self, data: dict) -> dict:
         try:
             action = self._build_action(data)
             record = self.evaluate(action)
         except (EngineError, TypeError, ValueError, OverflowError) as exc:
-            self.evidence.append("ACTION_INPUT_REJECTED", {
+            self._append("ACTION_INPUT_REJECTED", {
                 "reason_code": "INVALID_ACTION", "error_type": type(exc).__name__})
             raise EngineError("action rejected: " + str(exc)) from exc
         return self.commit(action.id, record)
 
+    @_runtime_locked
     def approve(self, action_id: str, approver: str) -> dict:
         self._load()
         pending = self._state.get("pending", {})
@@ -210,6 +399,12 @@ class CAIEngine:
         if not isinstance(approver, str) or not approver.strip():
             raise EngineError("an approver name is required (human authority is attributed)")
         record = pending[action_id]
+        expires_at = record.get("expires_at")
+        if not is_finite_number(expires_at) or time.time() >= expires_at:
+            self._append("HUMAN_APPROVAL_EXPIRED", {"action_id": action_id,
+                                                     "expired_at": time.time(),
+                                                     "expires_at": expires_at})
+            raise EngineError("pending approval is expired or lacks a valid expiry; resubmit the proposal")
         expected_state = record.get("state", record.get("cai_engine", {}).get("state"))
         try:
             if expected_state != self._state["current_state"]:
@@ -230,31 +425,39 @@ class CAIEngine:
             latest = self._load()
             if latest["current_state"] != expected_state or latest.get("pending", {}).get(action_id) != record:
                 raise EngineError("proposal or state changed during revalidation; resubmit")
+            if time.time() >= expires_at:
+                raise EngineError("pending approval expired during revalidation; resubmit the proposal")
         except (EngineError, KeyError, TypeError, ValueError) as exc:
-            self.evidence.append("HUMAN_APPROVAL_REJECTED", {
+            if time.time() >= expires_at:
+                self._append("HUMAN_APPROVAL_EXPIRED", {
+                    "action_id": action_id,
+                    "expired_at": time.time(),
+                    "expires_at": expires_at,
+                })
+                raise EngineError("pending approval expired during revalidation; resubmit the proposal") from exc
+            self._append("HUMAN_APPROVAL_REJECTED", {
                 "action_id": action_id, "reason": str(exc),
                 "current_state": self._state["current_state"], "approved_by": approver})
             raise EngineError("approval revalidation failed: " + str(exc)) from exc
         # Only consume the pending proposal after successful revalidation.
         record = {**record, "approval_revalidation": refreshed}
-        self._state["pending"].pop(action_id)
-        self._save()
-        self.evidence.append("HUMAN_APPROVAL", {"action_id": action_id, "approved_by": approver})
-        self.evidence.append("ACTION_EXECUTED", {**record, "approved_by": approver})
+        self._append("HUMAN_APPROVAL", {"action_id": action_id, "approved_by": approver})
+        self._append("ACTION_EXECUTED", {**record, "action_id": action_id, "approved_by": approver,
+                                         "effect": "none_by_reference_engine"})
         return {"status": "EXECUTED", "action_id": action_id, "approved_by": approver}
 
+    @_runtime_locked
     def deny(self, action_id: str, approver: str, reason: str) -> dict:
         self._load()
         pending = self._state.get("pending", {})
         if action_id not in pending:
             raise EngineError(f"no pending action with id {action_id}")
-        pending.pop(action_id)
-        self._save()
-        self.evidence.append("HUMAN_DENIAL",
-                             {"action_id": action_id, "denied_by": approver, "reason": reason})
+        self._append("HUMAN_DENIAL",
+                     {"action_id": action_id, "denied_by": approver, "reason": reason})
         return {"status": "DENIED_BY_HUMAN", "action_id": action_id}
 
     # -- state transition --------------------------------------------------
+    @_runtime_locked
     def transition(self, target_name: str) -> dict:
         self._load()
         cur = State(self._state["current_state"])
@@ -264,29 +467,52 @@ class CAIEngine:
             raise EngineError(f"unknown state '{target_name}' (states: {[s.value for s in State]})")
 
         if target not in VALID_TRANSITIONS.get(cur, []):
-            self.evidence.append("TRANSITION_BLOCKED",
-                                 {"from": cur.value, "to": target.value, "reason": "invalid transition"})
+            self._append("TRANSITION_BLOCKED",
+                         {"from": cur.value, "to": target.value, "reason": "invalid transition"})
             return {"status": "BLOCKED", "from": cur.value, "to": target.value,
                     "reason": f"{cur.value} -> {target.value} is not a valid transition"}
 
         facts = self._state.get("facts", {})
         missing = [c for c in ENTRY_CONDITIONS.get(target, []) if not facts.get(c)]
         if missing:
-            self.evidence.append("TRANSITION_BLOCKED",
-                                 {"from": cur.value, "to": target.value, "unmet_entry_conditions": missing})
+            self._append("TRANSITION_BLOCKED",
+                         {"from": cur.value, "to": target.value, "unmet_entry_conditions": missing})
             return {"status": "BLOCKED", "from": cur.value, "to": target.value,
                     "unmet_entry_conditions": missing}
 
-        self._state["current_state"] = target.value
-        self._save()
-        self.evidence.append("STATE_TRANSITION", {"from": cur.value, "to": target.value})
+        self._append("STATE_TRANSITION", {"from": cur.value, "to": target.value})
         return {"status": "OK", "from": cur.value, "to": target.value}
 
     # -- audit -------------------------------------------------------------
+    @_runtime_locked
     def verify(self) -> dict:
         ok, err = self.evidence.verify()
-        return {"integrity_ok": ok, "error": err, "records": self.evidence.count()}
+        if not ok:
+            try:
+                count = self.evidence.count()
+            except (OSError, UnicodeError, ValueError):
+                count = None
+            return {"integrity_ok": False, "error": err, "records": count}
+        records = list(self.evidence.records())
+        try:
+            self._replay(records)
+        except (EngineError, KeyError, TypeError, ValueError):
+            return {"integrity_ok": False, "error": "evidence event payload cannot be replayed",
+                    "records": len(records)}
+        try:
+            with open(self.state_path, encoding="utf-8") as fh:
+                snapshot = json.load(fh)
+            snapshot_ok, _ = self._snapshot_is_valid(snapshot, records)
+        except (OSError, UnicodeError, json.JSONDecodeError):
+            snapshot_ok = False
+        if not snapshot_ok:
+            return {"integrity_ok": False, "error": "snapshot missing, stale, or inconsistent with evidence",
+                    "records": len(records)}
+        # A valid lagging snapshot is recoverable from the hash-verified log.
+        # This check remains local-only and cannot prove completeness or origin.
+        return {"integrity_ok": True, "error": None, "records": len(records)}
 
+    @_runtime_locked
     def report(self) -> str:
         self._load()
         lines = ["# CAI-Engine — Execution & Assurance Report", ""]
@@ -315,7 +541,7 @@ class CAIEngine:
                 a = p.get("action", {})
                 detail = (f"AI[{p.get('ai_system','')}] {tag} "
                           f"{a.get('category','')} decision={p.get('decision','')}")
-            elif et.startswith("ACTION") or et == "HUMAN_APPROVAL":
+            elif et.startswith("ACTION") or et.startswith("DECISION_AUTHORIZED") or et.startswith("GOVERNED_DECISION_AUTHORIZED") or et == "HUMAN_APPROVAL":
                 a = p.get("action", {})
                 detail = f"{a.get('category','')} '{a.get('description','')}' decision={p.get('decision','')}"
                 if p.get("approved_by"):

@@ -1,0 +1,46 @@
+{
+  "description": "Synthetic defensive example for Information Technology; no real asset or action is represented. Case 1.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.99,
+      "explanation": "Synthetic scenario for defensive policy-path coverage only.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.02
+    },
+    "context": {
+      "sector": "information_technology"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Quarantine a synthetic compromised identity service",
+      "target": "synthetic-information_technology-asset"
+    }
+  },
+  "expected": {
+    "status": "PENDING_APPROVAL",
+    "decision": "ESCALATE",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.none_triggered",
+        "ALLOW"
+      ]
+    ]
+  }
+}

@@ -22,13 +22,16 @@ Run (from CAI-Engine/implementation):  python -m pytest -q tests/TEST_EVIDENCE_A
 """
 from __future__ import annotations
 
+import errno
 import json
 import re
+import time
 from pathlib import Path
 
 import pytest
 
 from cai_engine import eu_ai_act, usa
+from cai_engine import evidence as evidence_module
 from cai_engine.core import Action, ActionCategory, State
 from cai_engine.engine import CAIEngine, EngineError
 from cai_engine.evidence import GENESIS_HASH, EvidenceLog, _record_hash
@@ -78,7 +81,7 @@ def gp(*, juris="EU", conf=0.95, sector="", category="OBSERVE", **ctx) -> dict:
 # ==========================================================================
 def _busy(eng: CAIEngine) -> None:
     eng.set_fact("assets_discovered", True)
-    eng.ingest({"source": "edr", "domain": "device", "confidence": 0.9, "provenance": "p", "timestamp": 1.0})
+    eng.ingest({"source": "edr", "domain": "device", "confidence": 0.9, "provenance": "p", "timestamp": time.time()})
     eng.ingest({"source": "", "domain": "weather", "confidence": 2, "provenance": "", "timestamp": None})
     eng.transition("DETECT")
     eng.propose({"category": "OBSERVE", "description": "look", "target": "h"})
@@ -157,6 +160,28 @@ def test_log_in_current_directory(tmp_path, monkeypatch):
     assert log.count() == 2 and (tmp_path / "e.jsonl").exists()
 
 
+def test_partial_append_failure_rolls_back_to_last_complete_record(tmp_path, monkeypatch):
+    log = EvidenceLog(str(tmp_path / "evidence.jsonl"))
+    log.append("BASELINE", {"value": 1})
+    before = Path(log.path).read_bytes()
+    real_write = evidence_module.os.write
+    writes = 0
+
+    def partial_then_disk_full(fd, data):
+        nonlocal writes
+        writes += 1
+        if writes == 1:
+            return real_write(fd, data[:max(1, len(data) // 3)])
+        raise OSError(errno.ENOSPC, "simulated disk full")
+
+    monkeypatch.setattr(evidence_module.os, "write", partial_then_disk_full)
+    with pytest.raises(OSError, match="simulated disk full"):
+        log.append("SHOULD_ROLL_BACK", {"value": 2})
+    assert Path(log.path).read_bytes() == before
+    assert log.verify() == (True, None)
+    assert log.count() == 1
+
+
 def test_blank_lines_are_ignored(tmp_path):
     log = EvidenceLog(str(tmp_path / "e.jsonl"))
     log.append("A", {})
@@ -211,13 +236,13 @@ def test_fact_event(engine):
 
 
 def test_telemetry_events(engine):
-    good = {"source": "edr", "domain": "device", "confidence": 0.9, "provenance": "p", "timestamp": 5.0}
+    good = {"source": "edr", "domain": "device", "confidence": 0.9, "provenance": "p", "timestamp": time.time()}
     out = engine.ingest(good)
     rec = last(engine)
     assert out == {"accepted": True, "id": rec["payload"]["event"]["id"]}
     assert rec["event_type"] == "TELEMETRY_ACCEPTED"
     assert {k: rec["payload"]["event"][k] for k in good} == good
-    out = engine.ingest({"domain": "device", "confidence": 0.9, "timestamp": 5.0})
+    out = engine.ingest({"domain": "device", "confidence": 0.9, "timestamp": time.time()})
     rec = last(engine)
     assert out["accepted"] is False and out["errors"] == rec["payload"]["errors"]
     assert rec["event_type"] == "TELEMETRY_REJECTED"

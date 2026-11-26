@@ -71,6 +71,11 @@ class GovernedAgent:
                 provenance=str(ai.get("provenance", "")),
                 action_is_ot=action_is_ot, action_destructive=action_destructive,
                 prohibited=ctx.prohibited_practice, prohibited_reason=ctx.prohibited_reason)
+            unknown_risk_context = not cls.sector_key and (action_is_ot or action_destructive)
+            if unknown_risk_context:
+                results.append(GateResult(
+                    "usa.unknown_sector_context", Decision.ESCALATE,
+                    "sector context is unknown for an OT or destructive action; require human review"))
             block = {
                 "framework": "CAI-USA (NIST AI RMF / NIST AI 600-1 / NSM-22)",
                 "jurisdiction": "USA",
@@ -82,7 +87,7 @@ class GovernedAgent:
                 "references": cls.references,
                 "gate_results": _gate_dicts(results),
             }
-            force_human = cls.posture == "CRITICAL_INFRASTRUCTURE"
+            force_human = cls.posture == "CRITICAL_INFRASTRUCTURE" or unknown_risk_context
             return block, results, force_human
 
         # default: EU
@@ -191,7 +196,7 @@ class GovernedAgent:
         try:
             record = self.evaluate_proposal(proposal, jurisdiction)
         except (EngineError, TypeError, ValueError, OverflowError) as exc:
-            self.engine.evidence.append("GOVERNED_INPUT_REJECTED", {
+            self.engine._append("GOVERNED_INPUT_REJECTED", {
                 "reason_code": "INVALID_PROPOSAL", "error_type": type(exc).__name__})
             raise EngineError("governed proposal rejected: " + str(exc)) from exc
         return self.engine.commit(
