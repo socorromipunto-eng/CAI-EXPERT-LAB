@@ -1,23 +1,23 @@
 # CAI-USA Sector Framework Application
 
-Cybersecurity Artificial Intelligence Framework – Sector Framework Application (USA)  
+Cybersecurity Artificial Intelligence Framework – Sector Framework Application (USA)
 Version 0.1 (Draft)
 
-Author: Antonio José Socorro Marín  
-Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)  
+Author: Antonio José Socorro Marín
+Creator of CAI-EXPERT-LAB (Cybersecurity Artificial Intelligence Framework)
 
-Copyright © 2026 Antonio José Socorro Marín.  
-All rights reserved.  
-Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.  
+Copyright © 2026 Antonio José Socorro Marín.
+All rights reserved.
+Use, distribution, modification, and commercial exploitation are governed by the legal documents contained in the /legal directory of this repository.
 
-**NOTE**  
-The normative language of CAI-EXPERT-LAB documentation is English.  
-This directory maps, sector by sector, the cybersecurity frameworks that apply in the United States and the decision-time controls CAI adds to them.  
-It does not assert compliance, certification, accreditation, or regulatory approval.  
+**NOTE**
+The normative language of CAI-EXPERT-LAB documentation is English.
+This directory maps, sector by sector, the cybersecurity frameworks that apply in the United States and the decision-time controls CAI adds to them.
+It does not assert compliance, certification, accreditation, or regulatory approval.
 
 ## 1. Purpose
 
-The sector profiles in docs/USA/sectors are frozen under CAI-USA-Master-Freeze-v0.1 and most of them do not name the laws, regulations and guidance that apply to their sector. This directory adds, for each of the 16 critical infrastructure sectors of NSM-22 and for the aviation reference profile, one document that:
+The frozen profiles under docs/USA/sectors remain unchanged. This directory now has a draft application profile for each of the 16 NSM-22 sectors and a separate aviation reference profile (aviation is part of Transportation Systems, not a seventeenth NSM-22 sector). These documents are engineering review aids, not determinations of which laws, regulations, or contracts apply to a particular entity. Each profile:
 
 1. states the sector's regulator, Sector Risk Management Agency and the engine parameters CAI applies to it;
 2. lists the frameworks that apply, with their type (binding, contractual, incentive, voluntary), scope, status on the date of verification and official source;
@@ -25,7 +25,7 @@ The sector profiles in docs/USA/sectors are frozen under CAI-USA-Master-Freeze-v
 4. shows worked examples whose outcomes are produced by the engine and checked by the test suite;
 5. states the gaps.
 
-The documents do not modify the frozen profiles. They are the sector deltas requested by repository audit finding AUD-05.
+The documents do not modify the frozen profiles. Their existence closes only a documentation-presence gap; it does not establish complete sector analysis, implementation, control effectiveness, or compliance.
 
 ## 2. What CAI adds to sector frameworks
 
@@ -35,18 +35,18 @@ Table 1 — Decision-time controls CAI applies in every sector.
 
 | Control | Engine element | Status |
 |---|---|---|
-| Sector-aware assurance for AI proposals: confidence floor by consequence level (CATASTROPHIC 0.95, HIGH 0.90, MODERATE 0.80), declared drift at most 0.15, provenance and explanation for generative AI | `usa.py` gates `usa.assurance_floor`, `usa.robustness`, `usa.nist_ai_600_1` | Implemented |
-| Human authority for critical infrastructure: every governed proposal in an NSM-22 sector waits for a named human | `usa.srma_oversight`; MCP server has no approval tool | Implemented (approver not authenticated) |
-| Cyber-physical safety: in OT-intensive sectors, any action on an asset with a Purdue level and any destructive, containment or eradication action needs safety approval; in every sector, containment, eradication and destructive actions on assets at Purdue level 0 to 2 need human approval | `usa.ot_ics_safety`, `safety.ot_ics` | Implemented |
+| Reference decision thresholds and caller-declared model metadata | `usa.py` gates `usa.assurance_floor`, `usa.robustness`, `usa.nist_ai_600_1` | Present in reference logic; threshold calibration, trusted provenance, and effectiveness are not established |
+| Human review signal for proposals classified as critical infrastructure | `usa.srma_oversight`; MCP server has no approval tool | Present in reference decision path; sector, target, and approver are not independently authenticated |
+| Cyber-physical escalation based on sector/action labels and declared Purdue level | `usa.ot_ics_safety`, `safety.ot_ics` | Present in reference logic; no trusted asset inventory, safety case, or external enforcement boundary |
 | Lifecycle discipline: each action category is permitted only in its lifecycle state (for example, eradication only in EVICT) | `policy.state_constraint` | Implemented |
-| Decision record: gate results, reasons, sector, SRMA and approver in a hash-chained log | `evidence.py` | Partial (tamper-evident, not signed) |
+| Local decision record with gate results and reasons | `evidence.py` | Local hash-chain only; completeness and authenticity need independent anchoring |
 | Decision integrity over time: revalidation at approval and before dispatch; environmental state from signed sources | CAI-ENG-SEC-001 Core SR-06 to SR-11, SR-13 | Specified |
 
 Status values are those of CAI-USA-NIST-Map section 3.
 
 ## 3. Method
 
-- Sources are official (agency, Federal Register, eCFR, U.S. Code, NIST, CISA, FCC, FERC) and were checked on 2026-10-16. A source that is not official is named as such. Statements marked "CAI reading" are this project's interpretation.
+- The previous legal/status research snapshot is dated 2026-10-16. It is not a current legal applicability opinion. Before publication or use, recheck the current primary source, effective date, covered entity/asset, contract scope, and reviewer disposition; mark unknown applicability `NOT VERIFIED`. Statements marked "CAI reading" are project interpretations.
 - Engine parameters in each document are read from `CAI-Engine/implementation/cai_engine/usa_sectors.py` and `usa.py`.
 - Worked examples are JSON files in `CAI-Engine/implementation/examples/sectors/`. Each holds a synthetic proposal, the lifecycle state in which it is evaluated and the expected engine outcome. `tests/TEST_SECTOR_EXAMPLES.py` evaluates every example on each test run and fails if an outcome changes; it also checks that the lifecycle state, outcome and gates written in each sector document equal those in the example file. To run them: `python -m pytest -q tests/TEST_SECTOR_EXAMPLES.py` from `CAI-Engine/implementation`.
 - Regulations change. Each document states its verification date; a status change is recorded by updating the document in a registered change.
@@ -80,7 +80,12 @@ Table 3 — Sector documents in this directory.
 | Energy | CAI-USA-Energy-Framework-Application.md | Batch 2 |
 | Financial Services | CAI-USA-Financial-Services-Framework-Application.md | Batch 2 |
 | Food and Agriculture | CAI-USA-Food-and-Agriculture-Framework-Application.md | Batch 2 |
-| Government Facilities, Healthcare and Public Health, Information Technology, Nuclear Reactors, Materials, and Waste, Transportation Systems (with the aviation reference profile), Water and Wastewater Systems | — | Later batches, in alphabetical order |
+| Government Facilities | CAI-USA-Government-Facilities-Framework-Application.md | Batch 3 (draft) |
+| Healthcare and Public Health | CAI-USA-Healthcare-Framework-Application.md | Batch 3 (draft) |
+| Information Technology | CAI-USA-Information-Technology-Framework-Application.md | Batch 3 (draft) |
+| Nuclear Reactors, Materials, and Waste | CAI-USA-Nuclear-Framework-Application.md | Batch 3 (draft) |
+| Transportation Systems | CAI-USA-Transportation-Framework-Application.md | Batch 3 (draft) |
+| Water and Wastewater Systems | CAI-USA-Water-Framework-Application.md | Batch 3 (draft) |
 
 ## 6. Relationship to Other CAI Documents
 
@@ -91,5 +96,5 @@ Table 3 — Sector documents in this directory.
 
 ## Status
 
-Status: Draft – batches 1 and 2 of the sector framework application  
+Status: Draft – 16/16 NSM-22 profile documents; source applicability, sector evidence, and implementation validation remain open
 End of Document

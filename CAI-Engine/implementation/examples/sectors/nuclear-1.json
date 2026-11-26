@@ -1,0 +1,51 @@
+{
+  "description": "Synthetic defensive example for Nuclear Reactors, Materials, and Waste; no real asset or action is represented. Case 1.",
+  "lifecycle_state": "ISOLATE",
+  "proposal": {
+    "jurisdiction": "USA",
+    "ai": {
+      "system": "example-model",
+      "model_version": "1.0",
+      "confidence": 0.99,
+      "explanation": "Synthetic scenario for defensive policy-path coverage only.",
+      "explainable": true,
+      "provenance": "synthetic",
+      "drift_score": 0.02
+    },
+    "context": {
+      "sector": "nuclear"
+    },
+    "action": {
+      "category": "CONTAINMENT",
+      "description": "Isolate a synthetic monitoring conduit",
+      "target": "synthetic-nuclear-asset",
+      "ot_level": 2
+    }
+  },
+  "expected": {
+    "status": "PENDING_APPROVAL",
+    "decision": "ESCALATE",
+    "gates": [
+      [
+        "usa.nist_ai_rmf",
+        "ALLOW"
+      ],
+      [
+        "usa.srma_oversight",
+        "ESCALATE"
+      ],
+      [
+        "usa.ot_ics_safety",
+        "ESCALATE"
+      ],
+      [
+        "policy.state_constraint",
+        "ALLOW"
+      ],
+      [
+        "safety.ot_ics",
+        "ESCALATE"
+      ]
+    ]
+  }
+}

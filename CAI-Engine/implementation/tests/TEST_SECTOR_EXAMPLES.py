@@ -16,6 +16,7 @@ import pytest
 
 from cai_engine.engine import CAIEngine
 from cai_engine.governed_agent import GovernedAgent
+from cai_engine.usa_sectors import SECTORS
 
 HERE = pathlib.Path(__file__).resolve()
 EXAMPLES = sorted((HERE.parent.parent / "examples" / "sectors").glob("*.json"))
@@ -34,8 +35,37 @@ def _value(decision) -> str:
     return str(getattr(decision, "value", decision))
 
 
+SECTOR_DOCS = {
+    "chemical": "CAI-USA-Chemical-Framework-Application.md",
+    "commercial_facilities": "CAI-USA-Commercial-Facilities-Framework-Application.md",
+    "communications": "CAI-USA-Communications-Framework-Application.md",
+    "critical_manufacturing": "CAI-USA-Critical-Manufacturing-Framework-Application.md",
+    "dams": "CAI-USA-Dams-Framework-Application.md",
+    "defense_industrial_base": "CAI-USA-Defense-Industrial-Base-Framework-Application.md",
+    "emergency_services": "CAI-USA-Emergency-Services-Framework-Application.md",
+    "energy": "CAI-USA-Energy-Framework-Application.md",
+    "financial_services": "CAI-USA-Financial-Services-Framework-Application.md",
+    "food_agriculture": "CAI-USA-Food-and-Agriculture-Framework-Application.md",
+    "government_facilities": "CAI-USA-Government-Facilities-Framework-Application.md",
+    "healthcare": "CAI-USA-Healthcare-Framework-Application.md",
+    "information_technology": "CAI-USA-Information-Technology-Framework-Application.md",
+    "nuclear": "CAI-USA-Nuclear-Framework-Application.md",
+    "transportation": "CAI-USA-Transportation-Framework-Application.md",
+    "water": "CAI-USA-Water-Framework-Application.md",
+}
+
+
 def test_examples_exist():
-    assert len(EXAMPLES) >= 10
+    """Require two illustrative fixtures and one profile document per NSM-22 key."""
+    counts = dict.fromkeys(SECTORS, 0)
+    for path in EXAMPLES:
+        ex = json.loads(path.read_text(encoding="utf-8"))
+        key = ex["proposal"]["context"].get("sector")
+        assert key in counts, (path.name, key)
+        counts[key] += 1
+    assert counts == dict.fromkeys(SECTORS, 2)
+    assert set(SECTOR_DOCS) == set(SECTORS)
+    assert {p.name for p in DOCS.glob("CAI-USA-*-Framework-Application.md")} == set(SECTOR_DOCS.values())
 
 
 @pytest.mark.parametrize("path", EXAMPLES, ids=[p.stem for p in EXAMPLES])
