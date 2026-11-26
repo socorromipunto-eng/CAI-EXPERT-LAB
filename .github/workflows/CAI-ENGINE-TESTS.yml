@@ -1,14 +1,13 @@
 # CAI-Engine test suite, run by GitHub on every push and pull request to main.
 # Owner: Antonio José Socorro Marín (CAI-EXPERT-LAB).
 #
-# Gate: exact expected result is 702 passed and 4 xfailed, with no failed,
+# Gate: exact expected result is 714 passed and 4 xfailed, with no failed,
 # error, or skipped test. The four strict xfails cover tail truncation and
 # whole-chain rewrite; they remain open pending a trusted external anchor.
 # Updating these counts requires a reviewed change that reconciles the tests.
 #
-# The historical collection was 705 cases (698 passed, 7 xfailed). This
-# candidate closes three software gaps and adds one partial-write regression
-# case: 706 cases (702 passed, 4 xfailed).
+# The R01-R10 baseline candidate had 706 cases (702 passed, 4 xfailed).
+# Sector coverage adds twelve passing cases; the combined PR has 718 cases (714 passed, 4 xfailed).
 #
 # Ruff uses the rule set pinned in CAI-Engine/implementation/pyproject.toml.
 # Supply chain: actions pinned by full commit SHA; Python packages pinned by
@@ -91,4 +90,4 @@ jobs:
           summary="$(tail -n 1 pytest-output.txt)"
           echo "Summary: ${summary}"
           echo "### ${{ matrix.os }} / Python ${{ matrix.python }}: ${summary}" >> "$GITHUB_STEP_SUMMARY"
-          echo "${summary}" | grep -Eq '^702 passed, 4 xfailed in ' || { echo "Expected exactly: 702 passed, 4 xfailed"; exit 1; }
+          echo "${summary}" | grep -Eq '^714 passed, 4 xfailed in ' || { echo "Expected exactly: 714 passed, 4 xfailed"; exit 1; }
